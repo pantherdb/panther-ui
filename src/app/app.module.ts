@@ -16,7 +16,7 @@ import { PagesModule } from './main/content/pages/pages.module';
 const appRoutes: Routes = [
     {
         path: '**',
-        redirectTo: 'review'
+        redirectTo: 'home'
     }
 ];
 

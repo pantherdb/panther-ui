@@ -4,8 +4,8 @@ import { TranslateModule } from '@ngx-translate/core';
 import { NoctuaSharedModule } from '@noctua/shared.module';
 
 const routes = [{
-  path: 'review',
-  loadChildren: './review/review.module#ReviewModule'
+  path: 'home',
+  loadChildren: './home/home.module#HomeModule'
 }];
 
 @NgModule({

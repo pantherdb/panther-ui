@@ -1,9 +1,9 @@
-<div class="noc-page-container">
-  <div fxLayout="column" fxLayoutAlign="start center">
-    <form fxLayout="column" fxLayoutAlign="start stretch" name="searchForm" [formGroup]="searchForm" class="noc-container mat-elevation-z2 noc-search-form">
+<div class="noc-page-container p-0" fxLayout="row" fxLayoutAlign="start">
+  <div fxLayout="column" fxLayoutAlign="start" class="noc-navbar">
+    <form fxLayout="column" fxLayoutAlign="start stretch" name="searchForm" [formGroup]="searchForm" class="">
       <div>
         <h2>
-          Search Annotations
+          Search
         </h2>
       </div>
       <mat-form-field appearance="standard" class="" fxFlex="">
@@ -24,5 +24,8 @@
         <button type="button" mat-raised-button color="primary">Search</button>
       </div>
     </form>
+  </div>
+  <div class="p-16">
+    Home Page
   </div>
 </div>
