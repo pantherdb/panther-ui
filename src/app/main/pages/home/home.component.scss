@@ -1,0 +1,9 @@
+@import "src/@panther/scss/panther";
+:host {
+  width: 100%;
+}
+
+.noc-search-form {
+  padding: 15px;
+  @include deep-width(500px);
+}

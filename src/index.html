@@ -3,12 +3,12 @@
 
 <head>
 
-  <title>Noctua</title>
+  <title>panther</title>
   <base href="/">
 
   <meta charset="utf-8">
-  <meta name="description" content="Noctua Template">
-  <meta name="keywords" content="Noctua">
+  <meta name="description" content="panther Template">
+  <meta name="keywords" content="panther">
   <meta name="author" content="Gene Ontology">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
@@ -17,7 +17,7 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
 
   <style type="text/css">
-    #noctua-splash-screen {
+    #panther-splash-screen {
       display: block;
       position: absolute;
       top: 0;
@@ -29,7 +29,7 @@
       pointer-events: none;
     }
 
-    #noctua-splash-screen .center {
+    #panther-splash-screen .center {
       display: block;
       width: 100%;
       position: absolute;
@@ -37,16 +37,16 @@
       transform: translateY(-50%);
     }
 
-    #noctua-splash-screen .logo {
+    #panther-splash-screen .logo {
       width: 128px;
       margin: 0 auto;
     }
 
-    #noctua-splash-screen .logo img {
+    #panther-splash-screen .logo img {
       filter: drop-shadow(0px 10px 6px rgba(0, 0, 0, 0.2))
     }
 
-    #noctua-splash-screen .spinner-wrapper {
+    #panther-splash-screen .spinner-wrapper {
       display: block;
       position: relative;
       width: 100%;
@@ -54,7 +54,7 @@
       height: 100px;
     }
 
-    #noctua-splash-screen .spinner-wrapper .spinner {
+    #panther-splash-screen .spinner-wrapper .spinner {
       position: absolute;
       overflow: hidden;
       left: 50%;
@@ -62,14 +62,14 @@
       animation: outer-rotate 2.91667s linear infinite;
     }
 
-    #noctua-splash-screen .spinner-wrapper .spinner .inner {
+    #panther-splash-screen .spinner-wrapper .spinner .inner {
       width: 100px;
       height: 100px;
       position: relative;
       animation: sporadic-rotate 5.25s cubic-bezier(0.35, 0, 0.25, 1) infinite;
     }
 
-    #noctua-splash-screen .spinner-wrapper .spinner .inner .gap {
+    #panther-splash-screen .spinner-wrapper .spinner .inner .gap {
       position: absolute;
       left: 49px;
       right: 49px;
@@ -79,8 +79,8 @@
       box-sizing: border-box;
     }
 
-    #noctua-splash-screen .spinner-wrapper .spinner .inner .left,
-    #noctua-splash-screen .spinner-wrapper .spinner .inner .right {
+    #panther-splash-screen .spinner-wrapper .spinner .inner .left,
+    #panther-splash-screen .spinner-wrapper .spinner .inner .right {
       position: absolute;
       top: 0;
       height: 100px;
@@ -88,8 +88,8 @@
       overflow: hidden;
     }
 
-    #noctua-splash-screen .spinner-wrapper .spinner .inner .left .half-circle,
-    #noctua-splash-screen .spinner-wrapper .spinner .inner .right .half-circle {
+    #panther-splash-screen .spinner-wrapper .spinner .inner .left .half-circle,
+    #panther-splash-screen .spinner-wrapper .spinner .inner .right .half-circle {
       position: absolute;
       top: 0;
       width: 100px;
@@ -100,22 +100,22 @@
       border-radius: 50%;
     }
 
-    #noctua-splash-screen .spinner-wrapper .spinner .inner .left {
+    #panther-splash-screen .spinner-wrapper .spinner .inner .left {
       left: 0;
     }
 
-    #noctua-splash-screen .spinner-wrapper .spinner .inner .left .half-circle {
+    #panther-splash-screen .spinner-wrapper .spinner .inner .left .half-circle {
       left: 0;
       border-right-color: transparent;
       animation: left-wobble 1.3125s cubic-bezier(0.35, 0, 0.25, 1) infinite;
       -webkit-animation: left-wobble 1.3125s cubic-bezier(0.35, 0, 0.25, 1) infinite;
     }
 
-    #noctua-splash-screen .spinner-wrapper .spinner .inner .right {
+    #panther-splash-screen .spinner-wrapper .spinner .inner .right {
       right: 0;
     }
 
-    #noctua-splash-screen .spinner-wrapper .spinner .inner .right .half-circle {
+    #panther-splash-screen .spinner-wrapper .spinner .inner .right .half-circle {
       right: 0;
       border-left-color: transparent;
       animation: right-wobble 1.3125s cubic-bezier(0.35, 0, 0.25, 1) infinite;
@@ -182,7 +182,7 @@
 </head>
 
 <body class="">
-  <noctua-splash-screen id="noctua-splash-screen">
+  <panther-splash-screen id="panther-splash-screen">
     <div class="center">
       <div class="logo">
         <img width="128" src="assets/images/logos/go-logo.png">
@@ -201,8 +201,8 @@
         </div>
       </div>
     </div>
-  </noctua-splash-screen>
-  <noctua-root></noctua-root>
+  </panther-splash-screen>
+  <panther-root></panther-root>
 </body>
 
 </html>
