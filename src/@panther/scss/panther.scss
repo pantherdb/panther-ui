@@ -1,7 +1,7 @@
 @import "theming";
 @import "mixins/breakpoints";
-$noc-primary-color: #039be5;
-$noc-secondary-color: #995014;
+$pthr-primary-color: #039be5;
+$pthr-secondary-color: #995014;
 
 @mixin deep-width($number) {
   width: $number;
@@ -15,13 +15,13 @@ $noc-secondary-color: #995014;
   max-height: $number;
 }
 
-@mixin noc-icon-size($number) {
+@mixin pthr-icon-size($number) {
   font-size: $number;
   @include deep-width($number);
   @include deep-height($number);
 }
 
-.noc-paginator {
+.pthr-paginator {
   overflow: hidden;
   @include deep-height(40px);
   background-color: #DDD;
@@ -32,7 +32,7 @@ $noc-secondary-color: #995014;
 }
 
 input[type=text] {
-  &.noc-textbox-legacy {
+  &.pthr-textbox-legacy {
     padding-left: 10px;
     height: 36px;
     line-height: 36px;
@@ -50,7 +50,7 @@ input[type=text] {
   }
 }
 
-.noc-button-border {
+.pthr-button-border {
   border: 1px solid #bbb;
   height: 36px;
   line-height: 36px;
@@ -59,7 +59,7 @@ input[type=text] {
   background-color: #F2F2F2;
 }
 
-.noc-truncate {
+.pthr-truncate {
   display: block;
   margin: 0;
   white-space: nowrap;
@@ -68,22 +68,22 @@ input[type=text] {
   text-overflow: ellipsis;
 }
 
-.noc-page-container {
+.pthr-page-container {
   width: 100%;
   padding: 20px;
 }
 
-.noc-container {
+.pthr-container {
   position: relative;
   width: 1100px;
 
-  .noc-full-w {
+  .pthr-full-w {
     width: 100% !important;
   }
 }
 
-.noc-breadcrumbs {
-  .noc-breadcrumb {
+.pthr-breadcrumbs {
+  .pthr-breadcrumb {
     font-size: 20px;
     color: #777;
 
@@ -94,7 +94,7 @@ input[type=text] {
       padding-right: 8px;
     }
 
-    &.noc-active {
+    &.pthr-active {
       color: #000;
     }
   }
