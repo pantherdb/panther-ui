@@ -1,0 +1,35 @@
+<div fxLayout="column" fxLayoutAlign="start stretch" class="w-100-p">
+
+  <form fxLayout="column" fxLayoutAlign="start stretch" name="geneForm" [formGroup]="geneForm" class="pthr-container pthr-gene-form">
+    <div class="pthr-table-form pthr-form-section" fxLayout="column" fxLayoutAlign="start stretch">
+      <div class="pthr-section-header" fxLayout="row" fxLayoutAlign="start center">
+        <div class="pthr-section-heading">
+          Gene
+        </div>
+        <span fxFlex></span>
+      </div>
+      <div class="pthr-section-body" fxLayout="column" fxLayoutAlign="start stretch">
+        <div class="pthr-annoton-group-row" fxLayout="column">
+
+          <mat-radio-group formControlName="analysis" fxLayout="column" fxLayoutAlign="start stretch">
+            <mat-radio-button *ngFor="let analysisType of analysisTypes" value="{{analysisType.id}}" fxFlex="100">
+              {{analysisType.label}}</mat-radio-button>
+          </mat-radio-group>
+          <mat-form-field class="mr-8">
+            <mat-label>IDs</mat-label>
+            <textarea matInput formControlName="ids" placeholder="Enter IDs"></textarea>
+          </mat-form-field>
+          <mat-form-field class="">
+            <mat-label>Organisms</mat-label>
+            <input matInput formControlName="organism" placeholder="Organism" />
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+    <div layout="row" class="pthr-submit-row">
+      <span fxFlex></span>
+      <button (click)='cancel()' type="button" mat-raised-button color="" class="mr-8">Clear</button>
+      <button (click)="search()" type="button" mat-raised-button color="primary">Save</button>
+    </div>
+  </form>
+</div>
