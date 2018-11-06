@@ -2,18 +2,16 @@ import { Component, Inject, OnInit, ElementRef, OnDestroy, ViewEncapsulation, Vi
 import { FormBuilder, FormControl, FormGroup, FormArray, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { merge, Observable, BehaviorSubject, fromEvent, Subject } from 'rxjs';
-import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, map, startWith } from 'rxjs/operators';
+
 
 import { GeneAnalysisService } from './../services/gene-analysis.service'
-
-
 
 import * as _ from 'lodash';
 declare const require: any;
 const each = require('lodash/forEach');
 
 import { pantherAnimations } from '@panther/animations';
-
 
 @Component({
   selector: 'pthr-gene-form',
@@ -25,7 +23,8 @@ export class GeneFormComponent implements OnInit, OnDestroy {
   geneForm: FormGroup;
   analysisTypes;
   dataColumns
-
+  organisms;
+  filteredOrganisms: Observable<any[]>;
 
   private unsubscribeAll: Subject<any>;
 
@@ -36,6 +35,7 @@ export class GeneFormComponent implements OnInit, OnDestroy {
 
     this.analysisTypes = this.geneAnalysisService.analysisTypes;
     this.dataColumns = this.geneAnalysisService.dataColumns;
+    this.organisms = this.geneAnalysisService.organisms;
 
     this.geneForm = this.createAnswerForm();
 
@@ -59,6 +59,7 @@ export class GeneFormComponent implements OnInit, OnDestroy {
       organism: new FormControl(),
       functionalClassification: new FormArray([]),
       overrep: new FormArray([]),
+      dataColumns: this.buildSkills()
     });
 
     this.addIDsFormGroup(geneForm.controls['functionalClassification'] as FormArray)
@@ -76,12 +77,32 @@ export class GeneFormComponent implements OnInit, OnDestroy {
     }));
   }
 
+  buildSkills() {
+    const arr = this.dataColumns.map(dataColumn => {
+      return new FormControl(dataColumn.selected);
+    });
+
+    return new FormArray(arr);
+  }
+
   addOverrepList() {
     this.addIDsFormGroup(this.geneForm.controls['overrep'] as FormArray)
   }
 
+  private _filterOrganisms(value: string): any[] {
+    const filterValue = value.toLowerCase();
+
+    return this.organisms.filter(organism => organism.name.toLowerCase().indexOf(filterValue) === 0);
+  }
+
   onValueChanges() {
     const self = this;
+
+    this.filteredOrganisms = this.geneForm.controls.organism.valueChanges
+      .pipe(
+        startWith(''),
+        map(organism => organism ? this._filterOrganisms(organism) : this.organisms.slice())
+      );
 
   }
 

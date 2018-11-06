@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
 
+declare const require: any;
+const each = require('lodash/forEach');
+const organisms = require('./../data/organisms.json');
+
 @Injectable({
   providedIn: 'root'
 })
@@ -53,7 +57,10 @@ export class GeneAnalysisService {
     }, { value: "GENE_PATHWAY_REACTOME", label: 'Reactome Pathway' }
   ]
 
-  constructor() { }
+  constructor() {
+
+    console.log(organisms)
+  }
 
   get analysisTypes() {
     return this._analysisTypes;
@@ -61,5 +68,9 @@ export class GeneAnalysisService {
 
   get dataColumns() {
     return this._dataColumns;
+  }
+
+  get organisms() {
+    return organisms
   }
 }

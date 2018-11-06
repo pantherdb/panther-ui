@@ -1,17 +1,16 @@
-<div fxLayout="column" fxLayoutAlign="start stretch" class="w-100-p">
+<div class="w-100-p h-100-p">
   <form fxLayout="column" fxLayoutAlign="start stretch" name="geneForm" [formGroup]="geneForm" class="pthr-container pthr-gene-form">
     <div class="pthr-table-form pthr-form-section" fxLayout="column" fxLayoutAlign="start stretch">
-      <div class="pthr-section-header" fxLayout="row" fxLayoutAlign="start center">
-        <div class="pthr-section-heading">
-          Gene
-        </div>
-        <span fxFlex></span>
-      </div>
       <div class="pthr-section-body" fxLayout="column" fxLayoutAlign="start stretch">
         <div class="pthr-annoton-group-row" fxLayout="column">
           <mat-form-field class="">
             <mat-label>Organisms</mat-label>
-            <input matInput formControlName="organism" placeholder="Organism" />
+            <input matInput formControlName="organism" placeholder="Organism" [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let organism of filteredOrganisms | async" [value]="organism.name">
+                <span>{{organism.name}}</span>
+              </mat-option>
+            </mat-autocomplete>
           </mat-form-field>
           <mat-radio-group formControlName="analysis" fxLayout="column" fxLayoutAlign="start stretch">
             <mat-radio-button *ngFor="let analysisType of analysisTypes" value="{{analysisType.id}}" fxFlex="100">
@@ -42,6 +41,9 @@
           <button (click)='addOverrepList()' type="button" mat-raised-button color="" class="mr-8">
             Add
           </button>
+          <div *ngFor="let dataColumn of  geneForm.controls.dataColumns.controls; let i=index">
+            <input type="checkbox" [formControl]="dataColumn" /> {{dataColumns[i].label}}
+          </div>
         </div>
       </div>
     </div>
