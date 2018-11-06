@@ -6,6 +6,23 @@
   background-color: white;
   @include mat-elevation(4);
 
+
+  .example-h2 {
+    margin: 10px;
+  }
+
+  .example-section {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    height: 60px;
+  }
+
+  .example-margin {
+    margin: 0 10px;
+  }
+
+
   .pthr-header {
     @include deep-height(30px);
     background-color: #EEE;
@@ -27,18 +44,18 @@
     padding: 0 14px 14px 14px;
   }
 
-  .pthr-cam-form {
+  .pthr-gene-form {
     .pthr-form-section {
       width: 100%;
       background-color: #FFF;
 
       .pthr-section-header {
-        height: 30px;
+        height: 40px;
         background-color: $pthr-primary-color-light;
 
         .pthr-section-heading {
           padding-left: 8px;
-          font-size: 12px;
+          font-size: 16px;
           line-height: 40px;
           color: #555;
         }
@@ -50,7 +67,7 @@
       }
 
       .pthr-section-body {
-        padding: 5px 5px;
+        padding: 20px 10px;
       }
     }
 
@@ -101,15 +118,6 @@
     }
 
 
-    .pthr-tree-input {
-      $border-color: rgba(#000, 0.12);
-      @include deep-width(20px);
-      border-right: $border-color solid 1px;
-
-      &.pthr-level-0 {
-        border: none;
-      }
-    }
 
     md-input-container {
       margin: 0; //border-bottom: #555 solid 1px; 

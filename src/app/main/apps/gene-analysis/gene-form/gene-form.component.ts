@@ -24,6 +24,7 @@ export class GeneFormComponent implements OnInit, OnDestroy {
   analysisTypes;
   dataColumns
   organisms;
+  selectedAnalysis;
   filteredOrganisms: Observable<any[]>;
 
   private unsubscribeAll: Subject<any>;
@@ -103,6 +104,11 @@ export class GeneFormComponent implements OnInit, OnDestroy {
         startWith(''),
         map(organism => organism ? this._filterOrganisms(organism) : this.organisms.slice())
       );
+
+    this.geneForm.controls.analysis.valueChanges.subscribe(data => {
+      console.log(data)
+      self.selectedAnalysis = data;
+    })
 
   }
 

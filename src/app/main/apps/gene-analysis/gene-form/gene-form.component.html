@@ -1,49 +1,76 @@
 <div class="w-100-p h-100-p">
   <form fxLayout="column" fxLayoutAlign="start stretch" name="geneForm" [formGroup]="geneForm" class="pthr-container pthr-gene-form">
-    <div class="pthr-table-form pthr-form-section" fxLayout="column" fxLayoutAlign="start stretch">
+    <div class="pthr-form-section" fxLayout="column" fxLayoutAlign="start stretch">
+      <div class="pthr-section-header" fxLayout="row" fxLayoutAlign="start center">
+        <div class="pthr-section-heading">
+          Organism
+        </div>
+      </div>
       <div class="pthr-section-body" fxLayout="column" fxLayoutAlign="start stretch">
-        <div class="pthr-annoton-group-row" fxLayout="column">
-          <mat-form-field class="">
-            <mat-label>Organisms</mat-label>
-            <input matInput formControlName="organism" placeholder="Organism" [matAutocomplete]="auto">
-            <mat-autocomplete #auto="matAutocomplete">
-              <mat-option *ngFor="let organism of filteredOrganisms | async" [value]="organism.name">
-                <span>{{organism.name}}</span>
-              </mat-option>
-            </mat-autocomplete>
-          </mat-form-field>
-          <mat-radio-group formControlName="analysis" fxLayout="column" fxLayoutAlign="start stretch">
-            <mat-radio-button *ngFor="let analysisType of analysisTypes" value="{{analysisType.id}}" fxFlex="100">
-              {{analysisType.label}}</mat-radio-button>
-          </mat-radio-group>
-          <div formArrayName="functionalClassification">
-            <div>
-              Functional Classification
-            </div>
-            <div [formGroupName]="i" *ngFor="let ids of geneForm.controls.functionalClassification.controls; let i=index">
-              <mat-form-field class="mr-8">
-                <mat-label>IDs</mat-label>
-                <textarea matInput formControlName="ids" placeholder="Enter IDs"></textarea>
-              </mat-form-field>
-            </div>
+        <mat-form-field class="" appearance="outline">
+          <mat-label>Organisms</mat-label>
+          <input matInput formControlName="organism" placeholder="Swelect an organism" [matAutocomplete]="auto">
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let organism of filteredOrganisms | async" [value]="organism.name">
+              <span>{{organism.name}}</span>
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="pthr-form-section" fxLayout="column" fxLayoutAlign="start stretch">
+      <div class="pthr-section-header" fxLayout="row" fxLayoutAlign="start center">
+        <div class="pthr-section-heading">
+          Analysis
+        </div>
+      </div>
+      <div class="pthr-section-body" fxLayout="column" fxLayoutAlign="start stretch">
+        <mat-radio-group formControlName="analysis" fxLayout="column" fxLayoutAlign="start stretch">
+          <mat-radio-button *ngFor="let analysisType of analysisTypes" class="mt-8 mb-4" value="{{analysisType.id}}"
+            fxFlex="100">
+            {{analysisType.label}}</mat-radio-button>
+        </mat-radio-group>
+      </div>
+    </div>
+    <div class="pthr-form-section" fxLayout="column" fxLayoutAlign="start stretch">
+      <div class="pthr-section-header" fxLayout="row" fxLayoutAlign="start center">
+        <div class="pthr-section-heading">
+          List Upload <strong> {{selectedAnalysis ==='overrep'? 'Overrep':'Functional Classification'}}</strong>
+        </div>
+      </div>
+      <div class="pthr-section-body" fxLayout="column" fxLayoutAlign="start stretch">
+        <div *ngIf="selectedAnalysis !=='overrep'" formArrayName="functionalClassification">
+          <div [formGroupName]="i" *ngFor="let ids of geneForm.controls.functionalClassification.controls; let i=index">
+            <mat-form-field class="mr-8 w-100-p" appearance="outline">
+              <mat-label>IDs</mat-label>
+              <textarea matInput formControlName="ids" placeholder="Enter IDs"></textarea>
+            </mat-form-field>
+            <input type="file" formControlName="browse" />
           </div>
-          <div formArrayName="overrep">
-            <div>
-              Overrep
-            </div>
-            <div [formGroupName]="i" *ngFor="let ids of geneForm.controls.overrep.controls; let i=index">
-              <mat-form-field class="mr-8">
-                <mat-label>IDs</mat-label>
-                <textarea matInput formControlName="ids" placeholder="Enter IDs"></textarea>
-              </mat-form-field>
-            </div>
+        </div>
+        <div *ngIf="selectedAnalysis ==='overrep'" formArrayName="overrep">
+          <div [formGroupName]="i" *ngFor="let ids of geneForm.controls.overrep.controls; let i=index" class="w-100-p">
+            <mat-form-field class="mr-8 w-100-p" appearance="outline">
+              <mat-label>IDs</mat-label>
+              <textarea matInput formControlName="ids" placeholder="Enter IDs"></textarea>
+            </mat-form-field>
+            <input type="file" formControlName="browse" />
           </div>
           <button (click)='addOverrepList()' type="button" mat-raised-button color="" class="mr-8">
             Add
           </button>
-          <div *ngFor="let dataColumn of  geneForm.controls.dataColumns.controls; let i=index">
-            <input type="checkbox" [formControl]="dataColumn" /> {{dataColumns[i].label}}
-          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pthr-form-section" fxLayout="column" fxLayoutAlign="start stretch">
+      <div class="pthr-section-header" fxLayout="row" fxLayoutAlign="start center">
+        <div class="pthr-section-heading">
+          Data Columns
+        </div>
+      </div>
+      <div class="pthr-section-body" fxLayout="column" fxLayoutAlign="start stretch">
+        <div *ngFor="let dataColumn of  geneForm.controls.dataColumns.controls; let i=index">
+          <mat-checkbox [formControl]="dataColumn" class="mt-8 mb-4"> {{dataColumns[i].label}}</mat-checkbox>
         </div>
       </div>
     </div>
