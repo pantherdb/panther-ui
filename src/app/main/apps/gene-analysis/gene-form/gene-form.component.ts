@@ -24,6 +24,7 @@ import { pantherAnimations } from '@panther/animations';
 export class GeneFormComponent implements OnInit, OnDestroy {
   geneForm: FormGroup;
   analysisTypes;
+  dataColumns
 
 
   private unsubscribeAll: Subject<any>;
@@ -34,6 +35,7 @@ export class GeneFormComponent implements OnInit, OnDestroy {
     this.unsubscribeAll = new Subject();
 
     this.analysisTypes = this.geneAnalysisService.analysisTypes;
+    this.dataColumns = this.geneAnalysisService.dataColumns;
 
     this.geneForm = this.createAnswerForm();
 
@@ -51,11 +53,31 @@ export class GeneFormComponent implements OnInit, OnDestroy {
   }
 
   createAnswerForm() {
-    return new FormGroup({
+    let geneForm: FormGroup = new FormGroup({
       ids: new FormControl(),
       analysis: new FormControl(),
-      organism: new FormControl()
+      organism: new FormControl(),
+      functionalClassification: new FormArray([]),
+      overrep: new FormArray([]),
     });
+
+    this.addIDsFormGroup(geneForm.controls['functionalClassification'] as FormArray)
+    this.addIDsFormGroup(geneForm.controls['overrep'] as FormArray)
+
+    return geneForm;
+  }
+
+  addIDsFormGroup(listGroup: FormArray) {
+    const self = this;
+
+    listGroup.push(new FormGroup({
+      ids: new FormControl(),
+      browse: new FormControl(),
+    }));
+  }
+
+  addOverrepList() {
+    this.addIDsFormGroup(this.geneForm.controls['overrep'] as FormArray)
   }
 
   onValueChanges() {
