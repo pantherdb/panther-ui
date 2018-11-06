@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavigationEnd, NavigationStart, Router, ActivatedRoute } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 
-import { pantherConfigService } from '@panther/services/config.service';
+import { PantherConfigService } from '@panther/services/config.service';
 
 @Component({
     selector: 'panther-toolbar',
@@ -10,7 +10,7 @@ import { pantherConfigService } from '@panther/services/config.service';
     styleUrls: ['./toolbar.component.scss']
 })
 
-export class pantherToolbarComponent {
+export class PantherToolbarComponent {
     userStatusOptions: any[];
     languages: any;
     selectedLanguage: any;
@@ -19,16 +19,14 @@ export class pantherToolbarComponent {
     noNav: boolean;
     navigation: any;
 
-    loginUrl;
 
     constructor(
         private router: Router,
         private route: ActivatedRoute,
-        private pantherConfig: pantherConfigService,
+        private pantherConfig: PantherConfigService,
         private translate: TranslateService
     ) {
         console.log(window.location)
-        this.loginUrl = 'http://barista-dev.berkeleybop.org/login?return=' + window.location.origin;
         this.languages = [{
             'id': 'en',
             'title': 'English',

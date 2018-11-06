@@ -9,4 +9,4 @@ import { HttpModule } from '@angular/http';
     HttpModule,
   ],
 })
-export class pantherCommonModule { }
+export class PantherCommonModule { }

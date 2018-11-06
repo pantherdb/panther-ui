@@ -4,7 +4,7 @@
   display: flex;
   flex: 0 0 auto;
   z-index: 4;
-  .pthr-logo-filler {
+  .noc-logo-filler {
     @include deep-width(50px);
     img {
       height: 30px;
@@ -18,7 +18,7 @@
     position: relative;
     mat-toolbar-row {
       @include deep-height(40px);
-      &.pthr-subtoolbar {
+      &.noc-subtoolbar {
         button {
           margin-right: 8px;
           height: 30px;
@@ -37,10 +37,10 @@
       width: 100%;
     }
   }
-  .pthr-logo {
+  .noc-logo {
     //@include deep-width(130px);
-    .pthr-main-logo,
-    .pthr-sub-logo {
+    .noc-main-logo,
+    .noc-sub-logo {
       cursor: pointer;
       font-size: 20px;
       text-decoration: none !important;
@@ -50,15 +50,15 @@
         color: #000000;
       }
     }
-    .pthr-main-logo {
+    .noc-main-logo {
       margin-right: 4px;
       font-weight: bold;
     }
-    .pthr-sub-logo {
+    .noc-sub-logo {
       font-weight: normal;
     }
   }
-  .pthr-search-bar {
+  .noc-search-bar {
     max-width: 600px !important;
   }
 }

@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
 import { MatButtonModule, MatDialogModule } from '@angular/material';
-import { pantherConfirmDialogComponent } from './confirm-dialog.component';
+import { PantherConfirmDialogComponent } from './confirm-dialog.component';
 
 @NgModule({
     declarations: [
-        pantherConfirmDialogComponent
+        PantherConfirmDialogComponent
     ],
     imports: [
         MatDialogModule,
         MatButtonModule
     ],
     entryComponents: [
-        pantherConfirmDialogComponent
+        PantherConfirmDialogComponent
     ],
 })
 
-export class pantherConfirmDialogModule {
+export class PantherConfirmDialogModule {
 }

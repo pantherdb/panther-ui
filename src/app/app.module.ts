@@ -6,12 +6,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import 'hammerjs';
 import { MatSidenavModule } from '@angular/material';
-import { pantherModule } from '@panther/panther.module';
-import { pantherProgressBarModule } from '@panther/components';
-import { pantherSharedModule } from '@panther/shared.module';
+import { PantherModule } from '@panther/panther.module';
+import { PantherProgressBarModule } from '@panther/components';
+
+import { PantherSharedModule } from '@panther/shared.module';
 import { pantherConfig } from './panther-config';
 import { AppComponent } from './app.component';
 import { LayoutModule } from 'app/layout/layout.module';
+
 import { PagesModule } from './main/pages/pages.module';
 import { AppsModule } from './main/apps/apps.module';
 
@@ -34,15 +36,15 @@ const appRoutes: Routes = [
         RouterModule.forRoot(appRoutes),
         TranslateModule.forRoot(),
 
-        // panther Main and Shared modules
-        pantherModule.forRoot(pantherConfig),
-        pantherSharedModule,
+        // Panther Main and Shared modules
+        PantherModule.forRoot(pantherConfig),
+        PantherSharedModule,
         LayoutModule,
         RouterModule,
         MatSidenavModule,
-        pantherProgressBarModule,
+        PantherProgressBarModule,
 
-        //panther App
+        //Panther App
         PagesModule,
         AppsModule
     ],

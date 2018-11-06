@@ -6,9 +6,9 @@ import { MatDialogRef } from '@angular/material';
     templateUrl: './confirm-dialog.component.html',
     styleUrls: ['./confirm-dialog.component.scss']
 })
-export class pantherConfirmDialogComponent {
+export class PantherConfirmDialogComponent {
     public confirmMessage: string;
 
-    constructor(public dialogRef: MatDialogRef<pantherConfirmDialogComponent>) {
+    constructor(public dialogRef: MatDialogRef<PantherConfirmDialogComponent>) {
     }
 }

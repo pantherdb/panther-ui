@@ -1,5 +1,5 @@
 import { AfterContentInit, Component, ContentChildren, ElementRef, HostBinding, QueryList, Renderer2, ViewEncapsulation } from '@angular/core';
-import { pantherWidgetToggleDirective } from './widget-toggle.directive';
+import { PantherWidgetToggleDirective } from './widget-toggle.directive';
 
 @Component({
     selector: 'panther-widget',
@@ -8,9 +8,9 @@ import { pantherWidgetToggleDirective } from './widget-toggle.directive';
     encapsulation: ViewEncapsulation.None
 })
 
-export class pantherWidgetComponent implements AfterContentInit {
+export class PantherWidgetComponent implements AfterContentInit {
     @HostBinding('class.flipped') flipped = false;
-    @ContentChildren(pantherWidgetToggleDirective, { descendants: true }) toggleButtons: QueryList<pantherWidgetToggleDirective>;
+    @ContentChildren(PantherWidgetToggleDirective, { descendants: true }) toggleButtons: QueryList<PantherWidgetToggleDirective>;
 
     constructor(private el: ElementRef, private renderer: Renderer2) {
     }

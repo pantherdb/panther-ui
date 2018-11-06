@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 
-import { LayoutpantherModule } from 'app/layout/layout-panther/layout-panther.module';
+import { LayoutPantherModule } from 'app/layout/layout-panther/layout-panther.module';
 
 
 @NgModule({
     imports: [
-        LayoutpantherModule
+        LayoutPantherModule
     ],
     exports: [
-        LayoutpantherModule
+        LayoutPantherModule
     ]
 })
 export class LayoutModule {

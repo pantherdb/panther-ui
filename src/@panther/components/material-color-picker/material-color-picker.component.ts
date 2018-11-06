@@ -10,7 +10,7 @@ import { MatColors } from '../../mat-colors';
     animations: pantherAnimations,
     encapsulation: ViewEncapsulation.None
 })
-export class pantherMaterialColorPickerComponent implements OnChanges {
+export class PantherMaterialColorPickerComponent implements OnChanges {
     colors: any;
     selectedColor: any;
     hues: string[];

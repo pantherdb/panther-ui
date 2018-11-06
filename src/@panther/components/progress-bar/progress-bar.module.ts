@@ -4,11 +4,11 @@ import { RouterModule } from '@angular/router';
 
 import { MatButtonModule, MatIconModule, MatProgressBarModule } from '@angular/material';
 
-import { pantherProgressBarComponent } from './progress-bar.component';
+import { PantherProgressBarComponent } from './progress-bar.component';
 
 @NgModule({
     declarations: [
-        pantherProgressBarComponent
+        PantherProgressBarComponent
     ],
     imports: [
         CommonModule,
@@ -19,8 +19,8 @@ import { pantherProgressBarComponent } from './progress-bar.component';
         MatProgressBarModule
     ],
     exports: [
-        pantherProgressBarComponent
+        PantherProgressBarComponent
     ]
 })
-export class pantherProgressBarModule {
+export class PantherProgressBarModule {
 }

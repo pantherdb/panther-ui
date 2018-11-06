@@ -5,10 +5,10 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { filter } from 'rxjs/operators';
 import * as _ from 'lodash';
 
-export const panther_CONFIG = new InjectionToken('pantherCustomConfig');
+export const NOCTUA_CONFIG = new InjectionToken('pantherCustomConfig');
 
 @Injectable()
-export class pantherConfigService {
+export class PantherConfigService {
     private _configSubject: BehaviorSubject<any>;
     private _baristaToken;
     private readonly _defaultConfig: any;
@@ -16,7 +16,7 @@ export class pantherConfigService {
     constructor(
         private _platform: Platform,
         private _router: Router,
-        @Inject(panther_CONFIG) private _config
+        @Inject(NOCTUA_CONFIG) private _config
     ) {
         this._defaultConfig = _config;
         this._init();

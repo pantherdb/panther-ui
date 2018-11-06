@@ -1,20 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { pantherSharedModule } from '@panther/shared.module';
+import { PantherSharedModule } from '@panther/shared.module';
 
-import { pantherFooterComponent } from 'app/layout/components/footer/footer.component';
+import { PantherFooterComponent } from 'app/layout/components/footer/footer.component';
 
 @NgModule({
     declarations: [
-        pantherFooterComponent
+        PantherFooterComponent
     ],
     imports: [
         RouterModule,
-        pantherSharedModule
+        PantherSharedModule
     ],
     exports: [
-        pantherFooterComponent
+        PantherFooterComponent
     ]
 })
-export class pantherFooterModule {
+export class PantherFooterModule {
 }

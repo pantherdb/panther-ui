@@ -7,7 +7,7 @@ export interface Locale {
 }
 
 @Injectable()
-export class pantherTranslationLoaderService {
+export class PantherTranslationLoaderService {
     constructor(private translate: TranslateService) {
     }
 

@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { pantherConfigService } from '@panther/services/config.service';
+import { PantherConfigService } from '@panther/services/config.service';
 
 @Component({
     selector: 'layout-panther',
@@ -10,12 +10,12 @@ import { pantherConfigService } from '@panther/services/config.service';
     encapsulation: ViewEncapsulation.None
 }
 
-) export class LayoutpantherComponent implements OnInit, OnDestroy {
+) export class LayoutPantherComponent implements OnInit, OnDestroy {
     pantherConfig: any;
     navigation: any;
     private _unsubscribeAll: Subject<any>;
 
-    constructor(private _pantherConfigService: pantherConfigService) {
+    constructor(private _pantherConfigService: PantherConfigService) {
         this._unsubscribeAll = new Subject();
     }
 

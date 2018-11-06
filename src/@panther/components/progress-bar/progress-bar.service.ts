@@ -6,7 +6,7 @@ import { filter } from 'rxjs/operators';
 @Injectable({
     providedIn: 'root'
 })
-export class pantherProgressBarService {
+export class PantherProgressBarService {
     private _bufferValue: BehaviorSubject<number>;
     private _mode: BehaviorSubject<string>;
     private _value: BehaviorSubject<number>;

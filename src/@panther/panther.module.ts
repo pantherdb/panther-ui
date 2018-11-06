@@ -1,32 +1,32 @@
 import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 
-import { panther_CONFIG, pantherConfigService } from './services/config.service';
-import { pantherMatchMediaService } from './services/match-media.service';
-import { pantherSplashScreenService } from './services/splash-screen.service';
-import { pantherTranslationLoaderService } from './services/translation-loader.service';
+import { NOCTUA_CONFIG, PantherConfigService } from './services/config.service';
+import { PantherMatchMediaService } from './services/match-media.service';
+import { PantherSplashScreenService } from './services/splash-screen.service';
+import { PantherTranslationLoaderService } from './services/translation-loader.service';
 
 @NgModule({
     entryComponents: [],
     providers: [
-        pantherConfigService,
-        pantherMatchMediaService,
-        pantherSplashScreenService,
-        pantherTranslationLoaderService
+        PantherConfigService,
+        PantherMatchMediaService,
+        PantherSplashScreenService,
+        PantherTranslationLoaderService
     ]
 })
-export class pantherModule {
-    constructor(@Optional() @SkipSelf() parentModule: pantherModule) {
+export class PantherModule {
+    constructor(@Optional() @SkipSelf() parentModule: PantherModule) {
         if (parentModule) {
-            throw new Error('pantherModule is already loaded. Import it in the AppModule only!');
+            throw new Error('PantherModule is already loaded. Import it in the AppModule only!');
         }
     }
 
     static forRoot(config): ModuleWithProviders {
         return {
-            ngModule: pantherModule,
+            ngModule: PantherModule,
             providers: [
                 {
-                    provide: panther_CONFIG,
+                    provide: NOCTUA_CONFIG,
                     useValue: config
                 }
             ]

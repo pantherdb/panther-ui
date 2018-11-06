@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 
-import { pantherWidgetComponent } from './widget.component';
-import { pantherWidgetToggleDirective } from './widget-toggle.directive';
+import { PantherWidgetComponent } from './widget.component';
+import { PantherWidgetToggleDirective } from './widget-toggle.directive';
 
 @NgModule({
     declarations: [
-        pantherWidgetComponent,
-        pantherWidgetToggleDirective
+        PantherWidgetComponent,
+        PantherWidgetToggleDirective
     ],
     exports: [
-        pantherWidgetComponent,
-        pantherWidgetToggleDirective
+        PantherWidgetComponent,
+        PantherWidgetToggleDirective
     ],
 })
-export class pantherWidgetModule {
+export class PantherWidgetModule {
 }

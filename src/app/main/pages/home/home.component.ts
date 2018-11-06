@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormArray } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { pantherTranslationLoaderService } from '@panther/services/translation-loader.service';
+import { PantherTranslationLoaderService } from '@panther/services/translation-loader.service';
 
 import { locale as english } from './i18n/en';
 
@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
   searchCriteria: any = {};
   searchForm: FormGroup;
 
-  constructor(private pantherTranslationLoader: pantherTranslationLoaderService,
+  constructor(private pantherTranslationLoader: PantherTranslationLoaderService,
     private route: ActivatedRoute,
     private router: Router) {
     this.pantherTranslationLoader.loadTranslations(english);

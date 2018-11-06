@@ -1,4 +1,4 @@
-export class pantherUtils {
+export class PantherUtils {
 
     public static filterArrayByString(mainArr, searchText) {
         if (searchText === '') {

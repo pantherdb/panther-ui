@@ -4,10 +4,10 @@ import { Platform } from '@angular/cdk/platform';
 import { Subject, Subscription } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-import { pantherConfigService } from '@panther/services/config.service';
+import { PantherConfigService } from '@panther/services/config.service';
 import { TranslateService } from '@ngx-translate/core';
-import { pantherSplashScreenService } from '@panther/services/splash-screen.service';
-import { pantherTranslationLoaderService } from '@panther/services/translation-loader.service';
+import { PantherSplashScreenService } from '@panther/services/splash-screen.service';
+import { PantherTranslationLoaderService } from '@panther/services/translation-loader.service';
 
 
 @Component({
@@ -24,11 +24,11 @@ export class AppComponent implements OnInit, OnDestroy {
 
     constructor(
         private translate: TranslateService,
-        private pantherSplashScreen: pantherSplashScreenService,
-        private pantherTranslationLoader: pantherTranslationLoaderService,
+        private pantherSplashScreen: PantherSplashScreenService,
+        private pantherTranslationLoader: PantherTranslationLoaderService,
         private _renderer: Renderer2,
         private _elementRef: ElementRef,
-        private pantherConfigService: pantherConfigService,
+        private pantherConfigService: PantherConfigService,
         private platform: Platform,
         @Inject(DOCUMENT) private document: any
     ) {

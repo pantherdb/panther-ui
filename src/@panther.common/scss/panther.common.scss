@@ -1,13 +1,13 @@
-$pthr-toolbar-color: #e7ecf4;
-$pthr-primary-color: #3b5998;
-$pthr-primary-color-accent: #8b9dc3;
-$pthr-primary-color-light: #dfe3ee;
+$noc-toolbar-color: #e7ecf4;
+$noc-primary-color: #3b5998;
+$noc-primary-color-accent: #8b9dc3;
+$noc-primary-color-light: #dfe3ee;
 
 .mat-expansion-panel-body {
   padding: 0 !important;
 }
 
-.pthr-drawer-header {
+.noc-drawer-header {
   position: sticky;
   position: -webkit-sticky;
   padding: 0 12px;
@@ -15,17 +15,17 @@ $pthr-primary-color-light: #dfe3ee;
   background-color: #FFF;
   @include mat-elevation(1);
 
-  .pthr-drawer-header-title {
+  .noc-drawer-header-title {
     font-size: 12px;
     font-weight: bold;
   }
 }
 
-.pthr-column-toolbar {
+.noc-column-toolbar {
   padding: 5px;
   @include deep-height(40px); // @include mat-elevation(2);
   border-bottom: #BBB solid 1px;
-  background-color: $pthr-toolbar-color;
+  background-color: $noc-toolbar-color;
   z-index: 10;
 
   button {
@@ -34,7 +34,7 @@ $pthr-primary-color-light: #dfe3ee;
   }
 }
 
-.pthr-column-subtoolbar {
+.noc-column-subtoolbar {
   padding: 5px;
   color: rgba(0, 0, 0, 0.54);
   font-size: 12px; //line-height: 20px;
@@ -47,7 +47,7 @@ $pthr-primary-color-light: #dfe3ee;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-.pthr-no-info {
+.noc-no-info {
   padding: 50px 10px;
   font-size: 30px;
   font-style: italic;
@@ -55,28 +55,28 @@ $pthr-primary-color-light: #dfe3ee;
   color: #AAA;
 }
 
-.pthr-alert {
+.noc-alert {
   padding: 10px;
   font-size: 12px;
   font-style: italic;
 }
 
-.pthr-card-simple {
+.noc-card-simple {
   margin-bottom: 20px;
 
-  .pthr-header {
+  .noc-header {
     padding: 10px;
     @include deep-height(40px);
     @include deep-width(100%);
     border-bottom: #CCC solid 1px;
 
-    .pthr-title {
+    .noc-title {
       font-size: 14px;
       font-weight: bold;
     }
   }
 
-  .pthr-body {
+  .noc-body {
     @include deep-width(100%);
     padding: 10px;
   }

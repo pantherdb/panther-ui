@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 
-import { pantherPerfectScrollbarDirective } from './panther-perfect-scrollbar/panther-perfect-scrollbar.directive';
+import { PantherPerfectScrollbarDirective } from './panther-perfect-scrollbar/panther-perfect-scrollbar.directive';
 
 @NgModule({
     declarations: [
-        pantherPerfectScrollbarDirective
+        PantherPerfectScrollbarDirective
     ],
     imports: [],
     exports: [
-        pantherPerfectScrollbarDirective
+        PantherPerfectScrollbarDirective
     ]
 })
-export class pantherDirectivesModule {
+export class PantherDirectivesModule {
 }

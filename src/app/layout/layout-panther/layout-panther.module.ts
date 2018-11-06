@@ -1,32 +1,32 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { pantherSharedModule } from '@panther/shared.module';
+import { PantherSharedModule } from '@panther/shared.module';
 
 import { ContentModule } from 'app/layout/components/content/content.module';
-import { pantherFooterModule } from 'app/layout/components/footer/footer.module';
+import { PantherFooterModule } from 'app/layout/components/footer/footer.module';
 import { QuickPanelModule } from 'app/layout/components/quick-panel/quick-panel.module';
-import { pantherToolbarModule } from 'app/layout/components/toolbar/toolbar.module';
+import { PantherToolbarModule } from 'app/layout/components/toolbar/toolbar.module';
 
-import { LayoutpantherComponent } from 'app/layout/layout-panther/layout-panther.component';
+import { LayoutPantherComponent } from 'app/layout/layout-panther/layout-panther.component';
 
 @NgModule({
     declarations: [
-        LayoutpantherComponent
+        LayoutPantherComponent
     ],
     imports: [
         RouterModule,
-        pantherSharedModule,
+        PantherSharedModule,
         ContentModule,
-        pantherFooterModule,
+        PantherFooterModule,
         QuickPanelModule,
-        pantherToolbarModule
+        PantherToolbarModule
     ],
     exports: [
-        LayoutpantherComponent
+        LayoutPantherComponent
     ]
 })
-export class LayoutpantherModule {
+export class LayoutPantherModule {
 }
 
 

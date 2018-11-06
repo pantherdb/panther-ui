@@ -23,5 +23,5 @@ import { CamelCaseToDashPipe } from './camelCaseToDash.pipe';
         CamelCaseToDashPipe
     ]
 })
-export class pantherPipesModule {
+export class PantherPipesModule {
 }

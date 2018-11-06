@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-import { pantherProgressBarService } from '@panther/components/progress-bar/progress-bar.service';
+import { PantherProgressBarService } from '@panther/components/progress-bar/progress-bar.service';
 
 @Component({
     selector: 'panther-progress-bar',
@@ -10,7 +10,7 @@ import { pantherProgressBarService } from '@panther/components/progress-bar/prog
     styleUrls: ['./progress-bar.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class pantherProgressBarComponent implements OnInit, OnDestroy {
+export class PantherProgressBarComponent implements OnInit, OnDestroy {
     bufferValue: number;
     mode: 'determinate' | 'indeterminate' | 'buffer' | 'query';
     value: number;
@@ -19,7 +19,7 @@ export class pantherProgressBarComponent implements OnInit, OnDestroy {
     private _unsubscribeAll: Subject<any>;
 
     constructor(
-        private _pantherProgressBarService: pantherProgressBarService
+        private _pantherProgressBarService: PantherProgressBarService
     ) {
         this._unsubscribeAll = new Subject();
     }

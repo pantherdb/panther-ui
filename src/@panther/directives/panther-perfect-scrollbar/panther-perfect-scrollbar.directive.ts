@@ -6,12 +6,12 @@ import { filter, takeUntil } from 'rxjs/operators';
 import PerfectScrollbar from 'perfect-scrollbar';
 import * as _ from 'lodash';
 
-import { pantherConfigService } from '@panther/services/config.service';
+import { PantherConfigService } from '@panther/services/config.service';
 
 @Directive({
     selector: '[pantherPerfectScrollbar]'
 })
-export class pantherPerfectScrollbarDirective implements AfterViewInit, OnDestroy {
+export class PantherPerfectScrollbarDirective implements AfterViewInit, OnDestroy {
     isInitialized: boolean;
     isMobile: boolean;
     ps: PerfectScrollbar;
@@ -23,7 +23,7 @@ export class pantherPerfectScrollbarDirective implements AfterViewInit, OnDestro
 
     constructor(
         public elementRef: ElementRef,
-        private _pantherConfigService: pantherConfigService,
+        private _pantherConfigService: PantherConfigService,
         private _platform: Platform,
         private _router: Router
     ) {

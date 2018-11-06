@@ -5,8 +5,8 @@ import { CommonModule } from '@angular/common';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 
-import { pantherDirectivesModule } from './directives/directives';
-import { pantherPipesModule } from './pipes/pipes.module';
+import { PantherDirectivesModule } from './directives/directives';
+import { PantherPipesModule } from './pipes/pipes.module';
 
 @NgModule({
     imports: [
@@ -15,8 +15,8 @@ import { pantherPipesModule } from './pipes/pipes.module';
         MaterialModule,
         ReactiveFormsModule,
         FlexLayoutModule,
-        pantherDirectivesModule,
-        pantherPipesModule
+        PantherDirectivesModule,
+        PantherPipesModule
     ],
     exports: [
         CommonModule,
@@ -24,9 +24,9 @@ import { pantherPipesModule } from './pipes/pipes.module';
         FormsModule,
         ReactiveFormsModule,
         FlexLayoutModule,
-        pantherDirectivesModule,
-        pantherPipesModule
+        PantherDirectivesModule,
+        PantherPipesModule
     ]
 })
 
-export class pantherSharedModule { }
+export class PantherSharedModule { }
