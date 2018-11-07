@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit, ElementRef, OnDestroy, ViewEncapsulation, ViewChild } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, FormArray, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, FormArray, Validators, FormControlDirective } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { merge, Observable, BehaviorSubject, fromEvent, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map, startWith } from 'rxjs/operators';
@@ -21,8 +21,7 @@ import { pantherAnimations } from '@panther/animations';
 
 export class GeneFormComponent implements OnInit, OnDestroy {
   geneForm: FormGroup;
-  analysisTypes;
-  dataColumns
+  pantherTypes;
   organisms;
   selectedAnalysis;
   filteredOrganisms: Observable<any[]>;
@@ -34,11 +33,10 @@ export class GeneFormComponent implements OnInit, OnDestroy {
     private formBuilder: FormBuilder) {
     this.unsubscribeAll = new Subject();
 
-    this.analysisTypes = this.geneAnalysisService.analysisTypes;
-    this.dataColumns = this.geneAnalysisService.dataColumns;
+    this.pantherTypes = this.geneAnalysisService.pantherTypes;
     this.organisms = this.geneAnalysisService.organisms;
 
-    this.geneForm = this.createAnswerForm();
+    this.geneForm = this.createGeneForm();
 
     this.onValueChanges();
 
@@ -53,14 +51,16 @@ export class GeneFormComponent implements OnInit, OnDestroy {
     console.dir(searchCriteria)
   }
 
-  createAnswerForm() {
+  createGeneForm() {
     let geneForm: FormGroup = new FormGroup({
       ids: new FormControl(),
       analysis: new FormControl(),
       organism: new FormControl(),
       functionalClassification: new FormArray([]),
       overrep: new FormArray([]),
-      dataColumns: this.buildSkills()
+      dataColumns: this.buildDataColumnsForm(),
+      analysisTest: new FormControl(),
+      analysisCorrection: new FormControl(),
     });
 
     this.addIDsFormGroup(geneForm.controls['functionalClassification'] as FormArray)
@@ -78,8 +78,8 @@ export class GeneFormComponent implements OnInit, OnDestroy {
     }));
   }
 
-  buildSkills() {
-    const arr = this.dataColumns.map(dataColumn => {
+  buildDataColumnsForm() {
+    const arr = this.pantherTypes.dataColumns.map(dataColumn => {
       return new FormControl(dataColumn.selected);
     });
 
@@ -93,7 +93,7 @@ export class GeneFormComponent implements OnInit, OnDestroy {
   private _filterOrganisms(value: string): any[] {
     const filterValue = value.toLowerCase();
 
-    return this.organisms.filter(organism => organism.name.toLowerCase().indexOf(filterValue) === 0);
+    return this.organisms.filter(organism => organism.short_name.toLowerCase().indexOf(filterValue) === 0);
   }
 
   onValueChanges() {
