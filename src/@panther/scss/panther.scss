@@ -31,6 +31,10 @@ $pthr-secondary-color: #995014;
   }
 }
 
+textarea {
+  resize: none !important;
+}
+
 input[type=text] {
   &.pthr-textbox-legacy {
     padding-left: 10px;

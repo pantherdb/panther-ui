@@ -1,5 +1,5 @@
 <div class="w-100-p h-100-p">
-  <form fxLayout="column" fxLayoutAlign="start stretch" name="geneForm" [formGroup]="geneForm" class="pthr-container pthr-gene-form">
+  <form fxLayout="column" fxLayoutAlign="start stretch" name="geneForm" [formGroup]="geneForm" class="pthr-gene-form">
     <div class="pthr-form-section" fxLayout="column" fxLayoutAlign="start stretch">
       <div class="pthr-section-header" fxLayout="row" fxLayoutAlign="start center">
         <div class="pthr-section-heading">
@@ -40,37 +40,28 @@
           List Upload <strong> {{selectedAnalysis ==='overrep'? 'Overrep':'Functional Classification'}}</strong>
         </div>
       </div>
-      <div class="pthr-section-body" fxLayout="column" fxLayoutAlign="start stretch">
-        <div *ngIf="selectedAnalysis !=='overrep'" formArrayName="functionalClassification">
+      <div formGroupName="list" class="pthr-section-body w-100-p" fxLayout="row" fxLayoutAlign="start">
+        <div formArrayName="analysis" fxLayout="column" fxLayoutAlign="start stretch">
           <h2>
             Analysis List
           </h2>
-          <div [formGroupName]="i" *ngFor="let ids of geneForm.controls.functionalClassification.controls; let i=index">
+          <div [formGroupName]="i" *ngFor="let ids of geneForm.controls.list.controls.analysis.controls; let i=index">
             <mat-form-field class="mr-8 w-100-p" appearance="outline">
               <mat-label>IDs</mat-label>
               <textarea matInput formControlName="ids" placeholder="Enter IDs"></textarea>
             </mat-form-field>
             <input type="file" formControlName="browse" />
           </div>
-        </div>
-        <div *ngIf="selectedAnalysis ==='overrep'" formArrayName="overrep">
-          <h2>
-            Analysis List
-          </h2>
-          <div [formGroupName]="i" *ngFor="let ids of geneForm.controls.overrep.controls; let i=index" class="mb-8 w-100-p">
-            <mat-form-field class="mr-8 w-100-p" appearance="outline">
-              <mat-label>Analysis List</mat-label>
-              <textarea matInput formControlName="ids" placeholder="Enter IDs"></textarea>
-            </mat-form-field>
-            <input type="file" formControlName="browse" />
-          </div>
-          <button (click)='addOverrepList()' type="button" mat-raised-button color="" class="mr-8">
+          <button *ngIf="selectedAnalysis ==='overrep'" (click)='addOverrepList()' type="button" mat-raised-button
+            color="" class="mr-8">
             Add
           </button>
+        </div>
+        <div formArrayName="reference">
           <h2>
             Reference List
           </h2>
-          <div [formGroupName]="i" *ngFor="let ids of geneForm.controls.functionalClassification.controls; let i=index">
+          <div [formGroupName]="i" *ngFor="let ids of geneForm.controls.list.controls.reference.controls; let i=index">
             <mat-form-field class="mr-8 w-100-p" appearance="outline">
               <mat-label>IDs</mat-label>
               <textarea matInput formControlName="ids" placeholder="Enter IDs"></textarea>
@@ -94,7 +85,6 @@
           <mat-checkbox [formControl]="dataColumn" class="mt-8 mb-4"> {{pantherTypes.dataColumns[i].label}}</mat-checkbox>
         </div>
       </div>
-
       <div class="pthr-section-body" fxLayout="column" fxLayoutAlign="start stretch">
         <div>
           Test

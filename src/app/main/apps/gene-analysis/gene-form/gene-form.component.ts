@@ -56,15 +56,17 @@ export class GeneFormComponent implements OnInit, OnDestroy {
       ids: new FormControl(),
       analysis: new FormControl(),
       organism: new FormControl(),
-      functionalClassification: new FormArray([]),
-      overrep: new FormArray([]),
+      list: new FormGroup({
+        analysis: new FormArray([]),
+        reference: new FormArray([]),
+      }),
       dataColumns: this.buildDataColumnsForm(),
       analysisTest: new FormControl(),
       analysisCorrection: new FormControl(),
     });
 
-    this.addIDsFormGroup(geneForm.controls['functionalClassification'] as FormArray)
-    this.addIDsFormGroup(geneForm.controls['overrep'] as FormArray)
+    this.addIDsFormGroup(geneForm.controls['list']['controls']['analysis'] as FormArray);
+    this.addIDsFormGroup(geneForm.controls['list']['controls']['reference'] as FormArray)
 
     return geneForm;
   }
@@ -87,7 +89,7 @@ export class GeneFormComponent implements OnInit, OnDestroy {
   }
 
   addOverrepList() {
-    this.addIDsFormGroup(this.geneForm.controls['overrep'] as FormArray)
+    this.addIDsFormGroup(this.geneForm.controls['list']['controls']['analysis'] as FormArray);
   }
 
   private _filterOrganisms(value: string): any[] {
