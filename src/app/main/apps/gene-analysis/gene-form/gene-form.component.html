@@ -34,17 +34,17 @@
         </mat-radio-group>
       </div>
     </div>
-    <div class="pthr-form-section" fxLayout="column" fxLayoutAlign="start stretch">
+    <div *ngIf="sectionRule.list.display" class="pthr-form-section" fxLayout="column" fxLayoutAlign="start stretch">
       <div class="pthr-section-header" fxLayout="row" fxLayoutAlign="start center">
         <div class="pthr-section-heading">
-          List Upload <strong> {{selectedAnalysis ==='overrep'? 'Overrep':'Functional Classification'}}</strong>
+          List Upload
         </div>
       </div>
-      <div formGroupName="list" class="pthr-section-body w-100-p" fxLayout="row" fxLayoutAlign="start">
+      <div formGroupName="list" class="pthr-section-body w-100-p p-0">
         <div formArrayName="analysis" fxLayout="column" fxLayoutAlign="start stretch">
-          <h2>
+          <div class="pthr-subheading">
             Analysis List
-          </h2>
+          </div>
           <div [formGroupName]="i" *ngFor="let ids of geneForm.controls.list.controls.analysis.controls; let i=index">
             <mat-form-field class="mr-8 w-100-p" appearance="outline">
               <mat-label>IDs</mat-label>
@@ -58,9 +58,9 @@
           </button>
         </div>
         <div formArrayName="reference">
-          <h2>
+          <div class="pthr-subheading mt-12">
             Reference List
-          </h2>
+          </div>
           <div [formGroupName]="i" *ngFor="let ids of geneForm.controls.list.controls.reference.controls; let i=index">
             <mat-form-field class="mr-8 w-100-p" appearance="outline">
               <mat-label>IDs</mat-label>
@@ -71,39 +71,57 @@
         </div>
       </div>
     </div>
-    <div class="pthr-form-section" fxLayout="column" fxLayoutAlign="start stretch">
+    <div *ngIf="sectionRule.analysisOptions.display" class="pthr-form-section" fxLayout="column" fxLayoutAlign="start stretch">
       <div class="pthr-section-header" fxLayout="row" fxLayoutAlign="start center">
         <div class="pthr-section-heading">
           Analysis Options
         </div>
       </div>
-      <div class="pthr-section-body" fxLayout="column" fxLayoutAlign="start stretch">
-        <div>
+      <div *ngIf="sectionRule.chartTypes.display" class="" fxLayout="column" fxLayoutAlign="start stretch">
+        <div class="pthr-subheading">
+          Chart Type
+        </div>
+        <div class="pthr-section-body" fxLayout="column" fxLayoutAlign="start stretch">
+          <mat-radio-group formControlName="chartType" fxLayout="column" fxLayoutAlign="start stretch">
+            <mat-radio-button *ngFor="let chartType of pantherTypes.chartTypes" class="mt-8 mb-4" value="{{chartType.id}}"
+              fxFlex="100">
+              {{chartType.label}}</mat-radio-button>
+          </mat-radio-group>
+        </div>
+      </div>
+      <div *ngIf="sectionRule.dataColumns.display" class="" fxLayout="column" fxLayoutAlign="start stretch">
+        <div class="pthr-subheading  mt-12">
           Data Columns
         </div>
-        <div *ngFor="let dataColumn of  geneForm.controls.dataColumns.controls; let i=index">
-          <mat-checkbox [formControl]="dataColumn" class="mt-8 mb-4"> {{pantherTypes.dataColumns[i].label}}</mat-checkbox>
+        <div class="pthr-section-body" fxLayout="column" fxLayoutAlign="start stretch">
+          <div *ngFor="let dataColumn of  geneForm.controls.dataColumns.controls; let i=index">
+            <mat-checkbox [formControl]="dataColumn" class="mt-8 mb-4"> {{pantherTypes.dataColumns[i].label}}</mat-checkbox>
+          </div>
         </div>
       </div>
-      <div class="pthr-section-body" fxLayout="column" fxLayoutAlign="start stretch">
-        <div>
+      <div *ngIf="sectionRule.analysisTests.display" class="" fxLayout="column" fxLayoutAlign="start stretch">
+        <div class="pthr-subheading mt-12">
           Test
         </div>
-        <mat-radio-group formControlName="analysis" fxLayout="column" fxLayoutAlign="start stretch">
-          <mat-radio-button *ngFor="let analysisTest of pantherTypes.analysisTests" class="mt-8 mb-4" value="{{analysisTest.id}}"
-            fxFlex="100">
-            {{analysisTest.label}}</mat-radio-button>
-        </mat-radio-group>
+        <div class="pthr-section-body" fxLayout="column" fxLayoutAlign="start stretch">
+          <mat-radio-group formControlName="analysisTest" fxLayout="column" fxLayoutAlign="start stretch">
+            <mat-radio-button *ngFor="let analysisTest of pantherTypes.analysisTests" class="mt-8 mb-4" value="{{analysisTest.id}}"
+              fxFlex="100">
+              {{analysisTest.label}}</mat-radio-button>
+          </mat-radio-group>
+        </div>
       </div>
-      <div class="pthr-section-body" fxLayout="column" fxLayoutAlign="start stretch">
-        <div>
+      <div *ngIf="sectionRule.analysisCorrections.display" class="" fxLayout="column" fxLayoutAlign="start stretch">
+        <div class="pthr-subheading mt-12">
           Correction
         </div>
-        <mat-radio-group formControlName="analysis" fxLayout="column" fxLayoutAlign="start stretch">
-          <mat-radio-button *ngFor="let analysisCorrection of pantherTypes.analysisCorrections" class="mt-8 mb-4" value="{{analysisCorrection.id}}"
-            fxFlex="100">
-            {{analysisCorrection.label}}</mat-radio-button>
-        </mat-radio-group>
+        <div class="pthr-section-body" fxLayout="column" fxLayoutAlign="start stretch">
+          <mat-radio-group formControlName="analysisCorrection" fxLayout="column" fxLayoutAlign="start stretch">
+            <mat-radio-button *ngFor="let analysisCorrection of pantherTypes.analysisCorrections" class="mt-8 mb-4"
+              value="{{analysisCorrection.id}}" fxFlex="100">
+              {{analysisCorrection.label}}</mat-radio-button>
+          </mat-radio-group>
+        </div>
       </div>
     </div>
     <div layout="row" class="pthr-submit-row">

@@ -77,5 +77,12 @@
   }, {
     "id": "nocorrection",
     "label": "No Correction"
+  }],
+  "chartTypes": [{
+    "id": "bar",
+    "label": "Bar Chart"
+  }, {
+    "id": "pie",
+    "label": "Pie Chart"
   }]
 }

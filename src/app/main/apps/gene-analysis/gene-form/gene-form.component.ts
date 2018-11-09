@@ -21,6 +21,7 @@ import { pantherAnimations } from '@panther/animations';
 
 export class GeneFormComponent implements OnInit, OnDestroy {
   geneForm: FormGroup;
+  sectionRule;
   pantherTypes;
   organisms;
   selectedAnalysis;
@@ -33,13 +34,14 @@ export class GeneFormComponent implements OnInit, OnDestroy {
     private formBuilder: FormBuilder) {
     this.unsubscribeAll = new Subject();
 
+    this.sectionRule = this.geneAnalysisService.sectionRule;
+
     this.pantherTypes = this.geneAnalysisService.pantherTypes;
     this.organisms = this.geneAnalysisService.organisms;
 
     this.geneForm = this.createGeneForm();
 
     this.onValueChanges();
-
   }
 
   ngOnInit(): void {
@@ -63,6 +65,7 @@ export class GeneFormComponent implements OnInit, OnDestroy {
       dataColumns: this.buildDataColumnsForm(),
       analysisTest: new FormControl(),
       analysisCorrection: new FormControl(),
+      chartType: new FormControl(),
     });
 
     this.addIDsFormGroup(geneForm.controls['list']['controls']['analysis'] as FormArray);
@@ -110,6 +113,8 @@ export class GeneFormComponent implements OnInit, OnDestroy {
     this.geneForm.controls.analysis.valueChanges.subscribe(data => {
       console.log(data)
       self.selectedAnalysis = data;
+
+      self.sectionRule = self.geneAnalysisService.generateDisplayRule(data);
     })
 
   }
