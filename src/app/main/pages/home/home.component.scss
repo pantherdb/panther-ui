@@ -1,6 +1,21 @@
 @import "src/@panther/scss/panther";
+
 :host {
   width: 100%;
+
+  .pthr-sidenav {
+    width: 500px;
+
+    .pthr-nav-button {
+      padding: 0 12px;
+      @include deep-height(50px);
+      border-bottom: #CCC solid 1px;
+    }
+
+    .phtr-menu-section {
+      width: 100%;
+    }
+  }
 }
 
 .pthr-search-form {

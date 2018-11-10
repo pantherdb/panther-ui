@@ -1,6 +1,39 @@
-<div class="pthr-page-container" pantherPerfectScrollbar>
-  <div fxLayout="row" fxLayoutAlign="start">
-    <pthr-gene-analysis></pthr-gene-analysis>
+<div class="pthr-page-container">
+  <div class="h-100-p pthr-sidenav" fxLayout="column" fxLayoutAlign="start stretch" pantherPerfectScrollbar>
+    <div class="pthr-menu-section">
+      <div class="pthr-nav-button" fxLayout="row" fxLayoutAlign="start center">
+        Gene List Analysis
+        <span fxFlex=""></span>
+        <mat-icon>chevron_right</mat-icon>
+      </div>
+      <div class="pthr-nav-button" fxLayout="row" fxLayoutAlign="start center">
+        Browse
+        <span fxFlex=""></span>
+        <mat-icon>chevron_right</mat-icon>
+      </div>
+      <div class="pthr-nav-button" fxLayout="row" fxLayoutAlign="start center">
+        Sequence Search
+        <span fxFlex=""></span>
+        <mat-icon>chevron_right</mat-icon>
+      </div>
+      <div class="pthr-nav-button" fxLayout="row" fxLayoutAlign="start center">
+        cSNP Scoring
+        <span fxFlex=""></span>
+        <mat-icon>chevron_right</mat-icon>
+      </div>
+      <div class="pthr-nav-button" fxLayout="row" fxLayoutAlign="start center">
+        Keyword Search
+        <span fxFlex=""></span>
+        <mat-icon>chevron_right</mat-icon>
+      </div>
+    </div>
+    <div class="pthr-menu-section">
+      <div class="pthr-nav-button" fxLayout="row" fxLayoutAlign="start center">
+        <mat-icon>chevron_left</mat-icon>
+        Back
+        <span fxFlex=""></span>
+      </div>
+      <pthr-gene-analysis></pthr-gene-analysis>
+    </div>
   </div>
 </div>
-`
