@@ -1,9 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormArray } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
+import { MatDrawer } from '@angular/material';
+
 import { PantherTranslationLoaderService } from '@panther/services/translation-loader.service';
 
+
+import { HomeMenuService } from './services/home-menu.service';
 import { locale as english } from './i18n/en';
 
 @Component({
@@ -12,25 +16,28 @@ import { locale as english } from './i18n/en';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+
+  @ViewChild('leftDrawer')
+  leftDrawer: MatDrawer;
+
+  @ViewChild('rightDrawer')
+  rightDrawer: MatDrawer;
+
   searchCriteria: any = {};
   searchForm: FormGroup;
+  leftPanelMenu;
 
   constructor(private pantherTranslationLoader: PantherTranslationLoaderService,
+    public homeMenuService: HomeMenuService,
     private route: ActivatedRoute,
     private router: Router) {
     this.pantherTranslationLoader.loadTranslations(english);
-    this.searchForm = this.createAnswerForm();
+
+    this.leftPanelMenu = this.homeMenuService.leftPanelMenu;
   }
 
   ngOnInit() {
-
-  }
-
-  createAnswerForm() {
-    return new FormGroup({
-      goTerm: new FormControl(this.searchCriteria.goTerm),
-      geneProduct: new FormControl(this.searchCriteria.geneProduct),
-      pmid: new FormControl(this.searchCriteria.pmid),
-    });
+    this.homeMenuService.setLeftDrawer(this.leftDrawer);
+    this.homeMenuService.setRightDrawer(this.rightDrawer);
   }
 }

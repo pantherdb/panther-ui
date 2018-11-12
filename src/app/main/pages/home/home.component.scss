@@ -1,15 +1,21 @@
 @import "src/@panther/scss/panther";
+@import "src/@panther.common/scss/panther.common";
 
 :host {
   width: 100%;
 
   .pthr-sidenav {
-    width: 500px;
+    width: 200px;
 
     .pthr-nav-button {
       padding: 0 12px;
       @include deep-height(50px);
       border-bottom: #CCC solid 1px;
+
+      &.pthr-selected {
+        background-color: #DDD;
+        font-weight: bold;
+      }
     }
 
     .phtr-menu-section {

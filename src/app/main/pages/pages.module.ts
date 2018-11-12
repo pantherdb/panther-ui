@@ -4,6 +4,8 @@ import { TranslateModule } from '@ngx-translate/core';
 import { PantherSharedModule } from '@panther/shared.module';
 import { AppsModule } from './../apps/apps.module';
 
+import { HomeMenuService } from './home/services/home-menu.service';
+
 import { HomeComponent } from './home/home.component';
 
 const routes = [{
@@ -19,6 +21,9 @@ const routes = [{
     TranslateModule,
     PantherSharedModule,
     AppsModule
+  ],
+  providers: [
+    HomeMenuService
   ]
 })
 

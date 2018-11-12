@@ -31,7 +31,7 @@ export class GeneAnalysisService {
         sectionRule.dataColumns.display = true;
         break;
       case 'charts':
-        sectionRule.chatTypes.display = true;
+        sectionRule.chartTypes.display = true;
         break;
       case 'enrichment':
         sectionRule.analysisCorrections.display = true;
