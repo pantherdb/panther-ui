@@ -3,6 +3,8 @@ import { MaterialModule } from './material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { PantherDirectivesModule } from './directives/directives';
@@ -15,6 +17,7 @@ import { PantherPipesModule } from './pipes/pipes.module';
         MaterialModule,
         ReactiveFormsModule,
         FlexLayoutModule,
+        NgxDatatableModule,
         PantherDirectivesModule,
         PantherPipesModule
     ],
@@ -24,6 +27,7 @@ import { PantherPipesModule } from './pipes/pipes.module';
         FormsModule,
         ReactiveFormsModule,
         FlexLayoutModule,
+        NgxDatatableModule,
         PantherDirectivesModule,
         PantherPipesModule
     ]

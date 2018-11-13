@@ -17,7 +17,7 @@ export class GeneAnalysisService {
 
   onGenesChanged: BehaviorSubject<any>;
   constructor(private httpClient: HttpClient) {
-    this.onGenesChanged = new BehaviorSubject({});
+    this.onGenesChanged = new BehaviorSubject([]);
   }
 
   generateDisplayRule(analysis) {
