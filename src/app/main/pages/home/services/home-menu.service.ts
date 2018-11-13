@@ -18,8 +18,8 @@ export class HomeMenuService {
       id: 'geneListAnalysis',
       label: 'Gene List Analysis'
     },
-    broswse: {
-      id: 'browse',
+    browser: {
+      id: 'browser',
       label: 'Browse'
     },
     sequenceSearch: {

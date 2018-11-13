@@ -23,6 +23,8 @@
       </div>
       <div [ngSwitch]="homeMenuService.selectedLeftPanel.id" class="h-100-p">
         <pthr-gene-analysis *ngSwitchCase="homeMenuService.leftPanelMenu.geneListAnalysis.id"></pthr-gene-analysis>
+        <pthr-browser *ngSwitchCase="homeMenuService.leftPanelMenu.browser.id"></pthr-browser>
+
       </div>
     </mat-drawer>
     <mat-drawer-content class="w-100-p" noctuaPerfectScrollbar>

@@ -1,0 +1,84 @@
+<div fxLayout="column" fxLayoutAlign="start stretch" class="agb-sidenav mat-elevation-z4">
+
+  <div class="px-10" class="agb-column-subtoolbar" fxLayout="row" fxLayoutAlign="start center">
+    <div fxFlex="">
+      Species
+    </div>
+    <div class="" fxFlex="40px">
+      Genes
+    </div>
+    <div class="text-right" fxFlex="30px">
+      Info
+    </div>
+  </div>
+  <div class="agb-tree-container" noctuaPerfectScrollbar>
+    <mat-tree #tree [dataSource]="dataSource" [treeControl]="treeControl">
+      <mat-tree-node class="agb-tree-node text-truncate" *matTreeNodeDef="let node" (click)="selectSpecies(node.short_name)"
+        matTreeNodeToggle matTreeNodePadding matTreeNodePaddingIndent="10" [ngClass]="{ 'background-highlight': activeSpecies === node.short_name }">
+        <button mat-icon-button disabled class="agb-icon-button"></button>
+        <button [ngStyle]="{'color': node.timescaleColor.color}" mat-icon-button class="agb-icon-button"
+          [attr.aria-label]="Timescale">
+          <mat-icon class="s-18">
+            history
+          </mat-icon>
+        </button>
+        {{node.long_name}}
+        <span fxFlex></span>
+        <diV fxFlex="40px" class="agb-gene-count">
+          {{node.gene_count}}
+        </diV>
+        <diV class="" fxFlex="20px">
+          <button mat-icon-button class="agb-icon-button" (click)="openSpeciesPreview(node.short_name)"
+            [attr.aria-label]="Timescale">
+            <mat-icon class="s-18">
+              more_horiz
+            </mat-icon>
+          </button>
+        </diV>
+      </mat-tree-node>
+      <mat-tree-node fxLayout="row" (click)="selectSpecies(node.short_name)" class="agb-tree-node text-truncate"
+        *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding matTreeNodePaddingIndent="10" [ngClass]="{ 'background-highlight': activeSpecies === node.short_name }">
+        <button mat-icon-button matTreeNodeToggle class="agb-icon-button" [attr.aria-label]="'toggle ' + node.long_name">
+          <mat-icon *ngIf="!treeControl.isExpanded(node)" class="mat-icon-rtl-mirror s-16 fa fa-caret-right">
+          </mat-icon>
+          <mat-icon *ngIf="treeControl.isExpanded(node)" class="mat-icon-rtl-mirror s-10">
+            signal_cellular_4_bar
+          </mat-icon>
+        </button>
+        <button [ngStyle]="{'color': node.timescaleColor.color}" mat-icon-button class="agb-icon-button"
+          [attr.aria-label]="Timescale">
+          <mat-icon class="s-18">
+            history
+          </mat-icon>
+        </button>
+        {{node.long_name}}
+        <span fxFlex></span>
+        <div fxFlex="40px" class="agb-gene-count">
+          {{node.gene_count}}
+        </div>
+        <diV class="" fxFlex="20px">
+          <button mat-icon-button class="agb-icon-button" (click)="openSpeciesPreview(node.short_name)"
+            [attr.aria-label]="Timescale">
+            <mat-icon class="s-18">
+              more_horiz
+            </mat-icon>
+          </button>
+        </diV>
+      </mat-tree-node>
+    </mat-tree>
+  </div>
+
+  <div class="agb-legend">
+    <div class="agb-legend-header">
+      TIMESCALE (MYA)
+    </div>
+    <div *ngFor="let legend of timescaleLegend">
+      <button [ngStyle]="{'color': legend.color}" mat-icon-button class="agb-legend-button" [attr.aria-label]="Timescale">
+        <mat-icon class="s-12">
+          history
+        </mat-icon>
+        <span>{{legend.label}}</span>
+      </button>
+    </div>
+  </div>
+</div>

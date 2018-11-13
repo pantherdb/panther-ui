@@ -1,0 +1,76 @@
+@import "src/@panther/scss/panther";
+@import "src/@panther.common/scss/panther.common";
+
+:host {
+  width: 100%; //white-space:nowrap;
+
+  .background-highlight {
+    background-color: rgb(210, 242, 68);
+  }
+
+  .agb-sidenav {
+    position: relative;
+    @include deep-width(100%);
+    @include deep-height(100%);
+    background-color: #FFF;
+    border-right: #DDD solid 1px;
+    z-index: 10;
+
+    @include media-breakpoint('gt-md') {}
+  }
+
+  .agb-tree-container {
+    padding: 5px;
+    padding-bottom: 200px;
+  }
+
+  .agb-tree-node {
+    @include deep-height(25px);
+    font-size: 12px;
+    color: #000;
+
+    .agb-icon-button {
+      @include deep-height(25px);
+      @include deep-width(25px);
+      line-height: 25px;
+    }
+
+    &:hover {
+      background-color: rgba(#000000, 0.10);
+    }
+
+    .agb-gene-count {
+      font-size: 10px;
+      color: #999;
+    }
+  }
+
+  .agb-legend {
+    padding: 5px;
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    @include deep-height(180px);
+    @include deep-width(94px);
+    background-color: rgba(#DDD, 0.85); // border: 3px solid #BBB;
+    border: #BBB solid 1px;
+    @include mat-elevation(6);
+
+    .agb-legend-header {
+      font-size: 10px;
+      margin-bottom: 5px;
+    }
+
+    .agb-legend-button {
+      width: 100%;
+      @include deep-height(20px);
+      line-height: 20px;
+      text-align: left;
+      font-size: 10px;
+
+      mat-icon {
+        margin-right: 5px;
+      }
+    }
+  }
+}

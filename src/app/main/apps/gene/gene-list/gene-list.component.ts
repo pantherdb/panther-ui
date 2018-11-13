@@ -47,8 +47,6 @@ export class GeneListComponent implements OnInit {
       .pipe(takeUntil(this._unsubscribeAll))
       .subscribe(genes => {
         this.genes = genes;
-
-        console.log(genes)
       });
   }
 
