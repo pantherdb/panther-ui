@@ -7,7 +7,7 @@ import { MatDrawer } from '@angular/material';
 import { PantherTranslationLoaderService } from '@panther/services/translation-loader.service';
 
 
-import { HomeMenuService } from './services/home-menu.service';
+import { PantherMenuService } from '@panther.common/services/panther-menu.service';
 import { locale as english } from './i18n/en';
 
 @Component({
@@ -28,16 +28,16 @@ export class HomeComponent implements OnInit {
   leftPanelMenu;
 
   constructor(private pantherTranslationLoader: PantherTranslationLoaderService,
-    public homeMenuService: HomeMenuService,
+    public pantherMenuService: PantherMenuService,
     private route: ActivatedRoute,
     private router: Router) {
     this.pantherTranslationLoader.loadTranslations(english);
 
-    this.leftPanelMenu = this.homeMenuService.leftPanelMenu;
+    this.leftPanelMenu = this.pantherMenuService.leftPanelMenu;
   }
 
   ngOnInit() {
-    this.homeMenuService.setLeftDrawer(this.leftDrawer);
-    this.homeMenuService.setRightDrawer(this.rightDrawer);
+    this.pantherMenuService.setLeftDrawer(this.leftDrawer);
+    this.pantherMenuService.setRightDrawer(this.rightDrawer);
   }
 }

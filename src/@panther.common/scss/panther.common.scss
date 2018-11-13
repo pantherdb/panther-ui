@@ -22,6 +22,21 @@ $pthr-primary-color-light: #dfe3ee;
   }
 }
 
+.pthr-drawer-container-header {
+  position: sticky;
+  position: -webkit-sticky;
+  padding: 0 12px;
+  @include deep-height(60px);
+  background-color: #FFF;
+  @include mat-elevation(1);
+
+  .pthr-drawer-header-title {
+    font-size: 16px;
+    text-transform: uppercase;
+    color: #999;
+  }
+}
+
 .pthr-column-toolbar {
   padding: 5px;
   @include deep-height(40px); // @include mat-elevation(2);

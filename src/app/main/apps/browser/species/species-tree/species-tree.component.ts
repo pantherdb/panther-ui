@@ -7,6 +7,8 @@ import { BehaviorSubject, Subject, Observable, of as observableOf } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import { Species, SpeciesNode, SpeciesFlatNode } from './../models/species'
+
+import { PantherMenuService } from '@panther.common/services/panther-menu.service';
 import { SpeciesService } from './../services/species.service';
 
 
@@ -32,6 +34,7 @@ export class SpeciesTreeComponent implements OnInit {
 
   constructor(private router: Router,
     private route: ActivatedRoute,
+    public pantherMenuService: PantherMenuService,
     private speciesService: SpeciesService,
     private renderer: Renderer2, ) {
 
@@ -41,9 +44,8 @@ export class SpeciesTreeComponent implements OnInit {
     this.dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
 
     this.timescaleLegend = speciesService.timescaleLegend;
-
+    console.log(this.pantherMenuService.pantherTypes)
     this._unsubscribeAll = new Subject();
-
 
   }
 

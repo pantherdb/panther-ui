@@ -1,27 +1,18 @@
-<div id="ngx-datatable" class="page-layout simple fullwidth docs">
-
-  <div class="header accent p-24 h-160" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-xs="row"
-    fxLayoutAlign.gt-xs="space-between center">
-    <div fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-xs="column" fxLayoutAlign.gt-xs="center start">
-      <div fxLayout="row" fxLayoutAlign="start center">
-        <mat-icon class="secondary-text s-18">home</mat-icon>
-        <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
-        <span class="secondary-text">Documentation</span>
-        <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
-        <span class="secondary-text">Datatables</span>
-      </div>
-      <div class="h2 mt-16">ngx-datatable</div>
-    </div>
-
-    <a mat-raised-button class="reference-button mt-16 mt-sm-0" href="https://github.com/swimlane/ngx-datatable" target="_blank">
-      <mat-icon class="mr-8">link</mat-icon>
-      <span>Reference</span>
-    </a>
+<div class="w-100-p h-100-p" fxLayout="column" fxLayoutAlign="start streych">
+  <div class="w-100-p pthr-table-menu-row mat-elevation-z1" fxLayout="row" fxLayoutAlign="start center">
+    <button mat-button>
+      Filter
+    </button>
+    <span fxFlex=""></span>
+    <button mat-button>
+      Convert List
+    </button>
   </div>
-  <div class="content p-24">
+  <div class="">
     <ngx-datatable class="material" [rows]="genes" [columns]="columns" [loadingIndicator]="loadingIndicator"
-      [columnMode]="'force'" [headerHeight]="48" [footerHeight]="56" [rowHeight]="'auto'" [scrollbarH]="true"
-      [reorderable]="reorderable" [selectionType]="'checkbox'" [limit]="10">
+      [columnMode]="'force'" [headerHeight]="48" [footerHeight]="56" [rowHeight]="60" [scrollbarH]="true" [reorderable]="reorderable"
+      [selectionType]="'checkbox'" [limit]="10">
     </ngx-datatable>
   </div>
+
 </div>

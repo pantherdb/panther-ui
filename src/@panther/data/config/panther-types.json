@@ -84,5 +84,24 @@
   }, {
     "id": "pie",
     "label": "Pie Chart"
+  }],
+  "browserOntologyTypes": [{
+    "id": "bp",
+    "label": "Biological Process"
+  }, {
+    "id": "cc",
+    "label": "Cellular Component"
+  }, {
+    "id": "mf",
+    "label": "Moleculr Function"
+  }, {
+    "id": "pc",
+    "label": "Protein Class"
+  }, {
+    "id": "pathway",
+    "label": "Pathway"
+  }, {
+    "id": "species",
+    "label": "Species"
   }]
 }

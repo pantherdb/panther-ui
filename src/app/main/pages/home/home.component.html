@@ -1,8 +1,8 @@
 <div class="pthr-page-container" fxLayout="row" fxLayoutAlign="start start">
   <div class="h-100-p pthr-sidenav" fxLayout="column" fxLayoutAlign="start stretch" pantherPerfectScrollbar>
     <div class="pthr-menu-section">
-      <div *ngFor="let menuItem of leftPanelMenu | keyvalue" (click)="homeMenuService.openLeftDrawer(menuItem.value)"
-        [ngClass]="{'pthr-selected':menuItem.value.id===homeMenuService.selectedLeftPanel.id}" class="pthr-nav-button"
+      <div *ngFor="let menuItem of leftPanelMenu | keyvalue" (click)="pantherMenuService.openLeftDrawer(menuItem.value)"
+        [ngClass]="{'pthr-selected':menuItem.value.id===pantherMenuService.selectedLeftPanel.id}" class="pthr-nav-button"
         fxLayout="row" fxLayoutAlign="start center">
         {{menuItem.value.label}}
         <span fxFlex=""></span>
@@ -14,17 +14,16 @@
     <mat-drawer #leftDrawer class="noc-left-drawer" fxFlex="400px" mode="side" position="start">
       <div class="pthr-drawer-header" fxLayout="row" fxLayoutAlign="start center">
         <span class="pthr-drawer-header-title">
-          {{homeMenuService.selectedLeftPanel.label}}
+          {{pantherMenuService.selectedLeftPanel.label}}
         </span>
         <span fxFlex></span>
-        <button mat-icon-button (click)="homeMenuService.closeLeftDrawer()" aria-label="Close dialog">
+        <button mat-icon-button (click)="pantherMenuService.closeLeftDrawer()" aria-label="Close dialog">
           <mat-icon>close</mat-icon>
         </button>
       </div>
-      <div [ngSwitch]="homeMenuService.selectedLeftPanel.id" class="h-100-p">
-        <pthr-gene-analysis *ngSwitchCase="homeMenuService.leftPanelMenu.geneListAnalysis.id"></pthr-gene-analysis>
-        <pthr-browser *ngSwitchCase="homeMenuService.leftPanelMenu.browser.id"></pthr-browser>
-
+      <div [ngSwitch]="pantherMenuService.selectedLeftPanel.id" class="h-100-p">
+        <pthr-gene-analysis *ngSwitchCase="pantherMenuService.leftPanelMenu.geneListAnalysis.id"></pthr-gene-analysis>
+        <pthr-browser *ngSwitchCase="pantherMenuService.leftPanelMenu.browser.id"></pthr-browser>
       </div>
     </mat-drawer>
     <mat-drawer-content class="w-100-p" noctuaPerfectScrollbar>

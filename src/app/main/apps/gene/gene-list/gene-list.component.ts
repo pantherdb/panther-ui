@@ -1,7 +1,9 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+
+import { PantherMenuService } from '@panther.common/services/panther-menu.service';
 
 import { GeneAnalysisService } from './../../gene-analysis/services/gene-analysis.service'
 @Component({
@@ -10,6 +12,7 @@ import { GeneAnalysisService } from './../../gene-analysis/services/gene-analysi
   styleUrls: ['./gene-list.component.scss']
 })
 export class GeneListComponent implements OnInit {
+
 
   genes: any[] = [];
   columns: any[] = [];
@@ -21,6 +24,7 @@ export class GeneListComponent implements OnInit {
 
   constructor(
     private _httpClient: HttpClient,
+    public pantherMenuService: PantherMenuService,
     private geneAnalysisService: GeneAnalysisService
   ) {
     this.loadingIndicator = false;

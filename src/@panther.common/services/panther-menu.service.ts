@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
+const pantherTypes = require('@panther/data/config/panther-types.json');
 
 import { MatDrawer } from '@angular/material';
 
@@ -11,7 +12,7 @@ const cloneDeep = require('lodash/cLoneDeep');
 @Injectable({
   providedIn: 'root'
 })
-export class HomeMenuService {
+export class PantherMenuService {
 
   _leftPanelMenu = {
     geneListAnalysis: {
@@ -43,6 +44,10 @@ export class HomeMenuService {
 
   get leftPanelMenu() {
     return this._leftPanelMenu;
+  }
+
+  get pantherTypes() {
+    return pantherTypes;
   }
 
   selectLeftPanel(panel) {

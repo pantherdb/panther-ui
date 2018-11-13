@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PantherMenuService } from '@panther.common/services/panther-menu.service';
 
 @Component({
   selector: 'pthr-browser',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BrowserComponent implements OnInit {
 
-  constructor() { }
+  constructor(public pantherMenuService: PantherMenuService) { }
 
   ngOnInit() {
   }
