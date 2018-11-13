@@ -4,6 +4,9 @@ import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
+
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { FakeDbService } from '@panther/fakedb/services/fake-db.service';
 import 'hammerjs';
 import { MatSidenavModule } from '@angular/material';
 import { PantherModule } from '@panther/panther.module';
@@ -38,6 +41,10 @@ const appRoutes: Routes = [
 
         // Panther Main and Shared modules
         PantherModule.forRoot(pantherConfig),
+        InMemoryWebApiModule.forRoot(FakeDbService, {
+            delay: 0,
+            passThruUnknownUrl: true
+        }),
         PantherSharedModule,
         LayoutModule,
         RouterModule,

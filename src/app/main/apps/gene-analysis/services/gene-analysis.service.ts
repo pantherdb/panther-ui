@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject, Observable, Subscriber } from 'rxjs';
 
 declare const require: any;
 const each = require('lodash/forEach');
@@ -13,8 +14,10 @@ const organisms = require('@panther/data/organisms.json');
   providedIn: 'root'
 })
 export class GeneAnalysisService {
-  constructor() {
 
+  onGenesChanged: BehaviorSubject<any>;
+  constructor(private httpClient: HttpClient) {
+    this.onGenesChanged = new BehaviorSubject({});
   }
 
   generateDisplayRule(analysis) {
@@ -51,5 +54,10 @@ export class GeneAnalysisService {
 
   get organisms() {
     return organisms
+  }
+
+  getGeneList(searchCriteria): Observable<any> {
+    return this.httpClient
+      .get('api/gene-list-result');
   }
 }

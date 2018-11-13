@@ -21,6 +21,7 @@ import { pantherAnimations } from '@panther/animations';
 
 export class GeneFormComponent implements OnInit, OnDestroy {
   geneForm: FormGroup;
+  genes
   sectionRule;
   pantherTypes;
   organisms;
@@ -50,7 +51,14 @@ export class GeneFormComponent implements OnInit, OnDestroy {
   search() {
     let searchCriteria = this.geneForm.value;
 
-    console.dir(searchCriteria)
+    console.dir(searchCriteria);
+
+    this.geneAnalysisService.getGeneList(searchCriteria).subscribe((response: any) => {
+      this.genes = response;
+      console.dir(this.genes)
+      this.geneAnalysisService.onGenesChanged.next(this.genes);
+    });
+
   }
 
   createGeneForm() {
@@ -73,6 +81,8 @@ export class GeneFormComponent implements OnInit, OnDestroy {
 
     return geneForm;
   }
+
+
 
   addIDsFormGroup(listGroup: FormArray) {
     const self = this;
