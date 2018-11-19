@@ -23,6 +23,14 @@
     }
   }
 
+  mat-expansion-panel-header {
+    background-color: $pthr-primary-color-light;
+  }
+
+  ::ng-deep .mat-expansion-panel-body {
+    padding: 0;
+  }
+
 
   .pthr-gene-form {
 

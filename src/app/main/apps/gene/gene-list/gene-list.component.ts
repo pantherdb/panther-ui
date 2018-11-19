@@ -3,6 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
+import { MatDrawer } from '@angular/material';
+
+
 import { PantherMenuService } from '@panther.common/services/panther-menu.service';
 
 import { GeneAnalysisService } from './../../gene-analysis/services/gene-analysis.service'
@@ -13,6 +16,8 @@ import { GeneAnalysisService } from './../../gene-analysis/services/gene-analysi
 })
 export class GeneListComponent implements OnInit {
 
+  @ViewChild('leftSubDrawer')
+  leftDrawer: MatDrawer;
 
   genes: any[] = [];
   columns: any[] = [];
@@ -52,6 +57,14 @@ export class GeneListComponent implements OnInit {
       .subscribe(genes => {
         this.genes = genes;
       });
+  }
+
+  openLeftDrawer() {
+    return this.leftDrawer.open();
+  }
+
+  closeLeftDrawer() {
+    return this.leftDrawer.close();
   }
 
   ngOnDestroy(): void {

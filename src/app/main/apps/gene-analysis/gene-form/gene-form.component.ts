@@ -48,6 +48,20 @@ export class GeneFormComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
   }
 
+  step = 0;
+
+  setStep(index: number) {
+    this.step = index;
+  }
+
+  nextStep() {
+    this.step++;
+  }
+
+  prevStep() {
+    this.step--;
+  }
+
   search() {
     let searchCriteria = this.geneForm.value;
 

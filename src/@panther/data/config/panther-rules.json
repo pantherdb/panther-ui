@@ -1,10 +1,13 @@
 {
   "sectionRule": {
+    "analysis": {
+      "disabled": true
+    },
     "list": {
-      "display": false
+      "disabled": true
     },
     "analysisOptions": {
-      "display": false
+      "disabled": true
     },
     "dataColumns": {
       "display": false
