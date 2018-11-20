@@ -26,7 +26,7 @@ export class GeneAnalysisService {
 
     //sectionRule.list.display = true;
     // sectionRule.analysisOptions.display = true;
-
+    sectionRule.listMap.disabled = false;
     sectionRule.list.display = true;
     sectionRule.analysisOptions.display = true;
     sectionRule.analysis.disabled = !form.organism
@@ -68,6 +68,11 @@ export class GeneAnalysisService {
 
   get organisms() {
     return organisms
+  }
+
+  getGeneMap(geneList): Observable<any> {
+    return this.httpClient
+      .get('api/gene-map-result');
   }
 
   getGeneList(searchCriteria): Observable<any> {

@@ -1,0 +1,51 @@
+<div class="dialog-content-wrapper">
+  <mat-toolbar class="mat-accent m-0">
+    <mat-toolbar-row fxFlex fxLayout="row" fxLayoutAlign="start center">
+      <span class="title dialog-title">Gene Map</span>
+      <span fxFlex></span>
+      <button mat-icon-button (click)="close()" aria-label="Close dialog">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <div mat-dialog-content class="" pantherPerfectScrollbar>
+    <div class="agb-gene-panel w-100-p h-100-p" fxLayout="column" fxLayoutAlign="start center" pantherPerfectScrollbar>
+      <div class="agb-gene-detail" fxLayout="column" fxLayoutAlign="start stretch">
+        <div class="agb-card-simple mat-elevation-z1">
+          <div class="agb-header" fxLayout="row" fxLayoutAlign="start center">
+            <div class="agb-title">
+              Genes
+            </div>
+            <span fxFlex></span>
+            <mat-form-field class>
+              <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+            </mat-form-field>
+          </div>
+          <div class="agb-body p-0">
+            <mat-table [dataSource]="dataSource" class="" matSort>
+              <ng-container matColumnDef="gene_ld">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Gene List </mat-header-cell>
+                <mat-cell *matCellDef="let gene"> {{gene.gene_id}} </mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="mapped_id">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Map Genes </mat-header-cell>
+                <mat-cell *matCellDef="let gene">
+                  <a href="http://pantherdb.org/genes/gene.do?acc={{gene.gene}}" target="_blank">
+                    {{gene.mapped_id}}
+                  </a>
+                </mat-cell>
+              </ng-container>
+              <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+              <mat-row *matRowDef="let gene; columns: displayedColumns;"></mat-row>
+            </mat-table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #no_info_content>
+  <div class="agb-alert">
+    no information yet
+  </div>
+</ng-template>

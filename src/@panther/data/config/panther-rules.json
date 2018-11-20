@@ -6,6 +6,9 @@
     "list": {
       "disabled": true
     },
+    "listMap": {
+      "disabled": true
+    },
     "analysisOptions": {
       "disabled": true
     },

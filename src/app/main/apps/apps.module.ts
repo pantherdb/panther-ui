@@ -9,6 +9,9 @@ import { GeneListComponent } from './gene/gene-list/gene-list.component'
 import { SpeciesTreeComponent } from './browser/species/species-tree/species-tree.component';
 import { BrowserComponent } from './browser/browser.component';
 
+import { GeneMapDialogComponent } from './gene-analysis/dialogs/gene-map-dialog/gene-map.component';
+import { GeneAnalysisDialogService } from './gene-analysis/dialogs/services/dialog.service';
+
 const routes = [];
 
 @NgModule({
@@ -17,7 +20,9 @@ const routes = [];
     GeneFormComponent,
     GeneListComponent,
     SpeciesTreeComponent,
-    BrowserComponent
+    BrowserComponent,
+    //Dialogs
+    GeneMapDialogComponent
   ],
   imports: [
     RouterModule.forChild(routes),
@@ -30,8 +35,10 @@ const routes = [];
     BrowserComponent
   ],
   providers: [
-    GeneAnalysisService
-  ]
+    GeneAnalysisService,
+    GeneAnalysisDialogService
+  ],
+  entryComponents: [GeneMapDialogComponent]
 
 })
 

@@ -2,7 +2,7 @@ export class GeneListFakeDb {
   public static result =
     [{
       "Gene ID": "RAT|RGD=1563954|UniProtKB=F1LQM8",
-      "Mapped IDs": "msh3",
+      "Map IDs": "msh3",
       "Gene Name": "MutS homolog 3",
       "Gene Symbol": "Msh2",
       "Ortholog": "",
@@ -12,7 +12,7 @@ export class GeneListFakeDb {
     },
     {
       "Gene ID": "HORSE|Ensembl=ENSECAG00000009962|UniProtKB=F6Q5I6",
-      "Mapped IDs": "msh3",
+      "Map IDs": "msh3",
       "Gene Name": "Uncharacterized protein",
       "Gene Symbol": "MSH3",
       "Ortholog": "",
@@ -22,7 +22,7 @@ export class GeneListFakeDb {
     },
     {
       "Gene ID": "HORSE|Ensembl=ENSECAG00000010315|UniProtKB=F7DQM5",
-      "Mapped IDs": "msh2",
+      "Map IDs": "msh2",
       "Gene Name": "DNA mismatch repair protein",
       "Gene Symbol": "MSH2",
       "Ortholog": "",
@@ -32,7 +32,7 @@ export class GeneListFakeDb {
     },
     {
       "Gene ID": "CHICK|Ensembl=ENSGALG00000008962|UniProtKB=F1NV33",
-      "Mapped IDs": "msh2",
+      "Map IDs": "msh2",
       "Gene Name": "DNA mismatch repair protein",
       "Gene Symbol": "MSH2",
       "Ortholog": "",
@@ -42,7 +42,7 @@ export class GeneListFakeDb {
     },
     {
       "Gene ID": "MONDO|Ensembl=ENSMODG00000001098|UniProtKB=F7DPM7",
-      "Mapped IDs": "msh2",
+      "Map IDs": "msh2",
       "Gene Name": "DNA mismatch repair protein",
       "Gene Symbol": "MSH3",
       "Ortholog": "",
@@ -52,7 +52,7 @@ export class GeneListFakeDb {
     },
     {
       "Gene ID": "FELCA|Ensembl=ENSFCAG00000001371|UniProtKB=M3VWJ1",
-      "Mapped IDs": "mlh1",
+      "Map IDs": "mlh1",
       "Gene Name": "Uncharacterized protein",
       "Gene Symbol": "MLH1",
       "Ortholog": "",
@@ -62,7 +62,7 @@ export class GeneListFakeDb {
     },
     {
       "Gene ID": "HUMAN|HGNC=7326|UniProtKB=P20585",
-      "Mapped IDs": "msh3",
+      "Map IDs": "msh3",
       "Gene Name": "DNA mismatch repair protein Msh3",
       "Gene Symbol": "MSH3",
       "Ortholog": "",
@@ -72,7 +72,7 @@ export class GeneListFakeDb {
     },
     {
       "Gene ID": "MACMU|Ensembl=ENSMMUG00000018284|UniProtKB=F7HK15",
-      "Mapped IDs": "msh3",
+      "Map IDs": "msh3",
       "Gene Name": "Uncharacterized protein",
       "Gene Symbol": "MSH3",
       "Ortholog": "",
@@ -82,7 +82,7 @@ export class GeneListFakeDb {
     },
     {
       "Gene ID": "PIG|Ensembl=ENSSSCG00000008428|UniProtKB=F1SQH6",
-      "Mapped IDs": "msh2",
+      "Map IDs": "msh2",
       "Gene Name": "Uncharacterized protein",
       "Gene Symbol": "MSH2",
       "Ortholog": "",
@@ -92,7 +92,7 @@ export class GeneListFakeDb {
     },
     {
       "Gene ID": "SCHPO|PomBase=SPBC1703.04|UniProtKB=Q9P7W6",
-      "Mapped IDs": "mlh1",
+      "Map IDs": "mlh1",
       "Gene Name": "Putative MutL protein homolog 1",
       "Gene Symbol": "mlh1",
       "Ortholog": "",
@@ -102,7 +102,7 @@ export class GeneListFakeDb {
     },
     {
       "Gene ID": "YEAST|SGD=S000005450|UniProtKB=P25847",
-      "Mapped IDs": "msh2",
+      "Map IDs": "msh2",
       "Gene Name": "DNA mismatch repair protein MSH2",
       "Gene Symbol": "MSH2",
       "Ortholog": "",
@@ -112,7 +112,7 @@ export class GeneListFakeDb {
     },
     {
       "Gene ID": "DICDI|dictyBase=DDB_G0268614|UniProtKB=Q55GU9",
-      "Mapped IDs": "msh6",
+      "Map IDs": "msh6",
       "Gene Name": "DNA mismatch repair protein Msh6",
       "Gene Symbol": "msh6",
       "Ortholog": "",
@@ -122,7 +122,7 @@ export class GeneListFakeDb {
     },
     {
       "Gene ID": "EMENI|EnsemblGenome=CADANIAG00004973|UniProtKB=Q5B6T1",
-      "Mapped IDs": "msh3",
+      "Map IDs": "msh3",
       "Gene Name": "DNA mismatch repair protein msh3",
       "Gene Symbol": "msh6",
       "Ortholog": "",
@@ -132,7 +132,7 @@ export class GeneListFakeDb {
     },
     {
       "Gene ID": "BOVIN|Ensembl=ENSBTAG00000016758|UniProtKB=F1MPG0",
-      "Mapped IDs": "mlh1",
+      "Map IDs": "mlh1",
       "Gene Name": "Uncharacterized protein",
       "Gene Symbol": "msh6",
       "Ortholog": "",
@@ -142,7 +142,7 @@ export class GeneListFakeDb {
     },
     {
       "Gene ID": "MONDO|Ensembl=ENSMODG00000013353|UniProtKB=F7GA60",
-      "Mapped IDs": "mlh1",
+      "Map IDs": "mlh1",
       "Gene Name": "Uncharacterized protein",
       "Gene Symbol": "msh6",
       "Ortholog": "",
@@ -152,7 +152,7 @@ export class GeneListFakeDb {
     },
     {
       "Gene ID": "PANTR|Ensembl=ENSPTRG00000014743|UniProtKB=H2QMA1",
-      "Mapped IDs": "mlh1",
+      "Map IDs": "mlh1",
       "Gene Name": "MutL homolog 1, colon cancer, nonpolyposis type 2",
       "Gene Symbol": "msh6",
       "Ortholog": "",
@@ -162,7 +162,7 @@ export class GeneListFakeDb {
     },
     {
       "Gene ID": "CANAL|EnsemblGenome=CaO19.11638|UniProtKB=Q59SL0",
-      "Mapped IDs": "mlh1",
+      "Map IDs": "mlh1",
       "Gene Name": "Mismatch repair ATPase",
       "Gene Symbol": "msh6",
       "Ortholog": "",
@@ -172,7 +172,7 @@ export class GeneListFakeDb {
     },
     {
       "Gene ID": "ANOCA|Ensembl=ENSACAG00000010533|UniProtKB=G1KKD1",
-      "Mapped IDs": "msh3",
+      "Map IDs": "msh3",
       "Gene Name": "Uncharacterized protein",
       "Gene Symbol": "msh6",
       "Ortholog": "",
@@ -182,7 +182,7 @@ export class GeneListFakeDb {
     },
     {
       "Gene ID": "XENTR|Xenbase=XB-GENE-977518|UniProtKB=F6X6V7",
-      "Mapped IDs": "msh2",
+      "Map IDs": "msh2",
       "Gene Name": "DNA mismatch repair protein",
       "Gene Symbol": "msh2",
       "Ortholog": "",
@@ -192,7 +192,7 @@ export class GeneListFakeDb {
     },
     {
       "Gene ID": "XENTR|Xenbase=XB-GENE-1014070|UniProtKB=F7CRP6",
-      "Mapped IDs": "msh3",
+      "Map IDs": "msh3",
       "Gene Name": "MutS homolog 3",
       "Gene Symbol": "msh3",
       "Ortholog": "",
@@ -202,7 +202,7 @@ export class GeneListFakeDb {
     },
     {
       "Gene ID": "CHLRE|EnsemblGenome=CHLREDRAFT_146633|UniProtKB=A8HM54",
-      "Mapped IDs": "mlh1",
+      "Map IDs": "mlh1",
       "Gene Name": "Mismatch repair protein",
       "Gene Symbol": "MLH1",
       "Ortholog": "",
@@ -212,7 +212,7 @@ export class GeneListFakeDb {
     },
     {
       "Gene ID": "ORNAN|Ensembl=ENSOANG00000015305|UniProtKB=F6PYZ7",
-      "Mapped IDs": "mlh1",
+      "Map IDs": "mlh1",
       "Gene Name": "Uncharacterized protein",
       "Gene Symbol": "MLH1",
       "Ortholog": "",
@@ -222,7 +222,7 @@ export class GeneListFakeDb {
     },
     {
       "Gene ID": "MOUSE|MGI=MGI=109519|UniProtKB=P13705",
-      "Mapped IDs": "msh3",
+      "Map IDs": "msh3",
       "Gene Name": "DNA mismatch repair protein Msh3",
       "Gene Symbol": "Msh3",
       "Ortholog": "",
@@ -232,7 +232,7 @@ export class GeneListFakeDb {
     },
     {
       "Gene ID": "ARATH|TAIR=AT3G18524|UniProtKB=O24617",
-      "Mapped IDs": "msh2",
+      "Map IDs": "msh2",
       "Gene Name": "DNA mismatch repair protein MSH2",
       "Gene Symbol": "MSH2",
       "Ortholog": "",
@@ -242,7 +242,7 @@ export class GeneListFakeDb {
     },
     {
       "Gene ID": "HUMAN|HGNC=7329|UniProtKB=P52701",
-      "Mapped IDs": "msh6",
+      "Map IDs": "msh6",
       "Gene Name": "DNA mismatch repair protein Msh6",
       "Gene Symbol": "MSH6",
       "Ortholog": "",
@@ -252,7 +252,7 @@ export class GeneListFakeDb {
     },
     {
       "Gene ID": "BOVIN|Ensembl=ENSBTAG00000007684|UniProtKB=F1MLH1",
-      "Mapped IDs": "msh3",
+      "Map IDs": "msh3",
       "Gene Name": "Uncharacterized protein",
       "Gene Symbol": "MSH3",
       "Ortholog": "",
@@ -262,7 +262,7 @@ export class GeneListFakeDb {
     },
     {
       "Gene ID": "MACMU|Ensembl=ENSMMUG00000000974|UniProtKB=F6SXQ1",
-      "Mapped IDs": "msh2",
+      "Map IDs": "msh2",
       "Gene Name": "DNA mismatch repair protein",
       "Gene Symbol": "MSH2",
       "Ortholog": "",

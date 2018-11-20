@@ -6,6 +6,7 @@ import { debounceTime, distinctUntilChanged, map, startWith } from 'rxjs/operato
 
 
 import { GeneAnalysisService } from './../services/gene-analysis.service'
+import { GeneAnalysisDialogService } from './../dialogs/services/dialog.service';
 
 import * as _ from 'lodash';
 declare const require: any;
@@ -22,6 +23,7 @@ import { pantherAnimations } from '@panther/animations';
 export class GeneFormComponent implements OnInit, OnDestroy {
   geneForm: FormGroup;
   genes
+  geneMap;
   sectionRule;
   pantherTypes;
   organisms;
@@ -31,6 +33,7 @@ export class GeneFormComponent implements OnInit, OnDestroy {
   private unsubscribeAll: Subject<any>;
 
   constructor(private route: ActivatedRoute,
+    private geneAnalysisDialogService: GeneAnalysisDialogService,
     private geneAnalysisService: GeneAnalysisService,
     private formBuilder: FormBuilder) {
     this.unsubscribeAll = new Subject();
@@ -60,6 +63,21 @@ export class GeneFormComponent implements OnInit, OnDestroy {
 
   prevStep() {
     this.step--;
+  }
+
+  openGeneMap() {
+    this.geneAnalysisDialogService.openGeneMap(this.geneMap);
+  }
+
+  getGeneMap() {
+    const self = this;
+
+    let geneList = [];
+    this.geneAnalysisService.getGeneMap(geneList).subscribe((response: any) => {
+      this.geneMap = response;
+      //  self.sectionRule = self.geneAnalysisService.generateFormRule(this.);
+      //   this.geneAnalysisService.onGeneMapChanged.next(this.genes);
+    });
   }
 
   search() {
@@ -160,8 +178,6 @@ export class GeneFormComponent implements OnInit, OnDestroy {
         startWith(''),
         map(organism => organism ? this._filterOrganisms(organism) : this.organisms.slice())
       )
-
-
 
     this.geneForm.controls.analysis.valueChanges.subscribe(data => {
       console.log(data)

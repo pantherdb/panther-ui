@@ -4,6 +4,7 @@
 @include mat-core();
 @include angular-material-typography($typography);
 @include angular-material-theme($theme);
+@import "partials/alert";
 @import "partials/reset";
 @import "partials/normalize";
 @import "partials/scrollbars";

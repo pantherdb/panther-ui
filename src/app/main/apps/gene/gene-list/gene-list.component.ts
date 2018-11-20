@@ -43,7 +43,7 @@ export class GeneListComponent implements OnInit {
     this.columns = [
       //   { prop: 'name' },
       { prop: "Gene ID" },
-      { prop: "Mapped IDs" },
+      { prop: "Map IDs" },
       { prop: "Gene Name" },
       { prop: "Gene Symbol" },
       { prop: "Ortholog" },

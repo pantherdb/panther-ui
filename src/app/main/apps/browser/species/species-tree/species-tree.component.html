@@ -11,7 +11,7 @@
       Info
     </div>
   </div>
-  <div class="agb-tree-container" noctuaPerfectScrollbar>
+  <div class="agb-tree-container" pantherPerfectScrollbar>
     <mat-tree #tree [dataSource]="dataSource" [treeControl]="treeControl">
       <mat-tree-node class="agb-tree-node text-truncate" *matTreeNodeDef="let node" (click)="selectSpecies(node.short_name)"
         matTreeNodeToggle matTreeNodePadding matTreeNodePaddingIndent="10" [ngClass]="{ 'background-highlight': activeSpecies === node.short_name }">
