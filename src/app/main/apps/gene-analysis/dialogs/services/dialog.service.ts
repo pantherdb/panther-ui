@@ -18,11 +18,11 @@ export class GeneAnalysisDialogService {
         private _matDialog: MatDialog) {
     }
 
-    openGeneMap(map): void {
+    openGeneMap(geneMap): void {
         this.dialogRef = this._matDialog.open(GeneMapDialogComponent, {
             panelClass: 'gene-map-dialog',
             data: {
-                map: map
+                geneMap: geneMap
             }
         });
         this.dialogRef.afterClosed()

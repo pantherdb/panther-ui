@@ -2,112 +2,139 @@ export class GeneMapFakeDb {
   public static result =
     [{
       "gene_id": "UniProtKB=F1LQM8",
-      "map_id": "msh3",
+      "mapped_id": "msh3",
       "unmapped_id": "",
+      "comment": ""
     }, {
       "gene_id": "UniProtKB=F6Q5I6",
-      "map_id": "msh3",
+      "mapped_id": "msh3",
       "unmapped_id": "",
+      "comment": ""
     }, {
       "gene_id": "UniProtKB=F7DQM5",
-      "map_id": "msh2",
+      "mapped_id": "msh2",
       "unmapped_id": "",
+      "comment": ""
     }, {
-      "gene_id": "CHICK|Ensembl=ENSGALG00000008962|UniProtKB=F1NV33",
-      "map_id": "msh2",
-      "unmapped_id": "",
+      "gene_id": "UniProtKB=F1NV33",
+      "mapped_id": "",
+      "unmapped_id": "UniProtKB=F1NV33",
+      "comment": "Duplicate Id"
     }, {
-      "gene_id": "MONDO|Ensembl=ENSMODG00000001098|UniProtKB=F7DPM7",
-      "map_id": "msh2",
-      "unmapped_id": "",
+      "gene_id": "UniProtKB=F7DPM7",
+      "mapped_id": "",
+      "unmapped_id": "UniProtKB=F7DPM7",
+      "comment": "No match"
     }, {
-      "gene_id": "FELCA|Ensembl=ENSFCAG00000001371|UniProtKB=M3VWJ1",
-      "map_id": "mlh1",
+      "gene_id": "UniProtKB=M3VWJ1",
+      "mapped_id": "mlh1",
       "unmapped_id": "",
+      "comment": ""
     }, {
-      "gene_id": "HUMAN|HGNC=7326|UniProtKB=P20585",
-      "map_id": "msh3",
+      "gene_id": "UniProtKB=P20585",
+      "mapped_id": "msh3",
       "unmapped_id": "",
+      "comment": ""
     }, {
-      "gene_id": "MACMU|Ensembl=ENSMMUG00000018284|UniProtKB=F7HK15",
-      "map_id": "msh3",
+      "gene_id": "UniProtKB=F7HK15",
+      "mapped_id": "msh3",
       "unmapped_id": "",
+      "comment": ""
     }, {
-      "gene_id": "PIG|Ensembl=ENSSSCG00000008428|UniProtKB=F1SQH6",
-      "map_id": "msh2",
+      "gene_id": "UniProtKB=F1SQH6",
+      "mapped_id": "msh2",
       "unmapped_id": "",
+      "comment": ""
     }, {
-      "gene_id": "SCHPO|PomBase=SPBC1703.04|UniProtKB=Q9P7W6",
-      "map_id": "mlh1",
+      "gene_id": "UniProtKB=Q9P7W6",
+      "mapped_id": "mlh1",
       "unmapped_id": "",
+      "comment": ""
     }, {
       "gene_id": "YEAST|SGD=S000005450|UniProtKB=P25847",
-      "map_id": "msh2",
+      "mapped_id": "msh2",
       "unmapped_id": "",
+      "comment": ""
     }, {
       "gene_id": "DICDI|dictyBase=DDB_G0268614|UniProtKB=Q55GU9",
-      "map_id": "msh6",
+      "mapped_id": "msh6",
       "unmapped_id": "",
+      "comment": ""
     }, {
       "gene_id": "EMENI|EnsemblGenome=CADANIAG00004973|UniProtKB=Q5B6T1",
-      "map_id": "msh3",
+      "mapped_id": "msh3",
       "unmapped_id": "",
+      "comment": ""
     }, {
       "gene_id": "BOVIN|Ensembl=ENSBTAG00000016758|UniProtKB=F1MPG0",
-      "map_id": "mlh1",
+      "mapped_id": "mlh1",
       "unmapped_id": "",
+      "comment": ""
     }, {
       "gene_id": "MONDO|Ensembl=ENSMODG00000013353|UniProtKB=F7GA60",
-      "map_id": "mlh1",
+      "mapped_id": "mlh1",
       "unmapped_id": "",
+      "comment": ""
     }, {
-      "gene_id": "PANTR|Ensembl=ENSPTRG00000014743|UniProtKB=H2QMA1",
-      "map_id": "mlh1",
+      "gene_id": "UniProtKB=H2QMA1",
+      "mapped_id": "mlh1",
       "unmapped_id": "",
+      "comment": ""
     }, {
-      "gene_id": "CANAL|EnsemblGenome=CaO19.11638|UniProtKB=Q59SL0",
-      "map_id": "mlh1",
+      "gene_id": "UniProtKB=Q59SL0",
+      "mapped_id": "mlh1",
       "unmapped_id": "",
+      "comment": ""
     }, {
-      "gene_id": "ANOCA|Ensembl=ENSACAG00000010533|UniProtKB=G1KKD1",
-      "map_id": "msh3",
+      "gene_id": "UniProtKB=G1KKD1",
+      "mapped_id": "msh3",
       "unmapped_id": "",
+      "comment": ""
     }, {
       "gene_id": "XENTR|Xenbase=XB-GENE-977518|UniProtKB=F6X6V7",
-      "map_id": "msh2",
+      "mapped_id": "msh2",
       "unmapped_id": "",
+      "comment": ""
     }, {
       "gene_id": "XENTR|Xenbase=XB-GENE-1014070|UniProtKB=F7CRP6",
-      "map_id": "msh3",
+      "mapped_id": "msh3",
       "unmapped_id": "",
+      "comment": ""
     }, {
       "gene_id": "CHLRE|EnsemblGenome=CHLREDRAFT_146633|UniProtKB=A8HM54",
-      "map_id": "mlh1",
+      "mapped_id": "mlh1",
       "unmapped_id": "",
+      "comment": ""
     }, {
       "gene_id": "ORNAN|Ensembl=ENSOANG00000015305|UniProtKB=F6PYZ7",
-      "map_id": "mlh1",
+      "mapped_id": "mlh1",
       "unmapped_id": "",
+      "comment": ""
     }, {
       "gene_id": "MOUSE|MGI=MGI=109519|UniProtKB=P13705",
-      "map_id": "msh3",
+      "mapped_id": "msh3",
       "unmapped_id": "",
+      "comment": ""
     }, {
       "gene_id": "ARATH|TAIR=AT3G18524|UniProtKB=O24617",
-      "map_id": "msh2",
+      "mapped_id": "msh2",
       "unmapped_id": "",
+      "comment": ""
     }, {
       "gene_id": "HUMAN|HGNC=7329|UniProtKB=P52701",
-      "map_id": "msh6",
+      "mapped_id": "msh6",
       "unmapped_id": "",
+      "comment": ""
     }, {
-      "gene_id": "BOVIN|Ensembl=ENSBTAG00000007684|UniProtKB=F1MLH1",
-      "map_id": "msh3",
+      "gene_id": "UniProtKB=F1MLH1",
+      "mapped_id": "msh3",
       "unmapped_id": "",
+      "comment": ""
     }, {
       "gene_id": "MACMU|Ensembl=ENSMMUG00000000974|UniProtKB=F6SXQ1",
-      "map_id": "msh2",
+      "mapped_id": "msh2",
       "unmapped_id": "",
+      "comment": ""
     }
     ];
 }

@@ -174,10 +174,10 @@
         </div>
         <mat-action-row>
           <button mat-button color="warn" (click)="prevStep()">Previous</button>
-          <button [disabled]='sectionRule.listMap.disabled' mat-button color="primary" (click)="nextStep()">End</button>
+          <button [disabled]='sectionRule.listMap.disabled' mat-button color="primary" (click)="nextStep(); getGeneMap()">Next</button>
         </mat-action-row>
       </mat-expansion-panel>
-      <mat-expansion-panel [disabled]='sectionRule.listMap.disabled' [expanded]="step === 4" (opened)="setStep(3)"
+      <mat-expansion-panel [disabled]='sectionRule.listMap.disabled' [expanded]="step === 4" (opened)="setStep(4)"
         hideToggle>
         <mat-expansion-panel-header>
           <mat-panel-title>
@@ -185,13 +185,8 @@
           </mat-panel-title>
         </mat-expansion-panel-header>
         <div class="pthr-form-section" fxLayout="column" fxLayoutAlign="start stretch">
-          <div fxLayout="row" fxLayoutAlign="start center" class="alert alert-success">
-            <mat-icon class="s-16 mr-4">warn</mat-icon> 6 map IDs
-            <span fxFlex=""></span>
-            <button mat-button (click)="openGeneMap()">View</button>
-          </div>
           <div fxLayout="row" fxLayoutAlign="start center" class="alert alert-warning">
-            <mat-icon class="s-16 mr-4">infor</mat-icon> 6 not map IDs
+            <mat-icon class="s-16 mr-4">warn</mat-icon> 6 genes not mapped
             <span fxFlex=""></span>
             <button mat-button (click)="openGeneMap()">View</button>
           </div>

@@ -1,10 +1,9 @@
 <div class="pthr-page-container" fxLayout="row" fxLayoutAlign="start start">
   <div class="h-100-p pthr-sidenav" fxLayout="column" fxLayoutAlign="start stretch" pantherPerfectScrollbar>
     <div class="pthr-menu-section">
-      <div *ngFor="let menuItem of leftPanelMenu | keyvalue" (click)="pantherMenuService.openLeftDrawer(menuItem.value)"
-        [ngClass]="{'pthr-selected':menuItem.value.id===pantherMenuService.selectedLeftPanel.id}" class="pthr-nav-button"
-        fxLayout="row" fxLayoutAlign="start center">
-        {{menuItem.value.label}}
+      <div *ngFor="let menuItem of leftPanelMenu" (click)="pantherMenuService.openLeftDrawer(menuItem)" [ngClass]="{'pthr-selected':menuItem.id===pantherMenuService.selectedLeftPanel.id}"
+        class="pthr-nav-button" fxLayout="row" fxLayoutAlign="start center">
+        {{menuItem.label}}
         <span fxFlex=""></span>
         <mat-icon>chevron_right</mat-icon>
       </div>
@@ -22,12 +21,15 @@
         </button>
       </div>
       <div [ngSwitch]="pantherMenuService.selectedLeftPanel.id" class="h-100-p">
-        <pthr-gene-analysis *ngSwitchCase="pantherMenuService.leftPanelMenu.geneListAnalysis.id"></pthr-gene-analysis>
-        <pthr-browser *ngSwitchCase="pantherMenuService.leftPanelMenu.browser.id"></pthr-browser>
+        <pthr-gene-analysis *ngSwitchCase="'geneListAnalysis'"></pthr-gene-analysis>
+        <pthr-browser *ngSwitchCase="'browser'"></pthr-browser>
       </div>
     </mat-drawer>
     <mat-drawer-content class="w-100-p" pantherPerfectScrollbar>
-      <pthr-gene-list></pthr-gene-list>
+      <div [ngSwitch]="pantherMenuService.selectedLeftPanel.id" class="h-100-p w-100-p">
+        <pthr-panther-detail *ngSwitchCase="'home'"></pthr-panther-detail>
+        <pthr-gene-list *ngSwitchCase="'geneListAnalysis'"></pthr-gene-list>
+      </div>
     </mat-drawer-content>
   </mat-drawer-container>
 </div>

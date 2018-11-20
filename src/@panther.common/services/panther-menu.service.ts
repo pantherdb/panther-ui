@@ -4,6 +4,7 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 const pantherTypes = require('@panther/data/config/panther-types.json');
 
 import { MatDrawer } from '@angular/material';
+import { homedir } from 'os';
 
 declare const require: any;
 const each = require('lodash/forEach');
@@ -14,24 +15,24 @@ const cloneDeep = require('lodash/cLoneDeep');
 })
 export class PantherMenuService {
 
-  _leftPanelMenu = {
-    geneListAnalysis: {
+  _leftPanelMenu = [
+    {
+      id: 'home',
+      label: 'Home'
+    }, {
       id: 'geneListAnalysis',
       label: 'Gene List Analysis'
-    },
-    browser: {
+    }, {
       id: 'browser',
       label: 'Browse'
-    },
-    sequenceSearch: {
+    }, {
       id: 'sequenceSearch',
       label: 'Sequence Search'
-    },
-    cSNPScoring: {
+    }, {
       id: 'cSNPScoring',
       label: 'cSNP Scoring'
     }
-  }
+  ]
 
   selectedLeftPanel;
 
@@ -39,7 +40,7 @@ export class PantherMenuService {
   private rightDrawer: MatDrawer;
 
   constructor() {
-    this.selectedLeftPanel = this._leftPanelMenu.geneListAnalysis;
+    this.selectedLeftPanel = this._leftPanelMenu[0];
   }
 
   get leftPanelMenu() {

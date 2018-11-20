@@ -19,7 +19,7 @@ export class GeneMapDialogComponent implements OnInit, OnDestroy {
   sort: MatSort;
 
   geneMap: []
-  displayedColumns: string[] = ['gene_id', 'mapped_id'];
+  displayedColumns: string[] = ['gene_id', 'mapped_id', 'unmapped_id', 'comment'];
   dataSource;
 
   constructor(

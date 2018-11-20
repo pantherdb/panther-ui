@@ -23,16 +23,28 @@
           </div>
           <div class="agb-body p-0">
             <mat-table [dataSource]="dataSource" class="" matSort>
-              <ng-container matColumnDef="gene_ld">
+              <ng-container matColumnDef="gene_id">
                 <mat-header-cell *matHeaderCellDef mat-sort-header> Gene List </mat-header-cell>
                 <mat-cell *matCellDef="let gene"> {{gene.gene_id}} </mat-cell>
               </ng-container>
               <ng-container matColumnDef="mapped_id">
-                <mat-header-cell *matHeaderCellDef mat-sort-header> Map Genes </mat-header-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Mapped Genes </mat-header-cell>
                 <mat-cell *matCellDef="let gene">
-                  <a href="http://pantherdb.org/genes/gene.do?acc={{gene.gene}}" target="_blank">
+                  <a href="http://pantherdb.org/genes/gene.do?acc={{gene.mapped_id}}" target="_blank">
                     {{gene.mapped_id}}
                   </a>
+                </mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="unmapped_id">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Unmapped Genes </mat-header-cell>
+                <mat-cell *matCellDef="let gene">
+                  {{gene.unmapped_id}}
+                </mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="comment">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Comment </mat-header-cell>
+                <mat-cell *matCellDef="let gene">
+                  {{gene.comment}}
                 </mat-cell>
               </ng-container>
               <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
