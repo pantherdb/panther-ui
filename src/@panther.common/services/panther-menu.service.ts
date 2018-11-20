@@ -4,7 +4,6 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 const pantherTypes = require('@panther/data/config/panther-types.json');
 
 import { MatDrawer } from '@angular/material';
-import { homedir } from 'os';
 
 declare const require: any;
 const each = require('lodash/forEach');
