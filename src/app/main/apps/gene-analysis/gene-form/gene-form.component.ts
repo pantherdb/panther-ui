@@ -72,7 +72,6 @@ export class GeneFormComponent implements OnInit, OnDestroy {
       console.dir(this.genes)
       this.geneAnalysisService.onGenesChanged.next(this.genes);
     });
-
   }
 
   createGeneForm() {
@@ -125,22 +124,49 @@ export class GeneFormComponent implements OnInit, OnDestroy {
     return this.organisms.filter(organism => organism.short_name.toLowerCase().indexOf(filterValue) === 0);
   }
 
+  onFileChange(event, filesFormGroup: FormGroup) {
+    let reader = new FileReader();
+    let ids = filesFormGroup.controls.ids;
+
+    //console.log(event, control)
+
+    if (event.target.files && event.target.files.length) {
+      const [file] = event.target.files;
+      reader.readAsText(file);
+
+      reader.onload = () => {
+        //    this.geneForm.patchValue({
+        //   file: reader.result
+        //   });
+        // console.log(reader.result)
+        ids.setValue(reader.result);
+        // this.cd.markForCheck();
+      };
+    }
+  }
+
   onValueChanges() {
     const self = this;
+
+
+    this.geneForm.valueChanges.subscribe(form => {
+      console.log(form)
+
+      self.sectionRule = self.geneAnalysisService.generateFormRule(form);
+    })
 
     this.filteredOrganisms = this.geneForm.controls.organism.valueChanges
       .pipe(
         startWith(''),
         map(organism => organism ? this._filterOrganisms(organism) : this.organisms.slice())
-      );
+      )
+
+
 
     this.geneForm.controls.analysis.valueChanges.subscribe(data => {
       console.log(data)
       self.selectedAnalysis = data;
-
-      self.sectionRule = self.geneAnalysisService.generateDisplayRule(data);
     })
-
   }
 
   ngOnDestroy(): void {

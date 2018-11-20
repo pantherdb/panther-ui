@@ -20,11 +20,25 @@ export class GeneAnalysisService {
     this.onGenesChanged = new BehaviorSubject([]);
   }
 
-  generateDisplayRule(analysis) {
+
+  generateFormRule(form) {
     let sectionRule = this.sectionRule;
+
+    //sectionRule.list.display = true;
+    // sectionRule.analysisOptions.display = true;
 
     sectionRule.list.display = true;
     sectionRule.analysisOptions.display = true;
+    sectionRule.analysis.disabled = !form.organism
+    sectionRule.analysisOptions.disabled = !form.analysis
+    sectionRule.list.disabled = !form.analysis
+
+    this.generateDisplayRule(sectionRule, form.analysis);
+
+    return sectionRule;
+  }
+
+  generateDisplayRule(sectionRule, analysis) {
     switch (analysis) {
       case 'overrep':
         sectionRule.analysisCorrections.display = true;

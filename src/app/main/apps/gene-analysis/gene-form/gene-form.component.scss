@@ -33,7 +33,38 @@
 
 
   .pthr-gene-form {
+    input[type="file"] {
+      display: none;
+    }
 
+    .pthr-file-upload-header {
+      height: 35px;
+
+      button {
+        @include deep-height(35px);
+
+        &.pthr-file-button {
+          pointer-events: none;
+        }
+      }
+
+      label {
+        padding: 0;
+      }
+
+      .pthr-file-upload-title {
+        margin-left: 4px;
+        color: #888;
+        font-weight: bold;
+      }
+    }
+
+    .pthr-file-upload {
+      border: 1px solid #ddd;
+      display: inline-block;
+      padding: 6px 12px;
+      cursor: pointer;
+    }
 
     .pthr-form-section {
       width: 100%;

@@ -24,7 +24,7 @@
           </div>
         </div>
         <mat-action-row>
-          <button mat-button color="primary" (click)="nextStep()">Next</button>
+          <button [disabled]='sectionRule.analysis.disabled' mat-button color="primary" (click)="nextStep()">Next</button>
         </mat-action-row>
       </mat-expansion-panel>
       <mat-expansion-panel [disabled]='sectionRule.analysis.disabled' [expanded]="step === 1" (opened)="setStep(1)"
@@ -45,7 +45,7 @@
         </div>
         <mat-action-row>
           <button mat-button color="warn" (click)="prevStep()">Previous</button>
-          <button mat-button color="primary" (click)="nextStep()">Next</button>
+          <button mat-button [disabled]='sectionRule.analysisOptions.disabled' color="primary" (click)="nextStep()">Next</button>
         </mat-action-row>
       </mat-expansion-panel>
       <mat-expansion-panel [disabled]='sectionRule.analysisOptions.disabled' [expanded]="step === 2" (opened)="setStep(2)"
@@ -56,7 +56,6 @@
           </mat-panel-title>
         </mat-expansion-panel-header>
         <div *ngIf="sectionRule.analysisOptions.display" class="pthr-form-section" fxLayout="column" fxLayoutAlign="start stretch">
-
           <div *ngIf="sectionRule.chartTypes.display" class="" fxLayout="column" fxLayoutAlign="start stretch">
             <div class="pthr-subheading">
               Chart Type
@@ -106,7 +105,7 @@
         </div>
         <mat-action-row>
           <button mat-button color="warn" (click)="prevStep()">Previous</button>
-          <button mat-button color="primary" (click)="nextStep()">Next</button>
+          <button mat-button [disabled]='sectionRule.list.disabled' color="primary" (click)="nextStep()">Next</button>
         </mat-action-row>
       </mat-expansion-panel>
       <mat-expansion-panel [disabled]='sectionRule.list.disabled' [expanded]="step === 3" (opened)="setStep(3)"
@@ -123,11 +122,23 @@
                 Analysis List
               </div>
               <div [formGroupName]="i" *ngFor="let ids of geneForm.controls.list.controls.analysis.controls; let i=index">
+                <div fxLayout="row" fxLayoutAlign="start center" class="pthr-file-upload-header">
+                  <div class="pthr-file-upload-title">
+                    IDs
+                  </div>
+                  <span fxFlex=""></span>
+                  <label for="{{'file-analysis-'+i}}" fxLayout="row" fxLayoutAlign="start center" class="pthr-file-upload">
+                    <button mat-stroked-button class="pthr-file-button">
+                      <mat-icon class="s-16 mr-4">cloud_upload</mat-icon> Populate from a FIle
+                    </button>
+                  </label>
+                  <input type="file" id="{{'file-analysis-'+i}}" formControlName="browse" (change)="onFileChange($event, geneForm.controls.list.controls.analysis.controls[i])"
+                    class="pthr-file-upload" />
+                  <button mat-stroked-button>Clear</button>
+                </div>
                 <mat-form-field class="mr-8 w-100-p" appearance="outline">
-                  <mat-label>IDs</mat-label>
                   <textarea matInput formControlName="ids" placeholder="Enter IDs"></textarea>
                 </mat-form-field>
-                <input type="file" formControlName="browse" />
               </div>
               <button *ngIf="selectedAnalysis ==='overrep'" (click)='addOverrepList()' type="button" mat-raised-button
                 color="" class="mr-8">
@@ -139,8 +150,22 @@
                 Reference List
               </div>
               <div [formGroupName]="i" *ngFor="let ids of geneForm.controls.list.controls.reference.controls; let i=index">
+                <div fxLayout="row" fxLayoutAlign="start center" class="pthr-file-upload-header">
+                  <div class="pthr-file-upload-title">
+                    IDs
+                  </div>
+                  <span fxFlex=""></span>
+                  <label for="{{'file-rerefence-'+i}}" fxLayout="row" fxLayoutAlign="start center" class="pthr-file-upload">
+                    <button mat-stroked-button class="pthr-file-button">
+                      <mat-icon class="s-16 mr-4">cloud_upload</mat-icon> Populate from a FIle
+                    </button>
+                  </label>
+                  <input type="file" id="{{'file-rerefence-'+i}}" formControlName="browse" (change)="onFileChange($event, geneForm.controls.list.controls.reference.controls[i])"
+                    class="pthr-file-upload" />
+                  <button mat-stroked-button>Clear</button>
+                </div>
+
                 <mat-form-field class="mr-8 w-100-p" appearance="outline">
-                  <mat-label>IDs</mat-label>
                   <textarea matInput formControlName="ids" placeholder="Enter IDs"></textarea>
                 </mat-form-field>
                 <input type="file" formControlName="browse" />
