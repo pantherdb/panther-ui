@@ -17,6 +17,12 @@ import { SequenceSearchComponent } from './sequence-search/sequence-search.compo
 
 const routes = [{
   path: 'gene-analysis', component: GeneAnalysisComponent
+}, {
+  path: 'browser', component: BrowserComponent
+}, {
+  path: 'csnp-scoring', component: SnpScoringComponent
+}, {
+  path: 'sequence-search', component: SequenceSearchComponent
 }];
 
 @NgModule({

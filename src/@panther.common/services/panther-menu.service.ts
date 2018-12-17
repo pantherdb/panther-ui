@@ -24,7 +24,7 @@ export class PantherMenuService {
   ]
 
   _subMenu = [
-    pantherTypes.page.data,
+    pantherTypes.page.version,
     pantherTypes.page.downloads,
     pantherTypes.page.help,
     pantherTypes.page.about,
@@ -40,8 +40,8 @@ export class PantherMenuService {
   }
 
 
-  openPage(url) {
-    this.router.navigate([`gene-analysis`])
+  openPage(menuItem) {
+    this.router.navigate([menuItem.url])
   }
 
   get mainMenu() {

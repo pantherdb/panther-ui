@@ -15,6 +15,14 @@ import { VersionComponent } from './version/version.component';
 
 const routes = [{
   path: '', component: HomeComponent
+}, {
+  path: 'data-version', component: VersionComponent
+}, {
+  path: 'downloads', component: DownloadsComponent
+}, {
+  path: 'help', component: HelpComponent
+}, {
+  path: 'about', component: AboutComponent
 }];
 
 @NgModule({

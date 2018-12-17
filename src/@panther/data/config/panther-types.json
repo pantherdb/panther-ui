@@ -13,7 +13,7 @@
     "browser": {
       "id": "browser",
       "label": "Browse",
-      "url": "browse"
+      "url": "browser"
     },
     "sequenceSearch": {
       "id": "sequenceSearch",
@@ -25,10 +25,10 @@
       "label": "cSNP Scoring",
       "url": "csnp-scoring"
     },
-    "data": {
-      "id": "data",
+    "version": {
+      "id": "version",
       "label": "Panther Data & Stats",
-      "url": "data"
+      "url": "data-version"
     },
     "downloads": {
       "id": "downloads",
