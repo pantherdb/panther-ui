@@ -1,79 +1,22 @@
-<div class="pthr-page-container" fxLayout="row" fxLayoutAlign="start start">
-  <div class="h-100-p pthr-sidenav" fxLayout="column" fxLayoutAlign="start stretch" pantherPerfectScrollbar>
-    <div class="pthr-menu-section">
-      <div *ngFor="let menuItem of leftPanelMenu" (click)="pantherMenuService.openLeftDrawer(menuItem)" [ngClass]="{'pthr-selected':menuItem.id===pantherMenuService.selectedLeftPanel.id}"
-        class="pthr-nav-button" fxLayout="row" fxLayoutAlign="start center">
-        {{menuItem.label}}
-        <span fxFlex=""></span>
-        <mat-icon>chevron_right</mat-icon>
-      </div>
-    </div>
-    <span fxFlex=""></span>
-    <div class="pthr-menu-section">
-      <div [ngClass]="{'pthr-selected':pantherMenuService.selectedLeftPanel.id==='data'}" class="pthr-nav-button"
-        fxLayout="row" fxLayoutAlign="start center">
-        Panther Data & Stats
-        <span fxFlex=""></span>
-        <mat-icon>chevron_right</mat-icon>
-      </div>
-      <div [ngClass]="{'pthr-selected':pantherMenuService.selectedLeftPanel.id==='downloads'}" class="pthr-nav-button"
-        fxLayout="row" fxLayoutAlign="start center">
-        Downloads
-        <span fxFlex=""></span>
-        <mat-icon>chevron_right</mat-icon>
-      </div>
-      <div [ngClass]="{'pthr-selected':pantherMenuService.selectedLeftPanel.id==='help'}" class="pthr-nav-button"
-        fxLayout="row" fxLayoutAlign="start center">
-        Help/Tutorials
-        <span fxFlex=""></span>
-        <mat-icon>chevron_right</mat-icon>
-      </div>
-      <div [ngClass]="{'pthr-selected':pantherMenuService.selectedLeftPanel.id==='about'}" class="pthr-nav-button"
-        fxLayout="row" fxLayoutAlign="start center">
+<mat-drawer-container class="w-100-p h-100-p" fxLayout="row" fxLayoutAlign="start start">
+  <mat-drawer #leftDrawer class="noc-left-drawer" fxFlex="400px" opened="true" mode="side" position="start">
+    <div class="pthr-drawer-header" fxLayout="row" fxLayoutAlign="start center">
+      <span class="pthr-drawer-header-title">
         About
-        <span fxFlex=""></span>
-        <mat-icon>chevron_right</mat-icon>
-      </div>
+      </span>
+      <span fxFlex></span>
+      <button mat-icon-button (click)="pantherMenuService.closeLeftDrawer()" aria-label="Close dialog">
+        <mat-icon>close</mat-icon>
+      </button>
     </div>
-    <span class="legal">
-      <a href="/about.jsp">About</a> &nbsp;&nbsp;|&nbsp;&nbsp;
-      <a href="/releaseInfo.jsp">Release Information</a> &nbsp;&nbsp;|&nbsp;&nbsp;
-      <a href="/feedback.jsp">Contact Us</a> &nbsp;&nbsp;|&nbsp;&nbsp;
-      <a href="/systemRequirements.jsp">System Requirements</a> &nbsp;&nbsp;|&nbsp;&nbsp;
-      <a href="/terms/privacyPolicy.jsp">Privacy Policy</a> &nbsp;&nbsp;|&nbsp;&nbsp;
-      <a href="/terms/disclaimer.jsp">Disclaimer</a>
-      <br>
-      ©&nbsp;Copyright&nbsp;2018&nbsp;Paul Thomas&nbsp;All&nbsp;Rights&nbsp;Reserved.</span>
-  </div>
-  <diV class="w-100-p h-100-p">
-    <router-outlet></router-outlet>
-  </diV>
-  <!--
-  <mat-drawer-container class="w-100-p h-100-p" fxLayout="row" fxLayoutAlign="start start">
-    <mat-drawer #leftDrawer class="noc-left-drawer" fxFlex="400px" mode="side" position="start">
-      <div class="pthr-drawer-header" fxLayout="row" fxLayoutAlign="start center">
-        <span class="pthr-drawer-header-title">
-          {{pantherMenuService.selectedLeftPanel.label}}
-        </span>
-        <span fxFlex></span>
-        <button mat-icon-button (click)="pantherMenuService.closeLeftDrawer()" aria-label="Close dialog">
-          <mat-icon>close</mat-icon>
-        </button>
-      </div>
-      <div [ngSwitch]="pantherMenuService.selectedLeftPanel.id" class="h-100-p">
-        <pthr-panther-home-sidebar *ngSwitchCase="'home'"></pthr-panther-home-sidebar>
-        <pthr-gene-analysis *ngSwitchCase="'geneListAnalysis'"></pthr-gene-analysis>
-        <pthr-browser *ngSwitchCase="'browser'"></pthr-browser>
-        <pthr-snp-scoring *ngSwitchCase="'cSNPScoring'"></pthr-snp-scoring>
-        <pthr-sequence-search *ngSwitchCase="'sequenceSearch'"></pthr-sequence-search>
-      </div>
-    </mat-drawer>
-    <mat-drawer-content class="w-100-p" pantherPerfectScrollbar>
-      <div [ngSwitch]="pantherMenuService.selectedLeftPanel.id" class="h-100-p w-100-p">
-        <pthr-panther-detail *ngSwitchCase="'home'"></pthr-panther-detail>
-        <pthr-gene-list *ngSwitchCase="'geneListAnalysis'"></pthr-gene-list>
-      </div>
-    </mat-drawer-content>
-  </mat-drawer-container>
--->
-</div>
+    <div class="h-100-p">
+      <pthr-panther-home-sidebar></pthr-panther-home-sidebar>
+
+    </div>
+  </mat-drawer>
+  <mat-drawer-content class="w-100-p" pantherPerfectScrollbar>
+    <div class="h-100-p w-100-p">
+      <pthr-panther-detail></pthr-panther-detail>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>
