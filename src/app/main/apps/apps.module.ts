@@ -15,7 +15,9 @@ import { SnpScoringService } from './snp-scoring/services/snp-scoring.service';
 import { SnpScoringComponent } from './snp-scoring/snp-scoring.component';
 import { SequenceSearchComponent } from './sequence-search/sequence-search.component';
 
-const routes = [];
+const routes = [{
+  path: 'gene-analysis', component: GeneAnalysisComponent
+}];
 
 @NgModule({
   declarations: [

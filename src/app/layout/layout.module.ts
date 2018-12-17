@@ -9,7 +9,8 @@ import { LayoutPantherModule } from 'app/layout/layout-panther/layout-panther.mo
     ],
     exports: [
         LayoutPantherModule
-    ]
+    ],
+    declarations: []
 })
 export class LayoutModule {
 }

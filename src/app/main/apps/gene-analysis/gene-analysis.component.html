@@ -1,1 +1,21 @@
-<pthr-gene-form></pthr-gene-form>
+<mat-drawer-container class="w-100-p h-100-p" fxLayout="row" fxLayoutAlign="start start">
+  <mat-drawer #leftDrawer class="noc-left-drawer" fxFlex="400px" mode="side" position="start">
+    <div class="pthr-drawer-header" fxLayout="row" fxLayoutAlign="start center">
+      <span class="pthr-drawer-header-title">
+        {{pantherMenuService.selectedLeftPanel.label}}
+      </span>
+      <span fxFlex></span>
+      <button mat-icon-button (click)="pantherMenuService.closeLeftDrawer()" aria-label="Close dialog">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+    <div class="h-100-p">
+      <pthr-gene-form></pthr-gene-form>
+    </div>
+  </mat-drawer>
+  <mat-drawer-content class="w-100-p" pantherPerfectScrollbar>
+    <div class="h-100-p w-100-p">
+      <pthr-gene-list></pthr-gene-list>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>

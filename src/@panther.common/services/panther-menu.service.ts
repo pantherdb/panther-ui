@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { ActivatedRoute, Router } from '@angular/router';
 
 const pantherTypes = require('@panther/data/config/panther-types.json');
 
@@ -38,8 +39,14 @@ export class PantherMenuService {
   private leftDrawer: MatDrawer;
   private rightDrawer: MatDrawer;
 
-  constructor() {
+  constructor(private router: Router) {
     this.selectedLeftPanel = this._leftPanelMenu[0];
+  }
+
+
+  openPage() {
+
+    this.router.navigate([`gene-analysis`])
   }
 
   get leftPanelMenu() {

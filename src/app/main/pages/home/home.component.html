@@ -9,9 +9,6 @@
       </div>
     </div>
     <span fxFlex=""></span>
-    <markdown ngPreserveWhitespaces>
-      # Markdown
-    </markdown>
     <div class="pthr-menu-section">
       <div [ngClass]="{'pthr-selected':pantherMenuService.selectedLeftPanel.id==='data'}" class="pthr-nav-button"
         fxLayout="row" fxLayoutAlign="start center">
@@ -48,6 +45,10 @@
       <br>
       ©&nbsp;Copyright&nbsp;2018&nbsp;Paul Thomas&nbsp;All&nbsp;Rights&nbsp;Reserved.</span>
   </div>
+  <diV class="w-100-p h-100-p">
+    <router-outlet></router-outlet>
+  </diV>
+  <!--
   <mat-drawer-container class="w-100-p h-100-p" fxLayout="row" fxLayoutAlign="start start">
     <mat-drawer #leftDrawer class="noc-left-drawer" fxFlex="400px" mode="side" position="start">
       <div class="pthr-drawer-header" fxLayout="row" fxLayoutAlign="start center">
@@ -74,4 +75,5 @@
       </div>
     </mat-drawer-content>
   </mat-drawer-container>
+-->
 </div>
