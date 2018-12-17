@@ -16,14 +16,16 @@ import { PantherMenuService } from '@panther.common/services/panther-menu.servic
 ) export class NavbarComponent implements OnInit, OnDestroy {
   pantherConfig: any;
   navigation: any;
-  leftPanelMenu;
+  mainMenu;
+  subMenu;
   private _unsubscribeAll: Subject<any>;
 
   constructor(private _pantherConfigService: PantherConfigService,
     public pantherMenuService: PantherMenuService) {
     this._unsubscribeAll = new Subject();
 
-    this.leftPanelMenu = this.pantherMenuService.leftPanelMenu;
+    this.mainMenu = this.pantherMenuService.mainMenu;
+    this.subMenu = this.pantherMenuService.subMenu;
   }
 
   ngOnInit(): void {

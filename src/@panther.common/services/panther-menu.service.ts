@@ -15,23 +15,19 @@ const cloneDeep = require('lodash/cLoneDeep');
 })
 export class PantherMenuService {
 
-  _leftPanelMenu = [
-    {
-      id: 'home',
-      label: 'Home'
-    }, {
-      id: 'geneListAnalysis',
-      label: 'Gene List Analysis'
-    }, {
-      id: 'browser',
-      label: 'Browse'
-    }, {
-      id: 'sequenceSearch',
-      label: 'Sequence Search'
-    }, {
-      id: 'cSNPScoring',
-      label: 'cSNP Scoring'
-    }
+  _mainMenu = [
+    pantherTypes.page.home,
+    pantherTypes.page.geneListAnalysis,
+    pantherTypes.page.browser,
+    pantherTypes.page.sequenceSearch,
+    pantherTypes.page.cSNPScoring,
+  ]
+
+  _subMenu = [
+    pantherTypes.page.data,
+    pantherTypes.page.downloads,
+    pantherTypes.page.help,
+    pantherTypes.page.about,
   ]
 
   selectedLeftPanel;
@@ -40,17 +36,20 @@ export class PantherMenuService {
   private rightDrawer: MatDrawer;
 
   constructor(private router: Router) {
-    this.selectedLeftPanel = this._leftPanelMenu[0];
+    this.selectedLeftPanel = this._mainMenu[0];
   }
 
 
-  openPage() {
-
+  openPage(url) {
     this.router.navigate([`gene-analysis`])
   }
 
-  get leftPanelMenu() {
-    return this._leftPanelMenu;
+  get mainMenu() {
+    return this._mainMenu;
+  }
+
+  get subMenu() {
+    return this._subMenu;
   }
 
   get pantherTypes() {

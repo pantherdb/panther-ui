@@ -1,4 +1,51 @@
 {
+  "page": {
+    "home": {
+      "id": "home",
+      "label": "Home",
+      "url": ""
+    },
+    "geneListAnalysis": {
+      "id": "geneListAnalysis",
+      "label": "Gene List Analysis",
+      "url": "gene-analysis"
+    },
+    "browser": {
+      "id": "browser",
+      "label": "Browse",
+      "url": "browse"
+    },
+    "sequenceSearch": {
+      "id": "sequenceSearch",
+      "label": "Sequence Search",
+      "url": "sequence-search"
+    },
+    "cSNPScoring": {
+      "id": "cSNPScoring",
+      "label": "cSNP Scoring",
+      "url": "csnp-scoring"
+    },
+    "data": {
+      "id": "data",
+      "label": "Panther Data & Stats",
+      "url": "data"
+    },
+    "downloads": {
+      "id": "downloads",
+      "label": "Downloads",
+      "url": "downloads"
+    },
+    "help": {
+      "id": "help",
+      "label": "Help/Tutorials",
+      "url": "help"
+    },
+    "about": {
+      "id": "about",
+      "label": "About",
+      "url": "about"
+    }
+  },
   "analysisTypes": [{
     "id": "overrep",
     "label": "Statistical overrepresentation test"

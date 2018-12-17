@@ -31,7 +31,7 @@ export class GeneAnalysisComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router) {
 
-    this.leftPanelMenu = this.pantherMenuService.leftPanelMenu;
+    this.leftPanelMenu = this.pantherMenuService.mainMenu;
   }
 
   ngOnInit() {

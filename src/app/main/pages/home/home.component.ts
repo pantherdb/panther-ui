@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
     private router: Router) {
     this.pantherTranslationLoader.loadTranslations(english);
 
-    this.leftPanelMenu = this.pantherMenuService.leftPanelMenu;
+    this.leftPanelMenu = this.pantherMenuService.mainMenu;
   }
 
   ngOnInit() {

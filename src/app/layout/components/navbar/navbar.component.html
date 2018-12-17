@@ -1,6 +1,6 @@
 <div class="h-100-p w-100-p" fxLayout="column" fxLayoutAlign="start stretch" pantherPerfectScrollbar>
   <div class="pthr-menu-section">
-    <div *ngFor="let menuItem of leftPanelMenu" (click)="pantherMenuService.openPage(menuItem)" [ngClass]="{'pthr-selected':menuItem.id===pantherMenuService.selectedLeftPanel.id}"
+    <div *ngFor="let menuItem of mainMenu" (click)="pantherMenuService.openPage(menuItem)" [ngClass]="{'pthr-selected':menuItem.id===pantherMenuService.selectedLeftPanel.id}"
       class="pthr-nav-button" fxLayout="row" fxLayoutAlign="start center">
       {{menuItem.label}}
       <span fxFlex=""></span>
@@ -9,27 +9,9 @@
   </div>
   <span fxFlex=""></span>
   <div class="pthr-menu-section">
-    <div [ngClass]="{'pthr-selected':pantherMenuService.selectedLeftPanel.id==='data'}" class="pthr-nav-button"
-      fxLayout="row" fxLayoutAlign="start center">
-      Panther Data & Stats
-      <span fxFlex=""></span>
-      <mat-icon>chevron_right</mat-icon>
-    </div>
-    <div [ngClass]="{'pthr-selected':pantherMenuService.selectedLeftPanel.id==='downloads'}" class="pthr-nav-button"
-      fxLayout="row" fxLayoutAlign="start center">
-      Downloads
-      <span fxFlex=""></span>
-      <mat-icon>chevron_right</mat-icon>
-    </div>
-    <div [ngClass]="{'pthr-selected':pantherMenuService.selectedLeftPanel.id==='help'}" class="pthr-nav-button"
-      fxLayout="row" fxLayoutAlign="start center">
-      Help/Tutorials
-      <span fxFlex=""></span>
-      <mat-icon>chevron_right</mat-icon>
-    </div>
-    <div [ngClass]="{'pthr-selected':pantherMenuService.selectedLeftPanel.id==='about'}" class="pthr-nav-button"
-      fxLayout="row" fxLayoutAlign="start center">
-      About
+    <div *ngFor="let menuItem of subMenu" (click)="pantherMenuService.openPage(menuItem)" [ngClass]="{'pthr-selected':menuItem.id===pantherMenuService.selectedLeftPanel.id}"
+      class="pthr-nav-button" fxLayout="row" fxLayoutAlign="start center">
+      {{menuItem.label}}
       <span fxFlex=""></span>
       <mat-icon>chevron_right</mat-icon>
     </div>
