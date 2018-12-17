@@ -1,0 +1,8 @@
+<div class="pthr-menu-section">
+  <div *ngFor="let menuItem of mainMenu" (click)="versionService.openPage(menuItem)" [ngClass]="{'pthr-selected':menuItem.id===versionService.selectedLeftPanel.id}"
+    class="pthr-nav-button" fxLayout="row" fxLayoutAlign="start center">
+    {{menuItem.label}}
+    <span fxFlex=""></span>
+    <mat-icon>chevron_right</mat-icon>
+  </div>
+</div>

@@ -28,7 +28,29 @@
     "version": {
       "id": "version",
       "label": "Panther Data & Stats",
-      "url": "data-version"
+      "url": "data-version",
+      "children": {
+        "genes": {
+          "id": "genes",
+          "label": "Genes & Orthologs",
+          "url": "genes"
+        },
+        "hmms": {
+          "id": "hmms",
+          "label": "Family & HMMs",
+          "url": "hmms"
+        },
+        "pathway": {
+          "id": "pathway",
+          "label": "Pathway",
+          "url": "pathway"
+        },
+        "ontologies": {
+          "id": "Ontologies",
+          "label": "Ontologies",
+          "url": "ontologies"
+        }
+      }
     },
     "downloads": {
       "id": "downloads",

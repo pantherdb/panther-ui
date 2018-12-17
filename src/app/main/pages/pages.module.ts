@@ -12,6 +12,8 @@ import { DownloadsComponent } from './downloads/downloads.component';
 import { HelpComponent } from './help/help.component';
 import { AboutComponent } from './about/about.component';
 import { VersionComponent } from './version/version.component';
+import { VersionSidebarComponent } from './version/version-sidebar/version-sidebar.component';
+import { VersionDetailComponent } from './version/version-detail/version-detail.component';
 
 const routes = [{
   path: '', component: HomeComponent
@@ -33,7 +35,9 @@ const routes = [{
     DownloadsComponent,
     HelpComponent,
     AboutComponent,
-    VersionComponent
+    VersionComponent,
+    VersionSidebarComponent,
+    VersionDetailComponent
   ],
   imports: [
     RouterModule.forChild(routes),

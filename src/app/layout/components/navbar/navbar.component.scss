@@ -6,6 +6,10 @@
   height: 100%;
   border-right: #CCC solid 1px;
 
+  .pthr-sidebar-footer {
+    font-size: 12px;
+  }
+
   .pthr-nav-button {
     padding: 0 12px;
     @include deep-height(50px);
