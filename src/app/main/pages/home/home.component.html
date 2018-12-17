@@ -8,6 +8,26 @@
         <mat-icon>chevron_right</mat-icon>
       </div>
     </div>
+    <div class="pthr-menu-section">
+      <div [ngClass]="{'pthr-selected':pantherMenuService.selectedLeftPanel.id==='downloads'}" class="pthr-nav-button"
+        fxLayout="row" fxLayoutAlign="start center">
+        Downloads
+        <span fxFlex=""></span>
+        <mat-icon>chevron_right</mat-icon>
+      </div>
+      <div [ngClass]="{'pthr-selected':pantherMenuService.selectedLeftPanel.id==='help'}" class="pthr-nav-button"
+        fxLayout="row" fxLayoutAlign="start center">
+        Help/Tutorials
+        <span fxFlex=""></span>
+        <mat-icon>chevron_right</mat-icon>
+      </div>
+      <div [ngClass]="{'pthr-selected':pantherMenuService.selectedLeftPanel.id==='about'}" class="pthr-nav-button"
+        fxLayout="row" fxLayoutAlign="start center">
+        About
+        <span fxFlex=""></span>
+        <mat-icon>chevron_right</mat-icon>
+      </div>
+    </div>
   </div>
   <mat-drawer-container class="w-100-p h-100-p" fxLayout="row" fxLayoutAlign="start start">
     <mat-drawer #leftDrawer class="noc-left-drawer" fxFlex="400px" mode="side" position="start">
@@ -26,7 +46,6 @@
         <pthr-browser *ngSwitchCase="'browser'"></pthr-browser>
         <pthr-snp-scoring *ngSwitchCase="'cSNPScoring'"></pthr-snp-scoring>
         <pthr-sequence-search *ngSwitchCase="'sequenceSearch'"></pthr-sequence-search>
-
       </div>
     </mat-drawer>
     <mat-drawer-content class="w-100-p" pantherPerfectScrollbar>

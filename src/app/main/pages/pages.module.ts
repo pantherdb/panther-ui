@@ -8,6 +8,9 @@ import { AppsModule } from './../apps/apps.module';
 import { HomeComponent } from './home/home.component';
 import { PantherDetailComponent } from './home/panther-detail/panther-detail.component';
 import { PantherHomeSidebarComponent } from './home/panther-home-sidebar/panther-home-sidebar.component';
+import { DownloadsComponent } from './downloads/downloads.component';
+import { HelpComponent } from './help/help.component';
+import { AboutComponent } from './about/about.component';
 
 const routes = [{
   path: '', component: HomeComponent
@@ -17,7 +20,10 @@ const routes = [{
   declarations: [
     HomeComponent,
     PantherDetailComponent,
-    PantherHomeSidebarComponent
+    PantherHomeSidebarComponent,
+    DownloadsComponent,
+    HelpComponent,
+    AboutComponent
   ],
   imports: [
     RouterModule.forChild(routes),
