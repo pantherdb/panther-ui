@@ -11,6 +11,7 @@ import { PantherHomeSidebarComponent } from './home/panther-home-sidebar/panther
 import { DownloadsComponent } from './downloads/downloads.component';
 import { HelpComponent } from './help/help.component';
 import { AboutComponent } from './about/about.component';
+import { VersionComponent } from './version/version.component';
 
 const routes = [{
   path: '', component: HomeComponent
@@ -23,7 +24,8 @@ const routes = [{
     PantherHomeSidebarComponent,
     DownloadsComponent,
     HelpComponent,
-    AboutComponent
+    AboutComponent,
+    VersionComponent
   ],
   imports: [
     RouterModule.forChild(routes),

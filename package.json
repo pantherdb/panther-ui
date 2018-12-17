@@ -74,6 +74,7 @@
     "ngrx-store-freeze": "0.2.4",
     "ngx-color-picker": "7.0.1",
     "ngx-cookie-service": "1.0.10",
+    "ngx-markdown": "^7.0.3",
     "node-bourbon": "^4.2.8",
     "perfect-scrollbar": "1.4.0",
     "primeng": "^7.0.0-beta.1",

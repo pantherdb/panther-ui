@@ -8,7 +8,17 @@
         <mat-icon>chevron_right</mat-icon>
       </div>
     </div>
+    <span fxFlex=""></span>
+    <markdown ngPreserveWhitespaces>
+      # Markdown
+    </markdown>
     <div class="pthr-menu-section">
+      <div [ngClass]="{'pthr-selected':pantherMenuService.selectedLeftPanel.id==='data'}" class="pthr-nav-button"
+        fxLayout="row" fxLayoutAlign="start center">
+        Panther Data & Stats
+        <span fxFlex=""></span>
+        <mat-icon>chevron_right</mat-icon>
+      </div>
       <div [ngClass]="{'pthr-selected':pantherMenuService.selectedLeftPanel.id==='downloads'}" class="pthr-nav-button"
         fxLayout="row" fxLayoutAlign="start center">
         Downloads
@@ -28,6 +38,15 @@
         <mat-icon>chevron_right</mat-icon>
       </div>
     </div>
+    <span class="legal">
+      <a href="/about.jsp">About</a> &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="/releaseInfo.jsp">Release Information</a> &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="/feedback.jsp">Contact Us</a> &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="/systemRequirements.jsp">System Requirements</a> &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="/terms/privacyPolicy.jsp">Privacy Policy</a> &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="/terms/disclaimer.jsp">Disclaimer</a>
+      <br>
+      ©&nbsp;Copyright&nbsp;2018&nbsp;Paul Thomas&nbsp;All&nbsp;Rights&nbsp;Reserved.</span>
   </div>
   <mat-drawer-container class="w-100-p h-100-p" fxLayout="row" fxLayoutAlign="start start">
     <mat-drawer #leftDrawer class="noc-left-drawer" fxFlex="400px" mode="side" position="start">

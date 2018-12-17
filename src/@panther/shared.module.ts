@@ -10,6 +10,10 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { PantherDirectivesModule } from './directives/directives';
 import { PantherPipesModule } from './pipes/pipes.module';
 
+import { HttpClient } from '@angular/common/http';
+
+import { MarkdownModule, MarkedOptions } from 'ngx-markdown';
+
 @NgModule({
     imports: [
         CommonModule,
@@ -19,7 +23,8 @@ import { PantherPipesModule } from './pipes/pipes.module';
         FlexLayoutModule,
         NgxDatatableModule,
         PantherDirectivesModule,
-        PantherPipesModule
+        PantherPipesModule,
+        MarkdownModule.forRoot({ loader: HttpClient }),
     ],
     exports: [
         CommonModule,
@@ -29,7 +34,8 @@ import { PantherPipesModule } from './pipes/pipes.module';
         FlexLayoutModule,
         NgxDatatableModule,
         PantherDirectivesModule,
-        PantherPipesModule
+        PantherPipesModule,
+        MarkdownModule
     ]
 })
 
