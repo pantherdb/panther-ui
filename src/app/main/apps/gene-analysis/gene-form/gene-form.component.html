@@ -137,7 +137,7 @@
                   <button mat-stroked-button>Clear</button>
                 </div>
                 <mat-form-field class="mr-8 w-100-p" appearance="outline">
-                  <textarea matInput formControlName="ids" placeholder="Enter IDs"></textarea>
+                  <textarea matInput formControlName="ids" placeholder="Enter IDs" rows="5"></textarea>
                 </mat-form-field>
               </div>
               <button *ngIf="selectedAnalysis ==='overrep'" (click)='addOverrepList()' type="button" mat-raised-button
@@ -165,7 +165,7 @@
                   <button mat-stroked-button>Clear</button>
                 </div>
                 <mat-form-field class="mr-8 w-100-p" appearance="outline">
-                  <textarea matInput formControlName="ids" placeholder="Enter IDs"></textarea>
+                  <textarea matInput formControlName="ids" placeholder="Enter IDs" rows="5"></textarea>
                 </mat-form-field>
                 <input type="file" formControlName="browse" />
               </div>

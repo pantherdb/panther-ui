@@ -1,0 +1,13 @@
+<div class="w-100-p h-100-p">
+  <form fxLayout="column" fxLayoutAlign="start stretch" name="sequenceSearchForm" [formGroup]="sequenceSearchForm"
+    class="pthr-gene-form">
+    <mat-form-field class="mr-8 w-100-p" appearance="outline">
+      <textarea matInput formControlName="proteinSequence" placeholder="Enter IDs" rows="5"></textarea>
+    </mat-form-field>
+    <div layout="row" class="pthr-submit-row">
+      <span fxFlex></span>
+      <button (click)='cancel()' type="button" mat-raised-button color="" class="mr-8">Clear</button>
+      <button (click)="search()" type="button" mat-raised-button color="primary">Save</button>
+    </div>
+  </form>
+</div>

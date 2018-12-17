@@ -21,8 +21,12 @@
         </button>
       </div>
       <div [ngSwitch]="pantherMenuService.selectedLeftPanel.id" class="h-100-p">
+        <pthr-panther-home-sidebar *ngSwitchCase="'home'"></pthr-panther-home-sidebar>
         <pthr-gene-analysis *ngSwitchCase="'geneListAnalysis'"></pthr-gene-analysis>
         <pthr-browser *ngSwitchCase="'browser'"></pthr-browser>
+        <pthr-snp-scoring *ngSwitchCase="'cSNPScoring'"></pthr-snp-scoring>
+        <pthr-sequence-search *ngSwitchCase="'sequenceSearch'"></pthr-sequence-search>
+
       </div>
     </mat-drawer>
     <mat-drawer-content class="w-100-p" pantherPerfectScrollbar>

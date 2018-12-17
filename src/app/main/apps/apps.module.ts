@@ -11,6 +11,9 @@ import { BrowserComponent } from './browser/browser.component';
 
 import { GeneMapDialogComponent } from './gene-analysis/dialogs/gene-map-dialog/gene-map.component';
 import { GeneAnalysisDialogService } from './gene-analysis/dialogs/services/dialog.service';
+import { SnpScoringService } from './snp-scoring/services/snp-scoring.service';
+import { SnpScoringComponent } from './snp-scoring/snp-scoring.component';
+import { SequenceSearchComponent } from './sequence-search/sequence-search.component';
 
 const routes = [];
 
@@ -22,7 +25,9 @@ const routes = [];
     SpeciesTreeComponent,
     BrowserComponent,
     //Dialogs
-    GeneMapDialogComponent
+    GeneMapDialogComponent,
+    SnpScoringComponent,
+    SequenceSearchComponent
   ],
   imports: [
     RouterModule.forChild(routes),
@@ -32,11 +37,15 @@ const routes = [];
   exports: [
     GeneAnalysisComponent,
     GeneListComponent,
-    BrowserComponent
+    BrowserComponent,
+    SequenceSearchComponent,
+    SnpScoringComponent
   ],
   providers: [
     GeneAnalysisService,
-    GeneAnalysisDialogService
+    GeneAnalysisDialogService,
+    SnpScoringService
+
   ],
   entryComponents: [GeneMapDialogComponent]
 

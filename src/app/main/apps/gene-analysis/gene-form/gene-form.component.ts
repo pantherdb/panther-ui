@@ -69,6 +69,7 @@ export class GeneFormComponent implements OnInit, OnDestroy {
     this.geneAnalysisDialogService.openGeneMap(this.geneMap);
   }
 
+
   getGeneMap() {
     const self = this;
 

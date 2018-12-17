@@ -51,27 +51,27 @@ export class GeneMapFakeDb {
       "unmapped_id": "",
       "comment": ""
     }, {
-      "gene_id": "YEAST|SGD=S000005450|UniProtKB=P25847",
+      "gene_id": "UniProtKB=P25847",
       "mapped_id": "msh2",
       "unmapped_id": "",
       "comment": ""
     }, {
-      "gene_id": "DICDI|dictyBase=DDB_G0268614|UniProtKB=Q55GU9",
+      "gene_id": "UniProtKB=Q55GU9",
       "mapped_id": "msh6",
       "unmapped_id": "",
       "comment": ""
     }, {
-      "gene_id": "EMENI|EnsemblGenome=CADANIAG00004973|UniProtKB=Q5B6T1",
+      "gene_id": "UniProtKB=Q5B6T1",
       "mapped_id": "msh3",
       "unmapped_id": "",
       "comment": ""
     }, {
-      "gene_id": "BOVIN|Ensembl=ENSBTAG00000016758|UniProtKB=F1MPG0",
+      "gene_id": "UniProtKB=F1MPG0",
       "mapped_id": "mlh1",
       "unmapped_id": "",
       "comment": ""
     }, {
-      "gene_id": "MONDO|Ensembl=ENSMODG00000013353|UniProtKB=F7GA60",
+      "gene_id": "UniProtKB=F7GA60",
       "mapped_id": "mlh1",
       "unmapped_id": "",
       "comment": ""
@@ -91,32 +91,32 @@ export class GeneMapFakeDb {
       "unmapped_id": "",
       "comment": ""
     }, {
-      "gene_id": "XENTR|Xenbase=XB-GENE-977518|UniProtKB=F6X6V7",
+      "gene_id": "UniProtKB=F6X6V7",
       "mapped_id": "msh2",
       "unmapped_id": "",
       "comment": ""
     }, {
-      "gene_id": "XENTR|Xenbase=XB-GENE-1014070|UniProtKB=F7CRP6",
+      "gene_id": "UniProtKB=F7CRP6",
       "mapped_id": "msh3",
       "unmapped_id": "",
       "comment": ""
     }, {
-      "gene_id": "CHLRE|EnsemblGenome=CHLREDRAFT_146633|UniProtKB=A8HM54",
+      "gene_id": "UniProtKB=A8HM54",
       "mapped_id": "mlh1",
       "unmapped_id": "",
       "comment": ""
     }, {
-      "gene_id": "ORNAN|Ensembl=ENSOANG00000015305|UniProtKB=F6PYZ7",
+      "gene_id": "UniProtKB=F6PYZ7",
       "mapped_id": "mlh1",
       "unmapped_id": "",
       "comment": ""
     }, {
-      "gene_id": "MOUSE|MGI=MGI=109519|UniProtKB=P13705",
+      "gene_id": "UniProtKB=P13705",
       "mapped_id": "msh3",
       "unmapped_id": "",
       "comment": ""
     }, {
-      "gene_id": "ARATH|TAIR=AT3G18524|UniProtKB=O24617",
+      "gene_id": "UniProtKB=O24617",
       "mapped_id": "msh2",
       "unmapped_id": "",
       "comment": ""
@@ -131,7 +131,7 @@ export class GeneMapFakeDb {
       "unmapped_id": "",
       "comment": ""
     }, {
-      "gene_id": "MACMU|Ensembl=ENSMMUG00000000974|UniProtKB=F6SXQ1",
+      "gene_id": "UniProtKB=F6SXQ1",
       "mapped_id": "msh2",
       "unmapped_id": "",
       "comment": ""

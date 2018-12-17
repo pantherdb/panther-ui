@@ -7,6 +7,7 @@ import { AppsModule } from './../apps/apps.module';
 
 import { HomeComponent } from './home/home.component';
 import { PantherDetailComponent } from './home/panther-detail/panther-detail.component';
+import { PantherHomeSidebarComponent } from './home/panther-home-sidebar/panther-home-sidebar.component';
 
 const routes = [{
   path: '', component: HomeComponent
@@ -15,7 +16,8 @@ const routes = [{
 @NgModule({
   declarations: [
     HomeComponent,
-    PantherDetailComponent
+    PantherDetailComponent,
+    PantherHomeSidebarComponent
   ],
   imports: [
     RouterModule.forChild(routes),
