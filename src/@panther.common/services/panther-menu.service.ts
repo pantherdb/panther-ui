@@ -41,6 +41,7 @@ export class PantherMenuService {
 
   openPage(menuItem) {
     this.router.navigate([menuItem.url])
+    this.selectedLeftPanel = menuItem;
   }
 
   get mainMenu() {
