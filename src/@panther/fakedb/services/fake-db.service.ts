@@ -18,7 +18,7 @@ export class FakeDbService implements InMemoryDbService {
             'gene-map-result': GeneMapFakeDb.result,
             'gene-list-filter-result': GeneListFiltersFakeDb.result,
             'species-list': SpeciesTreeFakeDb.data,
-            'overrep-results': OverrepResultsFakeDb.result
+            'overrep-list-result': OverrepResultsFakeDb.result
         };
     }
 }

@@ -6,6 +6,7 @@ import { GeneAnalysisComponent } from './gene-analysis/gene-analysis.component';
 import { GeneFormComponent } from './gene-analysis/gene-form/gene-form.component';
 import { GeneAnalysisService } from './gene-analysis/services/gene-analysis.service';
 import { GeneListComponent } from './gene/gene-list/gene-list.component'
+import { OverrepListComponent } from './overrep/overrep-list/overrep-list.component'
 import { SpeciesTreeComponent } from './browser/species/species-tree/species-tree.component';
 import { BrowserComponent } from './browser/browser.component';
 
@@ -30,6 +31,7 @@ const routes = [{
     GeneAnalysisComponent,
     GeneFormComponent,
     GeneListComponent,
+    OverrepListComponent,
     SpeciesTreeComponent,
     BrowserComponent,
     //Dialogs
@@ -45,6 +47,7 @@ const routes = [{
   exports: [
     GeneAnalysisComponent,
     GeneListComponent,
+    OverrepListComponent,
     BrowserComponent,
     SequenceSearchComponent,
     SnpScoringComponent

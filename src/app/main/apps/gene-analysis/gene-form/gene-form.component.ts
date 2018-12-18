@@ -86,10 +86,16 @@ export class GeneFormComponent implements OnInit, OnDestroy {
 
     console.dir(searchCriteria);
 
+    /*
     this.geneAnalysisService.getGeneList(searchCriteria).subscribe((response: any) => {
       this.genes = response;
       console.dir(this.genes)
       this.geneAnalysisService.onGenesChanged.next(this.genes);
+    });
+    */
+
+    this.geneAnalysisService.getOverrepList(searchCriteria).subscribe((response: any) => {
+      this.geneAnalysisService.onOverrepChanged.next(response);
     });
   }
 

@@ -13,6 +13,11 @@
     </div>
   </div>
   <span fxFlex=""></span>
+  <div class="toolbar-separator"></div>
+  <div fxLayout="row" fxLayoutAlign="center center" fxFlex="100">
+    <panther-search-bar fxFlex="60" class="pthr-search-bar" (input)="search($event)"></panther-search-bar>
+  </div>
+  <div class="toolbar-separator"></div>
   <div fxLayout="row" fxLayoutAlign="end center" fxFlex="250px">
     <button mat-button class="">
       About

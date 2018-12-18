@@ -15,6 +15,9 @@
       "@panther.common": [
         "@panther.common"
       ],
+      "@panther.search": [
+        "@panther.search"
+      ],
     },
     "target": "es5",
     "typeRoots": [

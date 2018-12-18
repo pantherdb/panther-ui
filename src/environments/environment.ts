@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  pantherApi: 'http://panthertest3.med.usc.edu:8083/services/'
 };
 
 /*

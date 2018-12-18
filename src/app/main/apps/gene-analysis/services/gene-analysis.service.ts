@@ -1,3 +1,5 @@
+import { environment } from 'environments/environment'
+
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, Subscriber } from 'rxjs';
@@ -16,10 +18,12 @@ const organisms = require('@panther/data/organisms.json');
 export class GeneAnalysisService {
 
   onGenesChanged: BehaviorSubject<any>;
+  onOverrepChanged: BehaviorSubject<any>;
+
   constructor(private httpClient: HttpClient) {
     this.onGenesChanged = new BehaviorSubject([]);
+    this.onOverrepChanged = new BehaviorSubject([]);
   }
-
 
   generateFormRule(form) {
     let sectionRule = this.sectionRule;
@@ -78,5 +82,11 @@ export class GeneAnalysisService {
   getGeneList(searchCriteria): Observable<any> {
     return this.httpClient
       .get('api/gene-list-result');
+  }
+
+  getOverrepList(searchCriteria): Observable<any> {
+    let url = environment.pantherApi + 'enrich/overrep.jsp?geneInputList=Q96PB1&organism=9606&refInputList=Q4W5N1&refOrganism=9606&annotDataSet=GO%3A0008150&enrichmentTestType=FISHER&correction=FDR'
+
+    return this.httpClient.get('api/overrep-list-result');
   }
 }
