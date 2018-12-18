@@ -5,6 +5,7 @@ import { GeneListFakeDb } from './../data/gene-list';
 import { GeneMapFakeDb } from './../data/gene-map';
 import { GeneListFiltersFakeDb } from './../data/gene-list-filters';
 import { SpeciesTreeFakeDb } from './../data/species-tree';
+import { OverrepResultsFakeDb } from './../data/overrep-results'
 
 @Injectable({
     providedIn: 'root'
@@ -16,7 +17,8 @@ export class FakeDbService implements InMemoryDbService {
             'gene-list-result': GeneListFakeDb.result,
             'gene-map-result': GeneMapFakeDb.result,
             'gene-list-filter-result': GeneListFiltersFakeDb.result,
-            'species-list': SpeciesTreeFakeDb.data
+            'species-list': SpeciesTreeFakeDb.data,
+            'overrep-results': OverrepResultsFakeDb.result
         };
     }
 }
