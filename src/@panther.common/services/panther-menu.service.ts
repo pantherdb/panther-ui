@@ -27,7 +27,6 @@ export class PantherMenuService {
     pantherTypes.page.version,
     pantherTypes.page.downloads,
     pantherTypes.page.help,
-    pantherTypes.page.about,
   ]
 
   selectedLeftPanel;

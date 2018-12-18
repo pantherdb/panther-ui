@@ -11,10 +11,21 @@
     </div>
     <div class="h-100-p">
       <form fxLayout="column" fxLayoutAlign="start stretch" name="snpScoringForm" [formGroup]="snpScoringForm" class="pthr-gene-form">
+        <div fxLayout="row" fxLayoutAlign="start center" class="alert alert-info">
+          Estimates the likelihood of a particular nonsynonymous (amino-acid changing) coding SNP to cause a
+          functional
+          impact on the protein. It calculates the length of time (in millions of years) a given amino acid has been
+          preserved in the lineage leading to the protein of interest. The longer the preservation time, the greater
+          the likelihood of functional impact. The method is called PANTHER-PSEP (position-specific evolutionary
+          preservation) and is described in a recent publication. Please cite this publication if you used either the
+          downloadable tool or this web server.
+        </div>
         <mat-form-field class="mr-8 w-100-p" appearance="outline">
+          <mat-label>Enter a protein sequence</mat-label>
           <textarea matInput formControlName="proteinSequence" placeholder="Enter IDs" rows="5"></textarea>
         </mat-form-field>
         <mat-form-field class="mr-8 w-100-p" appearance="outline">
+          <mat-label>Enter substitution(s), e.g. A10P</mat-label>
           <textarea matInput formControlName="substitution" placeholder="Enter IDs" rows="5"></textarea>
         </mat-form-field>
         <div class="pthr-form-section" fxLayout="column" fxLayoutAlign="start stretch">
