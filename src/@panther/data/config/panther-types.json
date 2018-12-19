@@ -30,6 +30,11 @@
       "label": "Panther Data & Stats",
       "url": "data-version",
       "children": {
+        "statistics": {
+          "id": "statistics",
+          "label": "Version 13.1 Statistics",
+          "url": "statistics"
+        },
         "genes": {
           "id": "genes",
           "label": "Genes & Orthologs",

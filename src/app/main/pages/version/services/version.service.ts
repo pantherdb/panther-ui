@@ -21,6 +21,7 @@ const cloneDeep = require('lodash/cLoneDeep');
 export class VersionService {
 
   _mainMenu = [
+    pantherTypes.page.version.children.statistics,
     pantherTypes.page.version.children.genes,
     pantherTypes.page.version.children.hmms,
     pantherTypes.page.version.children.pathway,

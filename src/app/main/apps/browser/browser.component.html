@@ -10,24 +10,7 @@
       </button>
     </div>
     <div class="h-100-p">
-      <div class="agb-column-toolbar w-100-p" fxLayout="row" fxLayoutAlign="start center">
-        <strong>
-          Species
-        </strong>
-        <span fxFlex></span>
-        <button mat-icon-button color='primary' matTooltip='Select ancestral genome by clicking on a node in the tree, to retrieve a list of protein-coding genes in that genome
-                 (and their proxy genes in an extant genome).'
-          #tooltip="matTooltip" (mouseenter)="$event.stopImmediatePropagation()" (mouseleave)="$event.stopImmediatePropagation()"
-          (click)="tooltip.toggle()" matTooltipPosition='above' [matTooltipClass]="'tooltip'">
-          <mat-icon class="s-16">help</mat-icon>
-        </button>
-        <button mat-button [matMenuTriggerFor]="changeView">Change</button>
-        <mat-menu #changeView="matMenu">
-          <button mat-menu-item *ngFor="let browserOntologyType of pantherMenuService.pantherTypes.browserOntologyTypes">
-            {{browserOntologyType.label}}</button>
-        </mat-menu>
-      </div>
-      <pthr-species-tree class="h-100-p w-100-p"></pthr-species-tree>
+      <pthr-browser-sidebar class="h-100-p w-100-p"></pthr-browser-sidebar>
     </div>
   </mat-drawer>
   <mat-drawer-content class="w-100-p" pantherPerfectScrollbar>
