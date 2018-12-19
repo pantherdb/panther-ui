@@ -1,0 +1,39 @@
+<form fxLayout="column" fxLayoutAlign="start stretch" name="snpScoringForm" [formGroup]="snpScoringForm" class="pthr-gene-form">
+  <div fxLayout="row" fxLayoutAlign="start center" class="alert alert-info">
+    Estimates the likelihood of a particular nonsynonymous (amino-acid changing) coding SNP to cause a
+    functional
+    impact on the protein. It calculates the length of time (in millions of years) a given amino acid has been
+    preserved in the lineage leading to the protein of interest. The longer the preservation time, the greater
+    the likelihood of functional impact. The method is called PANTHER-PSEP (position-specific evolutionary
+    preservation) and is described in a recent publication. Please cite this publication if you used either the
+    downloadable tool or this web server.
+  </div>
+  <mat-form-field class="mr-8 w-100-p" appearance="outline">
+    <mat-label>Enter a protein sequence</mat-label>
+    <textarea matInput formControlName="proteinSequence" placeholder="Enter IDs" rows="5"></textarea>
+  </mat-form-field>
+  <mat-form-field class="mr-8 w-100-p" appearance="outline">
+    <mat-label>Enter substitution(s), e.g. A10P</mat-label>
+    <textarea matInput formControlName="substitution" placeholder="Enter IDs" rows="5"></textarea>
+  </mat-form-field>
+  <div class="pthr-form-section" fxLayout="column" fxLayoutAlign="start stretch">
+    <div class="pthr-section-body" fxLayout="column" fxLayoutAlign="start stretch">
+      <mat-form-field class="" appearance="outline">
+        <mat-label>Organisms</mat-label>
+        <input matInput formControlName="organism" placeholder="Swelect an organism" [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let organism of filteredOrganisms | async" [value]="organism.name">
+            <span>{{organism.long_name}}</span>
+            <span fxFlex=""></span>
+            <span>{{organism.taxon_id}}</span>
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+  </div>
+  <div layout="row" class="pthr-submit-row">
+    <span fxFlex></span>
+    <button (click)='cancel()' type="button" mat-raised-button color="" class="mr-8">Clear</button>
+    <button (click)="search()" type="button" mat-raised-button color="primary">Save</button>
+  </div>
+</form>

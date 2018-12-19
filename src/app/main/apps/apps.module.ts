@@ -16,6 +16,8 @@ import { SnpScoringService } from './snp-scoring/services/snp-scoring.service';
 import { SnpScoringComponent } from './snp-scoring/snp-scoring.component';
 import { SequenceSearchComponent } from './sequence-search/sequence-search.component';
 import { BrowserSidebarComponent } from './browser/browser-sidebar/browser-sidebar.component';
+import { SequenceSearchFormComponent } from './sequence-search/sequence-search-form/sequence-search-form.component';
+import { SnpScoringFormComponent } from './snp-scoring/snp-scoring-form/snp-scoring-form.component';
 
 const routes = [{
   path: 'gene-analysis', component: GeneAnalysisComponent
@@ -39,7 +41,9 @@ const routes = [{
     GeneMapDialogComponent,
     SnpScoringComponent,
     SequenceSearchComponent,
-    BrowserSidebarComponent
+    BrowserSidebarComponent,
+    SequenceSearchFormComponent,
+    SnpScoringFormComponent
   ],
   imports: [
     RouterModule.forChild(routes),
