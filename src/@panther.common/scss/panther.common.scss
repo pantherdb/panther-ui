@@ -7,6 +7,22 @@ $pthr-primary-color-light: #dfe3ee;
   padding: 0 !important;
 }
 
+.pthr-menu-back-header {
+  position: sticky;
+  position: -webkit-sticky;
+  padding: 0 12px 0 2px;
+  margin-bottom: 2px;
+  @include deep-height(60px);
+  background-color: #FFF;
+  @include mat-elevation(2);
+
+  .pthr-header-title {
+    font-size: 16px;
+    color: #555;
+    font-weight: bold;
+  }
+}
+
 .pthr-drawer-header {
   position: sticky;
   position: -webkit-sticky;

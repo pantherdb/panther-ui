@@ -1,13 +1,21 @@
 <mat-drawer-container class="w-100-p h-100-p" fxLayout="row" fxLayoutAlign="start start">
   <mat-drawer #leftDrawer class="pthr-left-drawer" fxFlex="400px" opened="true" mode="side" position="start">
+    <div class="pthr-menu-back-header" (click)="pantherMenuService.goHome()" fxLayout="row" fxLayoutAlign="start center">
+      <button mat-icon-button>
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+      <span class="pthr-header-title">
+        Main Menu
+      </span>
+      <span fxFlex></span>
+      <button mat-icon-button (click)="pantherMenuService.closeLeftDrawer(); $event.stopPropagation()" aria-label="Close dialog">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
     <div class="pthr-drawer-header" fxLayout="row" fxLayoutAlign="start center">
       <span class="pthr-drawer-header-title">
         Data Version
       </span>
-      <span fxFlex></span>
-      <button mat-icon-button (click)="pantherMenuService.closeLeftDrawer()" aria-label="Close dialog">
-        <mat-icon>close</mat-icon>
-      </button>
     </div>
     <div class="h-100-p">
       <pthr-version-sidebar></pthr-version-sidebar>
