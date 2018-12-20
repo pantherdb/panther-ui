@@ -85,8 +85,9 @@ export class GeneAnalysisService {
   }
 
   getOverrepList(searchCriteria): Observable<any> {
+    let urlTemp = 'api/overrep-list-result';
     let url = environment.pantherApi + 'enrich/overrep.jsp?geneInputList=Q96PB1&organism=9606&refInputList=Q4W5N1&refOrganism=9606&annotDataSet=GO%3A0008150&enrichmentTestType=FISHER&correction=FDR'
 
-    return this.httpClient.get(url, {});
+    return this.httpClient.get(urlTemp, {});
   }
 }

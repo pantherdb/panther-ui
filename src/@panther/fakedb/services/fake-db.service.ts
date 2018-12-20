@@ -7,6 +7,8 @@ import { GeneListFiltersFakeDb } from './../data/gene-list-filters';
 import { SpeciesTreeFakeDb } from './../data/species-tree';
 import { OverrepResultsFakeDb } from './../data/overrep-results'
 import { VersionStatisticsFakeDb } from './../data/version-statistics'
+//Browser
+import { BPSlim } from './../data/browser/bp-slim'
 
 @Injectable({
     providedIn: 'root'
@@ -20,7 +22,9 @@ export class FakeDbService implements InMemoryDbService {
             'gene-list-filter-result': GeneListFiltersFakeDb.result,
             'species-list': SpeciesTreeFakeDb.data,
             'overrep-list-result': OverrepResultsFakeDb.result,
-            'version-statistics': VersionStatisticsFakeDb.result
+            'version-statistics': VersionStatisticsFakeDb.result,
+            //Browser
+            'bp-slim': BPSlim.data
         };
     }
 }

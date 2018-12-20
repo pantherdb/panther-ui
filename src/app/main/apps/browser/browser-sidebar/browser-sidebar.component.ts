@@ -6,6 +6,12 @@ import { PantherConfigService } from '@panther/services/config.service';
 
 import { PantherMenuService } from '@panther.common/services/panther-menu.service';
 
+
+import { SelectionModel } from '@angular/cdk/collections';
+
+import { Term, TermNode, TermFlatNode } from './../models/term'
+
+
 @Component({
   selector: 'pthr-browser-sidebar',
   templateUrl: './browser-sidebar.component.html',
@@ -17,6 +23,8 @@ export class BrowserSidebarComponent implements OnInit, OnDestroy {
   navigation: any;
   mainMenu;
   subMenu;
+
+  bpChecklistSelection = new SelectionModel<TermFlatNode>(true);
   private _unsubscribeAll: Subject<any>;
 
   constructor(private _pantherConfigService: PantherConfigService,
