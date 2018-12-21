@@ -1,8 +1,72 @@
 <div class="w-100-p h-100-p">
   <form fxLayout="column" fxLayoutAlign="start stretch" class="pthr-gene-form">
 
+
+    <mat-tab-group dynamicHeight>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          MF
+        </ng-template>
+        <div class="pthr-form-section" fxLayout="column" fxLayoutAlign="start stretch">
+          <div class="pthr-section-body" fxLayout="column" fxLayoutAlign="start stretch">
+
+          </div>
+        </div>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          BP
+        </ng-template>
+        <div class="pthr-form-section" fxLayout="column" fxLayoutAlign="start stretch">
+          <div class="pthr-section-body" fxLayout="column" fxLayoutAlign="start stretch">
+            <pthr-bp-term [checklistSelection]="bpChecklistSelection"></pthr-bp-term>
+          </div>
+        </div>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          CC
+        </ng-template>
+        <div class="pthr-form-section" fxLayout="column" fxLayoutAlign="start stretch">
+          <div class="pthr-section-body" fxLayout="column" fxLayoutAlign="start stretch">
+
+          </div>
+        </div>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          PC
+        </ng-template>
+        <div class="pthr-form-section" fxLayout="column" fxLayoutAlign="start stretch">
+          <div class="pthr-section-body" fxLayout="column" fxLayoutAlign="start stretch">
+
+          </div>
+        </div>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          Pathway
+        </ng-template>
+        <div class="pthr-form-section" fxLayout="column" fxLayoutAlign="start stretch">
+          <div class="pthr-section-body" fxLayout="column" fxLayoutAlign="start stretch">
+
+          </div>
+        </div>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          Species
+        </ng-template>
+        <div class="pthr-form-section" fxLayout="column" fxLayoutAlign="start stretch">
+          <div class="pthr-section-body" fxLayout="column" fxLayoutAlign="start stretch">
+
+          </div>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+    <!--
     <mat-accordion class="example-headers-align">
-      <mat-expansion-panel hideToggle>
+      <mat-expansion-panel class="pthr-browser-expansion pthr-passed" hideToggle>
         <mat-expansion-panel-header>
           <mat-panel-title>
             Molecular Function
@@ -17,7 +81,7 @@
           <button mat-button color="primary">Next</button>
         </mat-action-row>
       </mat-expansion-panel>
-      <mat-expansion-panel hideToggle>
+      <mat-expansion-panel class="pthr-browser-expansion pthr-passed" hideToggle>
         <mat-expansion-panel-header>
           <mat-panel-title>
             Biological Process
@@ -32,7 +96,7 @@
           <button mat-button color="primary">Next</button>
         </mat-action-row>
       </mat-expansion-panel>
-      <mat-expansion-panel hideToggle>
+      <mat-expansion-panel class="pthr-browser-expansion pthr-passed" hideToggle>
         <mat-expansion-panel-header>
           <mat-panel-title>
             Cellular Component
@@ -47,7 +111,7 @@
           <button mat-button color="primary">Next</button>
         </mat-action-row>
       </mat-expansion-panel>
-      <mat-expansion-panel hideToggle>
+      <mat-expansion-panel class="pthr-browser-expansion pthr-passed" hideToggle>
         <mat-expansion-panel-header>
           <mat-panel-title>
             Protein Class
@@ -62,7 +126,7 @@
           <button mat-button color="primary">Next</button>
         </mat-action-row>
       </mat-expansion-panel>
-      <mat-expansion-panel hideToggle>
+      <mat-expansion-panel class="pthr-browser-expansion pthr-passed" hideToggle>
         <mat-expansion-panel-header>
           <mat-panel-title>
             Pathway
@@ -77,7 +141,7 @@
           <button mat-button color="primary">Next</button>
         </mat-action-row>
       </mat-expansion-panel>
-      <mat-expansion-panel hideToggle>
+      <mat-expansion-panel class="pthr-browser-expansion pthr-passed" hideToggle>
         <mat-expansion-panel-header>
           <mat-panel-title>
             Species
@@ -93,5 +157,6 @@
         </mat-action-row>
       </mat-expansion-panel>
     </mat-accordion>
+  -->
   </form>
 </div>

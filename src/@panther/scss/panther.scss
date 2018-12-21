@@ -21,6 +21,15 @@ $pthr-secondary-color: #995014;
   @include deep-height($number);
 }
 
+.mat-expansion-panel-body {
+  padding: 0 !important;
+}
+
+.mat-tab-label {
+  padding: 0 8px !important;
+  min-width: 40px !important;
+}
+
 .pthr-paginator {
   overflow: hidden;
   @include deep-height(40px);

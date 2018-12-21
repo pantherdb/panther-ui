@@ -8,7 +8,7 @@
     background-color: #DDD;
   }
 
-  .agb-sidenav {
+  .pthr-sidenav {
     position: relative;
     @include deep-width(100%);
     @include deep-height(100%);
@@ -19,17 +19,17 @@
     @include media-breakpoint('gt-md') {}
   }
 
-  .agb-tree-container {
+  .pthr-tree-container {
     padding: 5px;
     padding-bottom: 200px;
   }
 
-  .agb-tree-node {
+  .pthr-tree-node {
     @include deep-height(25px);
     font-size: 12px;
     color: #000;
 
-    .agb-icon-button {
+    .pthr-icon-button {
       @include deep-height(25px);
       @include deep-width(25px);
       line-height: 25px;
@@ -39,13 +39,13 @@
       background-color: rgba(#000000, 0.10);
     }
 
-    .agb-gene-count {
+    .pthr-gene-count {
       font-size: 10px;
       color: #999;
     }
   }
 
-  .agb-legend {
+  .pthr-legend {
     padding: 5px;
     position: absolute;
     left: 10px;
@@ -56,12 +56,12 @@
     border: #BBB solid 1px;
     @include mat-elevation(6);
 
-    .agb-legend-header {
+    .pthr-legend-header {
       font-size: 10px;
       margin-bottom: 5px;
     }
 
-    .agb-legend-button {
+    .pthr-legend-button {
       width: 100%;
       @include deep-height(20px);
       line-height: 20px;

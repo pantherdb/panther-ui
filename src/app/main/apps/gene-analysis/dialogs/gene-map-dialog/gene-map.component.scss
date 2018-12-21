@@ -11,20 +11,20 @@
     @include deep-height(95%);
   }
 
-  .agb-gene-panel {
+  .pthr-gene-panel {
     padding: 15px 5px;
     background-color: #F7F7F7;
     width: 100%; // border-left: #DDD solid 1px;
   }
 
-  .agb-column-toolbar {}
+  .pthr-column-toolbar {}
 
-  .agb-gene-detail {
+  .pthr-gene-detail {
     padding: 10px;
     width: 100%;
   }
 
-  .agb-sequence {
+  .pthr-sequence {
     @include deep-width(100%);
     resize: none;
   }

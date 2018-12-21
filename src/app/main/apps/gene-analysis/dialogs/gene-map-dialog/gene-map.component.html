@@ -9,11 +9,11 @@
     </mat-toolbar-row>
   </mat-toolbar>
   <div mat-dialog-content class="" pantherPerfectScrollbar>
-    <div class="agb-gene-panel w-100-p h-100-p" fxLayout="column" fxLayoutAlign="start center" pantherPerfectScrollbar>
-      <div class="agb-gene-detail" fxLayout="column" fxLayoutAlign="start stretch">
-        <div class="agb-card-simple mat-elevation-z1">
-          <div class="agb-header" fxLayout="row" fxLayoutAlign="start center">
-            <div class="agb-title">
+    <div class="pthr-gene-panel w-100-p h-100-p" fxLayout="column" fxLayoutAlign="start center" pantherPerfectScrollbar>
+      <div class="pthr-gene-detail" fxLayout="column" fxLayoutAlign="start stretch">
+        <div class="pthr-card-simple mat-elevation-z1">
+          <div class="pthr-header" fxLayout="row" fxLayoutAlign="start center">
+            <div class="pthr-title">
               Genes
             </div>
             <span fxFlex></span>
@@ -21,7 +21,7 @@
               <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
             </mat-form-field>
           </div>
-          <div class="agb-body p-0">
+          <div class="pthr-body p-0">
             <mat-table [dataSource]="dataSource" class="" matSort>
               <ng-container matColumnDef="gene_id">
                 <mat-header-cell *matHeaderCellDef mat-sort-header> Gene List </mat-header-cell>
@@ -57,7 +57,7 @@
   </div>
 </div>
 <ng-template #no_info_content>
-  <div class="agb-alert">
+  <div class="pthr-alert">
     no information yet
   </div>
 </ng-template>
