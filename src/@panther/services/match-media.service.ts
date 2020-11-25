@@ -10,28 +10,13 @@ export class PantherMatchMediaService {
     activeMediaQuery: string;
     onMediaChange: BehaviorSubject<string> = new BehaviorSubject<string>('');
 
-    /**
-     * Constructor
-     *
-     * @param {MediaObserver} _mediaObserver
-     */
     constructor(
         private _mediaObserver: MediaObserver
     ) {
-
         this.activeMediaQuery = '';
-
-        // Initialize
         this._init();
-
     }
 
-
-    /**
-     * Initialize
-     *
-     * @private
-     */
     private _init(): void {
         this._mediaObserver.media$
             .pipe(

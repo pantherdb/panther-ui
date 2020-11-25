@@ -5,26 +5,27 @@ import { ActivatedRoute } from '@angular/router';
 import { merge, Observable, BehaviorSubject, fromEvent, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map, startWith } from 'rxjs/operators';
 
-import { PantherMenuService } from '@panther.common/services/panther-menu.service';
+import { PantherSearchMenuService } from '@panther.search/services/search-menu.service';
 
 @Component({
   selector: 'panther-sequence-search-form',
   templateUrl: './sequence-search-form.component.html',
   styleUrls: ['./sequence-search-form.component.scss']
 })
-export class SequenceSearchFormComponent implements OnInit {
+export class SequenceSearchFormComponent implements OnInit, OnDestroy {
   sequenceSearchForm: FormGroup;
   private _unsubscribeAll: Subject<any>;
 
 
   constructor(
-    public pantherMenuService: PantherMenuService) {
+    public pantherSearchMenuService: PantherSearchMenuService) {
     this._unsubscribeAll = new Subject();
   }
 
   ngOnInit() {
     this.sequenceSearchForm = this.createSequenceSearchForm();
   }
+
 
   createSequenceSearchForm() {
     return new FormGroup({

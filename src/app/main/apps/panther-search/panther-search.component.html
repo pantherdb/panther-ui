@@ -1,0 +1,145 @@
+<div class="w-100-p h-100-p" fxLayout="row" fxLayoutAlign="start start">
+  <div class="panther-sidemenu" fxLayout="column" fxLayoutAlign="start center">
+    <button mat-icon-button color="" class="panther-rounded-button"
+      [ngClass]="{'panther-active': pantherSearchMenuService.selectedLeftPanel === LeftPanel.filter}"
+      (click)="toggleLeftDrawer(LeftPanel.filter)" matTooltip="Filter" [matTooltipPosition]="'after'"
+      [matTooltipShowDelay]="1500">
+      <fa-icon [icon]="['fas', 'search']"></fa-icon>
+    </button>
+    <!--  <button mat-icon-button color="" class="panther-rounded-button" (click)="toggleLeftDrawer(LeftPanel.relation)"
+      matTooltip="Relation Search" [matTooltipPosition]="'after'" [matTooltipShowDelay]="1500">
+      <mat-icon class="icon-rotate-relation"> linear_scale </mat-icon>
+    </button> -->
+    <button mat-icon-button color="" class="panther-rounded-button" (click)="
+      toggleLeftDrawer(LeftPanel.contributor)" matTooltip="Browse by contributor"
+      [ngClass]="{'panther-active': pantherSearchMenuService.selectedLeftPanel === LeftPanel.contributor}"
+      [matTooltipPosition]="'after'" [matTooltipShowDelay]="1000">
+      <fa-icon [icon]="['fas', 'user']"></fa-icon>
+    </button>
+    <button mat-icon-button color="" class="panther-rounded-button" (click)="
+      toggleLeftDrawer(LeftPanel.group)"
+      [ngClass]="{'panther-active': pantherSearchMenuService.selectedLeftPanel === LeftPanel.group}"
+      matTooltip="Browse by group" [matTooltipPosition]="'after'" [matTooltipShowDelay]="1000">
+      <fa-icon [icon]="['fas', 'users']"></fa-icon>
+    </button>
+    <button mat-icon-button color="" class="panther-rounded-button" (click)="
+      toggleLeftDrawer(LeftPanel.organism)"
+      [ngClass]="{'panther-active': pantherSearchMenuService.selectedLeftPanel === LeftPanel.organism}"
+      matTooltip="Search by organism" [matTooltipPosition]="'after'" [matTooltipShowDelay]="1000">
+      <fa-icon [icon]="['fas', 'paw']"></fa-icon>
+    </button>
+    <button mat-icon-button color="" class="panther-rounded-button" (click)="toggleLeftDrawer(LeftPanel.history)"
+      [ngClass]="{'panther-active': pantherSearchMenuService.selectedLeftPanel === LeftPanel.history}"
+      matTooltip="History" [matTooltipPosition]="'after'" [matTooltipShowDelay]="1500">
+      <fa-icon [icon]="['fas', 'history']"></fa-icon>
+    </button>
+    <button mat-icon-button color="" class="panther-rounded-button" (click)="openBasketPanel()"
+      [ngClass]="{'panther-active': pantherSearchMenuService.selectedLeftPanel === LeftPanel.artBasket}"
+      matTooltip="Art Basket" [matTooltipPosition]="'after'" [matTooltipShowDelay]="1500">
+      <div *ngIf="artBasket?.cams.length > 0" class="panther-badge">
+        {{artBasket?.cams.length}}
+      </div>
+      <fa-icon [icon]="['fas', 'shopping-basket']"></fa-icon>
+    </button>
+  </div>
+  <mat-drawer-container class="w-100-p h-100-p" fxLayout="row" fxLayoutAlign="start start" [hasBackdrop]="false"
+    autosize>
+    <mat-drawer #leftDrawer class="panther-left-drawer" mode="side" position="start" opened>
+      <div [ngSwitch]="pantherSearchMenuService.selectedLeftPanel" class="h-100-p">
+        <panther-search-filter *ngSwitchCase="LeftPanel.filter"></panther-search-filter>
+        <panther-search-relation *ngSwitchCase="LeftPanel.relation"></panther-search-relation>
+        <panther-search-groups *ngSwitchCase="LeftPanel.group"></panther-search-groups>
+        <panther-search-contributors *ngSwitchCase="LeftPanel.contributor">
+        </panther-search-contributors>
+        <panther-search-organisms *ngSwitchCase="LeftPanel.organism"></panther-search-organisms>
+        <panther-search-history *ngSwitchCase="LeftPanel.history"></panther-search-history>
+        <panther-art-basket *ngSwitchCase="LeftPanel.artBasket"></panther-art-basket>
+      </div>
+    </mat-drawer>
+    <mat-drawer-content id="panther-results" class="w-100-p" pantherPerfectScrollbar>
+      <div class="panther-section-body w-100-p">
+        <div class="header accent p-8 w-100-p" fxLayout="column" fxLayoutAlign="center center">
+          <h1 [@animate]="{value:'*',params:{delay:'100ms', y:'25px'}}">
+            WELCOME TO PANTHER
+          </h1>
+          <h3 [@animate]="{value:'*',params:{delay:'100ms', y:'25px'}}">
+            Panther is a web-based, collaborative Gene Ontology (GO) annotation tool developed by the GO Consortium.
+            It can be used to create standard GO annotations as well as more expressive models of biological processes,
+            known as GO-CAMs (Gene Ontology Causal Activity Models)
+          </h3>
+          <h4 *ngIf="!pantherUserService.user">
+            You must Login to create or edit models. Models may be viewed without login.
+          </h4>
+          <div *ngIf="pantherUserService.user" class="panther-create h-100-p" fxLayout="row"
+            fxLayoutAlign="start center">
+            <button mat-raised-button (click)="createModel('panther-form')" color=""
+              class="panther-rounded-button mr-4 panther-half-button panther-r">
+              CREATE MODEL IN FORM
+            </button>
+            <button mat-raised-button (click)="createModel('graph-editor')" color=""
+              class="panther-rounded-button mr-4 panther-half-button panther-m">
+              CREATE MODEL IN GRAPH EDITOR
+            </button>
+            <button mat-raised-button (click)="toggleReviewMode()" color=""
+              class="panther-rounded-button panther-half-button panther-l panther-review-mode-button"
+              [ngClass]="{'panther-selected': pantherSearchMenuService.reviewMode !== ReviewMode.off}" fxLayout="row"
+              fxLayoutAlign="start center">
+              <div class="panther-title">
+                ANNOTATION REVIEW
+              </div>
+            </button>
+          </div>
+        </div>
+        <div *ngIf="pantherSearchMenuService.reviewMode !== ReviewMode.off" class="panther-art-info" fxLayout="row"
+          fxLayoutAlign="center center">
+          <div class="panther-art-tabs" fxLayout="row" fxLayoutAlign="center center">
+            <div class="panther-line panther-visited" fxFlex>
+            </div>
+            <button mat-stroked-button (click)="selectMiddlePanel(MiddlePanel.cams)"
+              matBadge="{{artBasket?.cams.length}}" matBadgePosition="after" matBadgeColor="warn" class="" color=""
+              [ngClass]="{'panther-active': pantherSearchMenuService.selectedMiddlePanel === MiddlePanel.cams,
+            'panther-visited': pantherSearchMenuService.reviewLevel>0}">
+              <div class="panther-title">Search</div><br>
+              <div class="panther-description">Add/remove to review</div>
+            </button>
+            <div class="panther-line" fxFlex="80px"
+              [ngClass]="{'panther-visited': pantherSearchMenuService.reviewLevel>0}">
+            </div>
+            <button mat-stroked-button (click)="selectMiddlePanel(MiddlePanel.camsReview)" [ngClass]="{'panther-active': pantherSearchMenuService.selectedMiddlePanel === MiddlePanel.camsReview,
+            'panther-visited': pantherSearchMenuService.reviewLevel>1}" class="" color="">
+              <div class="panther-title">Review</div> <br>
+              <div class="panther-description">Edit models</div>
+            </button>
+            <div class="panther-line" fxFlex="80px"
+              [ngClass]="{'panther-visited': pantherSearchMenuService.reviewLevel>1}">
+            </div>
+            <button mat-stroked-button (click)="selectMiddlePanel(MiddlePanel.reviewChanges); reviewChanges()" class=""
+              color="" [ngClass]="{'panther-active': pantherSearchMenuService.selectedMiddlePanel === MiddlePanel.reviewChanges,
+            'panther-visited': pantherSearchMenuService.reviewLevel>2}">
+              <div class="panther-title">Checkout</div> <br>
+              <div class="panther-description">Review and submit changes</div>
+            </button>
+            <div class="panther-line" fxFlex [ngClass]="{'panther-visited': pantherSearchMenuService.reviewLevel>2}">
+            </div>
+          </div>
+        </div>
+        <div class="h-100-p w-100-p">
+          <panther-cams-table [hidden]="pantherSearchMenuService.selectedMiddlePanel !== MiddlePanel.cams"
+            [isReviewMode]="isReviewMode">
+          </panther-cams-table>
+          <panther-cams-review [hidden]="pantherSearchMenuService.selectedMiddlePanel !== MiddlePanel.camsReview">
+          </panther-cams-review>
+          <panther-cams-review-changes
+            [hidden]="pantherSearchMenuService.selectedMiddlePanel !== MiddlePanel.reviewChanges">
+          </panther-cams-review-changes>
+        </div>
+        <div class="w-100-p">
+          <app-footer></app-footer>
+        </div>
+      </div>
+    </mat-drawer-content>
+    <mat-drawer #rightDrawer class="panther-right-drawer" mode="over" position="end">
+
+    </mat-drawer>
+  </mat-drawer-container>
+</div>

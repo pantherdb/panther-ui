@@ -8,7 +8,7 @@ import { takeUntil } from 'rxjs/operators';
 
 import { Species, SpeciesNode, SpeciesFlatNode } from './../models/species'
 
-import { PantherMenuService } from '@panther.common/services/panther-menu.service';
+import { PantherSearchMenuService } from '@panther.search/services/search-menu.service';
 import { SpeciesService } from './../services/species.service';
 
 
@@ -17,7 +17,7 @@ import { SpeciesService } from './../services/species.service';
   templateUrl: './species-tree.component.html',
   styleUrls: ['./species-tree.component.scss'],
 })
-export class SpeciesTreeComponent implements OnInit {
+export class SpeciesTreeComponent implements OnInit, OnDestroy {
   @ViewChild('tree') tree;
   @ViewChildren(MatTreeNode, { read: ElementRef }) treeNodes: ElementRef[];
 
@@ -32,9 +32,10 @@ export class SpeciesTreeComponent implements OnInit {
 
   private _unsubscribeAll: Subject<any>;
 
-  constructor(private router: Router,
+  constructor(
+    private router: Router,
     private route: ActivatedRoute,
-    public pantherMenuService: PantherMenuService,
+    public pantherSearchMenuService: PantherSearchMenuService,
     private speciesService: SpeciesService,
     private renderer: Renderer2,) {
 
@@ -44,7 +45,7 @@ export class SpeciesTreeComponent implements OnInit {
     this.dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
 
     this.timescaleLegend = speciesService.timescaleLegend;
-    console.log(this.pantherMenuService.pantherTypes)
+    console.log(this.pantherSearchMenuService.pantherTypes)
     this._unsubscribeAll = new Subject();
 
   }
@@ -64,6 +65,11 @@ export class SpeciesTreeComponent implements OnInit {
       });
 
     this.speciesService.getSpeciesList();
+  }
+
+  ngOnDestroy(): void {
+    this._unsubscribeAll.next();
+    this._unsubscribeAll.complete();
   }
 
   selectSpecies(species) {

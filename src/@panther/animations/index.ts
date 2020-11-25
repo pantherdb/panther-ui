@@ -51,23 +51,26 @@ export const pantherAnimations = [
     ]),
 
     trigger('fadeInOut', [
-        state('0, void', style({
+        state('0', style({
+            display: 'none',
             opacity: 0
         })),
-        state('1, *', style({
+        state('1', style({
+            display: 'block',
             opacity: 1
         })),
         transition('1 => 0', animate('300ms ease-out')),
-        transition('0 => 1', animate('300ms ease-in')),
-        transition('void <=> *', animate('300ms ease-in'))
+        transition('0 => 1', animate('300ms ease-in'))
     ]),
 
     trigger('slideInOut', [
         state('0', style({
-            height: '0px'
+            height: '0px',
+            display: 'none'
         })),
         state('1', style({
-            height: '*'
+            height: '*',
+            display: 'block'
         })),
         transition('1 => 0', animate('300ms ease-out')),
         transition('0 => 1', animate('300ms ease-in'))
@@ -117,15 +120,17 @@ export const pantherAnimations = [
                 })
             )
         ]
-        )
+        ),
     ]),
 
     trigger('slideInLeft', [
         state('void', style({
             transform: 'translateX(-100%)',
+            display: 'none'
         })),
         state('*', style({
             transform: 'translateX(0)',
+            display: 'flex'
         })),
         transition('void => *', animate('300ms')),
         transition('* => void', animate('300ms'))
@@ -134,9 +139,11 @@ export const pantherAnimations = [
     trigger('slideInRight', [
         state('void', style({
             transform: 'translateX(100%)',
+            display: 'none'
         })),
         state('*', style({
             transform: 'translateX(0)',
+            display: 'flex'
         })),
         transition('void => *', animate('300ms')),
         transition('* => void', animate('300ms'))
@@ -145,9 +152,11 @@ export const pantherAnimations = [
     trigger('slideInTop', [
         state('void', style({
             transform: 'translateY(-100%)',
+            display: 'none'
         })),
         state('*', style({
             transform: 'translateY(0)',
+            display: 'flex'
         })),
         transition('void => *', animate('300ms')),
         transition('* => void', animate('300ms'))
@@ -157,9 +166,11 @@ export const pantherAnimations = [
         state('void',
             style({
                 transform: 'translateY(100%)',
+                display: 'none'
             })),
         state('*', style({
             transform: 'translateY(0)',
+            display: 'flex'
         })),
         transition('void => *', animate('300ms')),
         transition('* => void', animate('300ms'))
@@ -176,14 +187,10 @@ export const pantherAnimations = [
         transition('* => void', animate('300ms ease-in'))
     ]),
 
-    // -----------------------------------------------------------------------------------------------------
-    // @ Router animations
-    // -----------------------------------------------------------------------------------------------------
-
     trigger('routerTransitionLeft', [
 
         transition('* => *', [
-            query('content > :enter, content > :leave', [
+            query('panther-content > :enter, panther-content > :leave', [
                 style({
                     position: 'absolute',
                     top: 0,
@@ -192,7 +199,7 @@ export const pantherAnimations = [
                     right: 0
                 })
             ], { optional: true }),
-            query('content > :enter', [
+            query('panther-content > :enter', [
                 style({
                     transform: 'translateX(100%)',
                     opacity: 0
@@ -200,7 +207,7 @@ export const pantherAnimations = [
             ], { optional: true }),
             sequence([
                 group([
-                    query('content > :leave', [
+                    query('panther-content > :leave', [
                         style({
                             transform: 'translateX(0)',
                             opacity: 1
@@ -211,7 +218,7 @@ export const pantherAnimations = [
                                 opacity: 0
                             }))
                     ], { optional: true }),
-                    query('content > :enter', [
+                    query('panther-content > :enter', [
                         style({ transform: 'translateX(100%)' }),
                         animate('600ms cubic-bezier(0.0, 0.0, 0.2, 1)',
                             style({
@@ -220,8 +227,8 @@ export const pantherAnimations = [
                             }))
                     ], { optional: true })
                 ]),
-                query('content > :leave', animateChild(), { optional: true }),
-                query('content > :enter', animateChild(), { optional: true })
+                query('panther-content > :leave', animateChild(), { optional: true }),
+                query('panther-content > :enter', animateChild(), { optional: true })
             ])
         ])
     ]),
@@ -229,7 +236,7 @@ export const pantherAnimations = [
     trigger('routerTransitionRight', [
 
         transition('* => *', [
-            query('content > :enter, content > :leave', [
+            query('panther-content > :enter, panther-content > :leave', [
                 style({
                     position: 'absolute',
                     top: 0,
@@ -238,7 +245,7 @@ export const pantherAnimations = [
                     right: 0
                 })
             ], { optional: true }),
-            query('content > :enter', [
+            query('panther-content > :enter', [
                 style({
                     transform: 'translateX(-100%)',
                     opacity: 0
@@ -246,7 +253,7 @@ export const pantherAnimations = [
             ], { optional: true }),
             sequence([
                 group([
-                    query('content > :leave', [
+                    query('panther-content > :leave', [
                         style({
                             transform: 'translateX(0)',
                             opacity: 1
@@ -257,7 +264,7 @@ export const pantherAnimations = [
                                 opacity: 0
                             }))
                     ], { optional: true }),
-                    query('content > :enter', [
+                    query('panther-content > :enter', [
                         style({ transform: 'translateX(-100%)' }),
                         animate('600ms cubic-bezier(0.0, 0.0, 0.2, 1)',
                             style({
@@ -266,8 +273,8 @@ export const pantherAnimations = [
                             }))
                     ], { optional: true })
                 ]),
-                query('content > :leave', animateChild(), { optional: true }),
-                query('content > :enter', animateChild(), { optional: true })
+                query('panther-content > :leave', animateChild(), { optional: true }),
+                query('panther-content > :enter', animateChild(), { optional: true })
             ])
         ])
     ]),
@@ -275,7 +282,7 @@ export const pantherAnimations = [
     trigger('routerTransitionUp', [
 
         transition('* => *', [
-            query('content > :enter, content > :leave', [
+            query('panther-content > :enter, panther-content > :leave', [
                 style({
                     position: 'absolute',
                     top: 0,
@@ -284,14 +291,14 @@ export const pantherAnimations = [
                     right: 0
                 })
             ], { optional: true }),
-            query('content > :enter', [
+            query('panther-content > :enter', [
                 style({
                     transform: 'translateY(100%)',
                     opacity: 0
                 })
             ], { optional: true }),
             group([
-                query('content > :leave', [
+                query('panther-content > :leave', [
                     style({
                         transform: 'translateY(0)',
                         opacity: 1
@@ -302,7 +309,7 @@ export const pantherAnimations = [
                             opacity: 0
                         }))
                 ], { optional: true }),
-                query('content > :enter', [
+                query('panther-content > :enter', [
                     style({ transform: 'translateY(100%)' }),
                     animate('600ms cubic-bezier(0.0, 0.0, 0.2, 1)',
                         style({
@@ -311,15 +318,15 @@ export const pantherAnimations = [
                         }))
                 ], { optional: true })
             ]),
-            query('content > :leave', animateChild(), { optional: true }),
-            query('content > :enter', animateChild(), { optional: true })
+            query('panther-content > :leave', animateChild(), { optional: true }),
+            query('panther-content > :enter', animateChild(), { optional: true })
         ])
     ]),
 
     trigger('routerTransitionDown', [
 
         transition('* => *', [
-            query('content > :enter, content > :leave', [
+            query('panther-content > :enter, panther-content > :leave', [
                 style({
                     position: 'absolute',
                     top: 0,
@@ -328,7 +335,7 @@ export const pantherAnimations = [
                     right: 0
                 })
             ], { optional: true }),
-            query('content > :enter', [
+            query('panther-content > :enter', [
                 style({
                     transform: 'translateY(-100%)',
                     opacity: 0
@@ -336,7 +343,7 @@ export const pantherAnimations = [
             ], { optional: true }),
             sequence([
                 group([
-                    query('content > :leave', [
+                    query('panther-content > :leave', [
                         style({
                             transform: 'translateY(0)',
                             opacity: 1
@@ -347,7 +354,7 @@ export const pantherAnimations = [
                                 opacity: 0
                             }))
                     ], { optional: true }),
-                    query('content > :enter', [
+                    query('panther-content > :enter', [
                         style({ transform: 'translateY(-100%)' }),
                         animate('600ms cubic-bezier(0.0, 0.0, 0.2, 1)',
                             style({
@@ -356,8 +363,8 @@ export const pantherAnimations = [
                             }))
                     ], { optional: true })
                 ]),
-                query('content > :leave', animateChild(), { optional: true }),
-                query('content > :enter', animateChild(), { optional: true })
+                query('panther-content > :leave', animateChild(), { optional: true }),
+                query('panther-content > :enter', animateChild(), { optional: true })
             ])
         ])
     ]),
@@ -366,7 +373,7 @@ export const pantherAnimations = [
 
         transition('* => *', group([
 
-            query('content > :enter, content > :leave ', [
+            query('panther-content > :enter, panther-content > :leave ', [
                 style({
                     position: 'absolute',
                     top: 0,
@@ -376,12 +383,12 @@ export const pantherAnimations = [
                 })
             ], { optional: true }),
 
-            query('content > :enter', [
+            query('panther-content > :enter', [
                 style({
                     opacity: 0
                 })
             ], { optional: true }),
-            query('content > :leave', [
+            query('panther-content > :leave', [
                 style({
                     opacity: 1
                 }),
@@ -390,7 +397,7 @@ export const pantherAnimations = [
                         opacity: 0
                     }))
             ], { optional: true }),
-            query('content > :enter', [
+            query('panther-content > :enter', [
                 style({
                     opacity: 0
                 }),
@@ -399,8 +406,8 @@ export const pantherAnimations = [
                         opacity: 1
                     }))
             ], { optional: true }),
-            query('content > :enter', animateChild(), { optional: true }),
-            query('content > :leave', animateChild(), { optional: true })
+            query('panther-content > :enter', animateChild(), { optional: true }),
+            query('panther-content > :leave', animateChild(), { optional: true })
         ]))
     ])
 ];

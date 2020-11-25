@@ -1,0 +1,220 @@
+@import "src/@panther/scss/panther";
+@import "src/@panther.common/scss/panther.common";
+$primary: map-get($theme, primary);
+$accent: map-get($theme, accent);
+
+:host {
+
+  @include media-breakpoint('xs') {
+    width: 100%;
+  }
+
+  @include media-breakpoint-up('sm') {
+    width: 1200px;
+  }
+
+  .panther-dialog-body {
+    margin: 0;
+    padding: 0;
+    @include deep-width(100%);
+    max-height: 65vh;
+    overflow: auto;
+  }
+
+  .mat-dialog-container {
+    padding: 0;
+  }
+
+  .mat-dialog-content {}
+
+  .dialog-content-wrapper {
+    width: 100%;
+    @include deep-width(100%);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .panther-section-header {
+    padding: 8px 8px;
+    @include deep-height(100px);
+  }
+
+  .panther-matched-count {
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+    align-items: center;
+    padding: 0 10px;
+    height: 100%;
+  }
+
+  .panther-cam-replace {
+    @include deep-width(2000px);
+  }
+
+  .panther-left-compare,
+  .panther-right-compare {
+    @include deep-width(50%);
+  }
+
+  .panther-left-compare {
+    border-right: #be97f1 double 2px;
+  }
+
+  .panther-cam-heading {
+    margin-bottom: 4px;
+    padding: 0 10px;
+    @include deep-height(40px);
+    width: 100%;
+    //min-height: 35px;
+    background-color: #FFF;
+    font-size: 12px;
+
+    @include mat-elevation(2);
+
+    .panther-cam-title {
+      max-width: 400px !important;
+    }
+
+    .panther-cam-heading-section {
+      height: 100%;
+
+      .panther-section-label {
+        font-size: 12px;
+        color: #555;
+      }
+    }
+
+    .panther-title {
+      padding-left: 8px;
+      padding-right: 8px;
+      max-width: 250px;
+
+      strong {
+        font-size: 12px;
+      }
+    }
+
+    .panther-model-state {
+      padding-left: 8px;
+      padding-right: 8px;
+      max-width: 150px;
+    }
+
+    mat-icon-button {
+      border-radius: 0 !important;
+    }
+  }
+
+
+  mat-chip {
+    font-size: 12px;
+    font-weight: normal;
+    @include deep-height(25px);
+    max-width: 200px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    .panther-chip-label {
+      padding: 0 8px 0 4px;
+      display: block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+
+      .panther-icon-action {
+        font-size: 10px;
+        background-color: transparent;
+
+        &:hover {
+          font-size: 14px;
+          color: #222;
+        }
+      }
+    }
+
+    &.panther-table-chip {
+      padding: 0;
+      @include deep-height(25px);
+      font-size: 10px;
+
+      .panther-icon,
+      .panther-icon-action {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 25px;
+        width: 25px;
+        border-radius: 50%;
+        color: #777;
+        font-size: 14px;
+      }
+
+      .panther-icon-action {
+        font-size: 10px;
+        background-color: transparent;
+
+        &:hover {
+          font-size: 14px;
+          color: #222;
+          background-color: rgba(#000000, 0.2);
+        }
+
+      }
+
+      @include panther-chip-color(#DDD);
+
+      &.panther-user-chip {
+        @include panther-chip-color(#bbc9cc);
+
+        .panther-icon {
+          color: #59939e
+        }
+      }
+
+      &.panther-date-chip {
+        @include panther-chip-color(#aee9f5);
+      }
+
+      &.panther-state-chip {
+        &.panther-development {
+          @include panther-chip-color(#f4c89c);
+          // border: #d59f80 solid 1px;/
+        }
+
+        &.panther-production {
+          @include panther-chip-color(#b6f1cc);
+          // border: #d59f80 solid 1px;/
+        }
+
+        &.panther-review {
+          @include panther-chip-color(#d8f6a3);
+          // border: #d59f80 solid 1px;/
+        }
+      }
+
+    }
+  }
+
+
+  .panther-form-container {
+    background-color: #EEE;
+    padding: 20px 10px;
+  }
+
+  .panther-toolbar {
+    padding: 0px 20px;
+    height: 40px;
+    width: 100%;
+    background-color: #F2F2F2;
+    border-bottom: #BBB solid 1px;
+
+    .panther-title {
+      line-height: 38px;
+      color: #555;
+      font-size: 14px;
+      font-weight: bold;
+    }
+  }
+
+}

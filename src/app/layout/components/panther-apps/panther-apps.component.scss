@@ -1,0 +1,144 @@
+@import "src/@panther/scss/panther";
+@import "src/@panther.common/scss/panther.common";
+
+$primary: map-get($theme, primary);
+$accent: map-get($theme, accent);
+
+panther-panther-apps {
+  @include deep-width(500px);
+  z-index: 100;
+  background-color: white;
+  @include mat-elevation(4);
+
+  .panther-create {
+    padding: 8px;
+
+    button {
+      color: map-get($accent, default);
+      @include mat-elevation(4);
+    }
+  }
+
+  .panther-cam-form {
+    @include deep-width(300px);
+  }
+
+  .panther-header {
+    @include deep-height(40px);
+    background-color: #EEE;
+    border-bottom: #CCC solid 1px;
+
+    mat-icon-button {
+      @include deep-height(40px);
+      @include deep-width(40px);
+      line-height: 40px;
+    }
+
+    .panther-title {
+      font-size: 10px;
+      padding: 0 14px;
+    }
+  }
+
+  .panther-body {
+    padding: 0 14px 14px 14px;
+  }
+
+  .panther-drawer-body {
+    padding-bottom: 250px;
+  }
+
+  a {
+    display: block;
+    text-decoration: none !important;
+  }
+
+  mat-chip {
+    font-size: 12px;
+    font-weight: normal;
+    @include deep-height(30px);
+    max-width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    .panther-chip-label {
+      padding: 0 8px 0 12px;
+      display: block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+
+      .panther-icon-action {
+        font-size: 10px;
+        background-color: transparent;
+
+        &:hover {
+          font-size: 14px;
+          color: #222;
+        }
+      }
+    }
+
+    &.panther-table-chip {
+      padding: 0;
+      @include deep-height(30px);
+      font-size: 10px;
+
+      .panther-icon,
+      .panther-icon-action {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+        color: #777;
+        font-size: 14px;
+      }
+
+      .panther-icon-action {
+        font-size: 10px;
+        background-color: transparent;
+
+        &:hover {
+          font-size: 14px;
+          color: #222;
+          background-color: rgba(#000000, 0.2);
+        }
+
+      }
+
+      @include panther-chip-color(#bbc9cc);
+
+      &.panther-user-chip {
+        @include panther-chip-color(#bbc9cc);
+
+        .panther-icon {
+          color: #59939e
+        }
+      }
+
+      &.panther-date-chip {
+        @include panther-chip-color(#aee9f5);
+      }
+
+      &.panther-state-chip {
+        &.panther-development {
+          @include panther-chip-color(#f4c89c);
+          // border: #d59f80 solid 1px;/
+        }
+
+        &.panther-production {
+          @include panther-chip-color(#b6f1cc);
+          // border: #d59f80 solid 1px;/
+        }
+
+        &.panther-review {
+          @include panther-chip-color(#d8f6a3);
+          // border: #d59f80 solid 1px;/
+        }
+      }
+
+    }
+  }
+}

@@ -4,7 +4,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { PantherConfigService } from '@panther/services/config.service';
 
-import { PantherMenuService } from '@panther.common/services/panther-menu.service';
+import { PantherSearchMenuService } from '@panther.search/services/search-menu.service';
 
 
 import { SelectionModel } from '@angular/cdk/collections';
@@ -28,11 +28,11 @@ export class BrowserSidebarComponent implements OnInit, OnDestroy {
   private _unsubscribeAll: Subject<any>;
 
   constructor(private _pantherConfigService: PantherConfigService,
-    public pantherMenuService: PantherMenuService) {
+    public pantherSearchMenuService: PantherSearchMenuService) {
     this._unsubscribeAll = new Subject();
 
-    this.mainMenu = this.pantherMenuService.mainMenu;
-    this.subMenu = this.pantherMenuService.subMenu;
+    this.mainMenu = this.pantherSearchMenuService.mainMenu;
+    this.subMenu = this.pantherSearchMenuService.subMenu;
   }
 
   ngOnInit(): void {

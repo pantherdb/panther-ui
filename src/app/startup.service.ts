@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { PantherDataService } from '@panther.common/services/panther-data.service';
 import { BehaviorSubject } from 'rxjs';
 
 
@@ -7,16 +8,16 @@ export class StartupService {
   onDataReady: BehaviorSubject<boolean>;
 
   constructor(
+    private dataService: PantherDataService
   ) {
     const self = this;
 
   }
 
   loadData() {
-    return true;
+    return this.dataService.setup();
     /* return new Promise<void>((resolve, reject) => {
       console.log("AppInitService.init() called");
-      ////do your initialisation stuff here  
       setTimeout(() => {
         console.log('AppInitService Finished');
         resolve();

@@ -1,38 +1,51 @@
-import { NgModule, APP_INITIALIZER } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
-import { MatMomentDateModule } from '@angular/material-moment-adapter';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { TranslateModule } from '@ngx-translate/core';
-import 'hammerjs';
-
+import { ContextMenuModule } from 'ngx-contextmenu';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { PantherModule } from '@panther/panther.module';
-import { PantherSharedModule } from '@panther/shared.module';
-import { PantherProgressBarModule, PantherSidebarModule, PantherThemeOptionsModule } from '@panther/components';
+import { PantherProgressBarModule } from '@panther/components';
 
+import { PantherSharedModule } from '@panther/shared.module';
+import { pantherConfig } from './panther-config';
+import { AppComponent } from './app.component';
+import { LayoutModule } from 'app/layout/layout.module';
+
+import { PagesModule } from './main/pages/pages.module';
+import { AppsModule } from './main/apps/apps.module';
 import {
+    faPaw,
+    faPen,
     faSitemap,
-    faPaw, faUser,
-    faUsers, faListAlt,
-    faClock, faCalendarDay, faCalendarWeek,
-    faHistory, faSearch, faTasks, faPlus,
-    faCog, faCheck, faHeart, faTimes, faBookReader,
-    faStreetView, faTree, faHiking, faBed, faUserFriends,
-    faMoon, faSkiing, faPhotoVideo, faPray, faHeartbeat, faSwimmer, faFileInvoiceDollar, faLanguage, faLongArrowAltDown, faBackward, faFastBackward, faForward, faPlay
+    faUser,
+    faUsers,
+    faCalendarDay,
+    faCalendarWeek,
+    faSearch,
+    faTasks,
+    faListAlt,
+    faChevronRight,
+    faHistory,
+    faShoppingBasket,
+    faCopy,
+    faPlus,
+    faLink,
+    faChevronDown,
+    faLevelDownAlt,
+    faLevelUpAlt,
+    faArrowUp,
+    faArrowDown,
+    faCaretDown,
+    faCaretRight,
+    faAngleDoubleDown,
+    faAngleDoubleUp, faUndo, faSave, faExclamationTriangle
 } from '@fortawesome/free-solid-svg-icons';
 import { faGithub, faFacebook, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
-import { pantherConfig } from 'app/panther-config';
-import { AppComponent } from 'app/app.component';
-import { LayoutModule } from 'app/layout/layout.module';
+import { PantherDataService } from '@panther.common/services/panther-data.service';
 import { StartupService } from './startup.service';
-import { AppsModule } from './main/apps/apps.module';
-import { FakeDbService } from '@panther/fakedb/services/fake-db.service';
-import { PantherSplashScreenService } from '@panther/services/splash-screen.service';
 
 export function startup(startupService: StartupService) {
     return () => startupService.loadData();
@@ -40,9 +53,9 @@ export function startup(startupService: StartupService) {
 
 const appRoutes: Routes = [
     {
-        path: '',
-        loadChildren: './main/apps/apps.module#AppsModule'
-    },
+        path: '**',
+        redirectTo: ''
+    }
 ];
 
 @NgModule({
@@ -53,82 +66,72 @@ const appRoutes: Routes = [
         BrowserModule,
         BrowserAnimationsModule,
         HttpClientModule,
+        HttpClientJsonpModule,
         RouterModule.forRoot(appRoutes),
-        TranslateModule.forRoot(),
-        InMemoryWebApiModule.forRoot(FakeDbService, {
-            delay: 0,
-            passThruUnknownUrl: true
-        }),
-
-        // Material moment date module
-        MatMomentDateModule,
-        // Material
-        MatButtonModule,
-        MatIconModule,
-        // Panther modules
+        // Panther Main and Shared modules
         PantherModule.forRoot(pantherConfig),
-        PantherProgressBarModule,
+        ContextMenuModule.forRoot(),
         PantherSharedModule,
-        PantherSidebarModule,
-        PantherThemeOptionsModule,
-
-        AppsModule,
         LayoutModule,
+        RouterModule,
+        MatSidenavModule,
+        PantherProgressBarModule,
 
+        //Material 
+        MatSidenavModule,
+
+        //Panther App
+        PagesModule,
+        AppsModule
     ],
     providers: [
-        PantherSplashScreenService
+        StartupService,
+        {
+            provide: APP_INITIALIZER,
+            useFactory: startup,
+            deps: [StartupService, PantherDataService],
+            multi: true
+        }
     ],
-
     bootstrap: [
         AppComponent
     ]
 })
+
 export class AppModule {
-    constructor(private library: FaIconLibrary) {
+    constructor(library: FaIconLibrary) {
         library.addIcons(
-            faBackward,
+            faArrowUp,
+            faArrowDown,
+            faAngleDoubleUp,
+            faAngleDoubleDown,
             faCalendarDay,
             faCalendarWeek,
-            faCheck,
-            faClock,
-            faCog,
+            faCaretDown,
+            faCaretRight,
+            faChevronDown,
+            faChevronRight,
+            faCopy,
+            faExclamationTriangle,
             faFacebook,
-            faFastBackward,
-            faForward,
-            faHeart,
             faGithub,
             faHistory,
+            faLevelDownAlt,
+            faLevelUpAlt,
+            faLink,
             faListAlt,
-            faLongArrowAltDown,
             faPaw,
+            faPen,
             faPlus,
+            faSave,
             faSearch,
+            faShoppingBasket,
             faSitemap,
             faTasks,
-            faTimes,
             faTwitter,
+            faUndo,
             faUser,
             faUsers,
-            faBookReader
-            , faStreetView
-            , faTree
-            , faHiking
-            , faHeart
-            , faUsers
-            , faBed
-            , faHeart
-            , faUserFriends
-            , faMoon
-            , faSkiing
-            , faPhotoVideo
-            , faPray
-            , faPlay
-            , faHeartbeat
-            , faPaw
-            , faSwimmer
-            , faFileInvoiceDollar
-            , faLanguage
         );
     }
 }

@@ -1,0 +1,134 @@
+<div fxLayout="column" fxLayoutAlign="start stretch" class="panther-cam-form panther-drawer h-100-p">
+  <div class="panther-drawer-header" fxLayout="row" fxLayoutAlign="start center">
+    <span class="panther-drawer-header-title">
+      Workbenches</span>
+    <span fxFlex></span>
+    <button mat-stroked-button (click)="close()" class="panther-rounded-button panther-sm" color="primary"
+      aria-label="Close dialog">
+      <mat-icon>close</mat-icon> Close
+    </button>
+  </div>
+  <div class="panther-drawer-body w-100-p" pantherPerfectScrollbar>
+    <div *ngIf="pantherUserService.user" class="panther-form-section" fxLayout="column" fxLayoutAlign="start stretch">
+      <div class="panther-section-header" fxLayout="row" fxLayoutAlign="start center">
+        <div class="panther-section-heading">
+          Create Model In
+        </div>
+        <span fxFlex></span>
+      </div>
+      <div class="panther-section-body p-8" fxLayout="row" fxLayoutAlign="start center">
+        <div class="panther-create w-100-p" fxLayout="row" fxLayoutAlign="start center">
+          <button mat-raised-button (click)="createModel('panther-form')" fxFlex="50"
+            class="panther-rounded-button mr-4 panther-half-button panther-r">
+            PANTHER FORM
+          </button>
+          <button mat-raised-button (click)="createModel('graph-editor')" fxFlex="50"
+            class="panther-rounded-button panther-half-button panther-l">
+            GRAPH EDITOR
+          </button>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="cam" class="panther-form-section" fxLayout="column" fxLayoutAlign="start stretch">
+      <div class="panther-section-header" fxLayout="row" fxLayoutAlign="start center">
+        <div class="panther-section-heading">
+          Edit In
+        </div>
+        <span fxFlex></span>
+      </div>
+      <div class="panther-section-body p-8" fxLayout="row" fxLayoutAlign="start center">
+        <div class="p-8" fxFlex="50">
+          <a class="w-100-p" [href]='cam?.model?.modelInfo?.pantherFormUrl' target="_blank">
+            <mat-chip class="panther-table-chip" fxLayout="row" fxLayoutAlign="start center">
+              <div class="panther-icon">
+                <fa-icon [icon]="['fas', 'list-alt']"></fa-icon>
+              </div>
+              <div fxFlex="" class="panther-chip-label">
+                Panther Form
+              </div>
+            </mat-chip>
+          </a>
+        </div>
+        <div class="p-8" fxFlex="50">
+          <a class="w-100-p" [href]='cam?.model?.modelInfo?.graphEditorUrl' target="_blank">
+            <mat-chip class="panther-table-chip" fxLayout="row" fxLayoutAlign="start center">
+              <div class="panther-icon">
+                <fa-icon [icon]="['fas', 'sitemap']"></fa-icon>
+              </div>
+              <div fxFlex="" class="panther-chip-label">
+                Graph Editor
+              </div>
+            </mat-chip>
+          </a>
+        </div>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+    <div *ngIf="cam" class="panther-form-section" fxLayout="column" fxLayoutAlign="start stretch">
+      <div class="panther-section-header" fxLayout="row" fxLayoutAlign="start center">
+        <div class="panther-section-heading">
+          Export As
+        </div>
+        <span fxFlex></span>
+      </div>
+      <div class="panther-section-body p-8" fxLayout="row" fxLayoutAlign="start center">
+        <div class="p-4" fxFlex="50">
+          <a class="w-100-p" [href]='cam?.model?.modelInfo?.gpadUrl' target="_blank">
+            <mat-chip class="panther-table-chip" fxLayout="row" fxLayoutAlign="start center">
+              <div fxFlex="" class="panther-chip-label">
+                GPAD
+              </div>
+            </mat-chip>
+          </a>
+        </div>
+        <div class="p-4" fxFlex="50">
+          <a class="w-100-p" [href]='cam?.model?.modelInfo?.owlUrl' target="_blank">
+            <mat-chip class="panther-table-chip" fxLayout="row" fxLayoutAlign="start center">
+              <div fxFlex="" class="panther-chip-label">
+                OWL
+              </div>
+            </mat-chip>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="cam" class="panther-form-section" fxLayout="column" fxLayoutAlign="start stretch">
+      <div class="panther-section-header" fxLayout="row" fxLayoutAlign="start center">
+        <div class="panther-section-heading">
+          Model Workbenches
+        </div>
+        <span fxFlex></span>
+      </div>
+      <div class="panther-section-body p-8" fxLayout="column" fxLayoutAlign="start start">
+        <div class="w-100-p p-4" *ngFor="let workbench of cam?.model?.modelInfo?.modelWorkbenches">
+          <a class="w-100-p" href="{{workbench.url}}" target="_blank">
+            <mat-chip class="panther-table-chip" fxLayout="row" fxLayoutAlign="start center">
+              <div fxFlex="" class="panther-chip-label">
+                {{workbench.label}}
+              </div>
+            </mat-chip>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="panther-form-section" fxLayout="column" fxLayoutAlign="start stretch">
+      <div class="panther-section-header" fxLayout="row" fxLayoutAlign="start center">
+        <div class="panther-section-heading">
+          Global Workbenches
+        </div>
+        <span fxFlex></span>
+      </div>
+      <div class="panther-section-body p-8" fxLayout="column" fxLayoutAlign="start start">
+        <div class="w-100-p p-4" *ngFor="let workbench of pantherConfigService.globalUrl?.universalWorkbenches">
+          <a class="w-100-p" href="{{workbench.url}}" target="_blank">
+            <mat-chip class="panther-table-chip" fxLayout="row" fxLayoutAlign="start center">
+              <div fxFlex="" class="panther-chip-label">
+                {{workbench.label}}
+              </div>
+            </mat-chip>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,32 +1,86 @@
-<mat-toolbar class="mat-elevation-z1" fxLayout="row" fxLayoutAlign="start center">
+<mat-toolbar class="" fxLayout="row" fxLayoutAlign="start center">
   <mat-progress-bar *ngIf="showLoadingBar" class="loading-bar" color="accent" mode="indeterminate"></mat-progress-bar>
-  <div fxLayout="row" fxLayoutAlign="start center" fxFlex="250px">
-    <div fxLayoutAlign="center center" class="panther-logo-filler">
-      <button mat-icon-button target="_blank">
-        <img src="assets/images/logos/go-logo.png">
-      </button>
-    </div>
-    <div class="panther-logo" fxLayout="row" fxLayoutAlign="start">
-      <a class="panther-main-logo" target="_blank">
-        Panther
+  <div class="panther-br h-100-p" fxLayout="row" fxLayoutAlign="start center" fxFlex="200px">
+    <div class="panther-logo pl-8" fxLayout="row" fxLayoutAlign="start">
+      <a href="http://geneontology.org/" target="_blank">
+        <img src="assets/images/logos/go-logo.large.png">
       </a>
     </div>
   </div>
-  <span fxFlex=""></span>
-  <div class="toolbar-separator"></div>
-  <div fxLayout="row" fxLayoutAlign="center center" fxFlex="100">
-    <panther-search-bar fxFlex="60" class="panther-search-bar" (input)="search($event)"></panther-search-bar>
+  <div class="panther-logo pl-0 h-100-p" fxLayout="row" fxLayoutAlign="start center" fxFlex="180px">
+    <button mat-icon-button (click)="openApps()" class="panther-br panther-apps-button"
+      matTooltip="Open Workbenches Menu" [matTooltipPosition]="'below'" [matTooltipShowDelay]="1000">
+      <mat-icon class="">apps</mat-icon>
+    </button>
+    <a class="panther-main-logo" href="{{pantherConfigService.pantherUrl}}" target="_blank">
+      Panther
+    </a>
+    <a class="panther-sub-logo" href="{{pantherConfigService.homeUrl}}" target=" _blank">
+      Form
+    </a>
   </div>
-  <div class="toolbar-separator"></div>
-  <div fxLayout="row" fxLayoutAlign="end center" fxFlex="250px">
-    <button mat-button class="">
-      About
-    </button>
-    <button mat-button class="">
-      Register
-    </button>
-    <button mat-button class="">
-      Login
-    </button>
+  <div fxLayout="row" fxLayoutAlign="end center" fxFlex="">
+    <div class="panther-br pr-12" fxLayout="row" fxLayoutAlign="start center">
+      <a mat-icon-button href="https://github.com/geneontology" target="blank">
+        <fa-icon [icon]="['fab', 'github']"></fa-icon>
+      </a>
+      <a mat-icon-button href="https://twitter.com/news4go" target="blank">
+        <fa-icon [icon]="['fab', 'twitter']"></fa-icon>
+      </a>
+      <a mat-icon-button href="https://www.facebook.com/pages/Gene-Ontology/305908656519" target="blank">
+        <fa-icon [icon]="['fab', 'facebook']"></fa-icon>
+      </a>
+    </div>
+    <div class="pl-12 pr-12" fxLayout="row" fxLayoutAlign="start center">
+      <a mat-button class="" [matMenuTriggerFor]="aboutMenu">
+        About
+      </a>
+      <mat-menu #aboutMenu="matMenu">
+        <a href="http://geneontology.org/docs/introduction-to-go-resource/" target="_blank" mat-menu-item>
+          About The GO
+        </a>
+        <a href="http://geneontology.org/docs/gocam-overview/" target="_blank" mat-menu-item>
+          About GO-CAM
+        </a>
+      </mat-menu>
+      <a mat-button class="" [matMenuTriggerFor]="helpMenu">
+        Help
+      </a>
+      <mat-menu #helpMenu="matMenu">
+        <a href="http://wiki.geneontology.org/index.php/Panther" target="_blank" mat-menu-item>
+          Panther User's Guide
+        </a>
+      </mat-menu>
+    </div>
+    <div class="panther-br pr-12" fxLayout="row" fxLayoutAlign="start center">
+      <button *ngIf="pantherUserService.user" mat-button class="panther-name-button" [matMenuTriggerFor]="userMenu">
+        <div fxLayout="row" fxLayoutAlign="start center">
+          <div class="panther-info" fxLayout="column" fxLayoutAlign="start start">
+            <div class="panther-name text-truncate">
+              {{pantherUserService.user.name}}
+            </div>
+            <div class="panther-group-name text-truncate">
+              {{pantherUserService.user?.group?.label}}
+            </div>
+          </div>
+          <mat-icon>arrow_drop_down</mat-icon>
+        </div>
+      </button>
+      <mat-menu #userMenu="matMenu" class="">
+        <a mat-button href="{{pantherConfigService.logoutUrl}}" class="red-500-fg w-100-p">
+          Logout
+        </a>
+      </mat-menu>
+      <div *ngIf="!pantherUserService.user">
+        <a mat-button href="{{pantherConfigService.loginUrl}}" class="panther-login-button">
+          Login
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="panther-bl panther-logo" fxLayout="row" fxLayoutAlign="start">
+    <a href="https://www.alliancegenome.org" target="_blank">
+      <img src="assets/images/logos/alliance-logo.png">
+    </a>
   </div>
 </mat-toolbar>

@@ -1,0 +1,10 @@
+@import "src/@panther/scss/panther";
+
+:host {
+  width: 100%;
+}
+
+.panther-search-form {
+  padding: 15px;
+  @include deep-width(500px);
+}

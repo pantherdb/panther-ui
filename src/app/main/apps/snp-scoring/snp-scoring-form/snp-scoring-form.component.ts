@@ -12,15 +12,15 @@ import { SnpScoringService } from './../services/snp-scoring.service';
   templateUrl: './snp-scoring-form.component.html',
   styleUrls: ['./snp-scoring-form.component.scss']
 })
-export class SnpScoringFormComponent implements OnInit {
-  private unsubscribeAll: Subject<any>;
+export class SnpScoringFormComponent implements OnInit, OnDestroy {
+  private _unsubscribeAll: Subject<any>;
   snpScoringForm: FormGroup;
   organisms;
   filteredOrganisms: Observable<any[]>;
 
   constructor(private snpScoringService: SnpScoringService) {
 
-    this.unsubscribeAll = new Subject();
+    this._unsubscribeAll = new Subject();
 
     this.organisms = this.snpScoringService.organisms;
   }
@@ -54,8 +54,8 @@ export class SnpScoringFormComponent implements OnInit {
   }
 
   ngOnDestroy(): void {
-    this.unsubscribeAll.next();
-    this.unsubscribeAll.complete();
+    this._unsubscribeAll.next();
+    this._unsubscribeAll.complete();
   }
 }
 

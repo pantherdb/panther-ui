@@ -1,0 +1,233 @@
+<div *ngIf="pantherSearchService.loading" class="panther-loading-container" fxLayout="column"
+  fxLayoutAlign="center center">
+  <mat-progress-spinner class="example-margin" [color]="loadingSpinner.color" [mode]="loadingSpinner.mode">
+  </mat-progress-spinner>
+</div>
+<div class="panther-cams-result panther-drawer-body" [ngClass]="{'panther-review-mode': isReviewMode}" fxLayout="column"
+  fxLayoutAlign="start stretch">
+  <div class="panther-summary-filter-bar" fxLayout="row" fxLayoutAlign="start center">
+    <small class="mr-12">Filtered By: </small>
+    <mat-chip *ngIf="pantherSearchService?.searchCriteria?.filtersCount>0" (click)="reset()"
+      class="panther-clearall-chip">
+      Clear All
+    </mat-chip>
+    <mat-chip *ngIf="pantherSearchService.searchCriteria.ids.length>0" class="panther-filter-chip"
+      (click)="openLeftDrawer(LeftPanel.filter)" [removable]="true"
+      (removed)="pantherSearchService.removeFilterType(pantherSearchService.filterType.ids)">
+      Model IDs: <span> ({{ pantherSearchService.searchCriteria.ids.length}})</span>
+      <mat-icon matChipRemove>cancel</mat-icon>
+    </mat-chip>
+    <mat-chip *ngIf="pantherSearchService.searchCriteria.gps.length>0" class="panther-filter-chip"
+      (click)="openLeftDrawer(LeftPanel.filter)" [removable]="true"
+      (removed)="pantherSearchService.removeFilterType(pantherSearchService.filterType.gps)">
+      GPs: <span> ({{ pantherSearchService.searchCriteria.gps.length}})</span>
+      <mat-icon matChipRemove>cancel</mat-icon>
+    </mat-chip>
+    <mat-chip *ngIf="pantherSearchService.searchCriteria.terms.length>0" class="panther-filter-chip"
+      (click)="openLeftDrawer(LeftPanel.filter)" [removable]="true"
+      (removed)="pantherSearchService.removeFilterType(pantherSearchService.filterType.terms)">
+      GO Terms: <span class="panther-filter-number"> ({{ pantherSearchService.searchCriteria.terms.length}})</span>
+      <mat-icon matChipRemove>cancel</mat-icon>
+    </mat-chip>
+    <mat-chip *ngIf="pantherSearchService.searchCriteria.contributors.length>0" class="panther-filter-chip"
+      (click)="openLeftDrawer(LeftPanel.filter)" [removable]="true"
+      (removed)="pantherSearchService.removeFilterType(pantherSearchService.filterType.contributors)">
+      Contributors: <span class="panther-filter-number">
+        ({{ pantherSearchService.searchCriteria.contributors.length}})</span>
+      <mat-icon matChipRemove>cancel</mat-icon>
+    </mat-chip>
+    <mat-chip *ngIf="pantherSearchService.searchCriteria.groups.length>0" class="panther-filter-chip"
+      (click)="openLeftDrawer(LeftPanel.filter)" [removable]="true"
+      (removed)="pantherSearchService.removeFilterType(pantherSearchService.filterType.groups)">
+      Groups: <span class="panther-filter-number"> ({{ pantherSearchService.searchCriteria.groups.length}})</span>
+      <mat-icon matChipRemove>cancel</mat-icon>
+    </mat-chip>
+    <mat-chip *ngIf="pantherSearchService.searchCriteria.organisms.length>0" class="panther-filter-chip"
+      (click)="openLeftDrawer(LeftPanel.filter)" [removable]="true"
+      (removed)="pantherSearchService.removeFilterType(pantherSearchService.filterType.organisms)">
+      Species: <span class="panther-filter-number"> ({{ pantherSearchService.searchCriteria.organisms.length}})</span>
+      <mat-icon matChipRemove>cancel</mat-icon>
+    </mat-chip>
+    <mat-chip *ngIf="pantherSearchService.searchCriteria.pmids.length>0" class="panther-filter-chip"
+      (click)="openLeftDrawer(LeftPanel.filter)" [removable]="true"
+      (removed)="pantherSearchService.removeFilterType(pantherSearchService.filterType.pmids)">
+      References: <span class="panther-filter-number"> ({{ pantherSearchService.searchCriteria.pmids.length}})</span>
+      <mat-icon matChipRemove>cancel</mat-icon>
+    </mat-chip>
+    <mat-chip *ngIf="pantherSearchService.searchCriteria.states.length>0" class="panther-filter-chip"
+      (click)="openLeftDrawer(LeftPanel.filter)" [removable]="true"
+      (removed)="pantherSearchService.removeFilterType(pantherSearchService.filterType.states)">
+      Model States: <span class="panther-filter-number">
+        ({{ pantherSearchService.searchCriteria.states.length}})</span>
+      <mat-icon matChipRemove>cancel</mat-icon>
+    </mat-chip>
+    <mat-chip *ngIf="pantherSearchService.searchCriteria.exactdates.length>0" class="panther-filter-chip"
+      (click)="openLeftDrawer(LeftPanel.filter)" [removable]="true"
+      (removed)="pantherSearchService.removeFilterType(pantherSearchService.filterType.exactdates)">
+      Date Modified: <span class="panther-filter-number">
+        ({{ pantherSearchService.searchCriteria.exactdates.length}})</span>
+      <mat-icon matChipRemove>cancel</mat-icon>
+    </mat-chip>
+  </div>
+
+  <div class="panther-summary-results-bar" fxLayout="row" fxLayoutAlign="start center">
+
+    <small>Results:</small>
+    <div class="ml-8 mr-16" fxLayout="row" fxLayoutAlign="start center">
+      <button mat-stroked-button color="" class="panther-rounded-button mr-4 panther-half-button panther-sm panther-r">
+        {{camPage?.total}}
+      </button>
+      <button mat-stroked-button (click)="refresh()"
+        class="panther-rounded-button panther-half-button panther-sm panther-l" color="primary"
+        matTooltip="Refresh Search" [matTooltipPosition]="'after'" [matTooltipShowDelay]="1000">
+        <mat-icon class="">
+          youtube_searched_for
+        </mat-icon>
+      </button>
+    </div>
+    <span fxFlex></span>
+    <mat-paginator *ngIf="camPage" class="panther-paginator" #paginatorBottom [length]="camPage.total"
+      [pageIndex]="camPage.pageNumber" [pageSize]="camPage.size" [pageSizeOptions]="camPage.pageSizeOptions"
+      (page)="pageEvent = $event; setPage($event)" [showFirstLastButtons]="true">
+    </mat-paginator>
+  </div>
+  <table fxFlex="1 1 auto" mat-table multiTemplateDataRows class="panther-cams-table" [dataSource]="cams"
+    [@animateStagger]="{value:'50'}">
+    <ng-container matColumnDef="select">
+      <th mat-header-cell *matHeaderCellDef fxFlex="30px">
+      </th>
+      <td class="panther-checkbox-cell" mat-cell *matCellDef="let cam" fxFlex="30px">
+        <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? toggleSelection(cam) : null"
+          [checked]="selection.isSelected(cam)" [aria-label]="checkboxLabel(cam)">
+        </mat-checkbox>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="expand">
+      <th mat-header-cell *matHeaderCellDef fxFlex="80px" fxLayout="row" fxLayoutAlign="start center"></th>
+      <td mat-cell *matCellDef="let cam" class="panther-expand-cell" fxFlex="80px" fxLayout="row"
+        fxLayoutAlign="start center">
+        <button mat-icon-button (click)="toggleCamExpand(cam)" color="primary" class="panther-toggle-expand-button">
+          <fa-icon *ngIf="!cam.expanded" [icon]="['fas', 'caret-right']"></fa-icon>
+          <fa-icon *ngIf="cam.expanded" [icon]="['fas', 'caret-down']"></fa-icon>
+        </button>
+        <div class="panther-display-number mr-8">
+          {{cam.displayNumber}}
+        </div>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef fxFlex="250px" fxLayout="row" fxLayoutAlign="start center">
+        Title
+      </th>
+      <td mat-cell *matCellDef="let cam" fxFlex="250px" class="panther-title" fxLayout="row"
+        fxLayoutAlign="start center">
+        {{cam.title }}
+        <fa-icon *ngIf="cam.modifiedP" [icon]="['fas', 'save']"></fa-icon>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="state">
+      <th mat-header-cell *matHeaderCellDef fxFlex="110px" fxLayout="row" fxLayoutAlign="start center">State</th>
+      <td mat-cell *matCellDef="let cam" fxFlex="110px" class="panther-model-state pr-12" fxLayout="row"
+        fxLayoutAlign="start center">
+        <mat-chip *ngIf="cam.state" class="panther-table-chip panther-state-chip" [ngClass]="{'panther-development': cam.state.name === 'development',
+        'panther-production': cam.state.name === 'production',
+        'panther-review': cam.state.name === 'review'}" fxLayout="row" fxLayoutAlign="start center"
+          (click)="pantherSearchService.filter(pantherSearchService.filterType.states, cam.state)"
+          matTooltip="Add state to Filters" [matTooltipPosition]="'below'" [matTooltipShowDelay]="1000">
+          <div class="panther-icon">
+            <fa-icon [icon]="['fas', 'tasks']"></fa-icon>
+          </div>
+          <div fxFlex="" class="panther-chip-label">
+            {{cam.state.label}}
+          </div>
+        </mat-chip>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef fxFlex="100px" fxLayout="row" fxLayoutAlign="start center">
+        Date Modified
+      </th>
+      <td mat-cell *matCellDef="let cam" class="panther-date" fxFlex="100px" fxLayout="row"
+        fxLayoutAlign="start center">
+        <mat-chip class="panther-table-chip panther-date-chip" fxLayout="row" fxLayoutAlign="start center"
+          (click)="pantherSearchService.filter(pantherSearchService.filterType.exactdates, cam.date)"
+          matTooltip="Add date to exact date filter" [matTooltipPosition]="'below'" [matTooltipShowDelay]="1000">
+          <div class="panther-icon">
+            <fa-icon [icon]="['fas', 'calendar-day']"></fa-icon>
+          </div>
+          <div fxFlex="" class="panther-chip-label">
+            {{cam.date}}
+          </div>
+        </mat-chip>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="contributor">
+      <th mat-header-cell *matHeaderCellDef fxFlex="" fxLayout="row" fxLayoutAlign="start center">Contributors</th>
+      <td mat-cell *matCellDef="let cam" fxFlex="" fxLayout="row" fxLayoutAlign="start center">
+        <mat-chip-list>
+          <mat-chip class="panther-table-chip panther-user-chip" fxLayout="row" fxLayoutAlign="start center"
+            *ngFor="let contributor of cam.contributors"
+            (click)="pantherSearchService.filter(pantherSearchService.filterType.contributors, contributor)"
+            matTooltip="Add {{contributor.name}} to Filters" [matTooltipPosition]="'below'" [matTooltipShowDelay]="1000"
+            [style.borderColor]="contributor.color">
+            <div class="panther-icon panther-icon-initials" [style.backgroundColor]="contributor.color">
+              {{contributor.initials}}
+            </div>
+            <div fxFlex="" class="panther-chip-label">
+              {{contributor.name ? contributor.name :contributor.orcid}}
+            </div>
+          </mat-chip>
+        </mat-chip-list>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef fxFlex="100px" fxLayout="row" fxLayoutAlign="start center">Open In</th>
+      <td mat-cell *matCellDef="let cam" fxFlex="100px" fxLayout="row" fxLayoutAlign="start center">
+        <a mat-icon-button [href]='cam?.model?.modelInfo?.pantherFormUrl' target="_blank"
+          class="panther-edit-button panther-rounded-button panther-sm  mr-4 panther-half-button panther-r"
+          matTooltip="Panther Form" [matTooltipPosition]="'after'" [matTooltipShowDelay]="1000">
+          <fa-icon [icon]="['fas', 'list-alt']"></fa-icon>
+        </a>
+        <a mat-icon-button [href]='cam?.model?.modelInfo?.graphEditorUrl' target="_blank"
+          class="panther-edit-button panther-rounded-button panther-sm panther-half-button panther-l"
+          matTooltip="Graph Editor" [matTooltipPosition]="'after'" [matTooltipShowDelay]="1000">
+          <fa-icon [icon]="['fas', 'sitemap']"></fa-icon>
+        </a>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="export">
+      <th mat-header-cell *matHeaderCellDef fxFlex="115px" fxLayout="row" fxLayoutAlign="start center">Export</th>
+      <td mat-cell *matCellDef="let cam" fxFlex="115px" fxLayout="row" fxLayoutAlign="start center">
+        <button mat-stroked-button [matMenuTriggerFor]="exportMenu"
+          class="panther-edit-button panther-rounded-button panther-sm" color="primary">
+          EXPORT AS
+        </button>
+        <mat-menu #exportMenu="matMenu">
+          <a [href]='cam?.model?.modelInfo?.gpadUrl' target="_blank" mat-menu-item>
+            GPAD
+          </a>
+          <a [href]='cam?.model?.modelInfo?.owlUrl' target="_blank" mat-menu-item>
+            OWL
+          </a>
+        </mat-menu>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="expandedDetail">
+      <td class="p-0" mat-cell *matCellDef="let cam" [attr.colspan]="displayedColumns.length">
+        <div class="panther-cam-table-container">
+          <panther-cam-table *ngIf="cam.expanded" [cam]="cam" [options]="tableOptions"></panther-cam-table>
+        </div>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row (click)="$event.stopPropagation()" *matRowDef="let cam; columns: displayedColumns;"
+      id="{{cleanId(cam.id)}}">
+    </tr>
+    <tr mat-row *matRowDef="let cam; columns: ['expandedDetail']"
+      [@detailExpand]="cam.expanded ? 'expanded' : 'collapsed'" style="overflow: hidden"> </tr>
+
+  </table>
+  <div *ngIf="cams?.length===0" class="panther-no-info">
+    no results yet.
+  </div>
+</div>

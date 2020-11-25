@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { PantherMenuService } from '@panther.common/services/panther-menu.service';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { PantherSearchMenuService } from '@panther.search/services/search-menu.service';
 
 import { BrowserService } from './services/browser.service';
 
@@ -8,12 +8,20 @@ import { BrowserService } from './services/browser.service';
   templateUrl: './browser.component.html',
   styleUrls: ['./browser.component.scss']
 })
-export class BrowserComponent implements OnInit {
+export class BrowserComponent implements OnInit, OnDestroy {
 
-  constructor(public pantherMenuService: PantherMenuService,
-    private browserService: BrowserService) { }
+  constructor(
+    public pantherSearchMenuService: PantherSearchMenuService,
+    private browserService: BrowserService) {
+    this._unsubscribeAll = new Subject();
+  }
 
   ngOnInit() {
+  }
+
+  ngOnDestroy(): void {
+    this._unsubscribeAll.next();
+    this._unsubscribeAll.complete();
   }
 
 

@@ -1,21 +1,19 @@
-import { Component, Inject, OnInit, ElementRef, OnDestroy, ViewEncapsulation, ViewChild } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, FormArray, Validators, FormControlDirective } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
-import { merge, Observable, BehaviorSubject, fromEvent, Subject } from 'rxjs';
-import { debounceTime, distinctUntilChanged, map, startWith } from 'rxjs/operators';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { Subject } from 'rxjs';
 
-import { PantherMenuService } from '@panther.common/services/panther-menu.service';
+import { PantherSearchMenuService } from '@panther.search/services/search-menu.service';
 
 @Component({
   selector: 'panther-sequence-search',
   templateUrl: './sequence-search.component.html',
   styleUrls: ['./sequence-search.component.scss']
 })
-export class SequenceSearchComponent implements OnInit {
+export class SequenceSearchComponent implements OnInit, OnDestroy {
   sequenceSearchForm: FormGroup;
-  private unsubscribeAll: Subject<any>;
-  constructor(public pantherMenuService: PantherMenuService) {
-    this.unsubscribeAll = new Subject();
+  private _unsubscribeAll: Subject<any>;
+  constructor(public pantherSearchMenuService: PantherSearchMenuService) {
+    this._unsubscribeAll = new Subject();
   }
 
   ngOnInit() {
@@ -29,8 +27,8 @@ export class SequenceSearchComponent implements OnInit {
   }
 
   ngOnDestroy(): void {
-    this.unsubscribeAll.next();
-    this.unsubscribeAll.complete();
+    this._unsubscribeAll.next();
+    this._unsubscribeAll.complete();
   }
 
 }

@@ -11,7 +11,6 @@ import { SelectionModel } from '@angular/cdk/collections';
 
 import { Term, TermNode, TermFlatNode } from './../models/term'
 
-import { PantherMenuService } from '@panther.common/services/panther-menu.service';
 import { BrowserService } from './../services/browser.service';
 
 
@@ -20,7 +19,7 @@ import { BrowserService } from './../services/browser.service';
   templateUrl: './bp-term.component.html',
   styleUrls: ['./bp-term.component.scss']
 })
-export class BpTermComponent implements OnInit {
+export class BpTermComponent implements OnInit, OnDestroy {
   @ViewChild('tree') tree;
   @ViewChildren(MatTreeNode, { read: ElementRef }) treeNodes: ElementRef[];
 
@@ -63,6 +62,11 @@ export class BpTermComponent implements OnInit {
       });
 
     this.browserService.getBpTermList();
+  }
+
+  ngOnDestroy(): void {
+    this._unsubscribeAll.next();
+    this._unsubscribeAll.complete();
   }
 
   selectTerm(term) {

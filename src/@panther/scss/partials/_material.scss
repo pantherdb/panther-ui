@@ -1,327 +1,111 @@
-// -----------------------------------------------------------------------------------------------------
-// @ Theming
-// -----------------------------------------------------------------------------------------------------
+$primary: map-get($theme, primary);
+$accent: map-get($theme, accent);
 
-@mixin material-theme($theme) {
-    $primary: map-get($theme, primary);
-    $accent: map-get($theme, accent);
-    $background: map-get($theme, background);
-    $foreground: map-get($theme, foreground);
+mat-radio-button {
+  &.panther-radio-button-rounded {
+    padding: 0 10px;
+    @include deep-height(30px);
+    line-height: 30px;
+    font-size: 12px;
+    font-weight: normal;
+    border: rgba(map-get($accent, default), 0.7) solid 1px;
+    border-radius: 15px;
 
-    // -----------------------------------------------------------------------------------------------------
-    // @ Avatar
-    // -----------------------------------------------------------------------------------------------------
-    .avatar {
-        color: map-get($foreground, text);
+    &.mat-radio-checked {
+      background-color: rgba(map-get($accent, default), 0.2);
+      border-color: rgba(map-get($accent, default), 0.9);
     }
 
-    // -----------------------------------------------------------------------------------------------------
-    // @ Forms
-    // -----------------------------------------------------------------------------------------------------
-    .form-wrapper {
-        background-color: map-get($background, card);
+    .mat-radio-container,
+    .mat-radio-outer-circle,
+    .mat-radio-inner-circle {
+      height: 15px;
+      width: 15px;
     }
 
-    // -----------------------------------------------------------------------------------------------------
-    // @ Navigation - Simple
-    // -----------------------------------------------------------------------------------------------------
-    .navigation-simple {
-
-        .item {
-
-            &.selected {
-                background-color: map-get($background, hover);
-            }
-        }
-
-        .subheader {
-            border-top: 1px solid map-get($foreground, divider);
-        }
+    &.panther-xxs {
+      padding: 0 5px;
+      @include deep-height(20px);
+      line-height: 20px;
+      font-size: 10px;
+      border-radius: 10px;
+      font-weight: normal;
     }
 
-    // -----------------------------------------------------------------------------------------------------
-    // @ Pagination - Simple
-    // -----------------------------------------------------------------------------------------------------
-    .simple-pagination {
-        background: map-get($background, card);
-
-        .pagination-item {
-            color: map-get($foreground, secondary-text);
-
-            &:hover {
-                color: map-get($foreground, text);
-            }
-
-            &.disabled {
-                color: map-get($foreground, disabled-text);
-            }
-        }
+    &.panther-xs {
+      border-radius: 12px;
+      @include deep-height(24px);
+      line-height: 24px;
+      font-size: 12px;
+      font-weight: normal;
     }
 
-
-    // -------------------------------------------------------------------------------------------------
-    // @ Table - Simple
-    // -------------------------------------------------------------------------------------------------
-    .simple-table-container {
-        background: map-get($background, card);
+    &.panther-sm {
+      border-radius: 15px;
+      @include deep-height(30px);
+      line-height: 30px;
+      font-size: 12px;
+      font-weight: normal;
     }
-
-    table {
-
-        &.simple {
-
-            thead {
-
-                tr {
-
-                    th {
-                        color: map-get($foreground, secondary-text);
-                        border-bottom: 1px solid map-get($foreground, divider);
-                    }
-                }
-            }
-
-            tbody {
-
-                tr {
-
-                    td {
-                        border-bottom: 1px solid map-get($foreground, divider);
-                    }
-                }
-            }
-
-            &.clickable {
-
-                tbody {
-
-                    tr {
-
-                        &:hover {
-                            background-color: map-get($background, hover);
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    mat-radio-button {
-        &.panther-radio-button-rounded {
-            padding: 0 10px;
-            @include deep-height(30px);
-            line-height: 30px;
-            font-size: 12px;
-            font-weight: normal;
-            border: rgba(map-get($accent, default), 0.7) solid 1px;
-            border-radius: 15px;
-
-            &.mat-radio-checked {
-                background-color: rgba(map-get($accent, default), 0.2);
-                border-color: rgba(map-get($accent, default), 0.9);
-            }
-
-            .mat-radio-container,
-            .mat-radio-outer-circle,
-            .mat-radio-inner-circle {
-                height: 15px;
-                width: 15px;
-            }
-
-            &.panther-xxs {
-                padding: 0 5px;
-                @include deep-height(20px);
-                line-height: 20px;
-                font-size: 10px;
-                border-radius: 10px;
-                font-weight: normal;
-            }
-
-            &.panther-xs {
-                border-radius: 12px;
-                @include deep-height(24px);
-                line-height: 24px;
-                font-size: 12px;
-                font-weight: normal;
-            }
-
-            &.panther-sm {
-                border-radius: 15px;
-                @include deep-height(30px);
-                line-height: 30px;
-                font-size: 12px;
-                font-weight: normal;
-            }
-        }
-    }
-
-    .mat-autocomplete-panel {
-        &.panther-title-autocomplete {
-            background-color: #fbf9de;
-            @include deep-width(500px !important);
-
-            .mat-option {
-                padding: 8px !important;
-                border-bottom: rgba(map-get($primary, default), 0.6) solid 1px;
-                height: auto !important;
-                line-height: 18px !important;
-                white-space: normal !important;
-
-                .panther-title-id {
-                    font-size: 10px;
-                    //margin-right: 
-                }
-
-                .panther-title-label {
-                    font-size: 12px;
-                    //margin-right: 
-                }
-
-            }
-        }
-    }
-
-
-    .mat-expansion-panel-body {
-        padding: 0 !important;
-    }
+  }
 }
 
+.mat-autocomplete-panel {
+  &.panther-term-autocomplete {
+    background-color: #fbf9de;
+    @include deep-width(400px !important);
 
+    .mat-option {
+      padding: 8px !important;
+      border-bottom: rgba(map-get($primary, default), 0.6) solid 1px;
+      height: auto !important;
+      line-height: 18px !important;
+      white-space: normal !important;
 
+      .panther-term-id {
+        font-size: 10px;
+        //margin-right: 
+      }
 
-// -----------------------------------------------------------------------------------------------------
-// @ Avatar
-// -----------------------------------------------------------------------------------------------------
-.avatar {
-    width: 40px;
-    min-width: 40px;
-    height: 40px;
-    line-height: 40px;
-    margin: 0 8px 0 0;
-    border-radius: 50%;
-    font-size: 17px;
-    font-weight: 600;
-    text-align: center;
+      .panther-term-label {
+        font-size: 12px;
+        //margin-right: 
+      }
 
-    &.square {
-        border-radius: 0;
+      .panther-term-detail-trigger {
+        padding: 0 8px;
+        @include deep-width(50px);
+      }
     }
-
-    &.small {
-        width: 20px;
-        min-width: 20px;
-        height: 20px;
-        line-height: 20px;
-    }
-
-    &.big {
-        width: 72px;
-        min-width: 72px;
-        height: 72px;
-        line-height: 72px;
-    }
-
-    &.huge {
-        width: 96px;
-        min-width: 96px;
-        height: 96px;
-        line-height: 96px;
-    }
+  }
 }
 
-.avatar-wrapper {
-    position: relative;
+.mat-menu-panel {
+  &.panther-evidence-db-menu {
+    background-color: #fbf9de;
+    @include deep-width(400px !important);
 
-    .avatar {
-        margin-top: 0;
-        margin-bottom: 0;
-    }
+    .mat-option {
+      padding: 5px !important;
+      border-bottom: rgba(map-get($primary, default), 0.6) solid 1px;
+      height: auto !important;
+      line-height: 18px !important;
+      white-space: normal !important;
 
-    mat-icon.status {
-        position: absolute;
-        top: 28px;
-        left: 28px;
+      .panther-term-id {
+        font-size: 10px;
+        //margin-right: 
+      }
+
+      .panther-term-label {
+        font-size: 12px;
+        //margin-right: 
+      }
+
     }
+  }
 }
 
-mat-icon.status {
-    border-radius: 50%;
-
-    &.online {
-        color: #4CAF50;
-
-        &:before {
-            content: "check_circle";
-        }
-    }
-
-    &.do-not-disturb {
-        color: #F44336;
-
-        &:before {
-            content: "remove_circle_outline";
-        }
-    }
-
-    &.away {
-        color: #FFC107;
-
-        &:before {
-            content: "access_time";
-        }
-    }
-
-    &.offline {
-        color: #646464;
-
-        &:before {
-            content: "not_interested";
-        }
-    }
-}
-
-// -----------------------------------------------------------------------------------------------------
-// @ Forms
-// -----------------------------------------------------------------------------------------------------
-.form-wrapper {
-    padding: 16px;
-
-    .form-title {
-        font-size: 21px;
-        padding: 8px 0;
-    }
-}
-
-
-// -----------------------------------------------------------------------------------------------------
-// @ Pagination - Simple
-// -----------------------------------------------------------------------------------------------------
-.simple-pagination {
-    position: relative;
-    display: inline-flex;
-    flex-direction: row;
-    padding: 0 8px;
-    border-radius: 4px;
-    @include mat-elevation(1);
-
-    .pagination-item {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        min-width: 48px;
-        min-height: 56px;
-        line-height: 56px;
-        border-radius: 0;
-        margin: 0;
-        font-weight: normal;
-
-        &.active {
-            cursor: default;
-        }
-
-        &.disabled {
-            cursor: default;
-        }
-    }
+.mat-expansion-panel-body {
+  padding: 0 !important;
 }

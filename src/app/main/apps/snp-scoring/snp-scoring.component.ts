@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Observable, Subject } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
-import { PantherMenuService } from '@panther.common/services/panther-menu.service';
+import { PantherSearchMenuService } from '@panther.search/services/search-menu.service';
 
 import { SnpScoringService } from './services/snp-scoring.service';
 
@@ -12,16 +12,16 @@ import { SnpScoringService } from './services/snp-scoring.service';
   styleUrls: ['./snp-scoring.component.scss']
 })
 export class SnpScoringComponent implements OnInit, OnDestroy {
-  private unsubscribeAll: Subject<any>;
+  private _unsubscribeAll: Subject<any>;
   snpScoringForm: FormGroup;
   organisms;
   filteredOrganisms: Observable<any[]>;
 
   constructor(
     private snpScoringService: SnpScoringService,
-    public pantherMenuService: PantherMenuService) {
+    public pantherSearchMenuService: PantherSearchMenuService) {
 
-    this.unsubscribeAll = new Subject();
+    this._unsubscribeAll = new Subject();
 
     this.organisms = this.snpScoringService.organisms;
   }
@@ -54,8 +54,8 @@ export class SnpScoringComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.unsubscribeAll.next();
-    this.unsubscribeAll.complete();
+    this._unsubscribeAll.next();
+    this._unsubscribeAll.complete();
   }
 }
 

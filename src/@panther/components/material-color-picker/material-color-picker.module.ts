@@ -2,13 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatButtonModule } from '@angular/material/button';
+import { MatRippleModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
-import { MatTooltipModule } from '@angular/material/tooltip';
-
-import { PantherPipesModule } from '@panther/pipes/pipes.module';
-
-import { PantherMaterialColorPickerComponent } from '@panther/components/material-color-picker/material-color-picker.component';
+import { PantherPipesModule } from '../../pipes/pipes.module';
+import { PantherMaterialColorPickerComponent } from './material-color-picker.component';
 
 @NgModule({
     declarations: [
@@ -16,14 +14,11 @@ import { PantherMaterialColorPickerComponent } from '@panther/components/materia
     ],
     imports: [
         CommonModule,
-
         FlexLayoutModule,
-
         MatButtonModule,
         MatIconModule,
         MatMenuModule,
-        MatTooltipModule,
-
+        MatRippleModule,
         PantherPipesModule
     ],
     exports: [

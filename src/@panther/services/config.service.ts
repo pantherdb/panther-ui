@@ -1,16 +1,13 @@
 import { Inject, Injectable, InjectionToken } from '@angular/core';
-import { ResolveEnd, Router } from '@angular/router';
+import { NavigationStart, Router } from '@angular/router';
 import { Platform } from '@angular/cdk/platform';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { filter } from 'rxjs/operators';
-import * as _ from 'lodash';
+import { cloneDeep, isEqual, merge } from 'lodash';
 
-// Create the injection token for the custom settings
 export const PANTHER_CONFIG = new InjectionToken('pantherCustomConfig');
 
-@Injectable({
-    providedIn: 'root'
-})
+@Injectable()
 export class PantherConfigService {
     private _configSubject: BehaviorSubject<any>;
     private readonly _defaultConfig: any;
@@ -20,28 +17,14 @@ export class PantherConfigService {
         private _router: Router,
         @Inject(PANTHER_CONFIG) private _config
     ) {
-        // Set the default config from the user provided config (from forRoot)
         this._defaultConfig = _config;
-
-        // Initialize the service
         this._init();
     }
 
-    // -----------------------------------------------------------------------------------------------------
-    // @ Accessors
-    // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * Set and get the config
-     */
     set config(value) {
-        // Get the value from the behavior subject
         let config = this._configSubject.getValue();
 
-        // Merge the new config
-        config = _.merge({}, config, value);
-
-        // Notify the observers
+        config = merge({}, config, value);
         this._configSubject.next(config);
     }
 
@@ -49,89 +32,41 @@ export class PantherConfigService {
         return this._configSubject.asObservable();
     }
 
-    /**
-     * Get default config
-     *
-     * @returns {any}
-     */
     get defaultConfig(): any {
         return this._defaultConfig;
     }
 
-
-    /**
-     * Initialize
-     *
-     * @private
-     */
     private _init(): void {
-        /**
-         * Disable custom scrollbars if browser is mobile
-         */
         if (this._platform.ANDROID || this._platform.IOS) {
             this._defaultConfig.customScrollbars = false;
         }
 
-        // Set the config from the default config
-        this._configSubject = new BehaviorSubject(_.cloneDeep(this._defaultConfig));
-
-        // Reload the default layout config on every RoutesRecognized event
-        // if the current layout config is different from the default one
+        this._configSubject = new BehaviorSubject(cloneDeep(this._defaultConfig));
         this._router.events
-            .pipe(filter(event => event instanceof ResolveEnd))
+            .pipe(filter(event => event instanceof NavigationStart))
             .subscribe(() => {
-                if (!_.isEqual(this._configSubject.getValue().layout, this._defaultConfig.layout)) {
-                    // Clone the current config
-                    const config = _.cloneDeep(this._configSubject.getValue());
-
-                    // Reset the layout from the default config
-                    config.layout = _.cloneDeep(this._defaultConfig.layout);
-
-                    // Set the config
+                if (!isEqual(this._configSubject.getValue(), this._defaultConfig)) {
+                    const config = cloneDeep(this._defaultConfig);
                     this._configSubject.next(config);
                 }
             });
     }
 
-    // -----------------------------------------------------------------------------------------------------
-    // @ Public methods
-    // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * Set config
-     *
-     * @param value
-     * @param {{emitEvent: boolean}} opts
-     */
     setConfig(value, opts = { emitEvent: true }): void {
-        // Get the value from the behavior subject
         let config = this._configSubject.getValue();
 
-        // Merge the new config
-        config = _.merge({}, config, value);
+        config = merge({}, config, value);
 
-        // If emitEvent option is true...
         if (opts.emitEvent === true) {
-            // Notify the observers
             this._configSubject.next(config);
         }
     }
 
-    /**
-     * Get config
-     *
-     * @returns {Observable<any>}
-     */
     getConfig(): Observable<any> {
         return this._configSubject.asObservable();
     }
 
-    /**
-     * Reset to the default config
-     */
     resetToDefaults(): void {
-        // Set the config from the default config
-        this._configSubject.next(_.cloneDeep(this._defaultConfig));
+        this._configSubject.next(cloneDeep(this._defaultConfig));
     }
 }
-

@@ -1,12 +1,33 @@
 <div id="panther-main">
-    <ng-container>
+  <mat-sidenav-container>
+    <mat-sidenav #leftSidenav>
+      <panther-panther-apps [sidenav]="leftSidenav"></panther-panther-apps>
+    </mat-sidenav>
+    <div id="panther-main-content">
+      <ng-container>
         <panther-toolbar class="above"></panther-toolbar>
-    </ng-container>
-    <div class="content-wrapper">
-        <panther-content></panther-content>
+      </ng-container>
+      <div id="wrapper">
+        <div class="content-wrapper">
+          <panther-content></panther-content>
+        </div>
+      </div>
     </div>
-
-    <!--  <panther-sidebar name="quickPanel" position="right" class="quick-panel">
-          <quick-panel></quick-panel>
-      </panther-sidebar> -->
+  </mat-sidenav-container>
+  <app-footer *ngIf="false" id="footer"></app-footer>
+  <quick-panel *ngIf="false"></quick-panel>
 </div>
+
+
+<!-- <mat-sidenav-container
+    class="example-container" (backdropClick)="close('backdrop')" *ngIf="shouldRun">
+  <mat-sidenav #sidenav (keydown.escape)="close('escape')" disableClose>
+    <p><button mat-button (click)="close('toggle button')">Toggle</button></p>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <p><button mat-button (click)="sidenav.open()">Open</button></p>
+    <p>Closed due to: {{reason}}</p>
+  </mat-sidenav-content> 
+</mat-sidenav-container>
+-->

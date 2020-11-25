@@ -1,0 +1,126 @@
+@import "src/@panther/scss/panther";
+@import "src/@panther.common/scss/panther.common";
+
+$primary: map-get($theme, primary);
+$accent: map-get($theme, accent);
+
+:host {
+  width: 100%;
+  background-color: white;
+  @include mat-elevation(4);
+
+
+
+  .panther-drawer {
+    @include deep-width(450px);
+
+    .panther-drawer-header {
+      padding: 0;
+      @include deep-height(240px);
+      background-color: #FFF;
+      @include mat-elevation(2);
+      z-index: 1000;
+
+      .panther-header {
+        padding: 0 12px;
+        @include deep-height(40px);
+        border-bottom: #BBB solid 1px;
+        @include mat-elevation(2);
+        background-color: #FFF;
+      }
+
+      .panther-drawer-header-title {
+        font-size: 14px;
+        font-weight: bold;
+      }
+    }
+
+    .panther-drawer-body {
+      padding: 24px 8 100px 0;
+      min-height: calc(100% - 290px);
+    }
+  }
+
+  .panther-group-row {
+    min-height: 40px;
+    max-height: 500px;
+    border-bottom: #CCC solid 1px;
+    font-size: 12px;
+    @include mat-elevation(1);
+
+    .panther-modified-header {
+      padding: 0 12px;
+      @include deep-height(30px);
+      font-size: 12px;
+      background-color: $panther-highlight-color;
+      border-bottom: darken($panther-highlight-color, 20%) solid 1px;
+
+      .panther-title {
+        font-weight: bold;
+        margin-right: 8px;
+      }
+
+      .panther-action-button {
+        // @include deep-height(30px);
+      }
+    }
+
+    .panther-item-body {
+      padding: 12px 10px;
+    }
+
+    .panther-name {
+      font-size: 14px;
+    }
+
+    .panther-item {
+      @include deep-width(100%);
+      font-size: 12px;
+
+      .panther-title {
+        font-weight: bold;
+        margin-right: 8px;
+        color: #999;
+      }
+    }
+
+    .panther-cams-number {
+      padding: 2px 5px;
+      @include deep-height(20px);
+      background-color: #DDD;
+      font-size: 10px;
+      border-radius: 25%;
+    }
+
+    .panther-edit-button {
+      background-color: #ffffff;
+      color: map-get($primary, default);
+      border: rgba(map-get($primary, default), 0.5) solid 1px;
+      @include mat-elevation(1)
+    }
+
+    .panther-more-details-button {
+      padding: 8px 0;
+      cursor: pointer;
+    }
+
+    .panther-remove-button {
+      height: 30px;
+      width: 30px;
+    }
+
+    &:hover {
+      background-color: #F2F2F2;
+    }
+
+    &.panther-selected {
+      background-color: $panther-highlight-model-color;
+    }
+  }
+
+  .panther-body {
+    padding: 0 14px 14px 14px;
+  }
+
+
+}

@@ -1,7 +1,7 @@
 
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { PantherMenuService } from '@panther.common/services/panther-menu.service';
+import { PantherSearchMenuService } from '@panther.search/services/search-menu.service';
 import { MatDrawer } from '@angular/material/sidenav';
 
 @Component({
@@ -9,7 +9,7 @@ import { MatDrawer } from '@angular/material/sidenav';
   templateUrl: './gene-analysis.component.html',
   styleUrls: ['./gene-analysis.component.scss']
 })
-export class GeneAnalysisComponent implements OnInit {
+export class GeneAnalysisComponent implements OnInit, OnDestroy {
 
   @ViewChild('leftDrawer')
   leftDrawer: MatDrawer;
@@ -22,13 +22,13 @@ export class GeneAnalysisComponent implements OnInit {
   leftPanelMenu;
 
   constructor(
-    public pantherMenuService: PantherMenuService) {
+    public pantherSearchMenuService: PantherSearchMenuService) {
 
-    this.leftPanelMenu = this.pantherMenuService.mainMenu;
+    this.leftPanelMenu = this.pantherSearchMenuService.mainMenu;
   }
 
   ngOnInit() {
-    this.pantherMenuService.setLeftDrawer(this.leftDrawer);
-    this.pantherMenuService.setRightDrawer(this.rightDrawer);
+    this.pantherSearchMenuService.setLeftDrawer(this.leftDrawer);
+    this.pantherSearchMenuService.setRightDrawer(this.rightDrawer);
   }
 }

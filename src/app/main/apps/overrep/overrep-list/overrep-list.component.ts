@@ -4,13 +4,13 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { GeneAnalysisService } from './../../gene-analysis/services/gene-analysis.service'
 import { MatDrawer } from '@angular/material/sidenav';
-import { PantherMenuService } from '@panther.common/services/panther-menu.service';
+import { PantherSearchMenuService } from '@panther.search/services/search-menu.service';
 @Component({
   selector: 'panther-overrep-list',
   templateUrl: './overrep-list.component.html',
   styleUrls: ['./overrep-list.component.scss']
 })
-export class OverrepListComponent implements OnInit {
+export class OverrepListComponent implements OnInit, OnDestroy {
 
   @ViewChild('leftSubDrawer')
   leftDrawer: MatDrawer;
@@ -26,7 +26,7 @@ export class OverrepListComponent implements OnInit {
 
   constructor(
     private _httpClient: HttpClient,
-    public pantherMenuService: PantherMenuService,
+    public pantherSearchMenuService: PantherSearchMenuService,
     private geneAnalysisService: GeneAnalysisService
   ) {
     this.loadingIndicator = false;

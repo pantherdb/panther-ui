@@ -26,14 +26,14 @@ export class GeneFormComponent implements OnInit, OnDestroy {
   selectedAnalysis;
   filteredOrganisms: Observable<any[]>;
 
-  private unsubscribeAll: Subject<any>;
+  private _unsubscribeAll: Subject<any>;
 
   constructor(
     private route: ActivatedRoute,
     private geneAnalysisDialogService: GeneAnalysisDialogService,
     private geneAnalysisService: GeneAnalysisService,
     private formBuilder: FormBuilder) {
-    this.unsubscribeAll = new Subject();
+    this._unsubscribeAll = new Subject();
 
     this.sectionRule = this.geneAnalysisService.sectionRule;
 
@@ -190,7 +190,7 @@ export class GeneFormComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.unsubscribeAll.next();
-    this.unsubscribeAll.complete();
+    this._unsubscribeAll.next();
+    this._unsubscribeAll.complete();
   }
 }

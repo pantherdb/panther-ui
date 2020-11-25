@@ -1,20 +1,28 @@
 import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
-
-import { PantherConfirmDialogComponent } from '@panther/components/confirm-dialog/confirm-dialog.component';
+import { MatIconModule } from '@angular/material/icon';
+import { PantherConfirmDialogComponent } from './confirm-dialog.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { CommonModule } from '@angular/common';
+import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
     declarations: [
         PantherConfirmDialogComponent
     ],
     imports: [
+        CommonModule,
+        BrowserModule,
         MatDialogModule,
-        MatButtonModule
+        MatButtonModule,
+        MatIconModule,
+        FlexLayoutModule
     ],
     entryComponents: [
         PantherConfirmDialogComponent
     ],
 })
+
 export class PantherConfirmDialogModule {
 }
