@@ -9,26 +9,6 @@
     </button>
   </div>
   <div class="panther-drawer-body w-100-p" pantherPerfectScrollbar>
-    <div *ngIf="pantherUserService.user" class="panther-form-section" fxLayout="column" fxLayoutAlign="start stretch">
-      <div class="panther-section-header" fxLayout="row" fxLayoutAlign="start center">
-        <div class="panther-section-heading">
-          Create Model In
-        </div>
-        <span fxFlex></span>
-      </div>
-      <div class="panther-section-body p-8" fxLayout="row" fxLayoutAlign="start center">
-        <div class="panther-create w-100-p" fxLayout="row" fxLayoutAlign="start center">
-          <button mat-raised-button (click)="createModel('panther-form')" fxFlex="50"
-            class="panther-rounded-button mr-4 panther-half-button panther-r">
-            PANTHER FORM
-          </button>
-          <button mat-raised-button (click)="createModel('graph-editor')" fxFlex="50"
-            class="panther-rounded-button panther-half-button panther-l">
-            GRAPH EDITOR
-          </button>
-        </div>
-      </div>
-    </div>
     <div *ngIf="gene" class="panther-form-section" fxLayout="column" fxLayoutAlign="start stretch">
       <div class="panther-section-header" fxLayout="row" fxLayoutAlign="start center">
         <div class="panther-section-heading">
@@ -119,7 +99,7 @@
         <span fxFlex></span>
       </div>
       <div class="panther-section-body p-8" fxLayout="column" fxLayoutAlign="start start">
-        <div class="w-100-p p-4" *ngFor="let workbench of pantherConfigService.globalUrl?.universalWorkbenches">
+        <!--     <div class="w-100-p p-4" *ngFor="let workbench of pantherConfigService.globalUrl?.universalWorkbenches">
           <a class="w-100-p" href="{{workbench.url}}" target="_blank">
             <mat-chip class="panther-table-chip" fxLayout="row" fxLayoutAlign="start center">
               <div fxFlex="" class="panther-chip-label">
@@ -127,7 +107,7 @@
               </div>
             </mat-chip>
           </a>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>

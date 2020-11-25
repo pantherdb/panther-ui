@@ -12,11 +12,8 @@
       matTooltip="Open Workbenches Menu" [matTooltipPosition]="'below'" [matTooltipShowDelay]="1000">
       <mat-icon class="">apps</mat-icon>
     </button>
-    <a class="panther-main-logo" href="{{pantherConfigService.pantherUrl}}" target="_blank">
+    <a class="panther-main-logo" href="" target="_blank">
       Panther
-    </a>
-    <a class="panther-sub-logo" href="{{pantherConfigService.homeUrl}}" target=" _blank">
-      Form
     </a>
   </div>
   <div fxLayout="row" fxLayoutAlign="end center" fxFlex="">
@@ -53,29 +50,7 @@
       </mat-menu>
     </div>
     <div class="panther-br pr-12" fxLayout="row" fxLayoutAlign="start center">
-      <button *ngIf="pantherUserService.user" mat-button class="panther-name-button" [matMenuTriggerFor]="userMenu">
-        <div fxLayout="row" fxLayoutAlign="start center">
-          <div class="panther-info" fxLayout="column" fxLayoutAlign="start start">
-            <div class="panther-name text-truncate">
-              {{pantherUserService.user.name}}
-            </div>
-            <div class="panther-group-name text-truncate">
-              {{pantherUserService.user?.group?.label}}
-            </div>
-          </div>
-          <mat-icon>arrow_drop_down</mat-icon>
-        </div>
-      </button>
-      <mat-menu #userMenu="matMenu" class="">
-        <a mat-button href="{{pantherConfigService.logoutUrl}}" class="red-500-fg w-100-p">
-          Logout
-        </a>
-      </mat-menu>
-      <div *ngIf="!pantherUserService.user">
-        <a mat-button href="{{pantherConfigService.loginUrl}}" class="panther-login-button">
-          Login
-        </a>
-      </div>
+
     </div>
   </div>
   <div class="panther-bl panther-logo" fxLayout="row" fxLayoutAlign="start">

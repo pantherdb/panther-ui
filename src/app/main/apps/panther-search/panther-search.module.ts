@@ -12,7 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const routes = [
   {
-    path: 's',
+    path: '',
     component: PantherSearchComponent
   }
 ];

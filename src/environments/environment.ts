@@ -5,7 +5,7 @@
 export const environment = {
   hmr: false,
   production: false,
-  pantherApi: 'http://panthertest3.med.usc.edu:8083/services/'
+  pantherApi: 'http://localhost:5005'
 };
 
 /*

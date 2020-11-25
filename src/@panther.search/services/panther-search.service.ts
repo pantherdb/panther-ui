@@ -10,15 +10,10 @@ import { SearchHistory } from './../models/search-history';
 import { PantherDataService } from '@panther.common/services/panther-data.service';
 import { PantherSearchMenuService } from './search-menu.service';
 
-declare const require: any;
-
-const amigo = require('amigo2');
-
 @Injectable({
     providedIn: 'root'
 })
 export class PantherSearchService {
-    linker = new amigo.linker();
 
     searchHistory: SearchHistory[] = [];
     states: any[] = [];
@@ -77,7 +72,7 @@ export class PantherSearchService {
     // Get Users and Groups
     setup() {
         const self = this;
-        this.updateSearch();
+        // this.updateSearch();
     }
 
     search(searchCriteria) {

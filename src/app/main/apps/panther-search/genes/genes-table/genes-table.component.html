@@ -17,55 +17,10 @@
       Model IDs: <span> ({{ pantherSearchService.searchCriteria.ids.length}})</span>
       <mat-icon matChipRemove>cancel</mat-icon>
     </mat-chip>
-    <mat-chip *ngIf="pantherSearchService.searchCriteria.gps.length>0" class="panther-filter-chip"
-      (click)="openLeftDrawer(LeftPanel.filter)" [removable]="true"
-      (removed)="pantherSearchService.removeFilterType(pantherSearchService.filterType.gps)">
-      GPs: <span> ({{ pantherSearchService.searchCriteria.gps.length}})</span>
-      <mat-icon matChipRemove>cancel</mat-icon>
-    </mat-chip>
     <mat-chip *ngIf="pantherSearchService.searchCriteria.terms.length>0" class="panther-filter-chip"
       (click)="openLeftDrawer(LeftPanel.filter)" [removable]="true"
       (removed)="pantherSearchService.removeFilterType(pantherSearchService.filterType.terms)">
       GO Terms: <span class="panther-filter-number"> ({{ pantherSearchService.searchCriteria.terms.length}})</span>
-      <mat-icon matChipRemove>cancel</mat-icon>
-    </mat-chip>
-    <mat-chip *ngIf="pantherSearchService.searchCriteria.contributors.length>0" class="panther-filter-chip"
-      (click)="openLeftDrawer(LeftPanel.filter)" [removable]="true"
-      (removed)="pantherSearchService.removeFilterType(pantherSearchService.filterType.contributors)">
-      Contributors: <span class="panther-filter-number">
-        ({{ pantherSearchService.searchCriteria.contributors.length}})</span>
-      <mat-icon matChipRemove>cancel</mat-icon>
-    </mat-chip>
-    <mat-chip *ngIf="pantherSearchService.searchCriteria.groups.length>0" class="panther-filter-chip"
-      (click)="openLeftDrawer(LeftPanel.filter)" [removable]="true"
-      (removed)="pantherSearchService.removeFilterType(pantherSearchService.filterType.groups)">
-      Groups: <span class="panther-filter-number"> ({{ pantherSearchService.searchCriteria.groups.length}})</span>
-      <mat-icon matChipRemove>cancel</mat-icon>
-    </mat-chip>
-    <mat-chip *ngIf="pantherSearchService.searchCriteria.organisms.length>0" class="panther-filter-chip"
-      (click)="openLeftDrawer(LeftPanel.filter)" [removable]="true"
-      (removed)="pantherSearchService.removeFilterType(pantherSearchService.filterType.organisms)">
-      Species: <span class="panther-filter-number"> ({{ pantherSearchService.searchCriteria.organisms.length}})</span>
-      <mat-icon matChipRemove>cancel</mat-icon>
-    </mat-chip>
-    <mat-chip *ngIf="pantherSearchService.searchCriteria.pmids.length>0" class="panther-filter-chip"
-      (click)="openLeftDrawer(LeftPanel.filter)" [removable]="true"
-      (removed)="pantherSearchService.removeFilterType(pantherSearchService.filterType.pmids)">
-      References: <span class="panther-filter-number"> ({{ pantherSearchService.searchCriteria.pmids.length}})</span>
-      <mat-icon matChipRemove>cancel</mat-icon>
-    </mat-chip>
-    <mat-chip *ngIf="pantherSearchService.searchCriteria.states.length>0" class="panther-filter-chip"
-      (click)="openLeftDrawer(LeftPanel.filter)" [removable]="true"
-      (removed)="pantherSearchService.removeFilterType(pantherSearchService.filterType.states)">
-      Model States: <span class="panther-filter-number">
-        ({{ pantherSearchService.searchCriteria.states.length}})</span>
-      <mat-icon matChipRemove>cancel</mat-icon>
-    </mat-chip>
-    <mat-chip *ngIf="pantherSearchService.searchCriteria.exactdates.length>0" class="panther-filter-chip"
-      (click)="openLeftDrawer(LeftPanel.filter)" [removable]="true"
-      (removed)="pantherSearchService.removeFilterType(pantherSearchService.filterType.exactdates)">
-      Date Modified: <span class="panther-filter-number">
-        ({{ pantherSearchService.searchCriteria.exactdates.length}})</span>
       <mat-icon matChipRemove>cancel</mat-icon>
     </mat-chip>
   </div>
