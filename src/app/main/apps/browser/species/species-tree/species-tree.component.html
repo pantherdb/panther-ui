@@ -1,10 +1,11 @@
-<div fxLayout="column" fxLayoutAlign="start stretch" class="pthr-sidenav mat-elevation-z4">
-  <div class="pthr-tree-container" pantherPerfectScrollbar>
+<div fxLayout="column" fxLayoutAlign="start stretch" class="panther-sidenav mat-elevation-z4">
+  <div class="panther-tree-container" pantherPerfectScrollbar>
     <mat-tree #tree [dataSource]="dataSource" [treeControl]="treeControl">
-      <mat-tree-node class="pthr-tree-node text-truncate" *matTreeNodeDef="let node" (click)="selectSpecies(node.short_name)"
-        matTreeNodeToggle matTreeNodePadding matTreeNodePaddingIndent="10" [ngClass]="{ 'background-highlight': activeSpecies === node.short_name }">
-        <button mat-icon-button disabled class="pthr-icon-button"></button>
-        <button [ngStyle]="{'color': node.timescaleColor.color}" mat-icon-button class="pthr-icon-button"
+      <mat-tree-node class="panther-tree-node text-truncate" *matTreeNodeDef="let node"
+        (click)="selectSpecies(node.short_name)" matTreeNodeToggle matTreeNodePadding matTreeNodePaddingIndent="10"
+        [ngClass]="{ 'background-highlight': activeSpecies === node.short_name }">
+        <button mat-icon-button disabled class="panther-icon-button"></button>
+        <button [ngStyle]="{'color': node.timescaleColor.color}" mat-icon-button class="panther-icon-button"
           [attr.aria-label]="Timescale">
           <mat-icon class="s-18">
             history
@@ -12,11 +13,11 @@
         </button>
         {{node.long_name}}
         <span fxFlex></span>
-        <diV fxFlex="40px" class="pthr-gene-count">
+        <diV fxFlex="40px" class="panther-gene-count">
           {{node.gene_count}}
         </diV>
         <diV class="" fxFlex="20px">
-          <button mat-icon-button class="pthr-icon-button" (click)="openSpeciesPreview(node.short_name)"
+          <button mat-icon-button class="panther-icon-button" (click)="openSpeciesPreview(node.short_name)"
             [attr.aria-label]="Timescale">
             <mat-icon class="s-18">
               more_horiz
@@ -24,16 +25,18 @@
           </button>
         </diV>
       </mat-tree-node>
-      <mat-tree-node fxLayout="row" (click)="selectSpecies(node.short_name)" class="pthr-tree-node text-truncate"
-        *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding matTreeNodePaddingIndent="10" [ngClass]="{ 'background-highlight': activeSpecies === node.short_name }">
-        <button mat-icon-button matTreeNodeToggle class="pthr-icon-button" [attr.aria-label]="'toggle ' + node.long_name">
+      <mat-tree-node fxLayout="row" (click)="selectSpecies(node.short_name)" class="panther-tree-node text-truncate"
+        *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding matTreeNodePaddingIndent="10"
+        [ngClass]="{ 'background-highlight': activeSpecies === node.short_name }">
+        <button mat-icon-button matTreeNodeToggle class="panther-icon-button"
+          [attr.aria-label]="'toggle ' + node.long_name">
           <mat-icon *ngIf="!treeControl.isExpanded(node)" class="mat-icon-rtl-mirror s-16 fa fa-caret-right">
           </mat-icon>
           <mat-icon *ngIf="treeControl.isExpanded(node)" class="mat-icon-rtl-mirror s-10">
             signal_cellular_4_bar
           </mat-icon>
         </button>
-        <button [ngStyle]="{'color': node.timescaleColor.color}" mat-icon-button class="pthr-icon-button"
+        <button [ngStyle]="{'color': node.timescaleColor.color}" mat-icon-button class="panther-icon-button"
           [attr.aria-label]="Timescale">
           <mat-icon class="s-18">
             history
@@ -41,11 +44,11 @@
         </button>
         {{node.long_name}}
         <span fxFlex></span>
-        <div fxFlex="40px" class="pthr-gene-count">
+        <div fxFlex="40px" class="panther-gene-count">
           {{node.gene_count}}
         </div>
         <diV class="" fxFlex="20px">
-          <button mat-icon-button class="pthr-icon-button" (click)="openSpeciesPreview(node.short_name)"
+          <button mat-icon-button class="panther-icon-button" (click)="openSpeciesPreview(node.short_name)"
             [attr.aria-label]="Timescale">
             <mat-icon class="s-18">
               more_horiz
@@ -56,12 +59,13 @@
     </mat-tree>
   </div>
 
-  <div class="pthr-legend">
-    <div class="pthr-legend-header">
+  <div class="panther-legend">
+    <div class="panther-legend-header">
       TIMESCALE (MYA)
     </div>
     <div *ngFor="let legend of timescaleLegend">
-      <button [ngStyle]="{'color': legend.color}" mat-icon-button class="pthr-legend-button" [attr.aria-label]="Timescale">
+      <button [ngStyle]="{'color': legend.color}" mat-icon-button class="panther-legend-button"
+        [attr.aria-label]="Timescale">
         <mat-icon class="s-12">
           history
         </mat-icon>

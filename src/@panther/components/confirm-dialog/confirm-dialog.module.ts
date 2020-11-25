@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
-import { MatButtonModule, MatDialogModule } from '@angular/material';
-import { PantherConfirmDialogComponent } from './confirm-dialog.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+
+import { PantherConfirmDialogComponent } from '@panther/components/confirm-dialog/confirm-dialog.component';
 
 @NgModule({
     declarations: [
@@ -14,6 +16,5 @@ import { PantherConfirmDialogComponent } from './confirm-dialog.component';
         PantherConfirmDialogComponent
     ],
 })
-
 export class PantherConfirmDialogModule {
 }

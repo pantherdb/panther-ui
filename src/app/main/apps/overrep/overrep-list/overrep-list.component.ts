@@ -2,15 +2,11 @@ import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-
-import { MatDrawer } from '@angular/material';
-
-
-import { PantherMenuService } from '@panther.common/services/panther-menu.service';
-
 import { GeneAnalysisService } from './../../gene-analysis/services/gene-analysis.service'
+import { MatDrawer } from '@angular/material/sidenav';
+import { PantherMenuService } from '@panther.common/services/panther-menu.service';
 @Component({
-  selector: 'pthr-overrep-list',
+  selector: 'panther-overrep-list',
   templateUrl: './overrep-list.component.html',
   styleUrls: ['./overrep-list.component.scss']
 })

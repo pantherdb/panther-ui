@@ -16,42 +16,66 @@ export class PantherProgressBarComponent implements OnInit, OnDestroy {
     value: number;
     visible: boolean;
 
+
     private _unsubscribeAll: Subject<any>;
 
+    /**
+     * Constructor
+     *
+     * @param {PantherProgressBarService} _pantherProgressBarService
+     */
     constructor(
         private _pantherProgressBarService: PantherProgressBarService
     ) {
+
+
+
         this._unsubscribeAll = new Subject();
     }
 
+
     ngOnInit(): void {
+        // Subscribe to the progress bar service properties
+
+        // Buffer value
         this._pantherProgressBarService.bufferValue
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((bufferValue) => {
                 this.bufferValue = bufferValue;
             });
 
+        // Mode
         this._pantherProgressBarService.mode
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((mode) => {
                 this.mode = mode;
             });
 
+        // Value
         this._pantherProgressBarService.value
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((value) => {
                 this.value = value;
             });
 
+        // Visible
         this._pantherProgressBarService.visible
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((visible) => {
                 this.visible = visible;
             });
+
     }
 
+
     ngOnDestroy(): void {
+
         this._unsubscribeAll.next();
         this._unsubscribeAll.complete();
     }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
 }

@@ -1,23 +1,8 @@
-import { Component, Inject, OnInit, ElementRef, OnDestroy, ViewChild } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, FormArray } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
-import { MatPaginator, MatSort } from '@angular/material';
-import { DataSource } from '@angular/cdk/collections';
-import { merge, Observable, BehaviorSubject, fromEvent, Subject } from 'rxjs';
-import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
-
-import { pantherAnimations } from '@panther/animations';
-import { PantherUtils } from '@panther/utils/panther-utils';
-
-import { takeUntil } from 'rxjs/internal/operators';
-import { forEach } from '@angular/router/src/utils/collection';
-
-import { PantherTranslationLoaderService } from '@panther/services/translation-loader.service';
-import { locale as english } from './i18n/en';
-
+import { Component, Inject, OnInit, OnDestroy } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { Subject } from 'rxjs';
 import { advancedSearchData } from './advanced-search.tokens';
 import { AdvancedSearchOverlayRef } from './advanced-search-ref';
-import { PantherSearchService } from '@panther.search/services/panther-search.service';
 
 
 @Component({
@@ -29,17 +14,14 @@ import { PantherSearchService } from '@panther.search/services/panther-search.se
 export class PantherAdvancedSearchComponent implements OnInit, OnDestroy {
   searchCriteria: any = {};
   searchForm: FormGroup;
-  searchFormData: any = []
+  searchFormData: any = [];
   cams: any[] = [];
 
   private unsubscribeAll: Subject<any>;
 
-  constructor(private route: ActivatedRoute,
+  constructor(
     public dialogRef: AdvancedSearchOverlayRef,
-    @Inject(advancedSearchData) public data: any,
-    private pantherSearchService: PantherSearchService,
-    private pantherTranslationLoader: PantherTranslationLoaderService) {
-    this.pantherTranslationLoader.loadTranslations(english);
+    @Inject(advancedSearchData) public data: any) {
     this.searchForm = this.createAnswerForm();
 
     this.unsubscribeAll = new Subject();

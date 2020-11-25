@@ -1,6 +1,6 @@
 <div fxLayout="column" fxLayoutAlign="start center" class="w-100-p">
-  <div fxLayout="row" fxLayoutAlign="start center" class="pthr-header w-100-p">
-    <div class="pthr-title">
+  <div fxLayout="row" fxLayoutAlign="start center" class="panther-header w-100-p">
+    <div class="panther-title">
       Advanced Search
     </div>
     <span fxFlex></span>
@@ -8,11 +8,12 @@
       <mat-icon class="s-16 secondary-text">close</mat-icon>
     </button>
   </div>
-  <form fxLayout="column" fxLayoutAlign="start stretch" name="searchForm" [formGroup]="searchForm" class="pthr-container pthr-search-form">
-    <div class="pthr-table-form pthr-form-section" fxLayout="column" fxLayoutAlign="start stretch">
+  <form fxLayout="column" fxLayoutAlign="start stretch" name="searchForm" [formGroup]="searchForm"
+    class="panther-container panther-search-form">
+    <div class="panther-table-form panther-form-section" fxLayout="column" fxLayoutAlign="start stretch">
 
-      <div class="pthr-section-body" fxLayout="column" fxLayoutAlign="start stretch">
-        <div class="ph-15 pthr-annoton-group-row" fxLayout="column">
+      <div class="panther-section-body" fxLayout="column" fxLayoutAlign="start stretch">
+        <div class="ph-15 panther-annoton-group-row" fxLayout="column">
           <mat-form-field class="">
             <mat-label>Genes & Orthologies</mat-label>
             <input matInput formControlName="gp" />
@@ -32,17 +33,18 @@
         </div>
       </div>
     </div>
-    <div class="pthr-table-form pthr-form-section" fxLayout="column" fxLayoutAlign="start stretch">
-      <div class="pthr-section-header" fxLayout="row" fxLayoutAlign="start start">
-        <div class="pthr-section-heading">
+    <div class="panther-table-form panther-form-section" fxLayout="column" fxLayoutAlign="start stretch">
+      <div class="panther-section-header" fxLayout="row" fxLayoutAlign="start start">
+        <div class="panther-section-heading">
           Species
         </div>
         <span fxFlex></span>
       </div>
-      <div class="pthr-section-body" fxLayout="column" fxLayoutAlign="start stretch">
-        <div class="ph-15 pthr-annoton-group-row" fxLayout="column">
+      <div class="panther-section-body" fxLayout="column" fxLayoutAlign="start stretch">
+        <div class="ph-15 panther-annoton-group-row" fxLayout="column">
           <mat-form-field class="">
-            <input type="text" matInput formControlName="species" placeholder="Species" [matAutocomplete]="speciesAuto" />
+            <input type="text" matInput formControlName="species" placeholder="Species"
+              [matAutocomplete]="speciesAuto" />
             <mat-autocomplete #speciesAuto="matAutocomplete">
               <mat-option *ngFor="let item of searchFormData['species']?.searchResults" [value]="item.id">
                 <div class="w-100-p" fxLayout="row" fxLayoutAlign="start center">
@@ -58,7 +60,7 @@
         </div>
       </div>
     </div>
-    <div layout="row" class="pthr-submit-row">
+    <div layout="row" class="panther-submit-row">
       <button *ngIf="false" (click)='cancel()' type="button" mat-raised-button color="" class="mr-8">
         Why is the "Search" button disabled?
       </button>

@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 
-import 'rxjs/add/operator/map';
 
 import * as _ from 'lodash';
 

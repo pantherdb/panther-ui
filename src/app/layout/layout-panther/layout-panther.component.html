@@ -1,19 +1,12 @@
 <div id="panther-main">
-  <mat-sidenav-container>
-    <div id="panther-main-content">
-      <ng-container>
+    <ng-container>
         <panther-toolbar class="above"></panther-toolbar>
-      </ng-container>
-      <div id="wrapper" class="pthr-page-container" fxLayout="row" fxLayoutAlign="start start">
-        <div *ngIf="false" class="h-100-p pthr-sidenav">
-          <app-navbar></app-navbar>
-        </div>
-        <div class="h-100-p content-wrapper">
-          <panther-content></panther-content>
-        </div>
-      </div>
+    </ng-container>
+    <div class="content-wrapper">
+        <panther-content></panther-content>
     </div>
-  </mat-sidenav-container>
-  <app-footer *ngIf="false" id="footer"></app-footer>
-  <quick-panel *ngIf="false"></quick-panel>
+
+    <!--  <panther-sidebar name="quickPanel" position="right" class="quick-panel">
+          <quick-panel></quick-panel>
+      </panther-sidebar> -->
 </div>

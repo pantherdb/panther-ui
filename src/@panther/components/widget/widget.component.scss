@@ -4,13 +4,13 @@ panther-widget {
     perspective: 3000px;
     padding: 12px;
 
-    > div {
+    >div {
         position: relative;
         transform-style: preserve-3d;
         transition: transform 1s;
     }
 
-    > .panther-widget-front {
+    >.panther-widget-front {
         display: flex;
         flex-direction: column;
         flex: 1 1 auto;
@@ -20,12 +20,14 @@ panther-widget {
         width: 100%;
         opacity: 1;
         z-index: 10;
-        border-radius: 2px;
+        border-radius: 8px;
         transition: transform 0.5s ease-out 0s, visibility 0s ease-in 0.2s, opacity 0s ease-in 0.2s;
         transform: rotateY(0deg);
         backface-visibility: hidden;
+        border: 1px solid;
     }
-    > .panther-widget-back {
+
+    >.panther-widget-back {
         display: block;
         position: absolute;
         top: 12px;
@@ -36,9 +38,11 @@ panther-widget {
         visibility: hidden;
         opacity: 0;
         z-index: 10;
+        border-radius: 8px;
         transition: transform 0.5s ease-out 0s, visibility 0s ease-in 0.2s, opacity 0s ease-in 0.2s;
         transform: rotateY(180deg);
         backface-visibility: hidden;
+        border: 1px solid;
 
         [pantherWidgetToggle] {
             position: absolute;
@@ -49,13 +53,13 @@ panther-widget {
 
     &.flipped {
 
-        > .panther-widget-front {
+        >.panther-widget-front {
             visibility: hidden;
             opacity: 0;
             transform: rotateY(180deg);
         }
 
-        > .panther-widget-back {
+        >.panther-widget-back {
             display: block;
             visibility: visible;
             opacity: 1;

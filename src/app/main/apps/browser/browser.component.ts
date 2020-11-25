@@ -4,7 +4,7 @@ import { PantherMenuService } from '@panther.common/services/panther-menu.servic
 import { BrowserService } from './services/browser.service';
 
 @Component({
-  selector: 'pthr-browser',
+  selector: 'panther-browser',
   templateUrl: './browser.component.html',
   styleUrls: ['./browser.component.scss']
 })

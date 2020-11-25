@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MatDialogRef } from '@angular/material';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
     selector: 'panther-confirm-dialog',
@@ -9,6 +9,14 @@ import { MatDialogRef } from '@angular/material';
 export class PantherConfirmDialogComponent {
     public confirmMessage: string;
 
-    constructor(public dialogRef: MatDialogRef<PantherConfirmDialogComponent>) {
+    /**
+     * Constructor
+     *
+     * @param {MatDialogRef<PantherConfirmDialogComponent>} dialogRef
+     */
+    constructor(
+        public dialogRef: MatDialogRef<PantherConfirmDialogComponent>
+    ) {
     }
+
 }

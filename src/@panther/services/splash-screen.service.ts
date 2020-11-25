@@ -3,34 +3,59 @@ import { DOCUMENT } from '@angular/common';
 import { animate, AnimationBuilder, AnimationPlayer, style } from '@angular/animations';
 import { NavigationEnd, Router } from '@angular/router';
 
-@Injectable()
-export class PantherSplashScreenService {
-    splashScreenEl;
-    public player: AnimationPlayer;
+import { filter, take } from 'rxjs/operators';
 
+@Injectable({
+    providedIn: 'root'
+})
+export class PantherSplashScreenService {
+    splashScreenEl: any;
+    player: AnimationPlayer;
+
+    /**
+     * Constructor
+     *
+     * @param {AnimationBuilder} _animationBuilder
+     * @param _document
+     * @param {Router} _router
+     */
     constructor(
-        private animationBuilder: AnimationBuilder,
-        @Inject(DOCUMENT) private document: any,
-        private router: Router
+        private _animationBuilder: AnimationBuilder,
+        @Inject(DOCUMENT) private _document: any,
+        private _router: Router
     ) {
-        this.splashScreenEl = this.document.body.querySelector('#panther-splash-screen');
+        // Initialize
+        this._init();
+    }
+
+
+    /**
+     * Initialize
+     *
+     * @private
+     */
+    private _init(): void {
+        // Get the splash screen element
+        this.splashScreenEl = this._document.body.querySelector('#panther-splash-screen');
 
         if (this.splashScreenEl) {
-            const hideOnLoad = this.router.events.subscribe((event) => {
-                if (event instanceof NavigationEnd) {
+            // Hide it on the first NavigationEnd event
+            this._router.events
+                .pipe(
+                    filter((event => event instanceof NavigationEnd)),
+                    take(1)
+                )
+                .subscribe(() => {
                     setTimeout(() => {
                         this.hide();
-                        hideOnLoad.unsubscribe();
-                    }, 0);
-                }
-            }
-            );
+                    });
+                });
         }
     }
 
-    show() {
+    show(): void {
         this.player =
-            this.animationBuilder
+            this._animationBuilder
                 .build([
                     style({
                         opacity: '0',
@@ -44,9 +69,12 @@ export class PantherSplashScreenService {
         }, 0);
     }
 
-    hide() {
+    /**
+     * Hide the splash screen
+     */
+    hide(): void {
         this.player =
-            this.animationBuilder
+            this._animationBuilder
                 .build([
                     style({ opacity: '1' }),
                     animate('400ms ease', style({

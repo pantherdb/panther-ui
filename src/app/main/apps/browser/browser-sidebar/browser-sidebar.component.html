@@ -1,14 +1,12 @@
 <div class="w-100-p h-100-p">
-  <form fxLayout="column" fxLayoutAlign="start stretch" class="pthr-gene-form">
-
-
+  <form fxLayout="column" fxLayoutAlign="start stretch" class="panther-gene-form">
     <mat-tab-group dynamicHeight>
       <mat-tab>
         <ng-template mat-tab-label>
           MF
         </ng-template>
-        <div class="pthr-form-section" fxLayout="column" fxLayoutAlign="start stretch">
-          <div class="pthr-section-body" fxLayout="column" fxLayoutAlign="start stretch">
+        <div class="panther-form-section" fxLayout="column" fxLayoutAlign="start stretch">
+          <div class="panther-section-body" fxLayout="column" fxLayoutAlign="start stretch">
 
           </div>
         </div>
@@ -17,9 +15,9 @@
         <ng-template mat-tab-label>
           BP
         </ng-template>
-        <div class="pthr-form-section" fxLayout="column" fxLayoutAlign="start stretch">
-          <div class="pthr-section-body" fxLayout="column" fxLayoutAlign="start stretch">
-            <pthr-bp-term [checklistSelection]="bpChecklistSelection"></pthr-bp-term>
+        <div class="panther-form-section" fxLayout="column" fxLayoutAlign="start stretch">
+          <div class="panther-section-body" fxLayout="column" fxLayoutAlign="start stretch">
+            <panther-bp-term [checklistSelection]="bpChecklistSelection"></panther-bp-term>
           </div>
         </div>
       </mat-tab>
@@ -27,8 +25,8 @@
         <ng-template mat-tab-label>
           CC
         </ng-template>
-        <div class="pthr-form-section" fxLayout="column" fxLayoutAlign="start stretch">
-          <div class="pthr-section-body" fxLayout="column" fxLayoutAlign="start stretch">
+        <div class="panther-form-section" fxLayout="column" fxLayoutAlign="start stretch">
+          <div class="panther-section-body" fxLayout="column" fxLayoutAlign="start stretch">
 
           </div>
         </div>
@@ -37,8 +35,8 @@
         <ng-template mat-tab-label>
           PC
         </ng-template>
-        <div class="pthr-form-section" fxLayout="column" fxLayoutAlign="start stretch">
-          <div class="pthr-section-body" fxLayout="column" fxLayoutAlign="start stretch">
+        <div class="panther-form-section" fxLayout="column" fxLayoutAlign="start stretch">
+          <div class="panther-section-body" fxLayout="column" fxLayoutAlign="start stretch">
 
           </div>
         </div>
@@ -47,8 +45,8 @@
         <ng-template mat-tab-label>
           Pathway
         </ng-template>
-        <div class="pthr-form-section" fxLayout="column" fxLayoutAlign="start stretch">
-          <div class="pthr-section-body" fxLayout="column" fxLayoutAlign="start stretch">
+        <div class="panther-form-section" fxLayout="column" fxLayoutAlign="start stretch">
+          <div class="panther-section-body" fxLayout="column" fxLayoutAlign="start stretch">
 
           </div>
         </div>
@@ -57,8 +55,28 @@
         <ng-template mat-tab-label>
           Species
         </ng-template>
-        <div class="pthr-form-section" fxLayout="column" fxLayoutAlign="start stretch">
-          <div class="pthr-section-body" fxLayout="column" fxLayoutAlign="start stretch">
+        <div class="panther-form-section" fxLayout="column" fxLayoutAlign="start stretch">
+          <div class="panther-section-body" fxLayout="column" fxLayoutAlign="start stretch">
+
+          </div>
+        </div>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <div class="mat-green-300-bg">
+            SUMMARY
+          </div>
+        </ng-template>
+        <div class="panther-form-section" fxLayout="column" fxLayoutAlign="start stretch">
+          <div class="panther-section-header" fxLayout="row" fxLayoutAlign="start start">
+            <div class="panther-section-heading">
+              <h4>
+                Selected Biological Process
+              </h4>
+            </div>
+            <span fxFlex></span>
+          </div>
+          <div class="panther-section-body" fxLayout="column" fxLayoutAlign="start stretch">
 
           </div>
         </div>
@@ -66,14 +84,14 @@
     </mat-tab-group>
     <!--
     <mat-accordion class="example-headers-align">
-      <mat-expansion-panel class="pthr-browser-expansion pthr-passed" hideToggle>
+      <mat-expansion-panel class="panther-browser-expansion panther-passed" hideToggle>
         <mat-expansion-panel-header>
           <mat-panel-title>
             Molecular Function
           </mat-panel-title>
         </mat-expansion-panel-header>
-        <div class="pthr-form-section" fxLayout="column" fxLayoutAlign="start stretch">
-          <div class="pthr-section-body" fxLayout="column" fxLayoutAlign="start stretch">
+        <div class="panther-form-section" fxLayout="column" fxLayoutAlign="start stretch">
+          <div class="panther-section-body" fxLayout="column" fxLayoutAlign="start stretch">
 
           </div>
         </div>
@@ -81,29 +99,29 @@
           <button mat-button color="primary">Next</button>
         </mat-action-row>
       </mat-expansion-panel>
-      <mat-expansion-panel class="pthr-browser-expansion pthr-passed" hideToggle>
+      <mat-expansion-panel class="panther-browser-expansion panther-passed" hideToggle>
         <mat-expansion-panel-header>
           <mat-panel-title>
             Biological Process
           </mat-panel-title>
         </mat-expansion-panel-header>
-        <div class="pthr-form-section" fxLayout="column" fxLayoutAlign="start stretch">
-          <div class="pthr-section-body" fxLayout="column" fxLayoutAlign="start stretch">
-            <pthr-bp-term [checklistSelection]="bpChecklistSelection"></pthr-bp-term>
+        <div class="panther-form-section" fxLayout="column" fxLayoutAlign="start stretch">
+          <div class="panther-section-body" fxLayout="column" fxLayoutAlign="start stretch">
+            <panther-bp-term [checklistSelection]="bpChecklistSelection"></panther-bp-term>
           </div>
         </div>
         <mat-action-row>
           <button mat-button color="primary">Next</button>
         </mat-action-row>
       </mat-expansion-panel>
-      <mat-expansion-panel class="pthr-browser-expansion pthr-passed" hideToggle>
+      <mat-expansion-panel class="panther-browser-expansion panther-passed" hideToggle>
         <mat-expansion-panel-header>
           <mat-panel-title>
             Cellular Component
           </mat-panel-title>
         </mat-expansion-panel-header>
-        <div class="pthr-form-section" fxLayout="column" fxLayoutAlign="start stretch">
-          <div class="pthr-section-body" fxLayout="column" fxLayoutAlign="start stretch">
+        <div class="panther-form-section" fxLayout="column" fxLayoutAlign="start stretch">
+          <div class="panther-section-body" fxLayout="column" fxLayoutAlign="start stretch">
 
           </div>
         </div>
@@ -111,14 +129,14 @@
           <button mat-button color="primary">Next</button>
         </mat-action-row>
       </mat-expansion-panel>
-      <mat-expansion-panel class="pthr-browser-expansion pthr-passed" hideToggle>
+      <mat-expansion-panel class="panther-browser-expansion panther-passed" hideToggle>
         <mat-expansion-panel-header>
           <mat-panel-title>
             Protein Class
           </mat-panel-title>
         </mat-expansion-panel-header>
-        <div class="pthr-form-section" fxLayout="column" fxLayoutAlign="start stretch">
-          <div class="pthr-section-body" fxLayout="column" fxLayoutAlign="start stretch">
+        <div class="panther-form-section" fxLayout="column" fxLayoutAlign="start stretch">
+          <div class="panther-section-body" fxLayout="column" fxLayoutAlign="start stretch">
 
           </div>
         </div>
@@ -126,14 +144,14 @@
           <button mat-button color="primary">Next</button>
         </mat-action-row>
       </mat-expansion-panel>
-      <mat-expansion-panel class="pthr-browser-expansion pthr-passed" hideToggle>
+      <mat-expansion-panel class="panther-browser-expansion panther-passed" hideToggle>
         <mat-expansion-panel-header>
           <mat-panel-title>
             Pathway
           </mat-panel-title>
         </mat-expansion-panel-header>
-        <div class="pthr-form-section" fxLayout="column" fxLayoutAlign="start stretch">
-          <div class="pthr-section-body" fxLayout="column" fxLayoutAlign="start stretch">
+        <div class="panther-form-section" fxLayout="column" fxLayoutAlign="start stretch">
+          <div class="panther-section-body" fxLayout="column" fxLayoutAlign="start stretch">
 
           </div>
         </div>
@@ -141,15 +159,15 @@
           <button mat-button color="primary">Next</button>
         </mat-action-row>
       </mat-expansion-panel>
-      <mat-expansion-panel class="pthr-browser-expansion pthr-passed" hideToggle>
+      <mat-expansion-panel class="panther-browser-expansion panther-passed" hideToggle>
         <mat-expansion-panel-header>
           <mat-panel-title>
             Species
           </mat-panel-title>
         </mat-expansion-panel-header>
-        <div class="pthr-form-section" fxLayout="column" fxLayoutAlign="start stretch">
-          <div class="pthr-section-body" fxLayout="column" fxLayoutAlign="start stretch">
-            <pthr-species-tree></pthr-species-tree>
+        <div class="panther-form-section" fxLayout="column" fxLayoutAlign="start stretch">
+          <div class="panther-section-body" fxLayout="column" fxLayoutAlign="start stretch">
+            <panther-species-tree></panther-species-tree>
           </div>
         </div>
         <mat-action-row>

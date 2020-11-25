@@ -13,7 +13,7 @@ import { SpeciesService } from './../services/species.service';
 
 
 @Component({
-  selector: 'pthr-species-tree',
+  selector: 'panther-species-tree',
   templateUrl: './species-tree.component.html',
   styleUrls: ['./species-tree.component.scss'],
 })
@@ -36,7 +36,7 @@ export class SpeciesTreeComponent implements OnInit {
     private route: ActivatedRoute,
     public pantherMenuService: PantherMenuService,
     private speciesService: SpeciesService,
-    private renderer: Renderer2, ) {
+    private renderer: Renderer2,) {
 
     this.treeFlattener = new MatTreeFlattener(this.transformer, this._getLevel,
       this._isExpandable, this._getChildren);

@@ -9,17 +9,36 @@ import { PantherWidgetToggleDirective } from './widget-toggle.directive';
 })
 
 export class PantherWidgetComponent implements AfterContentInit {
-    @HostBinding('class.flipped') flipped = false;
-    @ContentChildren(PantherWidgetToggleDirective, { descendants: true }) toggleButtons: QueryList<PantherWidgetToggleDirective>;
+    @HostBinding('class.flipped')
+    flipped = false;
 
-    constructor(private el: ElementRef, private renderer: Renderer2) {
+    @ContentChildren(PantherWidgetToggleDirective, { descendants: true })
+    toggleButtons: QueryList<PantherWidgetToggleDirective>;
+
+    /**
+     * Constructor
+     *
+     * @param {ElementRef} _elementRef
+     * @param {Renderer2} _renderer
+     */
+    constructor(
+        private _elementRef: ElementRef,
+        private _renderer: Renderer2
+    ) {
     }
 
-    ngAfterContentInit() {
-        setTimeout(() => {
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
 
+    /**
+     * After content init
+     */
+    ngAfterContentInit(): void {
+        // Listen for the flip button click
+        setTimeout(() => {
             this.toggleButtons.forEach(flipButton => {
-                this.renderer.listen(flipButton.el.nativeElement, 'click', (event) => {
+                this._renderer.listen(flipButton.elementRef.nativeElement, 'click', (event) => {
                     event.preventDefault();
                     event.stopPropagation();
                     this.toggle();
@@ -28,7 +47,14 @@ export class PantherWidgetComponent implements AfterContentInit {
         });
     }
 
-    toggle() {
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Toggle the flipped status
+     */
+    toggle(): void {
         this.flipped = !this.flipped;
     }
 

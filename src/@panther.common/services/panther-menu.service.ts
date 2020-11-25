@@ -1,14 +1,10 @@
 import { Injectable } from '@angular/core';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MatDrawer } from '@angular/material/sidenav';
 
 const pantherTypes = require('@panther/data/config/panther-types.json');
 
-import { MatDrawer } from '@angular/material';
-
-declare const require: any;
-const each = require('lodash/forEach');
-const cloneDeep = require('lodash/cLoneDeep');
 
 @Injectable({
   providedIn: 'root'

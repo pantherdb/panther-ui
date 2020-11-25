@@ -1,0 +1,176 @@
+.icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+
+/* ==========================================
+Single-colored icons can be modified like so:
+.icon-name {
+  font-size: 32px;
+  color: red;
+}
+========================================== */
+
+.icon-panther-activity {
+  width: 0.9775390625em;
+}
+
+.icon-panther-admin {
+  width: 1.318359375em;
+}
+
+.icon-panther-advice {
+  width: 0.95703125em;
+}
+
+.icon-panther-apply {
+  width: 0.93359375em;
+}
+
+.icon-panther-apps {
+  width: 1.001953125em;
+}
+
+.icon-panther-checklist {
+  width: 1.2841796875em;
+}
+
+.icon-panther-collaboration {
+  width: 1.2080078125em;
+}
+
+.icon-panther-community {
+  width: 1.0087890625em;
+}
+
+.icon-panther-component {
+  width: 1.150390625em;
+}
+
+.icon-panther-explorer {
+  width: 1.048828125em;
+}
+
+.icon-panther-follower {
+  width: 1.138671875em;
+}
+
+.icon-panther-goal {
+  width: 0.93359375em;
+}
+
+.icon-panther-guideline {
+  width: 1.072265625em;
+}
+
+.icon-panther-handpicked {
+  width: 1.0634765625em;
+}
+
+.icon-panther-hobby {
+  width: 0.9853515625em;
+}
+
+.icon-panther-journal {
+  width: 1.0068359375em;
+}
+
+.icon-panther-judge {
+  width: 1.0546875em;
+}
+
+.icon-panther-logo {
+  width: 0.9990234375em;
+}
+
+.icon-panther-matcher {
+  width: 1.0703125em;
+}
+
+.icon-panther-mentorship {
+  width: 1.205078125em;
+}
+
+.icon-panther-note {
+  width: 1.095703125em;
+}
+
+.icon-panther-objective {
+  width: 1.15625em;
+}
+
+.icon-panther-observer {
+  width: 1.0419921875em;
+}
+
+.icon-panther-organize {
+  width: 1.01953125em;
+}
+
+.icon-panther-page {
+  width: 0.8671875em;
+}
+
+.icon-panther-plan {
+  width: 1.357421875em;
+}
+
+.icon-panther-project {
+  width: 1.15625em;
+}
+
+.icon-panther-promise {
+  width: 1.1064453125em;
+}
+
+.icon-panther-promise-2 {
+  width: 1.1435546875em;
+}
+
+.icon-panther-skill {
+  width: 0.986328125em;
+}
+
+.icon-panther-step {
+  width: 1.1513671875em;
+}
+
+.icon-panther-swipe {
+  width: 1.2001953125em;
+}
+
+.icon-panther-table {
+  width: 1.216796875em;
+}
+
+.icon-panther-teach {
+  width: 1.04296875em;
+}
+
+.icon-panther-timeline {
+  width: 0.9765625em;
+}
+
+.icon-panther-todo {
+  width: 0.91796875em;
+}
+
+.icon-panther-wall {
+  width: 1.1533203125em;
+}
+
+.icon-panther-weblink {
+  width: 1.0078125em;
+}
+
+.icon-panther-wrenches {
+  width: 0.50390625em;
+}
+
+.icon-panther-question {
+  width: 0.6201171875em;
+}

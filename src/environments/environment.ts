@@ -3,6 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
+  hmr: false,
   production: false,
   pantherApi: 'http://panthertest3.med.usc.edu:8083/services/'
 };

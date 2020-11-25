@@ -8,14 +8,10 @@ import { debounceTime, distinctUntilChanged, map, startWith } from 'rxjs/operato
 import { GeneAnalysisService } from './../services/gene-analysis.service'
 import { GeneAnalysisDialogService } from './../dialogs/services/dialog.service';
 
-import * as _ from 'lodash';
-declare const require: any;
-const each = require('lodash/forEach');
-
 import { pantherAnimations } from '@panther/animations';
 
 @Component({
-  selector: 'pthr-gene-form',
+  selector: 'panther-gene-form',
   templateUrl: './gene-form.component.html',
   styleUrls: ['./gene-form.component.scss'],
 })
@@ -32,7 +28,8 @@ export class GeneFormComponent implements OnInit, OnDestroy {
 
   private unsubscribeAll: Subject<any>;
 
-  constructor(private route: ActivatedRoute,
+  constructor(
+    private route: ActivatedRoute,
     private geneAnalysisDialogService: GeneAnalysisDialogService,
     private geneAnalysisService: GeneAnalysisService,
     private formBuilder: FormBuilder) {

@@ -1,22 +1,24 @@
 <div class="h-100-p w-100-p" fxLayout="column" fxLayoutAlign="start stretch" pantherPerfectScrollbar>
-  <div class="pthr-menu-section">
-    <div *ngFor="let menuItem of mainMenu" (click)="pantherMenuService.openPage(menuItem)" [ngClass]="{'pthr-selected':menuItem.id===pantherMenuService.selectedLeftPanel.id}"
-      class="pthr-nav-button" fxLayout="row" fxLayoutAlign="start center">
+  <div class="panther-menu-section">
+    <div *ngFor="let menuItem of mainMenu" (click)="pantherMenuService.openPage(menuItem)"
+      [ngClass]="{'panther-selected':menuItem.id===pantherMenuService.selectedLeftPanel.id}" class="panther-nav-button"
+      fxLayout="row" fxLayoutAlign="start center">
       {{menuItem.label}}
       <span fxFlex=""></span>
       <mat-icon>chevron_right</mat-icon>
     </div>
   </div>
   <span fxFlex=""></span>
-  <div class="pthr-menu-section">
-    <div *ngFor="let menuItem of subMenu" (click)="pantherMenuService.openPage(menuItem)" [ngClass]="{'pthr-selected':menuItem.id===pantherMenuService.selectedLeftPanel.id}"
-      class="pthr-nav-button" fxLayout="row" fxLayoutAlign="start center">
+  <div class="panther-menu-section">
+    <div *ngFor="let menuItem of subMenu" (click)="pantherMenuService.openPage(menuItem)"
+      [ngClass]="{'panther-selected':menuItem.id===pantherMenuService.selectedLeftPanel.id}" class="panther-nav-button"
+      fxLayout="row" fxLayoutAlign="start center">
       {{menuItem.label}}
       <span fxFlex=""></span>
       <mat-icon>chevron_right</mat-icon>
     </div>
   </div>
-  <div class="pthr-sidebar-footer" fxLayout="column" fxLayoutAlign="start center">
+  <div class="panther-sidebar-footer" fxLayout="column" fxLayoutAlign="start center">
     <div class="" fxLayout="row" fxLayoutAlign="start center">
       <a href="/about.jsp">About</a> &nbsp;&nbsp;|&nbsp;&nbsp;
       <a href="/releaseInfo.jsp">Release Information</a>
@@ -29,7 +31,7 @@
       <a href="/terms/privacyPolicy.jsp">Privacy Policy</a> &nbsp;&nbsp;|&nbsp;&nbsp;
       <a href="/terms/disclaimer.jsp">Disclaimer</a>
     </div>
-    <div class="pthr-all-rights" fxLayout="row" fxLayoutAlign="start center">
+    <div class="panther-all-rights" fxLayout="row" fxLayoutAlign="start center">
       ©&nbsp;Copyright&nbsp;2018&nbsp;Paul Thomas; All Right Reserved.
     </div>
   </div>

@@ -1,42 +1,33 @@
 import { NgModule } from '@angular/core';
-import { MaterialModule } from './material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-
-import { NgxDatatableModule } from '@swimlane/ngx-datatable';
-
 import { FlexLayoutModule } from '@angular/flex-layout';
-
-import { PantherDirectivesModule } from './directives/directives';
-import { PantherPipesModule } from './pipes/pipes.module';
-
-import { HttpClient } from '@angular/common/http';
-
-import { MarkdownModule, MarkedOptions } from 'ngx-markdown';
+import { PantherDirectivesModule } from '@panther/directives/directives';
+import { PantherPipesModule } from '@panther/pipes/pipes.module';
+import { NgxGraphModule } from '@swimlane/ngx-graph';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
-        MaterialModule,
         ReactiveFormsModule,
         FlexLayoutModule,
-        NgxDatatableModule,
         PantherDirectivesModule,
         PantherPipesModule,
-        MarkdownModule.forRoot({ loader: HttpClient }),
+        NgxGraphModule,
+        FontAwesomeModule
     ],
     exports: [
         CommonModule,
-        MaterialModule,
         FormsModule,
         ReactiveFormsModule,
         FlexLayoutModule,
-        NgxDatatableModule,
         PantherDirectivesModule,
         PantherPipesModule,
-        MarkdownModule
+        NgxGraphModule,
+        FontAwesomeModule
     ]
 })
-
-export class PantherSharedModule { }
+export class PantherSharedModule {
+}

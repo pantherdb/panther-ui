@@ -1,5 +1,5 @@
 <div class="w-100-p h-100-p" fxLayout="column" fxLayoutAlign="start streych">
-  <div class="w-100-p pthr-drawer-container-header" fxLayout="row" fxLayoutAlign="start center">
+  <div class="w-100-p panther-drawer-container-header" fxLayout="row" fxLayoutAlign="start center">
     <button mat-button (click)="openLeftDrawer()">
       Filter
     </button>
@@ -9,8 +9,8 @@
     </button>
   </div>
   <mat-drawer-container class="w-100-p h-100-p" fxLayout="row" fxLayoutAlign="start start">
-    <mat-drawer #leftSubDrawer class="pthr-left-drawer" fxFlex="200px" mode="side" position="start">
-      <div class="w-100-p pthr-drawer-container-header" fxLayout="row" fxLayoutAlign="start center">
+    <mat-drawer #leftSubDrawer class="panther-left-drawer" fxFlex="200px" mode="side" position="start">
+      <div class="w-100-p panther-drawer-container-header" fxLayout="row" fxLayoutAlign="start center">
         Filter
         <span fxFlex=""></span>
         <button mat-icon-button (click)="closeLeftDrawer()" aria-label="Close dialog">
@@ -19,10 +19,10 @@
       </div>
     </mat-drawer>
     <mat-drawer-content class="w-100-p" pantherPerfectScrollbar>
-      <ngx-datatable class="material" [rows]="genes" [columns]="columns" [loadingIndicator]="loadingIndicator"
+      <!--    <ngx-datatable class="material" [rows]="genes" [columns]="columns" [loadingIndicator]="loadingIndicator"
         [columnMode]="'force'" [headerHeight]="48" [footerHeight]="56" [rowHeight]="60" [scrollbarH]="true"
         [reorderable]="reorderable" [selectionType]="'checkbox'" [limit]="10">
-      </ngx-datatable>
+      </ngx-datatable> -->
     </mat-drawer-content>
   </mat-drawer-container>
 </div>

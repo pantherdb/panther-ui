@@ -1,10 +1,6 @@
-import { environment } from 'environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable, Subscriber } from 'rxjs';
-import { map, filter, reduce, catchError, retry, tap } from 'rxjs/operators';
-
-import { PantherUtils } from '@panther/utils/panther-utils';
+import { BehaviorSubject } from 'rxjs';
 
 export interface Cam {
     model?: {};
@@ -28,7 +24,7 @@ export class PantherSearchService {
     cams: any[] = [];
     onCamsChanged: BehaviorSubject<any>;
 
-    constructor(private httpClient: HttpClient) {
+    constructor() {
         this.onCamsChanged = new BehaviorSubject({});
 
     }

@@ -6,7 +6,7 @@
   background-color: white;
   @include mat-elevation(4);
 
-  .pthr-header {
+  .panther-header {
     @include deep-height(30px);
     background-color: #EEE;
     border-bottom: #CCC solid 1px;
@@ -17,14 +17,14 @@
       line-height: 30px;
     }
 
-    .pthr-title {
+    .panther-title {
       font-size: 10px;
       padding: 0 14px;
     }
   }
 
   mat-expansion-panel-header {
-    background-color: $pthr-primary-color-light;
+    background-color: $panther-primary-color-light;
   }
 
   ::ng-deep .mat-expansion-panel-body {
@@ -32,18 +32,18 @@
   }
 
 
-  .pthr-gene-form {
+  .panther-gene-form {
     input[type="file"] {
       display: none;
     }
 
-    .pthr-file-upload-header {
+    .panther-file-upload-header {
       height: 35px;
 
       button {
         @include deep-height(35px);
 
-        &.pthr-file-button {
+        &.panther-file-button {
           pointer-events: none;
         }
       }
@@ -52,42 +52,42 @@
         padding: 0;
       }
 
-      .pthr-file-upload-title {
+      .panther-file-upload-title {
         margin-left: 4px;
         color: #888;
         font-weight: bold;
       }
     }
 
-    .pthr-file-upload {
+    .panther-file-upload {
       border: 1px solid #ddd;
       display: inline-block;
       padding: 6px 12px;
       cursor: pointer;
     }
 
-    .pthr-form-section {
+    .panther-form-section {
       width: 100%;
       background-color: #FFF;
 
-      .pthr-section-header {
+      .panther-section-header {
         height: 35px;
-        background-color: $pthr-primary-color-light;
+        background-color: $panther-primary-color-light;
 
-        .pthr-section-heading {
+        .panther-section-heading {
           padding: 8px;
           font-size: 16px;
           line-height: 40px;
           color: #555;
         }
 
-        .pthr-action-button {
+        .panther-action-button {
           margin: 0px;
           height: 30px; // line-height: 36px;
         }
       }
 
-      .pthr-subheading {
+      .panther-subheading {
         height: 20px;
         line-height: 20px;
         margin-bottom: 8px;
@@ -97,13 +97,13 @@
         color: #555;
       }
 
-      .pthr-section-body {
+      .panther-section-body {
         padding: 20px 10px;
 
       }
     }
 
-    .pthr-submit-row {
+    .panther-submit-row {
       margin: 10px 0;
       padding: 10px 0;
       background-color: #FFF;

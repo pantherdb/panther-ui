@@ -13,7 +13,7 @@ import { Term, TermNode, TermFlatNode } from './../models/term'
 
 
 @Component({
-  selector: 'pthr-browser-sidebar',
+  selector: 'panther-browser-sidebar',
   templateUrl: './browser-sidebar.component.html',
   styleUrls: ['./browser-sidebar.component.scss']
 })

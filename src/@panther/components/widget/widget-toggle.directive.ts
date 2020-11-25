@@ -4,6 +4,13 @@ import { Directive, ElementRef } from '@angular/core';
     selector: '[pantherWidgetToggle]'
 })
 export class PantherWidgetToggleDirective {
-    constructor(public el: ElementRef) {
+    /**
+     * Constructor
+     *
+     * @param {ElementRef} elementRef
+     */
+    constructor(
+        public elementRef: ElementRef
+    ) {
     }
 }

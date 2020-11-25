@@ -2,15 +2,8 @@ import { environment } from 'environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
-
-
-
-
-import 'rxjs/add/operator/map';
-
-import * as _ from 'lodash';
-
-import { Species, SpeciesNode, SpeciesFlatNode } from './../models/species'
+import { Species, SpeciesNode, SpeciesFlatNode } from './../models/species';
+import { each, find } from 'lodash';
 
 @Injectable({
     providedIn: 'root',
@@ -105,7 +98,7 @@ export class SpeciesService {
 
     private _addSpeciesColor(species: Species[]) {
         const self = this;
-        _.each(species, function (speciesNode) {
+        each(species, function (speciesNode) {
             speciesNode.timescaleColor = self._buildTimescaleColor(speciesNode.timescale);
         });
     }
@@ -131,11 +124,11 @@ export class SpeciesService {
 
 
     private _addHeirarchyLevel(speciesNodes: Species[]) {
-        _.each(speciesNodes, function (speciesNode) {
+        each(speciesNodes, function (speciesNode) {
             let level = 0;
             let parent = speciesNode;
             while (parent) {
-                parent = _.find(speciesNodes, { id: parent.parent_id });
+                parent = find(speciesNodes, { id: parent.parent_id });
                 level++;
             }
             // speciesNode.level = level;

@@ -6,7 +6,7 @@
   flex: 0 0 auto;
   z-index: 4;
 
-  .pthr-logo-filler {
+  .panther-logo-filler {
     @include deep-width(50px);
 
     img {
@@ -24,7 +24,7 @@
     mat-toolbar-row {
       @include deep-height(40px);
 
-      &.pthr-subtoolbar {
+      &.panther-subtoolbar {
         button {
           margin-right: 8px;
           height: 30px;
@@ -45,11 +45,11 @@
     }
   }
 
-  .pthr-logo {
+  .panther-logo {
 
     //@include deep-width(130px);
-    .pthr-main-logo,
-    .pthr-sub-logo {
+    .panther-main-logo,
+    .panther-sub-logo {
       cursor: pointer;
       font-size: 20px;
       text-decoration: none !important;
@@ -61,17 +61,17 @@
       }
     }
 
-    .pthr-main-logo {
+    .panther-main-logo {
       margin-right: 4px;
       font-weight: bold;
     }
 
-    .pthr-sub-logo {
+    .panther-sub-logo {
       font-weight: normal;
     }
   }
 
-  .pthr-search-bar {
+  .panther-search-bar {
     max-width: 600px !important;
   }
 }

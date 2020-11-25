@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
-import { MatDividerModule, MatListModule, MatSlideToggleModule } from '@angular/material';
-
+import { MatDividerModule } from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { PantherSharedModule } from '@panther/shared.module';
-
 import { QuickPanelComponent } from 'app/layout/components/quick-panel/quick-panel.component';
 
 @NgModule({
@@ -13,7 +13,6 @@ import { QuickPanelComponent } from 'app/layout/components/quick-panel/quick-pan
         MatDividerModule,
         MatListModule,
         MatSlideToggleModule,
-
         PantherSharedModule,
     ],
     exports: [

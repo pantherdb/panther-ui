@@ -2,15 +2,11 @@ import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-
-import { MatDrawer } from '@angular/material';
-
-
-import { PantherMenuService } from '@panther.common/services/panther-menu.service';
-
 import { GeneAnalysisService } from './../../gene-analysis/services/gene-analysis.service'
+import { MatDrawer } from '@angular/material/sidenav';
+import { PantherMenuService } from '@panther.common/services/panther-menu.service';
 @Component({
-  selector: 'pthr-gene-list',
+  selector: 'panther-gene-list',
   templateUrl: './gene-list.component.html',
   styleUrls: ['./gene-list.component.scss']
 })

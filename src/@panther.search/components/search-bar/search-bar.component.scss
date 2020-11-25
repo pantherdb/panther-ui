@@ -1,20 +1,20 @@
 @import "src/@panther/scss/panther";
 
 :host {
-  .pthr-search-box {
+  .panther-search-box {
     width: 100%;
 
     input[type=text] {
-      &.pthr-textbox-legacy {
+      &.panther-textbox-legacy {
         border-radius: 0 4px;
       }
     }
 
-    .pthr-search-button {
+    .panther-search-button {
       border-radius: 0 4px 4px 0;
     }
 
-    .pthr-more-options-button {
+    .panther-more-options-button {
       @include deep-width(25px);
       border-left: none;
       border-right: none;
@@ -28,7 +28,7 @@
     height: 100%;
     font-size: 13px;
 
-    @include media-breakpoint-down('sm') {
+    @include media-breakpoint('sm') {
       height: 56px;
     }
 
@@ -42,7 +42,7 @@
       .panther-search-bar-collapser {
         margin: 0;
 
-        @include media-breakpoint-down('sm') {
+        @include media-breakpoint('sm') {
           height: 56px !important; // line-height: 56px !important;
         }
       }
@@ -52,7 +52,7 @@
         height: 64px !important;
         line-height: 64px !important;
 
-        @include media-breakpoint-down('sm') {
+        @include media-breakpoint('sm') {
           height: 56px !important;
           line-height: 56px !important;
         }

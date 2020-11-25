@@ -8,7 +8,7 @@ import { debounceTime, distinctUntilChanged, map, startWith } from 'rxjs/operato
 import { PantherMenuService } from '@panther.common/services/panther-menu.service';
 
 @Component({
-  selector: 'pthr-sequence-search-form',
+  selector: 'panther-sequence-search-form',
   templateUrl: './sequence-search-form.component.html',
   styleUrls: ['./sequence-search-form.component.scss']
 })

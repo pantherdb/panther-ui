@@ -1,15 +1,18 @@
 <div class="panther-search-bar" [ngClass]="{'expanded':!collapsed}">
   <div class="panther-search-bar-content" #advancedSearchTrigger>
-    <div *ngIf="collapsed" class="pthr-search-box">
-      <input class="pthr-textbox-legacy panther-search-bar-expander" type="text" placeholder="Search" (input)="search($event)" fxFlex>
-      <button (click)="openAdvancedSearch()" mat-stroked-button class="pthr-button-border pthr-more-options-button p-0" aria-label="advanced search">
+    <div *ngIf="collapsed" class="panther-search-box">
+      <input class="panther-textbox-legacy panther-search-bar-expander" type="text" placeholder="Search"
+        (input)="search($event)" fxFlex>
+      <button (click)="openAdvancedSearch()" mat-stroked-button
+        class="panther-button-border panther-more-options-button p-0" aria-label="advanced search">
         <mat-icon class="s-18 secondary-text">arrow_drop_down</mat-icon>
       </button>
-      <button mat-stroked-button class="pthr-button-border pthr-search-button p-0" aria-label="Search">
+      <button mat-stroked-button class="panther-button-border panther-search-button p-0" aria-label="Search">
         <mat-icon class="s-18 secondary-text">search</mat-icon>
       </button>
     </div>
-    <input matInput id="panther-search-bar-input" class="ml-24" type="text" placeholder="Search" (input)="search($event)" fxFlex>
+    <input matInput id="panther-search-bar-input" class="ml-24" type="text" placeholder="Search"
+      (input)="search($event)" fxFlex>
     <button mat-icon-button class="panther-search-bar-collapser" (click)="collapse()" aria-label="Collapse Search Bar">
       <mat-icon class="s-24 secondary-text">close</mat-icon>
     </button>

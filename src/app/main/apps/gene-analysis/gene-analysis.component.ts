@@ -1,16 +1,11 @@
 
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, FormArray } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-
-import { MatDrawer } from '@angular/material';
-
-import { PantherTranslationLoaderService } from '@panther/services/translation-loader.service';
-
+import { FormGroup } from '@angular/forms';
 import { PantherMenuService } from '@panther.common/services/panther-menu.service';
+import { MatDrawer } from '@angular/material/sidenav';
 
 @Component({
-  selector: 'pthr-gene-analysis',
+  selector: 'panther-gene-analysis',
   templateUrl: './gene-analysis.component.html',
   styleUrls: ['./gene-analysis.component.scss']
 })
@@ -26,10 +21,8 @@ export class GeneAnalysisComponent implements OnInit {
   searchForm: FormGroup;
   leftPanelMenu;
 
-  constructor(private pantherTranslationLoader: PantherTranslationLoaderService,
-    public pantherMenuService: PantherMenuService,
-    private route: ActivatedRoute,
-    private router: Router) {
+  constructor(
+    public pantherMenuService: PantherMenuService) {
 
     this.leftPanelMenu = this.pantherMenuService.mainMenu;
   }

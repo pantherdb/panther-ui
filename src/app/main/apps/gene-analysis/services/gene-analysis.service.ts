@@ -3,13 +3,11 @@ import { environment } from 'environments/environment'
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, Subscriber } from 'rxjs';
+import { cloneDeep } from 'lodash';
 
 declare const require: any;
-const each = require('lodash/forEach');
-const cloneDeep = require('lodash/cLoneDeep');
 const pantherRules = require('@panther/data/config/panther-rules.json');
 const pantherTypes = require('@panther/data/config/panther-types.json');
-
 const organisms = require('@panther/data/organisms.json');
 
 @Injectable({

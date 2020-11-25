@@ -1,11 +1,7 @@
-import { environment } from 'environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
-import { MatDialog, MatDialogRef } from '@angular/material';
-
 import { GeneMapDialogComponent } from './../gene-map-dialog/gene-map.component';
-import 'rxjs/add/operator/map';
+import { MatDialog } from '@angular/material/dialog';
 
 
 @Injectable({
@@ -14,7 +10,7 @@ import 'rxjs/add/operator/map';
 export class GeneAnalysisDialogService {
     dialogRef: any;
 
-    constructor(private httpClient: HttpClient,
+    constructor(
         private _matDialog: MatDialog) {
     }
 
@@ -26,7 +22,7 @@ export class GeneAnalysisDialogService {
             }
         });
         this.dialogRef.afterClosed()
-            .subscribe(response => {
+            .subscribe(() => {
 
             });
     }

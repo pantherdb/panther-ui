@@ -16,7 +16,7 @@ import { BrowserService } from './../services/browser.service';
 
 
 @Component({
-  selector: 'pthr-bp-term',
+  selector: 'panther-bp-term',
   templateUrl: './bp-term.component.html',
   styleUrls: ['./bp-term.component.scss']
 })
@@ -38,10 +38,11 @@ export class BpTermComponent implements OnInit {
 
   private _unsubscribeAll: Subject<any>;
 
-  constructor(private router: Router,
+  constructor(
+    private router: Router,
     private route: ActivatedRoute,
     private browserService: BrowserService,
-    private renderer: Renderer2, ) {
+    private renderer: Renderer2,) {
 
     this.treeFlattener = new MatTreeFlattener(this.transformer, this._getLevel,
       this._isExpandable, this._getChildren);
@@ -53,7 +54,6 @@ export class BpTermComponent implements OnInit {
   }
 
   ngOnInit() {
-
     this.browserService.onBpTermTreeChanged
       .pipe(takeUntil(this._unsubscribeAll))
       .subscribe(termTree => {

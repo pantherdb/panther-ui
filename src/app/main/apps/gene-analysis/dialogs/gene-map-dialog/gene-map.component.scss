@@ -6,25 +6,25 @@
     width: 100%;
   }
 
-  @include media-breakpoint-up('sm') {
+  @include media-breakpoint('sm') {
     width: 800px;
     @include deep-height(95%);
   }
 
-  .pthr-gene-panel {
+  .panther-gene-panel {
     padding: 15px 5px;
     background-color: #F7F7F7;
     width: 100%; // border-left: #DDD solid 1px;
   }
 
-  .pthr-column-toolbar {}
+  .panther-column-toolbar {}
 
-  .pthr-gene-detail {
+  .panther-gene-detail {
     padding: 10px;
     width: 100%;
   }
 
-  .pthr-sequence {
+  .panther-sequence {
     @include deep-width(100%);
     resize: none;
   }

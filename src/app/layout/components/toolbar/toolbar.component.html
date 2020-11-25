@@ -1,13 +1,13 @@
 <mat-toolbar class="mat-elevation-z1" fxLayout="row" fxLayoutAlign="start center">
   <mat-progress-bar *ngIf="showLoadingBar" class="loading-bar" color="accent" mode="indeterminate"></mat-progress-bar>
   <div fxLayout="row" fxLayoutAlign="start center" fxFlex="250px">
-    <div fxLayoutAlign="center center" class="pthr-logo-filler">
+    <div fxLayoutAlign="center center" class="panther-logo-filler">
       <button mat-icon-button target="_blank">
         <img src="assets/images/logos/go-logo.png">
       </button>
     </div>
-    <div class="pthr-logo" fxLayout="row" fxLayoutAlign="start">
-      <a class="pthr-main-logo" target="_blank">
+    <div class="panther-logo" fxLayout="row" fxLayoutAlign="start">
+      <a class="panther-main-logo" target="_blank">
         Panther
       </a>
     </div>
@@ -15,7 +15,7 @@
   <span fxFlex=""></span>
   <div class="toolbar-separator"></div>
   <div fxLayout="row" fxLayoutAlign="center center" fxFlex="100">
-    <panther-search-bar fxFlex="60" class="pthr-search-bar" (input)="search($event)"></panther-search-bar>
+    <panther-search-bar fxFlex="60" class="panther-search-bar" (input)="search($event)"></panther-search-bar>
   </div>
   <div class="toolbar-separator"></div>
   <div fxLayout="row" fxLayoutAlign="end center" fxFlex="250px">

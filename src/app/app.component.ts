@@ -1,20 +1,17 @@
-import { Component, ElementRef, HostBinding, Inject, OnInit, OnDestroy, Renderer2, ViewEncapsulation } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { Platform } from '@angular/cdk/platform';
-import { Subject, Subscription } from 'rxjs';
+import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-
 import { PantherConfigService } from '@panther/services/config.service';
-import { TranslateService } from '@ngx-translate/core';
+import { PantherSidebarService } from '@panther/components/sidebar/sidebar.service';
 import { PantherSplashScreenService } from '@panther/services/splash-screen.service';
-import { PantherTranslationLoaderService } from '@panther/services/translation-loader.service';
 
 
 @Component({
-    selector: 'panther-root',
+    selector: 'app',
     templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss'],
-    encapsulation: ViewEncapsulation.None
+    styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, OnDestroy {
     pantherConfig: any;
@@ -23,45 +20,50 @@ export class AppComponent implements OnInit, OnDestroy {
     private _unsubscribeAll: Subject<any>;
 
     constructor(
-        private translate: TranslateService,
-        private pantherSplashScreen: PantherSplashScreenService,
-        private pantherTranslationLoader: PantherTranslationLoaderService,
-        private _renderer: Renderer2,
-        private _elementRef: ElementRef,
-        private pantherConfigService: PantherConfigService,
-        private platform: Platform,
-        @Inject(DOCUMENT) private document: any
+        @Inject(DOCUMENT) private document: any,
+        private pantherSplashScreenService: PantherSplashScreenService,
+        private _pantherConfigService: PantherConfigService,
+        private _pantherSidebarService: PantherSidebarService,
+        private _platform: Platform
     ) {
-        this.translate.addLangs(['en', 'tr']);
-        this.translate.setDefaultLang('en');
-        this.pantherTranslationLoader.loadTranslations();
-        this.translate.use('en');
 
-        if (this.platform.ANDROID || this.platform.IOS) {
-            this.document.body.className += ' is-mobile';
+        if (this._platform.ANDROID || this._platform.IOS) {
+            this.document.body.classList.add('is-mobile');
         }
+
 
         this._unsubscribeAll = new Subject();
     }
 
+
     ngOnInit(): void {
-        this.pantherConfigService.config
+        this._pantherConfigService.config
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((config) => {
+
                 this.pantherConfig = config;
+
+                // Color theme - Use normal for loop for IE11 compatibility
+                for (let i = 0; i < this.document.body.classList.length; i++) {
+                    const className = this.document.body.classList[i];
+
+                    if (className.startsWith('theme-')) {
+                        this.document.body.classList.remove(className);
+                    }
+                }
+
+                this.document.body.classList.add(this.pantherConfig.colorTheme);
             });
     }
 
-    ngOnDestroy() {
+
+    ngOnDestroy(): void {
+
         this._unsubscribeAll.next();
         this._unsubscribeAll.complete();
     }
 
-    addClass(className: string) {
-        this._renderer.addClass(this._elementRef.nativeElement, className);
-    }
-
-    removeClass(className: string) {
-        this._renderer.removeClass(this._elementRef.nativeElement, className);
+    toggleSidebarOpen(key): void {
+        this._pantherSidebarService.getSidebar(key).toggleOpen();
     }
 }

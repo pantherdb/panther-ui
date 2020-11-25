@@ -2,13 +2,13 @@
 @import "src/@panther.common/scss/panther.common";
 
 
-.pthr-browser-container {
+.panther-browser-container {
   padding: 20px 2px 300px 2px;
 
-  .pthr-browser-summary {
+  .panther-browser-summary {
     padding: 20px 2px 20px 2px;
 
-    .pthr-title {
+    .panther-title {
       padding: 0 5px 0 10px;
       @include deep-height(50px);
       border-bottom: #999 solid 1px;
@@ -17,7 +17,7 @@
       font-size: 18px;
       margin-bottom: 5px;
 
-      .pthr-subtitle {
+      .panther-subtitle {
         padding-left: 5px;
         font-weight: bold;
       }
@@ -25,7 +25,7 @@
   }
 }
 
-.pthr-browser-expansion {
+.panther-browser-expansion {
   width: 100%;
 
   mat-expansion-panel-header {
@@ -34,7 +34,7 @@
     border-bottom: #999 solid 1px;
     margin-bottom: 5px;
 
-    .pthr-comparison-toggle {
+    .panther-comparison-toggle {
       @include deep-width(30px);
       @include deep-height(50px);
     }
@@ -44,21 +44,21 @@
     padding: 0 !important;
   }
 
-  .pthr-title {
+  .panther-title {
     font-size: 18px;
     margin-bottom: 5px;
   }
 
-  .pthr-description {
+  .panther-description {
     font-size: 12px
   }
 
-  .pthr-expansion-panel-body {
+  .panther-expansion-panel-body {
     //padding: 10px 0;
     @include deep-width(100%);
   }
 
-  &.pthr-passed {
+  &.panther-passed {
     border-left: #4cc0e4 solid 1px;
 
     mat-expansion-panel-header {
@@ -66,7 +66,7 @@
     }
   }
 
-  &.pthr-gained {
+  &.panther-gained {
     border-left: #4c9b73 solid 1px;
 
     mat-expansion-panel-header {
@@ -74,7 +74,7 @@
     }
   }
 
-  &.pthr-loss {
+  &.panther-loss {
     border-left: rgb(230, 83, 83) solid 1px;
 
     mat-expansion-panel-header {
@@ -82,7 +82,7 @@
     }
   }
 
-  &.pthr-not-modeled {
+  &.panther-not-modeled {
     border-left: rgb(10, 6, 233) solid 1px;
 
     mat-expansion-panel-header {

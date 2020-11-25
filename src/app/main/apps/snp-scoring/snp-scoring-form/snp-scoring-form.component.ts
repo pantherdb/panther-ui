@@ -8,7 +8,7 @@ import { debounceTime, distinctUntilChanged, map, startWith } from 'rxjs/operato
 import { SnpScoringService } from './../services/snp-scoring.service';
 
 @Component({
-  selector: 'pthr-snp-scoring-form',
+  selector: 'panther-snp-scoring-form',
   templateUrl: './snp-scoring-form.component.html',
   styleUrls: ['./snp-scoring-form.component.scss']
 })

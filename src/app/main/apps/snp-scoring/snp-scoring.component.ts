@@ -1,25 +1,24 @@
-import { Component, Inject, OnInit, ElementRef, OnDestroy, ViewEncapsulation, ViewChild } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, FormArray, Validators, FormControlDirective } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
-import { merge, Observable, BehaviorSubject, fromEvent, Subject } from 'rxjs';
-import { debounceTime, distinctUntilChanged, map, startWith } from 'rxjs/operators';
-
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { Observable, Subject } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
 import { PantherMenuService } from '@panther.common/services/panther-menu.service';
 
 import { SnpScoringService } from './services/snp-scoring.service';
 
 @Component({
-  selector: 'pthr-snp-scoring',
+  selector: 'panther-snp-scoring',
   templateUrl: './snp-scoring.component.html',
   styleUrls: ['./snp-scoring.component.scss']
 })
-export class SnpScoringComponent implements OnInit {
+export class SnpScoringComponent implements OnInit, OnDestroy {
   private unsubscribeAll: Subject<any>;
   snpScoringForm: FormGroup;
   organisms;
   filteredOrganisms: Observable<any[]>;
 
-  constructor(private snpScoringService: SnpScoringService,
+  constructor(
+    private snpScoringService: SnpScoringService,
     public pantherMenuService: PantherMenuService) {
 
     this.unsubscribeAll = new Subject();
@@ -46,7 +45,6 @@ export class SnpScoringComponent implements OnInit {
   }
 
   onValueChanges() {
-    const self = this;
 
     this.filteredOrganisms = this.snpScoringForm.controls.organism.valueChanges
       .pipe(

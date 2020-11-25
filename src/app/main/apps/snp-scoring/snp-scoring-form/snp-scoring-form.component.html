@@ -1,4 +1,5 @@
-<form fxLayout="column" fxLayoutAlign="start stretch" name="snpScoringForm" [formGroup]="snpScoringForm" class="pthr-gene-form">
+<form fxLayout="column" fxLayoutAlign="start stretch" name="snpScoringForm" [formGroup]="snpScoringForm"
+  class="panther-gene-form">
   <div fxLayout="row" fxLayoutAlign="start center" class="alert alert-info">
     Estimates the likelihood of a particular nonsynonymous (amino-acid changing) coding SNP to cause a
     functional
@@ -16,8 +17,8 @@
     <mat-label>Enter substitution(s), e.g. A10P</mat-label>
     <textarea matInput formControlName="substitution" placeholder="Enter IDs" rows="5"></textarea>
   </mat-form-field>
-  <div class="pthr-form-section" fxLayout="column" fxLayoutAlign="start stretch">
-    <div class="pthr-section-body" fxLayout="column" fxLayoutAlign="start stretch">
+  <div class="panther-form-section" fxLayout="column" fxLayoutAlign="start stretch">
+    <div class="panther-section-body" fxLayout="column" fxLayoutAlign="start stretch">
       <mat-form-field class="" appearance="outline">
         <mat-label>Organisms</mat-label>
         <input matInput formControlName="organism" placeholder="Swelect an organism" [matAutocomplete]="auto">
@@ -31,7 +32,7 @@
       </mat-form-field>
     </div>
   </div>
-  <div layout="row" class="pthr-submit-row">
+  <div layout="row" class="panther-submit-row">
     <span fxFlex></span>
     <button (click)='cancel()' type="button" mat-raised-button color="" class="mr-8">Clear</button>
     <button (click)="search()" type="button" mat-raised-button color="primary">Save</button>

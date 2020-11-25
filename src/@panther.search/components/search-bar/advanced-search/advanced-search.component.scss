@@ -6,7 +6,7 @@
   background-color: white;
   @include mat-elevation(4);
 
-  .pthr-header {
+  .panther-header {
     @include deep-height(30px);
     background-color: #EEE;
     border-bottom: #CCC solid 1px;
@@ -17,28 +17,28 @@
       line-height: 30px;
     }
 
-    .pthr-title {
+    .panther-title {
       font-size: 10px;
       padding: 0 14px;
     }
   }
 
-  .pthr-body {
+  .panther-body {
     padding: 0 14px 14px 14px;
   }
 
-  .pthr-search-form {
-    .pthr-form-section {
+  .panther-search-form {
+    .panther-form-section {
       margin: 10px 0;
       width: 100%;
       background-color: #FFF;
       @include mat-elevation(2);
 
-      .pthr-section-header {
+      .panther-section-header {
         height: 40px;
-        background-color: $pthr-primary-color-light;
+        background-color: $panther-primary-color-light;
 
-        .pthr-section-heading {
+        .panther-section-heading {
           padding-left: 8px;
           font-weight: bold;
           font-size: 12px;
@@ -46,49 +46,49 @@
           color: #555;
         }
 
-        .pthr-action-button {
+        .panther-action-button {
           margin: 0px;
           height: 40px; // line-height: 36px;
         }
       }
 
-      .pthr-section-body {
+      .panther-section-body {
         padding: 16px 14px;
       }
     }
 
-    .pthr-term-group {
+    .panther-term-group {
       // padding-bottom: 20px;
       margin-bottom: 3px;
       //  border-bottom: #CCC solid 1px;
       background-color: #FFF;
 
-      .pthr-group-heading {
+      .panther-group-heading {
         margin-bottom: 20px;
         height: 40px;
         font-weight: 500;
         font-size: 18px;
       }
 
-      .pthr-annoton-group-row {
-        &.pthr-row-disabled {
+      .panther-annoton-group-row {
+        &.panther-row-disabled {
           opacity: 0.2;
           pointer-events: none;
         }
 
-        &.pthr-input-heading {
+        &.panther-input-heading {
           margin-top: 10px;
         }
       }
 
-      .pthr-action-button {
+      .panther-action-button {
         margin: 8px 0 0 0;
         background-color: #FAFAFA;
         width: 35px;
         height: 35px;
 
         md-icon {
-          @include pthr-icon-size(14px);
+          @include panther-icon-size(14px);
           color: #AAA;
           line-height: 18px;
         }
@@ -104,12 +104,12 @@
     }
 
 
-    .pthr-tree-input {
+    .panther-tree-input {
       $border-color: rgba(#000, 0.12);
       @include deep-width(20px);
       border-right: $border-color solid 1px;
 
-      &.pthr-level-0 {
+      &.panther-level-0 {
         border: none;
       }
     }
@@ -136,7 +136,7 @@
     }
 
 
-    .pthr-submit-row {
+    .panther-submit-row {
       margin: 10px 0;
       padding: 10px 0;
       background-color: #FFF;
