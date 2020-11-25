@@ -1,6 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subject } from 'rxjs';
-import { PantherFormConfigService, PantherUserService } from 'panther-form-base';
 import { PantherSearchService } from './../..//services/panther-search.service';
 import { PantherSearchMenuService } from '../../services/search-menu.service';
 import { takeUntil } from 'rxjs/operators';
@@ -17,10 +16,9 @@ export class SearchHistoryComponent implements OnInit, OnDestroy {
 
   private _unsubscribeAll: Subject<any>;
 
-  constructor(public pantherUserService: PantherUserService,
+  constructor(
     public pantherSearchMenuService: PantherSearchMenuService,
-    public pantherSearchService: PantherSearchService,
-    public pantherFormConfigService: PantherFormConfigService) {
+    public pantherSearchService: PantherSearchService) {
     this._unsubscribeAll = new Subject();
   }
 

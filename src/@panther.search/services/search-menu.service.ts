@@ -2,15 +2,12 @@ import { Injectable } from '@angular/core';
 import { MatDrawer } from '@angular/material/sidenav';
 import { PantherPerfectScrollbarDirective } from '@panther/directives/panther-perfect-scrollbar/panther-perfect-scrollbar.directive';
 import { LeftPanel, MiddlePanel, RightPanel } from './../models/menu-panels';
-import { ReviewMode } from './../models/review-mode';
 const pantherTypes = require('@panther/data/config/panther-types.json');
 
 @Injectable({
     providedIn: 'root'
 })
 export class PantherSearchMenuService {
-    reviewMode: ReviewMode = ReviewMode.off;
-    reviewLevel = 0;
     selectedLeftPanel: LeftPanel;
     selectedMiddlePanel: MiddlePanel;
     selectedRightPanel: RightPanel;
@@ -18,10 +15,6 @@ export class PantherSearchMenuService {
 
     private leftDrawer: MatDrawer;
     private rightDrawer: MatDrawer;
-
-
-
-
 
     _mainMenu = [
         pantherTypes.page.home,
@@ -40,18 +33,10 @@ export class PantherSearchMenuService {
 
     constructor() {
         this.selectedLeftPanel = LeftPanel.filter;
-        this.selectedMiddlePanel = MiddlePanel.cams;
+        this.selectedMiddlePanel = MiddlePanel.genes;
         this.selectedLeftPanel = this._mainMenu[0];
     }
-    goHome() {
-        this.router.navigate(['/'])
-    }
 
-
-    openPage(menuItem) {
-        this.router.navigate([menuItem.url])
-        this.selectedLeftPanel = menuItem;
-    }
 
     get mainMenu() {
         return this._mainMenu;
@@ -74,13 +59,6 @@ export class PantherSearchMenuService {
     selectMiddlePanel(panel: MiddlePanel) {
         this.selectedMiddlePanel = panel;
 
-        if (panel === MiddlePanel.cams) {
-            this.reviewLevel = 0;
-        } else if (panel === MiddlePanel.camsReview) {
-            this.reviewLevel = 1;
-        } else if (panel === MiddlePanel.reviewChanges) {
-            this.reviewLevel = 2;
-        }
     }
 
     selectRightPanel(panel: RightPanel) {

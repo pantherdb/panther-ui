@@ -1,4 +1,4 @@
-<div fxLayout="column" fxLayoutAlign="start stretch" class="panther-cam-form panther-drawer h-100-p">
+<div fxLayout="column" fxLayoutAlign="start stretch" class="panther-gene-form panther-drawer h-100-p">
   <div class="panther-drawer-header" fxLayout="row" fxLayoutAlign="start center">
     <span class="panther-drawer-header-title">
       Workbenches</span>
@@ -29,7 +29,7 @@
         </div>
       </div>
     </div>
-    <div *ngIf="cam" class="panther-form-section" fxLayout="column" fxLayoutAlign="start stretch">
+    <div *ngIf="gene" class="panther-form-section" fxLayout="column" fxLayoutAlign="start stretch">
       <div class="panther-section-header" fxLayout="row" fxLayoutAlign="start center">
         <div class="panther-section-heading">
           Edit In
@@ -38,7 +38,7 @@
       </div>
       <div class="panther-section-body p-8" fxLayout="row" fxLayoutAlign="start center">
         <div class="p-8" fxFlex="50">
-          <a class="w-100-p" [href]='cam?.model?.modelInfo?.pantherFormUrl' target="_blank">
+          <a class="w-100-p" [href]='gene?.model?.modelInfo?.pantherFormUrl' target="_blank">
             <mat-chip class="panther-table-chip" fxLayout="row" fxLayoutAlign="start center">
               <div class="panther-icon">
                 <fa-icon [icon]="['fas', 'list-alt']"></fa-icon>
@@ -50,7 +50,7 @@
           </a>
         </div>
         <div class="p-8" fxFlex="50">
-          <a class="w-100-p" [href]='cam?.model?.modelInfo?.graphEditorUrl' target="_blank">
+          <a class="w-100-p" [href]='gene?.model?.modelInfo?.graphEditorUrl' target="_blank">
             <mat-chip class="panther-table-chip" fxLayout="row" fxLayoutAlign="start center">
               <div class="panther-icon">
                 <fa-icon [icon]="['fas', 'sitemap']"></fa-icon>
@@ -64,7 +64,7 @@
       </div>
     </div>
     <mat-divider></mat-divider>
-    <div *ngIf="cam" class="panther-form-section" fxLayout="column" fxLayoutAlign="start stretch">
+    <div *ngIf="gene" class="panther-form-section" fxLayout="column" fxLayoutAlign="start stretch">
       <div class="panther-section-header" fxLayout="row" fxLayoutAlign="start center">
         <div class="panther-section-heading">
           Export As
@@ -73,7 +73,7 @@
       </div>
       <div class="panther-section-body p-8" fxLayout="row" fxLayoutAlign="start center">
         <div class="p-4" fxFlex="50">
-          <a class="w-100-p" [href]='cam?.model?.modelInfo?.gpadUrl' target="_blank">
+          <a class="w-100-p" [href]='gene?.model?.modelInfo?.gpadUrl' target="_blank">
             <mat-chip class="panther-table-chip" fxLayout="row" fxLayoutAlign="start center">
               <div fxFlex="" class="panther-chip-label">
                 GPAD
@@ -82,7 +82,7 @@
           </a>
         </div>
         <div class="p-4" fxFlex="50">
-          <a class="w-100-p" [href]='cam?.model?.modelInfo?.owlUrl' target="_blank">
+          <a class="w-100-p" [href]='gene?.model?.modelInfo?.owlUrl' target="_blank">
             <mat-chip class="panther-table-chip" fxLayout="row" fxLayoutAlign="start center">
               <div fxFlex="" class="panther-chip-label">
                 OWL
@@ -92,7 +92,7 @@
         </div>
       </div>
     </div>
-    <div *ngIf="cam" class="panther-form-section" fxLayout="column" fxLayoutAlign="start stretch">
+    <div *ngIf="gene" class="panther-form-section" fxLayout="column" fxLayoutAlign="start stretch">
       <div class="panther-section-header" fxLayout="row" fxLayoutAlign="start center">
         <div class="panther-section-heading">
           Model Workbenches
@@ -100,7 +100,7 @@
         <span fxFlex></span>
       </div>
       <div class="panther-section-body p-8" fxLayout="column" fxLayoutAlign="start start">
-        <div class="w-100-p p-4" *ngFor="let workbench of cam?.model?.modelInfo?.modelWorkbenches">
+        <div class="w-100-p p-4" *ngFor="let workbench of gene?.model?.modelInfo?.modelWorkbenches">
           <a class="w-100-p" href="{{workbench.url}}" target="_blank">
             <mat-chip class="panther-table-chip" fxLayout="row" fxLayoutAlign="start center">
               <div fxFlex="" class="panther-chip-label">

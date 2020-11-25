@@ -1,1 +1,1 @@
-export * from './@panther.form/panther.form.module';
+export * from './@panther.search/panther-search.module';

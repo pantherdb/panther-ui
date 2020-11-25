@@ -3,25 +3,13 @@ import { ActivatedRoute } from '@angular/router';
 import { MatDrawer } from '@angular/material/sidenav';
 import { Subject } from 'rxjs';
 import { pantherAnimations } from './../../../../@panther/animations';
-import {
-  Cam,
-  Contributor,
-  PantherUserService,
-  PantherFormConfigService,
-  CamService,
-  CamsService
-} from 'panther-form-base';
-
 import { FormGroup } from '@angular/forms';
 import { PantherSearchService } from '@panther.search/services/panther-search.service';
 import { distinctUntilChanged, takeUntil } from 'rxjs/operators';
-import { CamPage } from '@panther.search/models/cam-page';
+import { GenePage } from '@panther.search/models/gene-page';
 import { PantherSearchMenuService } from '@panther.search/services/search-menu.service';
 import { PantherCommonMenuService } from '@panther.common/services/panther-common-menu.service';
-import { ReviewMode } from '@panther.search/models/review-mode';
 import { LeftPanel, MiddlePanel, RightPanel } from '@panther.search/models/menu-panels';
-import { ArtBasket } from '@panther.search/models/art-basket';
-import { PantherReviewSearchService } from '@panther.search/services/panther-review-search.service';
 import { PantherPerfectScrollbarDirective } from '@panther/directives/panther-perfect-scrollbar/panther-perfect-scrollbar.directive';
 
 @Component({
@@ -42,15 +30,11 @@ export class PantherSearchComponent implements OnInit, AfterViewInit, OnDestroy 
   @ViewChildren(PantherPerfectScrollbarDirective)
   private _pantherPerfectScrollbarDirectives: QueryList<PantherPerfectScrollbarDirective>;
 
-  ReviewMode = ReviewMode;
   LeftPanel = LeftPanel;
   MiddlePanel = MiddlePanel;
   RightPanel = RightPanel;
-  artBasket: ArtBasket = new ArtBasket();
 
-  camPage: CamPage;
-  public cam: Cam;
-  public user: Contributor;
+  genePage: GenePage;
 
   searchResults = [];
   modelId = '';
@@ -68,73 +52,40 @@ export class PantherSearchComponent implements OnInit, AfterViewInit, OnDestroy 
 
   isReviewMode = false;
 
-  cams: any[] = [];
+  genes: any[] = [];
 
   private _unsubscribeAll: Subject<any>;
 
   constructor(
     private route: ActivatedRoute,
-    private camService: CamService,
-    private camsService: CamsService,
-    public pantherReviewSearchService: PantherReviewSearchService,
-    public pantherFormConfigService: PantherFormConfigService,
     public pantherCommonMenuService: PantherCommonMenuService,
     public pantherSearchMenuService: PantherSearchMenuService,
-    public pantherUserService: PantherUserService,
     public pantherSearchService: PantherSearchService,
   ) {
     this._unsubscribeAll = new Subject();
 
-    this.route
-      .queryParams
-      .subscribe(params => {
-        const baristaToken = params['barista_token'] || null;
-        this.pantherUserService.getUser(baristaToken);
-      });
-
-    this.pantherSearchService.onCamsPageChanged
+    this.pantherSearchService.onGenesPageChanged
       .pipe(takeUntil(this._unsubscribeAll))
-      .subscribe((camPage: CamPage) => {
-        if (!camPage) {
+      .subscribe((genePage: GenePage) => {
+        if (!genePage) {
           return;
         }
-        this.camPage = camPage;
+        this.genePage = genePage;
       });
+    this.pantherSearchService.setup();
 
-    this.pantherUserService.onUserChanged.pipe(
-      distinctUntilChanged(this.pantherUserService.distinctUser),
-      takeUntil(this._unsubscribeAll))
-      .subscribe((user: Contributor) => {
-        if (user === undefined) {
-          return;
-        }
-        this.pantherFormConfigService.setupUrls();
-        this.pantherFormConfigService.setUniversalUrls();
-        this.pantherSearchService.setup();
-        this.pantherReviewSearchService.setup();
-        this.camsService.setup();
-      });
   }
 
   ngOnInit(): void {
     this.pantherSearchMenuService.setLeftDrawer(this.leftDrawer);
     this.pantherSearchMenuService.setRightDrawer(this.rightDrawer);
 
-    this.rightDrawer.open();
-
-    this.pantherSearchService.onCamsChanged
+    this.pantherSearchService.onGenesChanged
       .pipe(takeUntil(this._unsubscribeAll))
-      .subscribe(cams => {
-        this.cams = cams;
+      .subscribe(genes => {
+        this.genes = genes;
       });
 
-    this.pantherReviewSearchService.onArtBasketChanged.pipe(
-      takeUntil(this._unsubscribeAll))
-      .subscribe((artBasket: ArtBasket) => {
-        if (artBasket) {
-          this.artBasket = artBasket;
-        }
-      });
   }
 
   ngAfterViewInit(): void {
@@ -143,16 +94,6 @@ export class PantherSearchComponent implements OnInit, AfterViewInit, OnDestroy 
     });
   }
 
-  loadCam(modelId) {
-    const self = this;
-
-    this.cam = this.camService.getCam(modelId);
-  }
-
-  edit() {
-    // this.loadModel(this.selectCam)
-    // this.openRightDrawer(RightPanel.camForm);
-  }
 
   openLeftDrawer(panel) {
     this.pantherSearchMenuService.selectLeftPanel(panel);
@@ -163,10 +104,10 @@ export class PantherSearchComponent implements OnInit, AfterViewInit, OnDestroy 
     this.pantherSearchMenuService.selectMiddlePanel(panel);
 
     switch (panel) {
-      case MiddlePanel.cams:
+      case MiddlePanel.genes:
         this.pantherSearchMenuService.selectLeftPanel(LeftPanel.filter);
         break;
-      case MiddlePanel.camsReview:
+      case MiddlePanel.genesReview:
         this.pantherSearchMenuService.selectLeftPanel(LeftPanel.artBasket);
         break;
       case MiddlePanel.reviewChanges:
@@ -176,44 +117,9 @@ export class PantherSearchComponent implements OnInit, AfterViewInit, OnDestroy 
 
   }
 
-  reviewChanges() {
-    const self = this;
-
-    self.camsService.reviewChanges();
-    self.pantherSearchMenuService.selectMiddlePanel(MiddlePanel.reviewChanges);
-  }
-
-  openRightDrawer(panel) {
-    this.pantherSearchMenuService.selectRightPanel(panel);
-    this.pantherSearchMenuService.openRightDrawer();
-  }
 
   toggleLeftDrawer(panel) {
     this.pantherSearchMenuService.toggleLeftDrawer(panel);
-  }
-
-  createModel(type: 'graph-editor' | 'panther-form') {
-    this.pantherCommonMenuService.createModel(type);
-  }
-
-  openBasketPanel() {
-    this.openLeftDrawer(LeftPanel.artBasket);
-    this.pantherSearchMenuService.selectMiddlePanel(MiddlePanel.camsReview);
-    this.pantherSearchMenuService.reviewMode = ReviewMode.on;
-    this.isReviewMode = true;
-  }
-
-  toggleReviewMode() {
-    if (this.pantherSearchMenuService.reviewMode === ReviewMode.off) {
-      this.pantherSearchMenuService.reviewMode = ReviewMode.on;
-      this.isReviewMode = true;
-      // this.pantherSearchMenuService.closeLeftDrawer();
-    } else if (this.pantherSearchMenuService.reviewMode === ReviewMode.on) {
-      this.pantherSearchMenuService.reviewMode = ReviewMode.off;
-      this.pantherSearchMenuService.selectMiddlePanel(MiddlePanel.cams);
-      this.pantherSearchMenuService.selectLeftPanel(LeftPanel.filter);
-      this.isReviewMode = false;
-    }
   }
 
   search() {

@@ -5,8 +5,6 @@ import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { Observable, Subject } from 'rxjs';
 import { startWith, map, distinctUntilChanged, debounceTime } from 'rxjs/operators';
-import { PantherFormConfigService, PantherUserService, Group, Contributor, Organism, EntityDefinition, AnnotonNode, EntityLookup } from 'panther-form-base';
-import { PantherLookupService } from 'panther-form-base';
 import { PantherSearchService } from './../../services/panther-search.service';
 import { PantherSearchMenuService } from '../../services/search-menu.service';
 import { MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
@@ -16,7 +14,6 @@ import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/materia
 import * as _moment from 'moment';
 // tslint:disable-next-line:no-duplicate-imports
 import { default as _rollupMoment } from 'moment';
-import { InlineReferenceService } from '@panther.editor/inline-reference/inline-reference.service';
 
 const moment = _rollupMoment || _moment;
 
@@ -54,43 +51,32 @@ export class SearchFilterComponent implements OnInit, OnDestroy {
   filterForm: FormGroup;
   selectedOrganism = {};
   searchFormData: any = [];
-  cams: any[] = [];
+  genes: any[] = [];
   separatorKeysCodes: number[] = [ENTER, COMMA];
-  selectedContributors: Contributor[] = [];
   filteredOrganisms: Observable<any[]>;
   filteredGroups: Observable<any[]>;
   filteredContributors: Observable<any[]>;
   filteredStates: Observable<any[]>;
 
-  gpNode: AnnotonNode;
-  termNode: AnnotonNode;
-
   private _unsubscribeAll: Subject<any>;
 
-  constructor
-    (public pantherUserService: PantherUserService,
-      private inlineReferenceService: InlineReferenceService,
-      public pantherSearchMenuService: PantherSearchMenuService,
-      public pantherFormConfigService: PantherFormConfigService,
-      private pantherLookupService: PantherLookupService,
-      public pantherSearchService: PantherSearchService) {
+  constructor(
+    public pantherSearchMenuService: PantherSearchMenuService,
+    public pantherSearchService: PantherSearchService) {
 
-    this.gpNode = EntityDefinition.generateBaseTerm([EntityDefinition.GoMolecularEntity]);
-    this.termNode = EntityDefinition.generateBaseTerm([
-      EntityDefinition.GoMolecularFunction,
-      EntityDefinition.GoBiologicalProcess,
-      EntityDefinition.GoCellularComponent,
-      EntityDefinition.GoBiologicalPhase,
-      EntityDefinition.GoAnatomicalEntity,
-      EntityDefinition.GoCellTypeEntity
-    ]);
     this._unsubscribeAll = new Subject();
     this.filterForm = this.createAnswerForm();
     this._onValueChanges();
   }
 
+
   ngOnInit(): void {
 
+  }
+
+  ngOnDestroy(): void {
+    this._unsubscribeAll.next();
+    this._unsubscribeAll.complete();
   }
 
   createAnswerForm() {
@@ -98,16 +84,6 @@ export class SearchFilterComponent implements OnInit, OnDestroy {
       ids: new FormControl(),
       gps: new FormControl(),
       terms: new FormControl(),
-      pmids: new FormControl(),
-      contributors: new FormControl(),
-      groups: new FormControl(),
-      organisms: new FormControl(),
-      titles: new FormControl(),
-      states: new FormControl(),
-      isExactDate: new FormControl(),
-      exactdates: new FormControl(),
-      startdates: new FormControl(),
-      enddates: new FormControl(),
     });
   }
 
@@ -119,22 +95,6 @@ export class SearchFilterComponent implements OnInit, OnDestroy {
     return evidence && evidence.id ? `${evidence.label} (${evidence.id})` : undefined;
   }
 
-  contributorDisplayFn(contributor: Contributor): string | undefined {
-    return contributor ? contributor.name : undefined;
-  }
-
-  groupDisplayFn(group: Group): string | undefined {
-    return group ? group.name : undefined;
-  }
-
-  organismDisplayFn(organism: Organism): string | undefined {
-    return organism ? organism.taxonName : undefined;
-  }
-
-  stateDisplayFn(state): string | undefined {
-    return state ? state.name : undefined;
-  }
-
   close() {
     this.pantherSearchMenuService.closeLeftDrawer();
   }
@@ -144,11 +104,6 @@ export class SearchFilterComponent implements OnInit, OnDestroy {
     this.searchInput.forEach((item) => {
       item.nativeElement.value = null;
     });
-  }
-
-  ngOnDestroy(): void {
-    this._unsubscribeAll.next();
-    this._unsubscribeAll.complete();
   }
 
   add(event: MatChipInputEvent, filterType): void {
@@ -169,7 +124,7 @@ export class SearchFilterComponent implements OnInit, OnDestroy {
     }
   }
 
-  remove(item: Contributor | Group, filterType): void {
+  remove(item, filterType): void {
     const index = this.pantherSearchService.searchCriteria[filterType].indexOf(item);
 
     if (index >= 0) {
@@ -189,15 +144,6 @@ export class SearchFilterComponent implements OnInit, OnDestroy {
     this.filterForm.controls[filterType].setValue('');
   }
 
-  openAddReference(event, name: string) {
-
-    const data = {
-      formControl: this.filterForm.controls[name] as FormControl,
-    };
-    this.inlineReferenceService.open(event.target, { data });
-
-  }
-
 
   downloadFilter() {
     this.pantherSearchService.downloadSearchConfig();
@@ -206,91 +152,13 @@ export class SearchFilterComponent implements OnInit, OnDestroy {
   private _onValueChanges() {
     const self = this;
 
-    const lookupFunc = self.pantherLookupService.lookupFunc()
-
     this.filterForm.get('terms').valueChanges.pipe(
       distinctUntilChanged(),
       debounceTime(400)
     ).subscribe(data => {
-      const lookup: EntityLookup = self.termNode.termLookup;
 
-      lookupFunc.termLookup(data, lookup.requestParams).subscribe(response => {
-        lookup.results = response;
-      });
     });
 
-    this.filterForm.get('gps').valueChanges.pipe(
-      distinctUntilChanged(),
-      debounceTime(400)
-    ).subscribe(data => {
-      const lookup: EntityLookup = self.gpNode.termLookup;
 
-      lookupFunc.termLookup(data, lookup.requestParams).subscribe(response => {
-        lookup.results = response;
-      });
-    });
-
-    this.filteredOrganisms = this.filterForm.controls.organisms.valueChanges
-      .pipe(
-        startWith(''),
-        map(value => typeof value === 'string' ? value : value['short_name']),
-        map(organism => organism ? this.pantherSearchService.filterOrganisms(organism) : this.pantherSearchService.organisms.slice())
-      );
-
-    this.filteredContributors = this.filterForm.controls.contributors.valueChanges
-      .pipe(
-        startWith(''),
-        map(
-          value => typeof value === 'string' ? value : value['name']),
-        map(contributor => contributor ? this.pantherUserService.filterContributors(contributor) : this.pantherUserService.contributors.slice())
-      );
-
-    this.filteredGroups = this.filterForm.controls.groups.valueChanges
-      .pipe(
-        startWith(''),
-        map(
-          value => typeof value === 'string' ? value : value['name']),
-        map(group => group ? this.pantherUserService.filterGroups(group) : this.pantherUserService.groups.slice())
-      );
-
-    this.filterForm.get('isExactDate').valueChanges.pipe(
-      distinctUntilChanged(),
-      debounceTime(400)
-    ).subscribe(value => {
-      this.isExactDate = value;
-    });
-
-    this.filteredStates = this.filterForm.controls.states.valueChanges
-      .pipe(
-        startWith(''),
-        map(
-          value => typeof value === 'string' ? value : value['name']),
-        map(state => state ? this.pantherSearchService.filterStates(state) : this.pantherSearchService.states.slice())
-      );
   }
-
-  onFileChange(event) {
-    const self = this;
-    let reader = new FileReader();
-
-
-    //console.log(event, control)
-
-    if (event.target.files && event.target.files.length) {
-      const [file] = event.target.files;
-      reader.readAsText(file);
-
-      reader.onload = () => {
-        try {
-          let searchCriteria = JSON.parse(reader.result as string);
-          self.pantherSearchService.uploadSearchConfig(searchCriteria);
-          //document.getElementById('elementid').value = "";
-
-        } catch (exception) {
-          alert("invalid file")
-        }
-      };
-    }
-  }
-
 }

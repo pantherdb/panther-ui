@@ -10,8 +10,8 @@ export enum LeftPanel {
 };
 
 export enum MiddlePanel {
-    cams = 'cams',
-    camsReview = 'camReview',
+    genes = 'genes',
+    genesReview = 'geneReview',
     reviewChanges = 'reviewChanges'
 };
 

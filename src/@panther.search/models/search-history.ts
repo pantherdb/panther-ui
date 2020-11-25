@@ -1,6 +1,6 @@
-import { Cam, Contributor, Group, Organism, Entity } from 'panther-form-base';
+
 import { each, cloneDeep } from 'lodash';
-import { CamPage } from './cam-page';
+import { Entity } from './entity';
 import { SearchCriteria } from './search-criteria';
 
 export class SearchHistory {
@@ -27,28 +27,6 @@ export class SearchHistory {
             count++;
         }
 
-        if (searchCriteria.contributors && searchCriteria.contributors.length > 0) {
-            const contributors = searchCriteria.contributors.map((contributor: Contributor) => {
-                return contributor.name;
-            }).join(', ');
-
-            self._addParam('Contributor(s)', contributors, 'user');
-            count++;
-        }
-
-        if (searchCriteria.groups && searchCriteria.groups.length > 0) {
-            const groups = searchCriteria.groups.map((group: Group) => {
-                return group.name;
-            }).join(', ');
-
-            self._addParam('Group(s)', groups, 'users');
-            count++;
-        }
-        if (searchCriteria.pmids && searchCriteria.pmids.length > 0) {
-            const pmids = searchCriteria.pmids.join(', ');
-            self._addParam('Ref', pmids);
-            count++;
-        }
         if (searchCriteria.terms && searchCriteria.terms.length > 0) {
             const terms = searchCriteria.terms.map((term: Entity) => {
                 return term.label;
@@ -61,35 +39,6 @@ export class SearchHistory {
                 return gp.label;
             }).join(', ');
             self._addParam('GP(s)', gps);
-            count++;
-        }
-        if (searchCriteria.organisms && searchCriteria.organisms.length > 0) {
-            const organisms = searchCriteria.organisms.map((organism: Organism) => {
-                return organism.taxonName;
-            }).join(', ');
-            self._addParam('Organism(s)', organisms, 'paw');
-            count++;
-        }
-        if (searchCriteria.states && searchCriteria.states.length > 0) {
-            const states = searchCriteria.states.map((state: any) => {
-                return state.label;
-            }).join(', ');
-            self._addParam('State(s)', states, 'tasks');
-            count++;
-        }
-
-        if (searchCriteria.exactdates && searchCriteria.exactdates.length > 0) {
-            const exactdates = searchCriteria.exactdates.join(', ');
-            self._addParam('Date', exactdates, 'calendar-day');
-            count++;
-        }
-
-        if (searchCriteria.startdates && searchCriteria.startdates.length > 0 &&
-            searchCriteria.enddates && searchCriteria.enddates.length > 0) {
-            const startdate = searchCriteria.startdates[0];
-            const enddate = searchCriteria.enddates[0]
-            const daterange = `${startdate} - ${enddate}`
-            self._addParam('Date Range', daterange, 'calendar-week');
             count++;
         }
 

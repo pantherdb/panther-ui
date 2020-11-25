@@ -36,8 +36,8 @@
     <button mat-icon-button color="" class="panther-rounded-button" (click)="openBasketPanel()"
       [ngClass]="{'panther-active': pantherSearchMenuService.selectedLeftPanel === LeftPanel.artBasket}"
       matTooltip="Art Basket" [matTooltipPosition]="'after'" [matTooltipShowDelay]="1500">
-      <div *ngIf="artBasket?.cams.length > 0" class="panther-badge">
-        {{artBasket?.cams.length}}
+      <div *ngIf="artBasket?.genes.length > 0" class="panther-badge">
+        {{artBasket?.genes.length}}
       </div>
       <fa-icon [icon]="['fas', 'shopping-basket']"></fa-icon>
     </button>
@@ -95,9 +95,9 @@
           <div class="panther-art-tabs" fxLayout="row" fxLayoutAlign="center center">
             <div class="panther-line panther-visited" fxFlex>
             </div>
-            <button mat-stroked-button (click)="selectMiddlePanel(MiddlePanel.cams)"
-              matBadge="{{artBasket?.cams.length}}" matBadgePosition="after" matBadgeColor="warn" class="" color=""
-              [ngClass]="{'panther-active': pantherSearchMenuService.selectedMiddlePanel === MiddlePanel.cams,
+            <button mat-stroked-button (click)="selectMiddlePanel(MiddlePanel.genes)"
+              matBadge="{{artBasket?.genes.length}}" matBadgePosition="after" matBadgeColor="warn" class="" color=""
+              [ngClass]="{'panther-active': pantherSearchMenuService.selectedMiddlePanel === MiddlePanel.genes,
             'panther-visited': pantherSearchMenuService.reviewLevel>0}">
               <div class="panther-title">Search</div><br>
               <div class="panther-description">Add/remove to review</div>
@@ -105,7 +105,7 @@
             <div class="panther-line" fxFlex="80px"
               [ngClass]="{'panther-visited': pantherSearchMenuService.reviewLevel>0}">
             </div>
-            <button mat-stroked-button (click)="selectMiddlePanel(MiddlePanel.camsReview)" [ngClass]="{'panther-active': pantherSearchMenuService.selectedMiddlePanel === MiddlePanel.camsReview,
+            <button mat-stroked-button (click)="selectMiddlePanel(MiddlePanel.genesReview)" [ngClass]="{'panther-active': pantherSearchMenuService.selectedMiddlePanel === MiddlePanel.genesReview,
             'panther-visited': pantherSearchMenuService.reviewLevel>1}" class="" color="">
               <div class="panther-title">Review</div> <br>
               <div class="panther-description">Edit models</div>
@@ -124,14 +124,14 @@
           </div>
         </div>
         <div class="h-100-p w-100-p">
-          <panther-cams-table [hidden]="pantherSearchMenuService.selectedMiddlePanel !== MiddlePanel.cams"
+          <panther-genes-table [hidden]="pantherSearchMenuService.selectedMiddlePanel !== MiddlePanel.genes"
             [isReviewMode]="isReviewMode">
-          </panther-cams-table>
-          <panther-cams-review [hidden]="pantherSearchMenuService.selectedMiddlePanel !== MiddlePanel.camsReview">
-          </panther-cams-review>
-          <panther-cams-review-changes
+          </panther-genes-table>
+          <panther-genes-review [hidden]="pantherSearchMenuService.selectedMiddlePanel !== MiddlePanel.genesReview">
+          </panther-genes-review>
+          <panther-genes-review-changes
             [hidden]="pantherSearchMenuService.selectedMiddlePanel !== MiddlePanel.reviewChanges">
-          </panther-cams-review-changes>
+          </panther-genes-review-changes>
         </div>
         <div class="w-100-p">
           <app-footer></app-footer>

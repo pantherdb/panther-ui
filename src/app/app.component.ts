@@ -6,7 +6,6 @@ import { takeUntil } from 'rxjs/operators';
 
 import { PantherConfigService } from '@panther/services/config.service';
 import { PantherSplashScreenService } from '@panther/services/splash-screen.service';
-import { PantherUserService } from 'panther-form-base';
 
 
 @Component({
@@ -22,7 +21,6 @@ export class AppComponent implements OnInit, OnDestroy {
     private _unsubscribeAll: Subject<any>;
     @HostListener('window:focus', ['$event'])
     onFocus(event: FocusEvent): void {
-        this.pantherUserService.getUser();
     }
 
     constructor(
@@ -30,7 +28,6 @@ export class AppComponent implements OnInit, OnDestroy {
         private _renderer: Renderer2,
         private _elementRef: ElementRef,
         private pantherConfigService: PantherConfigService,
-        public pantherUserService: PantherUserService,
         private platform: Platform,
         @Inject(DOCUMENT) private document: any
     ) {
