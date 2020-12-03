@@ -1,2 +1,105 @@
 @import "src/@panther/scss/panther";
 @import "src/@panther.common/scss/panther.common";
+@import "src/@panther/scss/panther";
+@import "src/@panther.common/scss/panther.common";
+
+
+:host {
+    @include deep-width(100%);
+    @include deep-height(100%);
+
+    .panther-drawer {
+        @include deep-width(300px);
+    }
+
+    background-color: white;
+}
+
+.panther-browser-container {
+    padding: 20px 2px 300px 2px;
+
+    .panther-browser-summary {
+        padding: 20px 2px 20px 2px;
+
+        .panther-title {
+            padding: 0 5px 0 10px;
+            @include deep-height(50px);
+            border-bottom: #999 solid 1px;
+            background-color: #FFF;
+            margin-bottom: 5px;
+            font-size: 18px;
+            margin-bottom: 5px;
+
+            .panther-subtitle {
+                padding-left: 5px;
+                font-weight: bold;
+            }
+        }
+    }
+}
+
+.panther-browser-expansion {
+    width: 100%;
+
+    mat-expansion-panel-header {
+        padding: 0 5px 0 10px;
+        @include deep-height(50px);
+        border-bottom: #999 solid 1px;
+        margin-bottom: 5px;
+
+        .panther-comparison-toggle {
+            @include deep-width(30px);
+            @include deep-height(50px);
+        }
+    }
+
+    .mat-expansion-panel-body {
+        padding: 0 !important;
+    }
+
+    .panther-title {
+        font-size: 18px;
+        margin-bottom: 5px;
+    }
+
+    .panther-description {
+        font-size: 12px
+    }
+
+    .panther-expansion-panel-body {
+        //padding: 10px 0;
+        @include deep-width(100%);
+    }
+
+    &.panther-passed {
+        border-left: #4cc0e4 solid 1px;
+
+        mat-expansion-panel-header {
+            border-left: #4cc0e4 solid 5px;
+        }
+    }
+
+    &.panther-gained {
+        border-left: #4c9b73 solid 1px;
+
+        mat-expansion-panel-header {
+            border-left: #4c9b73 solid 5px;
+        }
+    }
+
+    &.panther-loss {
+        border-left: rgb(230, 83, 83) solid 1px;
+
+        mat-expansion-panel-header {
+            border-left: rgb(230, 83, 83) solid 5px;
+        }
+    }
+
+    &.panther-not-modeled {
+        border-left: rgb(10, 6, 233) solid 1px;
+
+        mat-expansion-panel-header {
+            border-left: rgb(10, 6, 233) solid 5px;
+        }
+    }
+}

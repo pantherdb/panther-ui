@@ -1,9 +1,15 @@
 
 import { each } from 'lodash';
-import { GenePage } from './gene-page';
+import { CategoryPage } from './category';
+import { FamilyPage } from './family';
+import { GenePage } from './gene';
+import { PathwayPage } from './pathway';
 
 export class SearchCriteria {
     genePage: GenePage = new GenePage();
+    familyPage: FamilyPage = new FamilyPage();
+    categoryPage: CategoryPage = new CategoryPage();
+    pathwayPage: PathwayPage = new PathwayPage();
     titles: any[] = [];
     ids: any[] = [];
     gps: any[] = [];
@@ -42,7 +48,7 @@ export class SearchCriteria {
         });
 
         each(self.terms, (term) => {
-            query.push(`term=${term.id}`);
+            query.push(`q=${term.id}`);
         });
 
         each(self.ids, (id) => {
@@ -60,33 +66,6 @@ export class SearchCriteria {
         return query;
     }
 
-    private queryEncoded() {
-        const self = this;
-        const query = ['offset=' + (self.genePage.pageNumber * self.genePage.size).toString()];
-
-        query.push('limit=' + self.genePage.size.toString());
-
-        each(self.titles, (title) => {
-            query.push(`title=${encodeURIComponent(title)}`);
-        });
-
-        each(self.terms, (term) => {
-            query.push(`term=${encodeURIComponent(term.id)}`);
-        });
-
-        each(self.ids, (id) => {
-            query.push(`id=${encodeURIComponent(id)}`);
-        });
-
-        each(self.gps, (gp) => {
-            query.push(`gp=${encodeURIComponent(gp.id)}`);
-        });
-
-
-
-        return query;
-    }
-
     build() {
         return this.query().join('&');
     }
@@ -97,7 +76,4 @@ export class SearchCriteria {
         this.gps = [];
     }
 
-    private buildEncoded() {
-        return this.queryEncoded().join('&');
-    }
 }

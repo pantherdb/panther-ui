@@ -1,15 +1,56 @@
 <div class="w-100-p h-100-p" fxLayout="row" fxLayoutAlign="start start">
   <div class="panther-sidemenu" fxLayout="column" fxLayoutAlign="start center">
+
+    <button mat-icon-button color="" class="panther-rounded-button" (click)="toggleLeftDrawer(LeftPanel.geneAnalysis)"
+      [ngClass]="{'panther-active': pantherSearchMenuService.selectedLeftPanel === LeftPanel.geneAnalysis}"
+      matTooltip="Gene Analysis" [matTooltipPosition]="'after'" [matTooltipShowDelay]="1500">
+      <fa-icon [icon]="['fas', 'dna']"></fa-icon>
+      <div class="panther-label">
+        Gene Analysis
+      </div>
+    </button>
     <button mat-icon-button color="" class="panther-rounded-button"
       [ngClass]="{'panther-active': pantherSearchMenuService.selectedLeftPanel === LeftPanel.filter}"
       (click)="toggleLeftDrawer(LeftPanel.filter)" matTooltip="Filter" [matTooltipPosition]="'after'"
       [matTooltipShowDelay]="1500">
       <fa-icon [icon]="['fas', 'search']"></fa-icon>
+      <div class="panther-label">
+        Search
+      </div>
+    </button>
+    <button mat-icon-button color="" class="panther-rounded-button" (click)="toggleLeftDrawer(LeftPanel.browser)"
+      [ngClass]="{'panther-active': pantherSearchMenuService.selectedLeftPanel === LeftPanel.browser}"
+      matTooltip="Browse" [matTooltipPosition]="'after'" [matTooltipShowDelay]="1500">
+      <fa-icon [icon]="['fas', 'search-plus']"></fa-icon>
+      <div class="panther-label">
+        Browse
+      </div>
+    </button>
+
+    <button mat-icon-button color="" class="panther-rounded-button" (click)="toggleLeftDrawer(LeftPanel.sequenceSearch)"
+      [ngClass]="{'panther-active': pantherSearchMenuService.selectedLeftPanel === LeftPanel.sequenceSearch}"
+      matTooltip="Sequence Search" [matTooltipPosition]="'after'" [matTooltipShowDelay]="1500">
+      <fa-icon [icon]="['fas', 'dna']"></fa-icon>
+      <div class="panther-label">
+        Sequence Search
+      </div>
+    </button>
+
+    <button mat-icon-button color="" class="panther-rounded-button" (click)="toggleLeftDrawer(LeftPanel.snpScoring)"
+      [ngClass]="{'panther-active': pantherSearchMenuService.selectedLeftPanel === LeftPanel.snpScoring}"
+      matTooltip="SNP Scoring" [matTooltipPosition]="'after'" [matTooltipShowDelay]="1500">
+      <fa-icon [icon]="['fas', 'dna']"></fa-icon>
+      <div class="panther-label">
+        SNP Scoring
+      </div>
     </button>
     <button mat-icon-button color="" class="panther-rounded-button" (click)="toggleLeftDrawer(LeftPanel.history)"
       [ngClass]="{'panther-active': pantherSearchMenuService.selectedLeftPanel === LeftPanel.history}"
       matTooltip="History" [matTooltipPosition]="'after'" [matTooltipShowDelay]="1500">
       <fa-icon [icon]="['fas', 'history']"></fa-icon>
+      <div class="panther-label">
+        History
+      </div>
     </button>
   </div>
   <mat-drawer-container class="w-100-p h-100-p" fxLayout="row" fxLayoutAlign="start start" [hasBackdrop]="false"
@@ -18,6 +59,10 @@
       <div [ngSwitch]="pantherSearchMenuService.selectedLeftPanel" class="h-100-p">
         <panther-search-filter *ngSwitchCase="LeftPanel.filter"></panther-search-filter>
         <panther-search-history *ngSwitchCase="LeftPanel.history"></panther-search-history>
+        <panther-browser *ngSwitchCase="LeftPanel.browser"></panther-browser>
+        <panther-gene-analysis *ngSwitchCase="LeftPanel.geneAnalysis"></panther-gene-analysis>
+        <panther-sequence-search *ngSwitchCase="LeftPanel.sequenceSearch"></panther-sequence-search>
+        <panther-snp-scoring *ngSwitchCase="LeftPanel.snpScoring"></panther-snp-scoring>
       </div>
     </mat-drawer>
     <mat-drawer-content id="panther-results" class="w-100-p" pantherPerfectScrollbar>
@@ -27,15 +72,45 @@
             WELCOME TO PANTHER
           </h1>
           <h3 [@animate]="{value:'*',params:{delay:'100ms', y:'25px'}}">
-            Panther is a web-based, collaborative Gene Ontology (GO) annotation tool developed by the GO Consortium.
-            It can be used to create standard GO annotations as well as more expressive models of biological processes,
-            known as GO-CAMs (Gene Ontology Causal Activity Models)
+            Panther
           </h3>
         </div>
+        <div class="noc-art-info" fxLayout="row" fxLayoutAlign="center center">
+          <div class="noc-art-tabs" fxLayout="row" fxLayoutAlign="center center">
+            <div class="noc-line noc-visited" fxFlex>
+            </div>
+            <button mat-stroked-button (click)="selectMiddlePanel(MiddlePanel.genes)"
+              matBadge="{{artBasket?.gene.length}}" matBadgePosition="after" matBadgeColor="warn" class="" color=""
+              [ngClass]="{'noc-active': pantherSearchMenuService.selectedMiddlePanel === MiddlePanel.genes}">
+              <div class="noc-title">Genes</div>
+            </button>
+            <button mat-stroked-button (click)="selectMiddlePanel(MiddlePanel.families)"
+              matBadge="{{artBasket?.families.length}}" matBadgePosition="after" matBadgeColor="warn" class="" color=""
+              [ngClass]="{'noc-active': pantherSearchMenuService.selectedMiddlePanel === MiddlePanel.families}">
+              <div class="noc-title">Families</div>
+            </button>
+            <button mat-stroked-button (click)="selectMiddlePanel(MiddlePanel.pathways)"
+              matBadge="{{artBasket?.pathways.length}}" matBadgePosition="after" matBadgeColor="warn" class="" color=""
+              [ngClass]="{'noc-active': pantherSearchMenuService.selectedMiddlePanel === MiddlePanel.pathways}">
+              <div class="noc-title">Pathways</div>
+            </button>
+            <button mat-stroked-button (click)="selectMiddlePanel(MiddlePanel.categories)"
+              matBadge="{{artBasket?.categories.length}}" matBadgePosition="after" matBadgeColor="warn" class=""
+              color=""
+              [ngClass]="{'noc-active': pantherSearchMenuService.selectedMiddlePanel === MiddlePanel.categories}">
+              <div class="noc-title">Categories</div>
+            </button>
+          </div>
+        </div>
         <div class="h-100-p w-100-p">
-          <panther-genes-table [hidden]="pantherSearchMenuService.selectedMiddlePanel !== MiddlePanel.genes"
-            [isReviewMode]="isReviewMode">
+          <panther-genes-table [hidden]="pantherSearchMenuService.selectedMiddlePanel !== MiddlePanel.genes">
           </panther-genes-table>
+          <panther-families-table [hidden]="pantherSearchMenuService.selectedMiddlePanel !== MiddlePanel.families">
+          </panther-families-table>
+          <panther-categories-table [hidden]="pantherSearchMenuService.selectedMiddlePanel !== MiddlePanel.categories">
+          </panther-categories-table>
+          <panther-pathways-table [hidden]="pantherSearchMenuService.selectedMiddlePanel !== MiddlePanel.pathways">
+          </panther-pathways-table>
         </div>
         <div class="w-100-p">
           <app-footer></app-footer>

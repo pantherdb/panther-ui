@@ -6,7 +6,7 @@ import { takeUntil } from 'rxjs/internal/operators';
 import { PantherSearchService } from '@panther.search/services/panther-search.service';
 
 import { MatPaginatorIntl } from '@angular/material/paginator';
-import { GenePage } from '@panther.search/models/gene';
+import { CategoryPage } from '@panther.search/models/category';
 import { PantherSearchMenuService } from '@panther.search/services/search-menu.service';
 import { SelectionModel } from '@angular/cdk/collections';
 import { PantherCommonMenuService } from '@panther.common/services/panther-common-menu.service';
@@ -24,9 +24,9 @@ export function CustomPaginator() {
 }
 
 @Component({
-  selector: 'panther-genes-table',
-  templateUrl: './genes-table.component.html',
-  styleUrls: ['./genes-table.component.scss'],
+  selector: 'panther-categories-table',
+  templateUrl: './categories-table.component.html',
+  styleUrls: ['./categories-table.component.scss'],
   animations: [
     pantherAnimations,
     trigger('detailExpand', [
@@ -39,7 +39,7 @@ export function CustomPaginator() {
     { provide: MatPaginatorIntl, useValue: CustomPaginator() }
   ]
 })
-export class GenesTableComponent implements OnInit, OnDestroy {
+export class CategoriesTableComponent implements OnInit, OnDestroy {
   LeftPanel = LeftPanel;
   MiddlePanel = MiddlePanel;
   RightPanel = RightPanel;
@@ -52,8 +52,8 @@ export class GenesTableComponent implements OnInit, OnDestroy {
   private _unsubscribeAll: Subject<any>;
 
   displayedColumns = [
-    'gene_name',
-    'gene_symbol',
+    'category_name',
+    'category_symbol',
     'species',
   ];
 
@@ -61,8 +61,8 @@ export class GenesTableComponent implements OnInit, OnDestroy {
   searchFormData: any = [];
   searchForm: FormGroup;
 
-  genes: any[] = [];
-  genePage: GenePage;
+  categories: any[] = [];
+  categoryPage: CategoryPage;
 
   tableOptions = {
     reviewMode: true,
@@ -84,13 +84,22 @@ export class GenesTableComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
 
-    this.pantherSearchService.onGenesPageChanged
+    this.pantherSearchService.onCategoriesPageChanged
       .pipe(takeUntil(this._unsubscribeAll))
-      .subscribe((genePage: GenePage) => {
-        if (!genePage) {
+      .subscribe((categoryPage: CategoryPage) => {
+        if (!categoryPage) {
           return;
         }
-        this.genePage = genePage;
+        this.categoryPage = categoryPage;
+      });
+
+    this.pantherSearchService.onCategoriesPageChanged
+      .pipe(takeUntil(this._unsubscribeAll))
+      .subscribe((categoryPage: CategoryPage) => {
+        if (!categoryPage) {
+          return;
+        }
+        this.categoryPage = categoryPage;
       });
 
   }
@@ -116,17 +125,17 @@ export class GenesTableComponent implements OnInit, OnDestroy {
 
   setPage($event) {
     console.log($event)
-    if (this.genePage) {
+    if (this.categoryPage) {
       let pageIndex = $event.pageIndex;
-      if (this.pantherSearchService.searchCriteria.genePage.size > $event.pageSize) {
+      if (this.pantherSearchService.searchCriteria.categoryPage.size > $event.pageSize) {
         pageIndex = 0;
       }
       this.pantherSearchService.getPage(pageIndex, $event.pageSize);
     }
   }
 
-  isExpansionDetailRow(gene) {
-    return gene.expanded;
+  isExpansionDetailRow(category) {
+    return category.expanded;
   }
 
   openLeftDrawer(panel) {

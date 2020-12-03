@@ -1,30 +1,17 @@
-<mat-drawer-container class="w-100-p h-100-p" fxLayout="row" fxLayoutAlign="start start">
-  <mat-drawer #leftDrawer class="panther-left-drawer" fxFlex="400px" opened="true" mode="side" position="start">
-    <div class="panther-menu-back-header" (click)="pantherSearchMenuService.goHome()" fxLayout="row"
-      fxLayoutAlign="start center">
-      <button mat-icon-button>
-        <mat-icon>arrow_back</mat-icon>
-      </button>
-      <span class="panther-header-title">
-        Main Menu
-      </span>
-      <span fxFlex></span>
-      <button mat-icon-button (click)="pantherSearchMenuService.closeLeftDrawer(); $event.stopPropagation()"
-        aria-label="Close dialog">
-        <mat-icon>close</mat-icon>
-      </button>
-    </div>
-    <div class="panther-drawer-header" fxLayout="row" fxLayoutAlign="start center">
-      <span class="panther-drawer-header-title">
-        Sequence Search
-      </span>
-    </div>
-    <div class="h-100-p">
-      <panther-sequence-search-form></panther-sequence-search-form>
-    </div>
-  </mat-drawer>
-  <mat-drawer-content class="w-100-p" pantherPerfectScrollbar>
-    <div class="h-100-p w-100-p">
-    </div>
-  </mat-drawer-content>
-</mat-drawer-container>
+<div fxLayout="column" fxLayoutAlign="start stretch" class="panther-drawer h-100-p">
+  <div class="panther-drawer-header" fxLayout="row" fxLayoutAlign="start center">
+    <span class="panther-drawer-header-title">
+      Sequence Search</span>
+    <span fxFlex></span>
+    <button mat-stroked-button (click)="close()" class="panther-rounded-button panther-sm" color="primary"
+      aria-label="Close dialog">
+      <mat-icon>close</mat-icon> CLOSE
+    </button>
+  </div>
+  <div class="panther-drawer-body" pantherPerfectScrollbar>
+    <panther-sequence-search-form></panther-sequence-search-form>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="start center" class="panther-drawer-footer panther-submit-row">
+    <span fxFlex=""></span>
+  </div>
+</div>

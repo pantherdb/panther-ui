@@ -5,10 +5,10 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map, finalize } from 'rxjs/operators';
 import { SearchCriteria } from './../models/search-criteria';
 import { saveAs } from 'file-saver';
-import { GenePage } from './../models/gene-page';
 import { SearchHistory } from './../models/search-history';
 import { PantherDataService } from '@panther.common/services/panther-data.service';
 import { PantherSearchMenuService } from './search-menu.service';
+import { GenePage } from '@panther.search/models/gene';
 
 @Injectable({
     providedIn: 'root'
@@ -24,11 +24,13 @@ export class PantherSearchService {
     genes: any[] = [];
     genePage: GenePage;
     searchCriteria: SearchCriteria;
-    searchApi = environment.pantherApi;
+    searchApi = environment.pantherSearchApi;
     separator = '@@';
     loading = false;
-    onGenesChanged: BehaviorSubject<any>;
     onGenesPageChanged: BehaviorSubject<any>;
+    onFamiliesPageChanged: BehaviorSubject<any>;
+    onCategoriesPageChanged: BehaviorSubject<any>;
+    onPathwaysPageChanged: BehaviorSubject<any>;
     onContributorFilterChanged: BehaviorSubject<any>;
     searchSummary: any = {};
 
@@ -43,8 +45,10 @@ export class PantherSearchService {
         private httpClient: HttpClient,
         private pantherDataService: PantherDataService,
         private pantherSearchMenuService: PantherSearchMenuService) {
-        this.onGenesChanged = new BehaviorSubject([]);
         this.onGenesPageChanged = new BehaviorSubject(null);
+        this.onFamiliesPageChanged = new BehaviorSubject(null);
+        this.onPathwaysPageChanged = new BehaviorSubject(null);
+        this.onCategoriesPageChanged = new BehaviorSubject(null);
         this.onSearchHistoryChanged = new BehaviorSubject(null);
         this.searchCriteria = new SearchCriteria();
         this.onSearchCriteriaChanged = new BehaviorSubject(null);
@@ -55,15 +59,21 @@ export class PantherSearchService {
             }
 
             this.getGenes(searchCriteria).subscribe((response: any) => {
-                this.genes = response;
-                this.onGenesChanged.next(this.genes);
-            });
+                const genePage = new GenePage();
 
-            this.getGenesCount(searchCriteria).subscribe((response: any) => {
-                this.genePage = new GenePage();
-                this.genePage.total = response.n;
+                this.genes = response;
+                genePage.total = 50;
+                genePage.size = 50;
+                genePage.genes = this.genes;
+                this.genePage = genePage;
                 this.onGenesPageChanged.next(this.genePage);
             });
+
+            /*        this.getGenesCount(searchCriteria).subscribe((response: any) => {
+                       this.genePage = new GenePage();
+                       this.genePage.total = response.n;
+                       this.onGenesPageChanged.next(this.genePage);
+                   }); */
 
             this.pantherSearchMenuService.resetResults();
         });
@@ -143,7 +153,7 @@ export class PantherSearchService {
     getGenes(searchCriteria: SearchCriteria): Observable<any> {
         const self = this;
         const query = searchCriteria.build();
-        const url = `${this.searchApi}/models?${query}`;
+        const url = `${this.searchApi}/genes?${query}`;
 
         self.loading = true;
 
@@ -171,10 +181,11 @@ export class PantherSearchService {
         const self = this;
         const result = [];
 
-        res.models.forEach((response) => {
+        // This will be filled with goodies
+        res.results.forEach((response) => {
             const modelId = response.id;
 
-            //result.push(gene);
+            result.push(response);
         });
 
         return result;

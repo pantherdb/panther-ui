@@ -9,6 +9,9 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import { PantherSearchBaseModule } from '@panther.search';
 import { PantherFooterModule } from 'app/layout/components/footer/footer.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CategoriesTableComponent } from './categories/categories-table/categories-table.component';
+import { FamiliesTableComponent } from './families/families-table/families-table.component';
+import { PathwaysTableComponent } from './pathways/pathways-table/pathways-table.component';
 
 const routes = [
   {
@@ -32,6 +35,9 @@ const routes = [
   declarations: [
     PantherSearchComponent,
     GenesTableComponent,
+    FamiliesTableComponent,
+    PathwaysTableComponent,
+    CategoriesTableComponent
   ]
 })
 

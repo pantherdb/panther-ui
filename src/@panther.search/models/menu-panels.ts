@@ -1,19 +1,19 @@
 export enum LeftPanel {
     filter = 'filter',
-    relation = 'relation',
-    group = 'group',
-    contributor = 'contributor',
-    organism = 'organism',
-    history = 'history',
-    replace = 'replace',
-    artBasket = 'artBasket'
-};
+    browser = 'browser',
+    overrep = 'overrep',
+    geneAnalysis = 'geneAnalysis',
+    sequenceSearch = 'sequenceSearch',
+    snpScoring = 'snpScoring',
+    history = 'history'
+}
 
 export enum MiddlePanel {
     genes = 'genes',
-    genesReview = 'geneReview',
-    reviewChanges = 'reviewChanges'
-};
+    families = 'families',
+    categories = 'categories',
+    pathways = 'pathways'
+}
 
 export enum RightPanel {
 

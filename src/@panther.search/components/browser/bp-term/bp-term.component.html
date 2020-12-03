@@ -22,11 +22,8 @@
       [ngClass]="{ 'background-highlight': activeTerm === node.short_name }">
       <button mat-icon-button matTreeNodeToggle class="panther-icon-button"
         [attr.aria-label]="'toggle ' + node.long_name">
-        <mat-icon *ngIf="!treeControl.isExpanded(node)" class="mat-icon-rtl-mirror s-16 fa fa-caret-right">
-        </mat-icon>
-        <mat-icon *ngIf="treeControl.isExpanded(node)" class="mat-icon-rtl-mirror s-10">
-          signal_cellular_4_bar
-        </mat-icon>
+        <fa-icon *ngIf="!treeControl.isExpanded(node)" [icon]="['fas', 'chevron-right']"></fa-icon>
+        <fa-icon *ngIf="treeControl.isExpanded(node)" [icon]="['fas', 'chevron-down']"></fa-icon>
       </button>
       <mat-checkbox class="mr-8" [checked]="descendantsAllSelected(node)"
         [indeterminate]="descendantsPartiallySelected(node)" (change)="termItemSelectionToggle(node)"></mat-checkbox>

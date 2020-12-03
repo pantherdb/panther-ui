@@ -4,9 +4,8 @@ import { Subject } from 'rxjs';
 import { pantherAnimations } from '@panther/animations';
 import { takeUntil } from 'rxjs/internal/operators';
 import { PantherSearchService } from '@panther.search/services/panther-search.service';
-
 import { MatPaginatorIntl } from '@angular/material/paginator';
-import { GenePage } from '@panther.search/models/gene';
+import { FamilyPage } from '@panther.search/models/family';
 import { PantherSearchMenuService } from '@panther.search/services/search-menu.service';
 import { SelectionModel } from '@angular/cdk/collections';
 import { PantherCommonMenuService } from '@panther.common/services/panther-common-menu.service';
@@ -24,9 +23,9 @@ export function CustomPaginator() {
 }
 
 @Component({
-  selector: 'panther-genes-table',
-  templateUrl: './genes-table.component.html',
-  styleUrls: ['./genes-table.component.scss'],
+  selector: 'panther-families-table',
+  templateUrl: './families-table.component.html',
+  styleUrls: ['./families-table.component.scss'],
   animations: [
     pantherAnimations,
     trigger('detailExpand', [
@@ -39,7 +38,7 @@ export function CustomPaginator() {
     { provide: MatPaginatorIntl, useValue: CustomPaginator() }
   ]
 })
-export class GenesTableComponent implements OnInit, OnDestroy {
+export class FamiliesTableComponent implements OnInit, OnDestroy {
   LeftPanel = LeftPanel;
   MiddlePanel = MiddlePanel;
   RightPanel = RightPanel;
@@ -52,8 +51,8 @@ export class GenesTableComponent implements OnInit, OnDestroy {
   private _unsubscribeAll: Subject<any>;
 
   displayedColumns = [
-    'gene_name',
-    'gene_symbol',
+    'family_name',
+    'family_symbol',
     'species',
   ];
 
@@ -61,8 +60,8 @@ export class GenesTableComponent implements OnInit, OnDestroy {
   searchFormData: any = [];
   searchForm: FormGroup;
 
-  genes: any[] = [];
-  genePage: GenePage;
+  families: any[] = [];
+  familyPage: FamilyPage;
 
   tableOptions = {
     reviewMode: true,
@@ -84,13 +83,22 @@ export class GenesTableComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
 
-    this.pantherSearchService.onGenesPageChanged
+    this.pantherSearchService.onFamiliesPageChanged
       .pipe(takeUntil(this._unsubscribeAll))
-      .subscribe((genePage: GenePage) => {
-        if (!genePage) {
+      .subscribe((familyPage: FamilyPage) => {
+        if (!familyPage) {
           return;
         }
-        this.genePage = genePage;
+        this.familyPage = familyPage;
+      });
+
+    this.pantherSearchService.onFamiliesPageChanged
+      .pipe(takeUntil(this._unsubscribeAll))
+      .subscribe((familyPage: FamilyPage) => {
+        if (!familyPage) {
+          return;
+        }
+        this.familyPage = familyPage;
       });
 
   }
@@ -116,17 +124,17 @@ export class GenesTableComponent implements OnInit, OnDestroy {
 
   setPage($event) {
     console.log($event)
-    if (this.genePage) {
+    if (this.familyPage) {
       let pageIndex = $event.pageIndex;
-      if (this.pantherSearchService.searchCriteria.genePage.size > $event.pageSize) {
+      if (this.pantherSearchService.searchCriteria.familyPage.size > $event.pageSize) {
         pageIndex = 0;
       }
       this.pantherSearchService.getPage(pageIndex, $event.pageSize);
     }
   }
 
-  isExpansionDetailRow(gene) {
-    return gene.expanded;
+  isExpansionDetailRow(family) {
+    return family.expanded;
   }
 
   openLeftDrawer(panel) {

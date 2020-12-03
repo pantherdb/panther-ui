@@ -6,7 +6,7 @@ import { pantherAnimations } from './../../../../@panther/animations';
 import { FormGroup } from '@angular/forms';
 import { PantherSearchService } from '@panther.search/services/panther-search.service';
 import { distinctUntilChanged, takeUntil } from 'rxjs/operators';
-import { GenePage } from '@panther.search/models/gene-page';
+import { GenePage } from '@panther.search/models/gene';
 import { PantherSearchMenuService } from '@panther.search/services/search-menu.service';
 import { PantherCommonMenuService } from '@panther.common/services/panther-common-menu.service';
 import { LeftPanel, MiddlePanel, RightPanel } from '@panther.search/models/menu-panels';
@@ -80,12 +80,6 @@ export class PantherSearchComponent implements OnInit, AfterViewInit, OnDestroy 
     this.pantherSearchMenuService.setLeftDrawer(this.leftDrawer);
     this.pantherSearchMenuService.setRightDrawer(this.rightDrawer);
 
-    this.pantherSearchService.onGenesChanged
-      .pipe(takeUntil(this._unsubscribeAll))
-      .subscribe(genes => {
-        this.genes = genes;
-      });
-
   }
 
   ngAfterViewInit(): void {
@@ -106,12 +100,6 @@ export class PantherSearchComponent implements OnInit, AfterViewInit, OnDestroy 
     switch (panel) {
       case MiddlePanel.genes:
         this.pantherSearchMenuService.selectLeftPanel(LeftPanel.filter);
-        break;
-      case MiddlePanel.genesReview:
-        this.pantherSearchMenuService.selectLeftPanel(LeftPanel.artBasket);
-        break;
-      case MiddlePanel.reviewChanges:
-        this.pantherSearchMenuService.selectLeftPanel(LeftPanel.artBasket);
         break;
     }
 

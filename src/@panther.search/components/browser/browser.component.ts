@@ -1,44 +1,49 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { PantherSearchMenuService } from '@panther.search/services/search-menu.service';
-import { Subject } from 'rxjs';
 
-import { BrowserService } from './services/browser.service';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { PantherConfigService } from '@panther/services/config.service';
+
+import { PantherSearchMenuService } from '@panther.search/services/search-menu.service';
+
+
+import { SelectionModel } from '@angular/cdk/collections';
+import { TermFlatNode } from './models/term';
+
 
 @Component({
   selector: 'panther-browser',
   templateUrl: './browser.component.html',
   styleUrls: ['./browser.component.scss']
 })
-export class BrowserComponent implements OnInit, OnDestroy {
 
+export class BrowserComponent implements OnInit, OnDestroy {
+  pantherConfig: any;
+  navigation: any;
+  mainMenu;
+  subMenu;
+
+  bpChecklistSelection = new SelectionModel<TermFlatNode>(true);
   private _unsubscribeAll: Subject<any>;
 
-  constructor(
-    public pantherSearchMenuService: PantherSearchMenuService,
-    private browserService: BrowserService) {
+  constructor(private _pantherConfigService: PantherConfigService,
+    public pantherSearchMenuService: PantherSearchMenuService) {
     this._unsubscribeAll = new Subject();
+
+    this.mainMenu = this.pantherSearchMenuService.mainMenu;
+    this.subMenu = this.pantherSearchMenuService.subMenu;
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this._pantherConfigService.config
+      .pipe(takeUntil(this._unsubscribeAll))
+      .subscribe((config) => {
+        this.pantherConfig = config;
+      });
   }
 
   ngOnDestroy(): void {
     this._unsubscribeAll.next();
     this._unsubscribeAll.complete();
   }
-
-
-  submit() {
-    /*
-    let query = this.annotationForm.value;
-    let annotations = this.checklistSelection.selected as any[];
-
-    query['header_id'] = annotations.reduce((annotationString, item) => {
-      return annotationString + ' ' + item.id
-    }, []);
-
-    this.snpService.getSnps(query);
-    */
-  }
-
 }

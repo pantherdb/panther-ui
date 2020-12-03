@@ -1,2 +1,13 @@
 @import "src/@panther/scss/panther";
 @import "src/@panther.common/scss/panther.common";
+
+:host {
+    @include deep-width(100%);
+    @include deep-height(100%);
+
+    .panther-drawer {
+        @include deep-width(300px);
+    }
+
+    background-color: white;
+}

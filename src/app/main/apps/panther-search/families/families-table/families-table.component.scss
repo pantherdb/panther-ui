@@ -197,7 +197,7 @@ $rotate-graph: 235deg;
     }
   }
 
-  .panther-genes-result {
+  .panther-families-result {
     background-color: #F7F7F7;
     font-size: 12px;
     width: 100%;
@@ -213,7 +213,7 @@ $rotate-graph: 235deg;
     }
 
 
-    .panther-genes-table {
+    .panther-families-table {
       @include deep-width(100%);
 
       .panther-display-number {
@@ -284,7 +284,7 @@ $rotate-graph: 235deg;
       }
     }
 
-    .panther-gene-table-container {
+    .panther-family-table-container {
       width: 100%;
       position: relative;
       padding-left: 70px;
@@ -326,7 +326,7 @@ $rotate-graph: 235deg;
 
   }
 
-  .panther-genes-result {
+  .panther-families-result {
 
     &.panther-review-mode {
       .panther-summary-filter-bar {
@@ -341,7 +341,7 @@ $rotate-graph: 235deg;
         top: 172px;
       }
 
-      .panther-gene-table-container {
+      .panther-family-table-container {
         padding-left: 100px;
 
         &::before {

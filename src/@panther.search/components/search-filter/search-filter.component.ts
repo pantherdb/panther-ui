@@ -14,6 +14,7 @@ import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/materia
 import * as _moment from 'moment';
 // tslint:disable-next-line:no-duplicate-imports
 import { default as _rollupMoment } from 'moment';
+import { PantherLookupService } from '@panther.search/services/panther-lookup.service';
 
 const moment = _rollupMoment || _moment;
 
@@ -58,10 +59,13 @@ export class SearchFilterComponent implements OnInit, OnDestroy {
   filteredContributors: Observable<any[]>;
   filteredStates: Observable<any[]>;
 
+  termResults = [];
+
   private _unsubscribeAll: Subject<any>;
 
   constructor(
     public pantherSearchMenuService: PantherSearchMenuService,
+    public pantherLookupService: PantherLookupService,
     public pantherSearchService: PantherSearchService) {
 
     this._unsubscribeAll = new Subject();
@@ -156,9 +160,13 @@ export class SearchFilterComponent implements OnInit, OnDestroy {
       distinctUntilChanged(),
       debounceTime(400)
     ).subscribe(data => {
-
+      if (!data) {
+        return;
+      }
+      self.pantherLookupService.getTerms(data).subscribe(response => {
+        self.termResults = response;
+      });
     });
-
 
   }
 }

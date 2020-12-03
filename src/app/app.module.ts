@@ -40,12 +40,14 @@ import {
     faCaretDown,
     faCaretRight,
     faAngleDoubleDown,
-    faAngleDoubleUp, faUndo, faSave, faExclamationTriangle
+    faAngleDoubleUp, faUndo, faSave, faExclamationTriangle, faDna, faListOl, faSearchPlus
 } from '@fortawesome/free-solid-svg-icons';
 import { faGithub, faFacebook, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { PantherDataService } from '@panther.common/services/panther-data.service';
 import { StartupService } from './startup.service';
+import { FakeDbService } from '@panther/fakedb/services/fake-db.service';
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 
 export function startup(startupService: StartupService) {
     return () => startupService.loadData();
@@ -70,6 +72,10 @@ const appRoutes: Routes = [
         RouterModule.forRoot(appRoutes),
         // Panther Main and Shared modules
         PantherModule.forRoot(pantherConfig),
+        InMemoryWebApiModule.forRoot(FakeDbService, {
+            delay: 0,
+            passThruUnknownUrl: true
+        }),
         ContextMenuModule.forRoot(),
         PantherSharedModule,
         LayoutModule,
@@ -112,6 +118,7 @@ export class AppModule {
             faChevronDown,
             faChevronRight,
             faCopy,
+            faDna,
             faExclamationTriangle,
             faFacebook,
             faGithub,
@@ -120,11 +127,13 @@ export class AppModule {
             faLevelUpAlt,
             faLink,
             faListAlt,
+            faListOl,
             faPaw,
             faPen,
             faPlus,
             faSave,
             faSearch,
+            faSearchPlus,
             faShoppingBasket,
             faSitemap,
             faTasks,
