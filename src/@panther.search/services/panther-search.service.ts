@@ -9,6 +9,9 @@ import { SearchHistory } from './../models/search-history';
 import { PantherDataService } from '@panther.common/services/panther-data.service';
 import { PantherSearchMenuService } from './search-menu.service';
 import { GenePage } from '@panther.search/models/gene';
+import { FamilyPage } from '@panther.search/models/family';
+import { CategoryPage } from '@panther.search/models/category';
+import { PathwayPage } from '@panther.search/models/pathway';
 
 @Injectable({
     providedIn: 'root'
@@ -21,8 +24,10 @@ export class PantherSearchService {
     onSearchCriteriaChanged: BehaviorSubject<any>;
     onSearchHistoryChanged: BehaviorSubject<any>;
     curieUtil: any;
-    genes: any[] = [];
     genePage: GenePage;
+    familyPage: FamilyPage;
+    pathwayPage: PathwayPage;
+    categoryPage: CategoryPage;
     searchCriteria: SearchCriteria;
     searchApi = environment.pantherSearchApi;
     separator = '@@';
@@ -61,12 +66,41 @@ export class PantherSearchService {
             this.getGenes(searchCriteria).subscribe((response: any) => {
                 const genePage = new GenePage();
 
-                this.genes = response;
                 genePage.total = 50;
                 genePage.size = 50;
-                genePage.genes = this.genes;
+                genePage.genes = response;
                 this.genePage = genePage;
                 this.onGenesPageChanged.next(this.genePage);
+            });
+
+            this.getFamilies(searchCriteria).subscribe((response: any) => {
+                const familyPage = new FamilyPage();
+
+                familyPage.total = 50;
+                familyPage.size = 50;
+                familyPage.families = response;
+                this.familyPage = familyPage;
+                this.onFamiliesPageChanged.next(this.familyPage);
+            });
+
+            this.getPathways(searchCriteria).subscribe((response: any) => {
+                const pathwayPage = new PathwayPage();
+
+                pathwayPage.total = 50;
+                pathwayPage.size = 50;
+                pathwayPage.pathways = response;
+                this.pathwayPage = pathwayPage;
+                this.onPathwaysPageChanged.next(this.pathwayPage);
+            });
+
+            this.getCategories(searchCriteria).subscribe((response: any) => {
+                const categoryPage = new CategoryPage();
+
+                categoryPage.total = 50;
+                categoryPage.size = 50;
+                categoryPage.categories = response;
+                this.categoryPage = categoryPage;
+                this.onCategoriesPageChanged.next(this.categoryPage);
             });
 
             /*        this.getGenesCount(searchCriteria).subscribe((response: any) => {
@@ -178,6 +212,133 @@ export class PantherSearchService {
     }
 
     addGene(res) {
+        const self = this;
+        const result = [];
+
+        // This will be filled with goodies
+        res.results.forEach((response) => {
+            const modelId = response.id;
+
+            result.push(response);
+        });
+
+        return result;
+    }
+
+    // Families
+
+    getFamilies(searchCriteria: SearchCriteria): Observable<any> {
+        const self = this;
+        const query = searchCriteria.build();
+        const url = `${this.searchApi}/families?${query}`;
+
+        self.loading = true;
+
+        return this.httpClient
+            .get(url)
+            .pipe(
+                map(res => this.addFamily(res)),
+                finalize(() => {
+                    self.loading = false;
+                })
+            );
+    }
+
+    getFamiliesCount(searchCriteria: SearchCriteria): Observable<any> {
+        const self = this;
+        const query = searchCriteria.build();
+        const url = `${this.searchApi}/models?${query}&count`;
+
+        return this.httpClient
+            .get(url)
+            .pipe();
+    }
+
+    addFamily(res) {
+        const self = this;
+        const result = [];
+
+        // This will be filled with goodies
+        res.results.forEach((response) => {
+            const modelId = response.id;
+
+            result.push(response);
+        });
+
+        return result;
+    }
+
+    // Pathway
+    getPathways(searchCriteria: SearchCriteria): Observable<any> {
+        const self = this;
+        const query = searchCriteria.build();
+        const url = `${this.searchApi}/pathways?${query}`;
+
+        self.loading = true;
+
+        return this.httpClient
+            .get(url)
+            .pipe(
+                map(res => this.addPathway(res)),
+                finalize(() => {
+                    self.loading = false;
+                })
+            );
+    }
+
+    getPathwaysCount(searchCriteria: SearchCriteria): Observable<any> {
+        const self = this;
+        const query = searchCriteria.build();
+        const url = `${this.searchApi}/models?${query}&count`;
+
+        return this.httpClient
+            .get(url)
+            .pipe();
+    }
+
+    addPathway(res) {
+        const self = this;
+        const result = [];
+
+        // This will be filled with goodies
+        res.results.forEach((response) => {
+            const modelId = response.id;
+
+            result.push(response);
+        });
+
+        return result;
+    }
+
+
+    getCategories(searchCriteria: SearchCriteria): Observable<any> {
+        const self = this;
+        const query = searchCriteria.build();
+        const url = `${this.searchApi}/categories?${query}`;
+
+        self.loading = true;
+
+        return this.httpClient
+            .get(url)
+            .pipe(
+                map(res => this.addCategory(res)),
+                finalize(() => {
+                    self.loading = false;
+                })
+            );
+    }
+
+    getCategoriesCount(searchCriteria: SearchCriteria): Observable<any> {
+        const self = this;
+        const query = searchCriteria.build();
+        const url = `${this.searchApi}/models?${query}&count`;
+
+        return this.httpClient
+            .get(url)
+            .pipe();
+    }
+
+    addCategory(res) {
         const self = this;
         const result = [];
 

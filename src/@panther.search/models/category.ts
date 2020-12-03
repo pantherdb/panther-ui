@@ -5,5 +5,5 @@ export class Category {
 }
 
 export class CategoryPage extends Page {
-    genes: Category[] = [];
+    categories: Category[] = [];
 }

@@ -5,5 +5,5 @@ export class Pathway {
 }
 
 export class PathwayPage extends Page {
-    genes: Pathway[] = [];
+    pathways: Pathway[] = [];
 }

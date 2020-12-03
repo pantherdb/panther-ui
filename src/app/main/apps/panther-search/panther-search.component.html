@@ -75,32 +75,27 @@
             Panther
           </h3>
         </div>
-        <div class="noc-art-info" fxLayout="row" fxLayoutAlign="center center">
-          <div class="noc-art-tabs" fxLayout="row" fxLayoutAlign="center center">
-            <div class="noc-line noc-visited" fxFlex>
-            </div>
-            <button mat-stroked-button (click)="selectMiddlePanel(MiddlePanel.genes)"
-              matBadge="{{artBasket?.gene.length}}" matBadgePosition="after" matBadgeColor="warn" class="" color=""
-              [ngClass]="{'noc-active': pantherSearchMenuService.selectedMiddlePanel === MiddlePanel.genes}">
-              <div class="noc-title">Genes</div>
-            </button>
-            <button mat-stroked-button (click)="selectMiddlePanel(MiddlePanel.families)"
-              matBadge="{{artBasket?.families.length}}" matBadgePosition="after" matBadgeColor="warn" class="" color=""
-              [ngClass]="{'noc-active': pantherSearchMenuService.selectedMiddlePanel === MiddlePanel.families}">
-              <div class="noc-title">Families</div>
-            </button>
-            <button mat-stroked-button (click)="selectMiddlePanel(MiddlePanel.pathways)"
-              matBadge="{{artBasket?.pathways.length}}" matBadgePosition="after" matBadgeColor="warn" class="" color=""
-              [ngClass]="{'noc-active': pantherSearchMenuService.selectedMiddlePanel === MiddlePanel.pathways}">
-              <div class="noc-title">Pathways</div>
-            </button>
-            <button mat-stroked-button (click)="selectMiddlePanel(MiddlePanel.categories)"
-              matBadge="{{artBasket?.categories.length}}" matBadgePosition="after" matBadgeColor="warn" class=""
-              color=""
-              [ngClass]="{'noc-active': pantherSearchMenuService.selectedMiddlePanel === MiddlePanel.categories}">
-              <div class="noc-title">Categories</div>
-            </button>
-          </div>
+        <div class="panther-result-tabs" fxLayout="row" fxLayoutAlign="start end">
+          <button mat-stroked-button (click)="selectMiddlePanel(MiddlePanel.genes)"
+            matBadge="{{artBasket?.gene.length}}" matBadgePosition="after" matBadgeColor="warn" class="" color=""
+            [ngClass]="{'panther-active': pantherSearchMenuService.selectedMiddlePanel === MiddlePanel.genes}">
+            <div class="panther-title">Genes</div>
+          </button>
+          <button mat-stroked-button (click)="selectMiddlePanel(MiddlePanel.families)"
+            matBadge="{{artBasket?.families.length}}" matBadgePosition="after" matBadgeColor="warn" class="" color=""
+            [ngClass]="{'panther-active': pantherSearchMenuService.selectedMiddlePanel === MiddlePanel.families}">
+            <div class="panther-title">Families</div>
+          </button>
+          <button mat-stroked-button (click)="selectMiddlePanel(MiddlePanel.pathways)"
+            matBadge="{{artBasket?.pathways.length}}" matBadgePosition="after" matBadgeColor="warn" class="" color=""
+            [ngClass]="{'panther-active': pantherSearchMenuService.selectedMiddlePanel === MiddlePanel.pathways}">
+            <div class="panther-title">Pathways</div>
+          </button>
+          <button mat-stroked-button (click)="selectMiddlePanel(MiddlePanel.categories)"
+            matBadge="{{artBasket?.categories.length}}" matBadgePosition="after" matBadgeColor="warn" class="" color=""
+            [ngClass]="{'panther-active': pantherSearchMenuService.selectedMiddlePanel === MiddlePanel.categories}">
+            <div class="panther-title">Categories</div>
+          </button>
         </div>
         <div class="h-100-p w-100-p">
           <panther-genes-table [hidden]="pantherSearchMenuService.selectedMiddlePanel !== MiddlePanel.genes">
