@@ -1,0 +1,34 @@
+<ng-container [formGroup]="formGroup">
+    <mat-form-field appearance="outline" class="panther-sm w-100-p">
+        <mat-label>Filter by CC</mat-label>
+        <mat-chip-list #termChipList>
+            <mat-chip class="panther-form-chip" *ngFor="let term of pantherSearchService.searchCriteria.terms"
+                [selectable]="true" [removable]="true" (removed)="remove(term, pantherSearchService.filterType.terms)"
+                fxLayout="row" fxLayoutAlign="start center" matTooltip="Term: {{term.label}} ({{term.id}})"
+                [matTooltipPosition]="'below'" [matTooltipShowDelay]="1000">
+                <div fxFlex="" class="panther-chip-label">
+                    {{term.label}}
+                </div>
+                <mat-icon matChipRemove>cancel</mat-icon>
+            </mat-chip>
+            <input #searchInput [formControlName]="controlName" placeholder="Add Term Filter"
+                [matAutocomplete]="termAuto" [matChipInputFor]="termChipList"
+                [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="false">
+        </mat-chip-list>
+        <mat-autocomplete #termAuto="matAutocomplete"
+            (optionSelected)="selected($event, pantherSearchService.filterType.terms)" [displayWith]="termDisplayFn"
+            class="panther-term-autocomplete">
+            <mat-option class="panther-term-autocomplete" *ngFor="let item of termResults" [value]="item">
+                <div class="w-100-p" fxLayout="row" fxLayoutAlign="start center">
+                    <div class="panther-term-label">
+                        {{ item.label }}
+                    </div>
+                    <span fxFlex></span>
+                    <div class="panther-term-id">
+                        {{ item.id }}
+                    </div>
+                </div>
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+</ng-container>

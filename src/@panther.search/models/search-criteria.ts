@@ -10,18 +10,26 @@ export class SearchCriteria {
     familyPage: FamilyPage = new FamilyPage();
     categoryPage: CategoryPage = new CategoryPage();
     pathwayPage: PathwayPage = new PathwayPage();
-    titles: any[] = [];
+    keywords: any[] = [];
     ids: any[] = [];
     gps: any[] = [];
     terms: any[] = [];
+    mfs: any[] = [];
+    bps: any[] = [];
+    ccs: any[] = [];
+    organisms: any[] = [];
     expand = true;
     filtersCount = 0;
 
     constructor(searchCriteria?: SearchCriteria) {
         if (searchCriteria) {
             this.genePage = searchCriteria.genePage || new GenePage();
-            this.titles = searchCriteria.titles || [];
+            this.keywords = searchCriteria.keywords || [];
             this.terms = searchCriteria.terms || [];
+            this.mfs = searchCriteria.mfs || [];
+            this.bps = searchCriteria.bps || [];
+            this.ccs = searchCriteria.ccs || [];
+            this.organisms = searchCriteria.organisms || [];
             this.ids = searchCriteria.ids || [];
             this.gps = searchCriteria.gps || [];
             this.expand = searchCriteria.expand;
@@ -31,10 +39,14 @@ export class SearchCriteria {
     updateFiltersCount() {
         const self = this;
 
-        self.filtersCount = self.titles.length +
+        self.filtersCount = self.keywords.length +
             self.ids.length +
             self.gps.length +
+            self.organisms.length +
             self.terms.length;
+        self.mfs.length
+        self.bps.length;
+        self.ccs.length;
     }
 
     private query() {
@@ -43,12 +55,28 @@ export class SearchCriteria {
 
         query.push('limit=' + self.genePage.size.toString());
 
-        each(self.titles, (title) => {
-            query.push(`title=*${title}*`);
+        each(self.keywords, (keyword) => {
+            query.push(`keyword=*${keyword}*`);
         });
 
         each(self.terms, (term) => {
             query.push(`q=${term.id}`);
+        });
+
+        each(self.mfs, (mf) => {
+            query.push(`q=${mf.id}`);
+        });
+
+        each(self.bps, (bp) => {
+            query.push(`q=${bp.id}`);
+        });
+
+        each(self.ccs, (cc) => {
+            query.push(`q=${cc.id}`);
+        });
+
+        each(self.organisms, (organism) => {
+            query.push(`q=${organism.id}`);
         });
 
         each(self.ids, (id) => {
@@ -71,9 +99,14 @@ export class SearchCriteria {
     }
 
     clearSearch() {
-        this.titles = [];
+        this.keywords = [];
         this.terms = [];
+        this.mfs = [];
+        this.bps = [];
+        this.ccs = [];
+        this.organisms = []
         this.gps = [];
+
     }
 
 }

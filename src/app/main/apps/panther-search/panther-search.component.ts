@@ -96,15 +96,7 @@ export class PantherSearchComponent implements OnInit, AfterViewInit, OnDestroy 
 
   selectMiddlePanel(panel) {
     this.pantherSearchMenuService.selectMiddlePanel(panel);
-
-    switch (panel) {
-      case MiddlePanel.genes:
-        this.pantherSearchMenuService.selectLeftPanel(LeftPanel.filter);
-        break;
-    }
-
   }
-
 
   toggleLeftDrawer(panel) {
     this.pantherSearchMenuService.toggleLeftDrawer(panel);

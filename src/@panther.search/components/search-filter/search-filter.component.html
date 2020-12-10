@@ -11,12 +11,6 @@
   </div>
   <div class="panther-drawer-body panther-filter-form" pantherPerfectScrollbar>
     <div class="panther-table-form panther-form-section" fxLayout="column" fxLayoutAlign="start stretch">
-      <div class="panther-section-header" fxLayout="row" fxLayoutAlign="start center">
-        <div class="panther-section-heading">
-          Annotations
-        </div>
-        <span fxFlex></span>
-      </div>
       <div class="panther-section-body" fxLayout="column" fxLayoutAlign="start stretch">
         <div class="panther-annoton-group-row" fxLayout="column">
           <mat-form-field appearance="outline" class="panther-sm w-100-p">
@@ -51,6 +45,23 @@
               </mat-option>
             </mat-autocomplete>
           </mat-form-field>
+
+          <panther-term-autocomplete [formGroup]="filterForm" [controlName]="'keywords'"></panther-term-autocomplete>
+          <panther-term-autocomplete [formGroup]="filterForm" [controlName]="'terms'"></panther-term-autocomplete>
+          <panther-term-autocomplete [formGroup]="filterForm" [controlName]="'terms'"></panther-term-autocomplete>
+
+        </div>
+      </div>
+    </div>
+    <div class="panther-table-form panther-form-section" fxLayout="column" fxLayoutAlign="start stretch">
+      <div class="panther-section-header" fxLayout="row" fxLayoutAlign="start center">
+        <div class="panther-section-heading">
+          Annotations
+        </div>
+        <span fxFlex></span>
+      </div>
+      <div class="panther-section-body" fxLayout="column" fxLayoutAlign="start stretch">
+        <div class="panther-annoton-group-row" fxLayout="column">
         </div>
       </div>
     </div>

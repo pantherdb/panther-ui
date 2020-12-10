@@ -19,6 +19,7 @@ import { SequenceSearchComponent } from './components/sequence-search/sequence-s
 import { SnpScoringFormComponent } from './components/snp-scoring/snp-scoring-form/snp-scoring-form.component';
 import { SnpScoringComponent } from './components/snp-scoring/snp-scoring.component';
 import { MatTreeModule } from '@angular/material/tree';
+import { TermAutocompleteComponent } from './components/fields/term-autocomplete/term-autocomplete.component';
 
 @NgModule({
     declarations: [
@@ -35,7 +36,8 @@ import { MatTreeModule } from '@angular/material/tree';
         SequenceSearchComponent,
         SequenceSearchFormComponent,
         SnpScoringFormComponent,
-        BpTermComponent
+        BpTermComponent,
+        TermAutocompleteComponent
     ],
     imports: [
         MatTreeModule,
@@ -59,7 +61,8 @@ import { MatTreeModule } from '@angular/material/tree';
         SequenceSearchComponent,
         SequenceSearchFormComponent,
         SnpScoringFormComponent,
-        BpTermComponent
+        BpTermComponent,
+        TermAutocompleteComponent
     ]
 })
 export class PantherSearchBaseModule {

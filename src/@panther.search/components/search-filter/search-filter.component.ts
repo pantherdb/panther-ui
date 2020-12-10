@@ -88,6 +88,10 @@ export class SearchFilterComponent implements OnInit, OnDestroy {
       ids: new FormControl(),
       gps: new FormControl(),
       terms: new FormControl(),
+      bps: new FormControl(),
+      ccs: new FormControl(),
+      mfs: new FormControl(),
+      organism: new FormControl()
     });
   }
 

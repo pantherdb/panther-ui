@@ -41,9 +41,13 @@ export class PantherSearchService {
 
     filterType = {
         ids: 'ids',
-        titles: 'titles',
+        keywords: 'keywords',
         gps: 'gps',
         terms: 'terms',
+        mfs: 'mfs',
+        bps: 'bps',
+        ccs: 'ccs',
+        organisms: 'organisms'
     };
 
     constructor(
@@ -122,10 +126,14 @@ export class PantherSearchService {
     search(searchCriteria) {
         this.searchCriteria = new SearchCriteria();
 
-        searchCriteria.title ? this.searchCriteria.titles.push(searchCriteria.title) : null;
+        searchCriteria.keyword ? this.searchCriteria.keywords.push(searchCriteria.keyword) : null;
         searchCriteria.term ? this.searchCriteria.terms.push(searchCriteria.term) : null;
+        searchCriteria.mf ? this.searchCriteria.mfs.push(searchCriteria.mf) : null;
+        searchCriteria.bp ? this.searchCriteria.bps.push(searchCriteria.bp) : null;
+        searchCriteria.cc ? this.searchCriteria.ccs.push(searchCriteria.cc) : null;
         searchCriteria.id ? this.searchCriteria.ids.push(searchCriteria.id) : null;
         searchCriteria.gp ? this.searchCriteria.gps.push(searchCriteria.gp) : null;
+        searchCriteria.organism ? this.searchCriteria.organisms.push(searchCriteria.organism) : null;
 
         this.updateSearch();
 
