@@ -61,6 +61,33 @@ export class SearchFilterComponent implements OnInit, OnDestroy {
 
   termResults = [];
 
+  termOptions = {
+    keywords: {
+      controlName: 'keywords',
+      label: 'Keywords'
+    },
+    term: {
+      controlName: 'terms',
+      label: 'filter By Panther Terms'
+    },
+    mf: {
+      controlName: 'mfs',
+      label: 'filter By Molecular Function'
+    },
+    bp: {
+      controlName: 'bps',
+      label: 'filter By Biological Process'
+    },
+    cc: {
+      controlName: 'ccs',
+      label: 'filter By Cellular Component'
+    },
+    pc: {
+      controlName: 'pcs',
+      label: 'filter By Protein Class'
+    }
+  }
+
   private _unsubscribeAll: Subject<any>;
 
   constructor(
@@ -87,9 +114,11 @@ export class SearchFilterComponent implements OnInit, OnDestroy {
     return new FormGroup({
       ids: new FormControl(),
       gps: new FormControl(),
+      keywords: new FormControl(),
       terms: new FormControl(),
       bps: new FormControl(),
       ccs: new FormControl(),
+      pcs: new FormControl(),
       mfs: new FormControl(),
       organism: new FormControl()
     });

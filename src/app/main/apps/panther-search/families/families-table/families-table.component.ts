@@ -51,9 +51,13 @@ export class FamiliesTableComponent implements OnInit, OnDestroy {
   private _unsubscribeAll: Subject<any>;
 
   displayedColumns = [
+    'family_acc',
     'family_name',
-    'family_symbol',
-    'species',
+    'genes',
+    'panther_mf',
+    'panther_bp',
+    'panther_cc',
+    'panther_pc',
   ];
 
   searchCriteria: any = {};

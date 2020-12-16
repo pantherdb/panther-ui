@@ -52,9 +52,11 @@ export class PathwaysTableComponent implements OnInit, OnDestroy {
   private _unsubscribeAll: Subject<any>;
 
   displayedColumns = [
+    'pathway_acc',
     'pathway_name',
-    'pathway_symbol',
-    'species',
+    'components',
+    'subfamilies',
+    'sequence'
   ];
 
   searchCriteria: any = {};

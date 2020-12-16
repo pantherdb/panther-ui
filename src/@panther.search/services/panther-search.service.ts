@@ -47,6 +47,7 @@ export class PantherSearchService {
         mfs: 'mfs',
         bps: 'bps',
         ccs: 'ccs',
+        pcs: 'pcs',
         organisms: 'organisms'
     };
 
@@ -131,6 +132,7 @@ export class PantherSearchService {
         searchCriteria.mf ? this.searchCriteria.mfs.push(searchCriteria.mf) : null;
         searchCriteria.bp ? this.searchCriteria.bps.push(searchCriteria.bp) : null;
         searchCriteria.cc ? this.searchCriteria.ccs.push(searchCriteria.cc) : null;
+        searchCriteria.pc ? this.searchCriteria.ccs.push(searchCriteria.pc) : null;
         searchCriteria.id ? this.searchCriteria.ids.push(searchCriteria.id) : null;
         searchCriteria.gp ? this.searchCriteria.gps.push(searchCriteria.gp) : null;
         searchCriteria.organism ? this.searchCriteria.organisms.push(searchCriteria.organism) : null;

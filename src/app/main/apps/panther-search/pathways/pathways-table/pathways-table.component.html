@@ -48,19 +48,29 @@
   </div>
   <table fxFlex="1 1 auto" mat-table multiTemplateDataRows class="panther-pathways-table"
     [dataSource]="pathwayPage?.pathways" [@animateStagger]="{value:'50'}">
+    <ng-container matColumnDef="pathway_acc">
+      <th mat-header-cell *matHeaderCellDef fxFlex="150px" fxLayout="row" fxLayoutAlign="start center"> Accession
+      </th>
+      <td mat-cell *matCellDef="let pathway" fxFlex="150px"> {{pathway.pathway_acc}} </td>
+    </ng-container>
     <ng-container matColumnDef="pathway_name">
       <th mat-header-cell *matHeaderCellDef fxFlex="200px" fxLayout="row" fxLayoutAlign="start center"> Pathway Name
       </th>
       <td mat-cell *matCellDef="let pathway" fxFlex="200px"> {{pathway.pathway_name}} </td>
     </ng-container>
-    <ng-container matColumnDef="pathway_symbol">
-      <th mat-header-cell *matHeaderCellDef fxFlex="150px" fxLayout="row" fxLayoutAlign="start center"> Pathway Symbol
-      </th>
-      <td mat-cell *matCellDef="let pathway" fxFlex="150px"> {{pathway.pathway_symbol}} </td>
+    <ng-container matColumnDef="components">
+      <th mat-header-cell *matHeaderCellDef fxFlex="200px" fxLayout="row" fxLayoutAlign="start center"> Components </th>
+      <td mat-cell *matCellDef="let pathway" fxFlex="200px"> {{pathway.components}} </td>
     </ng-container>
-    <ng-container matColumnDef="species">
-      <th mat-header-cell *matHeaderCellDef fxFlex="200px" fxLayout="row" fxLayoutAlign="start center"> Species </th>
-      <td mat-cell *matCellDef="let pathway" fxFlex="200px"> {{pathway.species}} </td>
+    <ng-container matColumnDef="subfamilies">
+      <th mat-header-cell *matHeaderCellDef fxFlex="200px" fxLayout="row" fxLayoutAlign="start center"> Subfamilies
+      </th>
+      <td mat-cell *matCellDef="let pathway" fxFlex="200px"> {{pathway.subfamilies}} </td>
+    </ng-container>
+    <ng-container matColumnDef="sequence">
+      <th mat-header-cell *matHeaderCellDef fxFlex="200px" fxLayout="row" fxLayoutAlign="start center"> Associated
+        Sequence </th>
+      <td mat-cell *matCellDef="let pathway" fxFlex="200px"> {{pathway.sequence}} </td>
     </ng-container>
     <ng-container matColumnDef="expandedDetail">
       <td class="p-0" mat-cell *matCellDef="let pathway" [attr.colspan]="displayedColumns.length">

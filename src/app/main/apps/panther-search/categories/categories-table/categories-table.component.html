@@ -49,19 +49,30 @@
   </div>
   <table fxFlex="1 1 auto" mat-table multiTemplateDataRows class="panther-categories-table"
     [dataSource]="categoryPage?.categories" [@animateStagger]="{value:'50'}">
+    <ng-container matColumnDef="category_id">
+      <th mat-header-cell *matHeaderCellDef fxFlex="150px" fxLayout="row" fxLayoutAlign="start center"> ID
+      </th>
+      <td mat-cell *matCellDef="let category" fxFlex="150px"> {{category.category_acc}} </td>
+    </ng-container>
     <ng-container matColumnDef="category_name">
-      <th mat-header-cell *matHeaderCellDef fxFlex="200px" fxLayout="row" fxLayoutAlign="start center"> Category Name
+      <th mat-header-cell *matHeaderCellDef fxFlex="200px" fxLayout="row" fxLayoutAlign="start center"> Name
       </th>
       <td mat-cell *matCellDef="let category" fxFlex="200px"> {{category.category_name}} </td>
     </ng-container>
-    <ng-container matColumnDef="category_symbol">
-      <th mat-header-cell *matHeaderCellDef fxFlex="150px" fxLayout="row" fxLayoutAlign="start center"> Category Symbol
+    <ng-container matColumnDef="aspect">
+      <th mat-header-cell *matHeaderCellDef fxFlex="200px" fxLayout="row" fxLayoutAlign="start center"> Aspect
       </th>
-      <td mat-cell *matCellDef="let category" fxFlex="150px"> {{category.category_symbol}} </td>
+      <td mat-cell *matCellDef="let category" fxFlex="200px"> {{category.aspect}} </td>
     </ng-container>
-    <ng-container matColumnDef="species">
-      <th mat-header-cell *matHeaderCellDef fxFlex="200px" fxLayout="row" fxLayoutAlign="start center"> Species </th>
-      <td mat-cell *matCellDef="let category" fxFlex="200px"> {{category.species}} </td>
+    <ng-container matColumnDef="parent">
+      <th mat-header-cell *matHeaderCellDef fxFlex="200px" fxLayout="row" fxLayoutAlign="start center"> Parent
+      </th>
+      <td mat-cell *matCellDef="let category" fxFlex="200px"> {{category.parent}} </td>
+    </ng-container>
+    <ng-container matColumnDef="children">
+      <th mat-header-cell *matHeaderCellDef fxFlex="200px" fxLayout="row" fxLayoutAlign="start center"> Children
+      </th>
+      <td mat-cell *matCellDef="let category" fxFlex="200px"> {{category.child}} </td>
     </ng-container>
     <ng-container matColumnDef="expandedDetail">
       <td class="p-0" mat-cell *matCellDef="let category" [attr.colspan]="displayedColumns.length">

@@ -54,7 +54,12 @@ export class GenesTableComponent implements OnInit, OnDestroy {
   displayedColumns = [
     'gene_name',
     'gene_symbol',
+    'family',
     'species',
+    'panther_mf_simple',
+    'panther_bp_simple',
+    'panther_cc_simple',
+    'panther_pc_simple',
   ];
 
   searchCriteria: any = {};

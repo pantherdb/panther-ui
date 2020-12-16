@@ -17,6 +17,7 @@ export class SearchCriteria {
     mfs: any[] = [];
     bps: any[] = [];
     ccs: any[] = [];
+    pcs: any[] = [];
     organisms: any[] = [];
     expand = true;
     filtersCount = 0;
@@ -29,6 +30,7 @@ export class SearchCriteria {
             this.mfs = searchCriteria.mfs || [];
             this.bps = searchCriteria.bps || [];
             this.ccs = searchCriteria.ccs || [];
+            this.pcs = searchCriteria.pcs || [];
             this.organisms = searchCriteria.organisms || [];
             this.ids = searchCriteria.ids || [];
             this.gps = searchCriteria.gps || [];
@@ -43,10 +45,11 @@ export class SearchCriteria {
             self.ids.length +
             self.gps.length +
             self.organisms.length +
-            self.terms.length;
-        self.mfs.length
-        self.bps.length;
-        self.ccs.length;
+            self.terms.length +
+            self.mfs.length +
+            self.bps.length +
+            self.ccs.length +
+            self.pcs.length;
     }
 
     private query() {
@@ -73,6 +76,10 @@ export class SearchCriteria {
 
         each(self.ccs, (cc) => {
             query.push(`q=${cc.id}`);
+        });
+
+        each(self.pcs, (pc) => {
+            query.push(`q=${pc.id}`);
         });
 
         each(self.organisms, (organism) => {

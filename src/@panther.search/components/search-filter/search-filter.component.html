@@ -45,10 +45,8 @@
               </mat-option>
             </mat-autocomplete>
           </mat-form-field>
-
-          <panther-term-autocomplete [formGroup]="filterForm" [controlName]="'keywords'"></panther-term-autocomplete>
-          <panther-term-autocomplete [formGroup]="filterForm" [controlName]="'terms'"></panther-term-autocomplete>
-          <panther-term-autocomplete [formGroup]="filterForm" [controlName]="'terms'"></panther-term-autocomplete>
+          <panther-term-autocomplete [formGroup]="filterForm" [options]="termOptions.keywords">
+          </panther-term-autocomplete>
 
         </div>
       </div>
@@ -56,12 +54,17 @@
     <div class="panther-table-form panther-form-section" fxLayout="column" fxLayoutAlign="start stretch">
       <div class="panther-section-header" fxLayout="row" fxLayoutAlign="start center">
         <div class="panther-section-heading">
-          Annotations
+          Panther GO Terms
         </div>
         <span fxFlex></span>
       </div>
       <div class="panther-section-body" fxLayout="column" fxLayoutAlign="start stretch">
         <div class="panther-annoton-group-row" fxLayout="column">
+          <panther-term-autocomplete [formGroup]="filterForm" [options]="termOptions.term"></panther-term-autocomplete>
+          <panther-term-autocomplete [formGroup]="filterForm" [options]="termOptions.mf"></panther-term-autocomplete>
+          <panther-term-autocomplete [formGroup]="filterForm" [options]="termOptions.bp"></panther-term-autocomplete>
+          <panther-term-autocomplete [formGroup]="filterForm" [options]="termOptions.cc"></panther-term-autocomplete>
+          <panther-term-autocomplete [formGroup]="filterForm" [options]="termOptions.pc"></panther-term-autocomplete>
         </div>
       </div>
     </div>

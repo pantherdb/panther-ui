@@ -18,8 +18,8 @@ export class TermAutocompleteComponent implements OnInit {
   separatorKeysCodes: number[] = [ENTER, COMMA];
 
   @Input() formGroup: FormGroup;
-  @Input() controlName: string;
-
+  @Input() options: any;
+  filterType: string
   termResults = [];
 
   private _unsubscribeAll: Subject<any>;
@@ -34,6 +34,7 @@ export class TermAutocompleteComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.filterType = this.pantherSearchService.filterType[this.options.controlName]
     this._onValueChanges();
   }
 
@@ -102,7 +103,7 @@ export class TermAutocompleteComponent implements OnInit {
   private _onValueChanges() {
     const self = this;
 
-    this.formGroup.get(this.controlName).valueChanges.pipe(
+    this.formGroup.get(this.options.controlName).valueChanges.pipe(
       distinctUntilChanged(),
       debounceTime(400)
     ).subscribe(data => {

@@ -1,0 +1,60 @@
+@import "src/@panther/scss/panther";
+@import "src/@panther.common/scss/panther.common";
+
+:host {
+
+    mat-chip {
+        font-size: 12px;
+        font-weight: normal;
+        //min-height: 30px;
+        //  max-width: 200px;
+        // text-overflow: ellipsis;
+        //  white-space: nowrap;
+    }
+
+
+    mat-chip {
+        font-size: 12px;
+        font-weight: normal;
+        @include deep-height(25px);
+        max-width: 200px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+
+        .panther-chip-label {
+            padding: 0 8px 0 4px;
+            display: block;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        &.panther-form-chip {
+            padding: 0;
+            @include deep-height(20px);
+            font-size: 10px;
+
+            .panther-icon {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 25px;
+                width: 25px;
+                border-radius: 50%;
+                color: #777;
+                font-size: 14px;
+
+            }
+
+            @include panther-chip-color(#bbc9cc);
+
+
+        }
+    }
+
+    .panther-file-upload-title {
+        margin-left: 4px;
+        color: #888;
+        font-weight: bold;
+    }
+}

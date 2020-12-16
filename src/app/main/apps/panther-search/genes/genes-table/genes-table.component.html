@@ -57,9 +57,34 @@
       </th>
       <td mat-cell *matCellDef="let gene" fxFlex="150px"> {{gene.gene_symbol}} </td>
     </ng-container>
+    <ng-container matColumnDef="family">
+      <th mat-header-cell *matHeaderCellDef fxFlex="200px" fxLayout="row" fxLayoutAlign="start center"> Family/Subfamily
+      </th>
+      <td mat-cell *matCellDef="let gene" fxFlex="200px"> {{gene.family}} </td>
+    </ng-container>
     <ng-container matColumnDef="species">
       <th mat-header-cell *matHeaderCellDef fxFlex="200px" fxLayout="row" fxLayoutAlign="start center"> Species </th>
       <td mat-cell *matCellDef="let gene" fxFlex="200px"> {{gene.species}} </td>
+    </ng-container>
+    <ng-container matColumnDef="panther_mf_simple">
+      <th mat-header-cell *matHeaderCellDef fxFlex="200px" fxLayout="row" fxLayoutAlign="start center"> Molecular
+        Function </th>
+      <td mat-cell *matCellDef="let gene" fxFlex="200px"> {{gene.panther_mf_simple}} </td>
+    </ng-container>
+    <ng-container matColumnDef="panther_bp_simple">
+      <th mat-header-cell *matHeaderCellDef fxFlex="200px" fxLayout="row" fxLayoutAlign="start center"> Biological
+        Process </th>
+      <td mat-cell *matCellDef="let gene" fxFlex="200px"> {{gene.panther_bp_simple}} </td>
+    </ng-container>
+    <ng-container matColumnDef="panther_cc_simple">
+      <th mat-header-cell *matHeaderCellDef fxFlex="200px" fxLayout="row" fxLayoutAlign="start center"> Cellular
+        Component </th>
+      <td mat-cell *matCellDef="let gene" fxFlex="200px"> {{gene.panther_cc_simple}} </td>
+    </ng-container>
+    <ng-container matColumnDef="panther_pc_simple">
+      <th mat-header-cell *matHeaderCellDef fxFlex="200px" fxLayout="row" fxLayoutAlign="start center"> Protein CLass
+      </th>
+      <td mat-cell *matCellDef="let gene" fxFlex="200px"> {{gene.panther_pc_simple}} </td>
     </ng-container>
     <ng-container matColumnDef="expandedDetail">
       <td class="p-0" mat-cell *matCellDef="let gene" [attr.colspan]="displayedColumns.length">

@@ -52,9 +52,11 @@ export class CategoriesTableComponent implements OnInit, OnDestroy {
   private _unsubscribeAll: Subject<any>;
 
   displayedColumns = [
+    'category_id',
     'category_name',
-    'category_symbol',
-    'species',
+    'aspect',
+    'parent',
+    'children'
   ];
 
   searchCriteria: any = {};
