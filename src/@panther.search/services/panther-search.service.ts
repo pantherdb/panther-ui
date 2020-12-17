@@ -24,10 +24,10 @@ export class PantherSearchService {
     onSearchCriteriaChanged: BehaviorSubject<any>;
     onSearchHistoryChanged: BehaviorSubject<any>;
     curieUtil: any;
-    genePage: GenePage;
-    familyPage: FamilyPage;
-    pathwayPage: PathwayPage;
-    categoryPage: CategoryPage;
+    genePage: GenePage = new GenePage();
+    familyPage: FamilyPage = new FamilyPage();
+    pathwayPage: PathwayPage = new PathwayPage();
+    categoryPage: CategoryPage = new CategoryPage();
     searchCriteria: SearchCriteria;
     searchApi = environment.pantherSearchApi;
     separator = '@@';
@@ -69,50 +69,51 @@ export class PantherSearchService {
             }
 
             this.getGenes(searchCriteria).subscribe((response: any) => {
-                const genePage = new GenePage();
+                this.genePage.size = 50;
+                this.genePage.genes = response;
+                this.onGenesPageChanged.next(this.genePage);
+            });
 
-                genePage.total = 50;
-                genePage.size = 50;
-                genePage.genes = response;
-                this.genePage = genePage;
+            this.getGenesCount(searchCriteria).subscribe((response: any) => {
+                this.genePage.total = response.count;
                 this.onGenesPageChanged.next(this.genePage);
             });
 
             this.getFamilies(searchCriteria).subscribe((response: any) => {
-                const familyPage = new FamilyPage();
 
-                familyPage.total = 50;
-                familyPage.size = 50;
-                familyPage.families = response;
-                this.familyPage = familyPage;
+                this.familyPage.size = 50;
+                this.familyPage.families = response;
+                this.onFamiliesPageChanged.next(this.familyPage);
+            });
+
+            this.getFamiliesCount(searchCriteria).subscribe((response: any) => {
+                this.familyPage.total = response.count;
                 this.onFamiliesPageChanged.next(this.familyPage);
             });
 
             this.getPathways(searchCriteria).subscribe((response: any) => {
-                const pathwayPage = new PathwayPage();
+                this.pathwayPage.size = 50;
+                this.pathwayPage.pathways = response;
+                this.onPathwaysPageChanged.next(this.pathwayPage);
+            });
 
-                pathwayPage.total = 50;
-                pathwayPage.size = 50;
-                pathwayPage.pathways = response;
-                this.pathwayPage = pathwayPage;
+            this.getPathwaysCount(searchCriteria).subscribe((response: any) => {
+                this.pathwayPage.total = response.count;
                 this.onPathwaysPageChanged.next(this.pathwayPage);
             });
 
             this.getCategories(searchCriteria).subscribe((response: any) => {
-                const categoryPage = new CategoryPage();
+                this.categoryPage.total = 50;
+                this.categoryPage.size = 50;
+                this.categoryPage.categories = response;
 
-                categoryPage.total = 50;
-                categoryPage.size = 50;
-                categoryPage.categories = response;
-                this.categoryPage = categoryPage;
                 this.onCategoriesPageChanged.next(this.categoryPage);
             });
 
-            /*        this.getGenesCount(searchCriteria).subscribe((response: any) => {
-                       this.genePage = new GenePage();
-                       this.genePage.total = response.n;
-                       this.onGenesPageChanged.next(this.genePage);
-                   }); */
+            this.getCategoriesCount(searchCriteria).subscribe((response: any) => {
+                this.categoryPage.total = response.count;
+                this.onCategoriesPageChanged.next(this.categoryPage);
+            });
 
             this.pantherSearchMenuService.resetResults();
         });
@@ -214,7 +215,7 @@ export class PantherSearchService {
     getGenesCount(searchCriteria: SearchCriteria): Observable<any> {
         const self = this;
         const query = searchCriteria.build();
-        const url = `${this.searchApi}/models?${query}&count`;
+        const url = `${this.searchApi}/genes?${query}&count=true`;
 
         return this.httpClient
             .get(url)
@@ -257,7 +258,7 @@ export class PantherSearchService {
     getFamiliesCount(searchCriteria: SearchCriteria): Observable<any> {
         const self = this;
         const query = searchCriteria.build();
-        const url = `${this.searchApi}/models?${query}&count`;
+        const url = `${this.searchApi}/families?${query}&count=true`;
 
         return this.httpClient
             .get(url)
@@ -299,7 +300,7 @@ export class PantherSearchService {
     getPathwaysCount(searchCriteria: SearchCriteria): Observable<any> {
         const self = this;
         const query = searchCriteria.build();
-        const url = `${this.searchApi}/models?${query}&count`;
+        const url = `${this.searchApi}/pathways?${query}&count=true`;
 
         return this.httpClient
             .get(url)
@@ -341,7 +342,7 @@ export class PantherSearchService {
     getCategoriesCount(searchCriteria: SearchCriteria): Observable<any> {
         const self = this;
         const query = searchCriteria.build();
-        const url = `${this.searchApi}/models?${query}&count`;
+        const url = `${this.searchApi}/categories?${query}&count=true`;
 
         return this.httpClient
             .get(url)

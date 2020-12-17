@@ -255,6 +255,10 @@ $rotate-graph: 235deg;
       padding-bottom: 6px;
       font-size: 12px !important;
 
+      .panther-term {
+        padding: 4px 0;
+      }
+
       &.panther-checkbox-cell {
         padding-left: 16px;
         //border-right: $panther-primary-color-light solid 1px;

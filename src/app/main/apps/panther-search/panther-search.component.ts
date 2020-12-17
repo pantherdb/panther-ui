@@ -11,6 +11,9 @@ import { PantherSearchMenuService } from '@panther.search/services/search-menu.s
 import { PantherCommonMenuService } from '@panther.common/services/panther-common-menu.service';
 import { LeftPanel, MiddlePanel, RightPanel } from '@panther.search/models/menu-panels';
 import { PantherPerfectScrollbarDirective } from '@panther/directives/panther-perfect-scrollbar/panther-perfect-scrollbar.directive';
+import { CategoryPage } from '@panther.search/models/category';
+import { FamilyPage } from '@panther.search/models/family';
+import { PathwayPage } from '@panther.search/models/pathway';
 
 @Component({
   selector: 'panther-panther-search',
@@ -35,6 +38,9 @@ export class PantherSearchComponent implements OnInit, AfterViewInit, OnDestroy 
   RightPanel = RightPanel;
 
   genePage: GenePage;
+  familyPage: FamilyPage;
+  pathwayPage: PathwayPage;
+  categoryPage: CategoryPage;
 
   searchResults = [];
   modelId = '';
@@ -72,6 +78,36 @@ export class PantherSearchComponent implements OnInit, AfterViewInit, OnDestroy 
         }
         this.genePage = genePage;
       });
+
+    this.pantherSearchService.onFamiliesPageChanged
+      .pipe(takeUntil(this._unsubscribeAll))
+      .subscribe((familyPage: FamilyPage) => {
+        if (!familyPage) {
+          return;
+        }
+        this.familyPage = familyPage;
+      });
+
+    this.pantherSearchService.onPathwaysPageChanged
+      .pipe(takeUntil(this._unsubscribeAll))
+      .subscribe((pathwayPage: PathwayPage) => {
+        if (!pathwayPage) {
+          return;
+        }
+        this.pathwayPage = pathwayPage;
+      });
+
+    this.pantherSearchService.onCategoriesPageChanged
+      .pipe(takeUntil(this._unsubscribeAll))
+      .subscribe((categoryPage: CategoryPage) => {
+        if (!categoryPage) {
+          return;
+        }
+        this.categoryPage = categoryPage;
+      });
+
+
+
     this.pantherSearchService.setup();
 
   }

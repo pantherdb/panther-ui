@@ -56,10 +56,10 @@ export class GenesTableComponent implements OnInit, OnDestroy {
     'gene_symbol',
     'family',
     'species',
-    'panther_mf_simple',
-    'panther_bp_simple',
-    'panther_cc_simple',
-    'panther_pc_simple',
+    'panther_mf_simple_meta',
+    'panther_bp_simple_meta',
+    'panther_cc_simple_meta',
+    'panther_pc_simple_meta',
   ];
 
   searchCriteria: any = {};

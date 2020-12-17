@@ -30,13 +30,11 @@ export class PantherSearchMenuService {
         pantherTypes.page.help,
     ]
 
-
     constructor() {
         this.selectedLeftPanel = LeftPanel.filter;
         this.selectedMiddlePanel = MiddlePanel.genes;
         this.selectedLeftPanel = this._mainMenu[0];
     }
-
 
     get mainMenu() {
         return this._mainMenu;
@@ -50,15 +48,12 @@ export class PantherSearchMenuService {
         return pantherTypes;
     }
 
-
-
     selectLeftPanel(panel: LeftPanel) {
         this.selectedLeftPanel = panel;
     }
 
     selectMiddlePanel(panel: MiddlePanel) {
         this.selectedMiddlePanel = panel;
-
     }
 
     selectRightPanel(panel: RightPanel) {

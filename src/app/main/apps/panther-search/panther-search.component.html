@@ -76,25 +76,53 @@
           </h3>
         </div>
         <div class="panther-result-tabs" fxLayout="row" fxLayoutAlign="start end">
+          <div class="panther-heading">
+            Search Results
+          </div>
+          <span fxFlex></span>
           <button mat-stroked-button (click)="selectMiddlePanel(MiddlePanel.genes)"
             matBadge="{{artBasket?.gene.length}}" matBadgePosition="after" matBadgeColor="warn" class="" color=""
             [ngClass]="{'panther-active': pantherSearchMenuService.selectedMiddlePanel === MiddlePanel.genes}">
             <div class="panther-title">Genes</div>
+            <div *ngIf="genePage?.total" class="panther-count">
+              ({{genePage?.total}}) results
+            </div>
+            <div *ngIf="genePage?.total===0" class="panther-count">
+              no results
+            </div>
           </button>
           <button mat-stroked-button (click)="selectMiddlePanel(MiddlePanel.families)"
             matBadge="{{artBasket?.families.length}}" matBadgePosition="after" matBadgeColor="warn" class="" color=""
             [ngClass]="{'panther-active': pantherSearchMenuService.selectedMiddlePanel === MiddlePanel.families}">
             <div class="panther-title">Families</div>
+            <div *ngIf="familyPage?.total" class="panther-count">
+              ({{familyPage?.total}}) results
+            </div>
+            <div *ngIf="familyPage?.total===0" class="panther-count">
+              no results
+            </div>
           </button>
           <button mat-stroked-button (click)="selectMiddlePanel(MiddlePanel.pathways)"
             matBadge="{{artBasket?.pathways.length}}" matBadgePosition="after" matBadgeColor="warn" class="" color=""
             [ngClass]="{'panther-active': pantherSearchMenuService.selectedMiddlePanel === MiddlePanel.pathways}">
             <div class="panther-title">Pathways</div>
+            <div *ngIf="pathwayPage?.total" class="panther-count">
+              ({{pathwayPage?.total}}) results
+            </div>
+            <div *ngIf="pathwayPage?.total===0" class="panther-count">
+              no results
+            </div>
           </button>
           <button mat-stroked-button (click)="selectMiddlePanel(MiddlePanel.categories)"
             matBadge="{{artBasket?.categories.length}}" matBadgePosition="after" matBadgeColor="warn" class="" color=""
             [ngClass]="{'panther-active': pantherSearchMenuService.selectedMiddlePanel === MiddlePanel.categories}">
             <div class="panther-title">Categories</div>
+            <div *ngIf="categoryPage?.total" class="panther-count">
+              ({{categoryPage?.total}}) results
+            </div>
+            <div *ngIf="categoryPage?.total===0" class="panther-count">
+              no results
+            </div>
           </button>
         </div>
         <div class="h-100-p w-100-p">
